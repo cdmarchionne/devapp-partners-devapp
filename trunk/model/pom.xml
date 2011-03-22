@@ -14,12 +14,13 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
  
-  <parent>
-  	<groupId>ar.edu.unq</groupId>
-    <artifactId>aunq-parent</artifactId>
-    <version>1.0-SNAPSHOT</version>   
-  </parent>	
+
  
+   <parent>
+    <groupId>ar.edu.unq</groupId>
+    <artifactId>aunq-parent</artifactId>
+    <version>0.1-SNAPSHOT</version>
+  </parent>
 	
 		<scm>
 		<connection>scm:svn:https://devapp-partners-devapp.googlecode.com/svn/trunk/model</connection>
