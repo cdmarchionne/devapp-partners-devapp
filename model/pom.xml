@@ -19,7 +19,14 @@
     <artifactId>aunq-parent</artifactId>
     <version>1.0-SNAPSHOT</version>   
   </parent>	
-  
+ 
+	
+		<scm>
+		<connection>scm:svn:https://devapp-partners-devapp.googlecode.com/svn/trunk/model</connection>
+		<url>https://devapp-partners-devapp.googlecode.com/svn/trunk</url>
+	</scm>
+	
+	
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
