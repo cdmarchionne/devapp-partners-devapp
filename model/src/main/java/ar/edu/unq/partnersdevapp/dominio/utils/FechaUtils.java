@@ -26,27 +26,109 @@ public class FechaUtils {
     }
 
     /**
-     * Devuelve la lista de fechas correspondiente a cada numero de día de la
-     * semana de una fecha. Ej: 30/3/2011 [2,4,6] devuelve [28/3 , 30/3 , 2/4 ]
+     * Devuelve la lista de fechas (Date) cada una correspondiente los entero,
+     * de una semana indicada con una fecha. Ej: 30/3/2011 [2,4,6] --devuelve
+     * [28/3 , 30/3 , 2/4 ]
      * 
      * @param
      */
-    static public List<Date> diasSemana(final Date date, final List<Integer> listDate) {
+    /*
+     * static public List<Date> diasDeLaSemanaX(final Date date, final
+     * List<Integer> listDate) { List<Date> listRes = new ArrayList<Date>();
+     * Calendar calendarAux = Calendar.getInstance(); calendarAux.setTime(date);
+     * calendarAux = FechaUtils.irAlDomingo(calendarAux); for (Integer dia :
+     * listDate) { calendarAux.add(Calendar.DATE, dia - 1);
+     * listRes.add(calendarAux.getTime()); calendarAux =
+     * FechaUtils.irAlDomingo(calendarAux); } return listRes; }
+     */
+
+    static public List<Date> diasDeLaSemanaX(final Date date, final List<Integer> listDate) {
+        // Collections.sort(listDate);
         List<Date> listRes = new ArrayList<Date>();
         Calendar calendarAux = Calendar.getInstance();
         calendarAux.setTime(date);
         calendarAux = FechaUtils.irAlDomingo(calendarAux);
         for (Integer dia : listDate) {
-            calendarAux.add(Calendar.DATE, dia - 1);
+            calendarAux.add(Calendar.DATE, dia - calendarAux.get(Calendar.DAY_OF_WEEK));
             listRes.add(calendarAux.getTime());
-            calendarAux = FechaUtils.irAlDomingo(calendarAux);
         }
         return listRes;
     }
 
-    static private Calendar irAlDomingo(final Calendar cal) {
+    /**
+     * Devuelve los dias de la semana indicados, a partir del dia indicado
+     * inclusive
+     */
+    static public List<Date> diasDeLaSemanaApartirDel(final Date date, final List<Integer> listDate) {
+        Calendar calendario = FechaUtils.getCalendar(date);
+        List<Integer> listCopy = new ArrayList<Integer>();
+        listCopy.addAll(listDate);
+
+        ListaUtils.sacarMenoresDe(listCopy, calendario.get(Calendar.DAY_OF_WEEK));
+        return FechaUtils.diasDeLaSemanaX(date, listCopy);
+
+    }
+
+    /** Devuelve los dias de la semana indicados, a hasta dia indicado inclusive */
+    static public List<Date> diasDeLaSemanaHastaEl(final Date date, final List<Integer> listDate) {
+        Calendar calendario = FechaUtils.getCalendar(date);
+        List<Integer> listCopy = new ArrayList<Integer>();
+        listCopy.addAll(listDate);
+
+        ListaUtils.sacarMayoresDe(listCopy, calendario.get(Calendar.DAY_OF_WEEK));
+        return FechaUtils.diasDeLaSemanaX(date, listCopy);
+
+    }
+
+    /** Dado un calendario , lo devuelve posicionado al domingo anterior */
+    static public Calendar irAlDomingo(final Calendar cal) {
         int pos = cal.get(Calendar.DAY_OF_WEEK);
         cal.add(Calendar.DATE, 1 - pos);
         return cal;
     }
+
+    /** Devuelve un calendario posicionado en una fecha dada */
+    static public Calendar getCalendar(final String strFecha) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(FechaUtils.crearFecha(strFecha));
+        return cal;
+    }
+
+    /** Devuelve un calendario posicionado en una fecha dada */
+    static public Calendar getCalendar(final Date dteFecha) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dteFecha);
+        return cal;
+    }
+
+    /**
+     * Reprecenta la semana de domingo a sábado como lista de enteros. Util para
+     * trabajar con un calendario
+     */
+    static public List<Integer> getDiasDeLaSemana() {
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(6);
+        list.add(7);
+        return list;
+    }
+
+    /**
+     * Reprecenta la semana de lunes a viernes como lista de enteros. Util para
+     * trabajar con un calendario
+     */
+    static public List<Integer> getDiasHabiles() {
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.add(5);
+        list.add(6);
+        return list;
+    }
+
 }
