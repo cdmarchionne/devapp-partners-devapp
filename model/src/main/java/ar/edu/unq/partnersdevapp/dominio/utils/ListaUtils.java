@@ -31,4 +31,14 @@ public class ListaUtils<T> {
         return intlistRes;
     }
 
+    static public List<Integer> interseccion(final List<Integer> listA, final List<Integer> listB) {
+        List<Integer> resultadoList = new ArrayList<Integer>();
+        for (Integer date : listB) {
+            if (listA.contains(date)) {
+                resultadoList.add(date);
+            }
+        }
+        return resultadoList;
+    }
+
 }
