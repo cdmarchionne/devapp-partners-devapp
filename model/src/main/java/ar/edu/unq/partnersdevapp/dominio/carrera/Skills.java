@@ -5,4 +5,10 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
  */
 public class Skills {
 
+    Tecnologia tecnologia;
+
+    String experiencia;
+
+    // private Map<Tecnologia, Experiencia> conocimiento;
+
 }

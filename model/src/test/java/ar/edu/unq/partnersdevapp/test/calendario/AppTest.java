@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp;
+package ar.edu.unq.partnersdevapp.test.calendario;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

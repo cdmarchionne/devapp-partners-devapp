@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp;
+package ar.edu.unq.partnersdevapp.test.calendario;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -21,6 +21,7 @@ public class FechaUtilsTest extends TestCase {
         Date date0 = new Date(99, 4, 5);
         Date date1 = FechaUtils.crearFecha("05/05/1999");
         assertTrue(date0.equals(date1));
+
     }
 
     public void testIrAlDomingo() {

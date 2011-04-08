@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp;
+package ar.edu.unq.partnersdevapp.test.calendario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,4 +40,5 @@ public class ListaUtilTest extends TestCase {
         ListaUtils.sacarMenoresDe(intlist, 2);
         assertTrue(intlist.equals(deberiaSer));
     }
+
 }

@@ -5,8 +5,10 @@ import java.util.List;
 
 /**
  * TODO: description
+ * 
+ * @param <T>
  */
-public class ListaUtils {
+public class ListaUtils<T> {
 
     static public List<Integer> sacarMayoresDe(final List<Integer> list, final int valor) {
         list.retainAll(ListaUtils.sacarMayoresDeAux(list, valor));
@@ -28,4 +30,5 @@ public class ListaUtils {
         }
         return intlistRes;
     }
+
 }

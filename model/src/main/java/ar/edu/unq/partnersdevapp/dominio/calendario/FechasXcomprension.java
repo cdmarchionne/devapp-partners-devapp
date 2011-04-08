@@ -9,14 +9,15 @@ import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 
 /**
  * Modela una lista de fechas por comprensión. No soporta fecha de fin
- * indefinida o infinita.
+ * indefinida o infinita. Es recomendable que la fecha de inicio coincida con el
+ * menor de los dias de la semana elegidos.
  */
 public class FechasXcomprension {
     private Date fechaInicio;
 
     private List<Integer> dias;
 
-    private int intervalo; // cantidad de dias
+    private Intervalo intervalo;
 
     private Date fechaFin;
 
@@ -26,15 +27,8 @@ public class FechasXcomprension {
 
     }
 
-    /**
-     * La fecha de inicio se calcula con el número de repeticiones. intervalo es
-     * en número de días.
-     * 
-     * @param
-     * */
-
     /** seteo de fin por repeticiones */
-    public void set(final Date inicio, final List<Integer> dias, final int intervalo, final int repeticiones) {
+    public void set(final Date inicio, final List<Integer> dias, final Intervalo intervalo, final int repeticiones) {
         this.setFechaInicio(inicio);
         this.setDias(dias);
         this.setIntervalo(intervalo);
@@ -42,7 +36,7 @@ public class FechasXcomprension {
     }
 
     /** seteo de fin por fecha */
-    public void set(final Date inicio, final List<Integer> dias, final int intervalo, final Date fechaFin) {
+    public void set(final Date inicio, final List<Integer> dias, final Intervalo intervalo, final Date fechaFin) {
         this.setFechaInicio(inicio);
         this.setDias(dias);
         this.setIntervalo(intervalo);
@@ -51,7 +45,10 @@ public class FechasXcomprension {
     }
 
     /**
-     * Calcula todas las fechas y las devuelve.
+     * Calcula todas las fechas y las devuelve. No toma fechas anteriores a la
+     * fecha de inicio. Si se seto con fecha de fin no toma fechas posterios a
+     * la misma, en cambio si se seteo con cantidad de repeticiones tomara
+     * fechas posteriores hasta completar la semana de la mismo.
      * */
     public List<Date> getFechasXextencion() {
         List<Date> list = new ArrayList<Date>();
@@ -59,11 +56,11 @@ public class FechasXcomprension {
         calendario.setTime(this.getFechaInicio());
 
         list.addAll(FechaUtils.diasDeLaSemanaApartirDel(calendario.getTime(), this.getDias()));
-        calendario.add(Calendar.DATE, intervalo);
+        calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
 
         for (int i = 1; i < this.getRepeticiones() - 1; i++) {
             list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
-            calendario.add(Calendar.DATE, intervalo);
+            calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
         }
 
         if (this.getFechaFin() == null) {
@@ -75,12 +72,42 @@ public class FechasXcomprension {
         return list;
     }
 
+    /**
+     * Calcula cuantas semanas se repite. Se usa cuando se crea el constructor
+     * con fecha de fin.
+     */
+    // ******* VER BUG : si las repeticiones son semanas intercaladas?
     private int calcularRepeticiones() {
         return FechaUtils.getCalendar(this.getFechaFin()).get(Calendar.WEEK_OF_MONTH)
                 - FechaUtils.getCalendar(this.getFechaInicio()).get(Calendar.WEEK_OF_MONTH) + 1;
     }
 
-    // Gets & sets
+    /**
+     * Devuele la lista de días resultante de la interseccion con otra fecha por
+     * comprensión.
+     */
+    public List<Date> interseccion(final FechasXcomprension fxc) {
+        List<Date> resultadoList = new ArrayList<Date>();
+        List<Date> thisList = this.getFechasXextencion();
+        List<Date> paramList = fxc.getFechasXextencion();
+        for (Date date : paramList) {
+            if (thisList.contains(date)) {
+                resultadoList.add(date);
+            }
+        }
+        return resultadoList;
+    }
+
+    /**
+     * Devielve True si hay por lo menos un día en cumún entre las dos fechas
+     * por comprensión.
+     */
+    public boolean seSuperpone(final FechasXcomprension fxc) {
+        return !this.interseccion(fxc).isEmpty();
+    }
+
+    // ****************
+    // **** Gets & sets
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -97,11 +124,11 @@ public class FechasXcomprension {
         this.dias = dias;
     }
 
-    public int getIntervalo() {
+    public Intervalo getIntervalo() {
         return intervalo;
     }
 
-    public void setIntervalo(final int intervalo) {
+    public void setIntervalo(final Intervalo intervalo) {
         this.intervalo = intervalo;
     }
 
