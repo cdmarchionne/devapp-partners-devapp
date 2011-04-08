@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp;
+package ar.edu.unq.partnersdevapp.test.calendario;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -7,6 +7,7 @@ import java.util.List;
 
 import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
+import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 
 /**
@@ -27,7 +28,8 @@ public class FechaComprensionTest extends TestCase {
         deberSerList.add(FechaUtils.crearFecha("19/04/2011"));
 
         FechasXcomprension fxc = new FechasXcomprension();
-        fxc.set(inicio, list, 7, 3);
+        fxc.set(inicio, list, Intervalo.getUnaSemana(), 3);
+
         assertTrue(fxc.getFechasXextencion().containsAll(deberSerList));
 
     }
@@ -49,7 +51,7 @@ public class FechaComprensionTest extends TestCase {
 
         // Lunes y viernes - cada una semana - durante 3 semanas
         FechasXcomprension fxc = new FechasXcomprension();
-        fxc.set(inicio, list, 7, 3);
+        fxc.set(inicio, list, Intervalo.getUnaSemana(), 3);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
@@ -64,7 +66,7 @@ public class FechaComprensionTest extends TestCase {
         Date inicio = FechaUtils.crearFecha("04/04/2011");
 
         FechasXcomprension fxc = new FechasXcomprension();
-        fxc.set(inicio, FechaUtils.getDiasDeLaSemana(), 7, 2);
+        fxc.set(inicio, FechaUtils.getDiasDeLaSemana(), Intervalo.getUnaSemana(), 2);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
@@ -77,7 +79,7 @@ public class FechaComprensionTest extends TestCase {
         Date inicio = FechaUtils.crearFecha("04/04/2011");
 
         FechasXcomprension fxc = new FechasXcomprension();
-        fxc.set(inicio, FechaUtils.getDiasHabiles(), 7, 2);
+        fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
@@ -91,7 +93,7 @@ public class FechaComprensionTest extends TestCase {
         Date inicio = FechaUtils.crearFecha("06/04/2011");
 
         FechasXcomprension fxc = new FechasXcomprension();
-        fxc.set(inicio, FechaUtils.getDiasHabiles(), 7, 2);
+        fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
@@ -105,7 +107,7 @@ public class FechaComprensionTest extends TestCase {
         Date fin = FechaUtils.crearFecha("20/04/2011");
 
         FechasXcomprension fxc = new FechasXcomprension();
-        fxc.set(inicio, FechaUtils.getDiasHabiles(), 7, fin);
+        fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
         assertTrue(fxc.getRepeticiones() == 3);
 
@@ -116,7 +118,7 @@ public class FechaComprensionTest extends TestCase {
         Date fin = FechaUtils.crearFecha("20/04/2011");
 
         FechasXcomprension fxc = new FechasXcomprension();
-        fxc.set(inicio, FechaUtils.getDiasHabiles(), 7, fin);
+        fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
