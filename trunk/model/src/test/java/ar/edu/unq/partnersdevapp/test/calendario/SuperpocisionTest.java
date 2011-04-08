@@ -29,8 +29,6 @@ public class SuperpocisionTest extends TestCase {
         deberSerList.add(FechaUtils.crearFecha("14/04/2011"));
         deberSerList.add(FechaUtils.crearFecha("15/04/2011"));
 
-        System.out.println(fxc0.getFechasXextencion());
-        System.out.println(fxc1.getFechasXextencion());
         assertTrue(fxc0.interseccion(fxc1).containsAll(deberSerList));
 
         assertTrue(fxc0.seSuperpone(fxc1));

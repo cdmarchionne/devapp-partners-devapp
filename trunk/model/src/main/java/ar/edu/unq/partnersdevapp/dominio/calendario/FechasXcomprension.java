@@ -86,6 +86,8 @@ public class FechasXcomprension {
      * Devuele la lista de días resultante de la interseccion con otra fecha por
      * comprensión.
      */
+
+    // !!! hacer interseccion de listas genericas en el paquete ListUtils
     public List<Date> interseccion(final FechasXcomprension fxc) {
         List<Date> resultadoList = new ArrayList<Date>();
         List<Date> thisList = this.getFechasXextencion();
