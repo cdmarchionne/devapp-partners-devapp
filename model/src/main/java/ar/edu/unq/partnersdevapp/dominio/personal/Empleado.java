@@ -3,6 +3,7 @@ package ar.edu.unq.partnersdevapp.dominio.personal;
 import java.util.Date;
 
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
+import ar.edu.unq.partnersdevapp.dominio.carrera.Posicion;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Skills;
 
 /**
@@ -12,8 +13,35 @@ public class Empleado extends Persona {
 
     private String obraSocial;
 
+    private String planPrapaga;
+
+    private String nombreArt;
+
+    private Integer telArt;
+
+    private String dirArt;
+
+    private Date fechaIngreso;
+
+    private PlanDeCarrera planDeCarrera;
+
+    private Posicion NivelPlanDeCarrera;// reprecentando (nivel,subNivel)
+
+    private Skills conocimiento;
+
+    // ******************
+    // ****** Gets & Sets
+
     public String getObraSocial() {
         return obraSocial;
+    }
+
+    public Posicion getNivelPlanDeCarrera() {
+        return NivelPlanDeCarrera;
+    }
+
+    public void setNivelPlanDeCarrera(final Posicion nivelPlanDeCarrera) {
+        NivelPlanDeCarrera = nivelPlanDeCarrera;
     }
 
     public void setObraSocial(final String obraSocial) {
@@ -60,14 +88,6 @@ public class Empleado extends Persona {
         this.fechaIngreso = fechaIngreso;
     }
 
-    public PlanDeCarrera getPlan() {
-        return plan;
-    }
-
-    public void setPlan(final PlanDeCarrera plan) {
-        this.plan = plan;
-    }
-
     public Skills getConocimiento() {
         return conocimiento;
     }
@@ -76,17 +96,12 @@ public class Empleado extends Persona {
         this.conocimiento = conocimiento;
     }
 
-    private String planPrapaga;
+    public PlanDeCarrera getPlanDeCarrera() {
+        return planDeCarrera;
+    }
 
-    private String nombreArt;
+    public void setPlanDeCarrera(final PlanDeCarrera planDeCarrera) {
+        this.planDeCarrera = planDeCarrera;
+    }
 
-    private Integer telArt;
-
-    private String dirArt;
-
-    private Date fechaIngreso;
-
-    private PlanDeCarrera plan;
-
-    private Skills conocimiento;
 }
