@@ -1,14 +1,65 @@
 package ar.edu.unq.partnersdevapp.dominio.carrera;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * TODO: description
  */
 public class Skills {
 
-    Tecnologia tecnologia;
+    // private Map<Tecnologia, Categoria> skill;
+    private Map<String, Integer> skill;
 
-    String experiencia;
+    public Skills() {
+        super();
+        skill = new HashMap();
+    }
 
-    // private Map<Tecnologia, Experiencia> conocimiento;
+    public void setSkill(final String tecnologia, final String categoria) {
+        if (Tecnologia.esTecnologia(tecnologia)) {
+            skill.put(tecnologia, Categoria.indiceCategoria(categoria));
+        }
 
+    }
+
+    public void bajarCategoria(final String tecnologia) {
+
+        if (skill.containsKey(tecnologia)) {
+            skill.put(tecnologia, Categoria.bajarCategoria(skill.get(tecnologia)));
+        }
+    }
+
+    public void subirCategoria(final String tecnologia) {
+
+        if (skill.containsKey(tecnologia)) {
+            skill.put(tecnologia, Categoria.subirCategoria(skill.get(tecnologia)));
+        }
+    }
+
+    public void printSkills() {
+        System.out.println(skill.toString());
+    }
+
+    public static void main(final String[] args) {
+        Tecnologia.addTecnologia("JAVA");
+        Tecnologia.addTecnologia("Poo");
+
+        Categoria.addCategoria("Basico");
+        Categoria.addCategoria("Medio");
+        Categoria.addCategoria("Experto");
+
+        Skills conocimientos = new Skills();
+
+        conocimientos.setSkill("JAVA", "Medio");
+        conocimientos.setSkill("Poo", "Basico");
+
+        conocimientos.printSkills();
+
+        conocimientos.subirCategoria("JAVA");
+        conocimientos.subirCategoria("JAVA");
+        conocimientos.subirCategoria("JAVA");
+        conocimientos.printSkills();
+
+    }
 }
