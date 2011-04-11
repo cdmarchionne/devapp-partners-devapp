@@ -1,6 +1,9 @@
 package ar.edu.unq.partnersdevapp.dominio.personal;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Posicion;
@@ -23,25 +26,27 @@ public class Empleado extends Persona {
 
     private Date fechaIngreso;
 
-    private PlanDeCarrera planDeCarrera;
-
-    private Posicion NivelPlanDeCarrera;// reprecentando (nivel,subNivel)
+    private List<InfoPlanDeCarrera> infoPlanDeCarrera = new ArrayList<InfoPlanDeCarrera>();
 
     private Skills conocimiento;
+
+    public void addPlanDeCarrera(final Date fechaInicio, final PlanDeCarrera planDeCarrera,
+            final Posicion posicionInicial) {
+        this.getInfoPlanDeCarrera().add(new InfoPlanDeCarrera(fechaInicio, planDeCarrera, posicionInicial));
+    }
+
+    // TODO: verificar errores, lista vacia,
+    public Posicion getPosicionActual() {
+        Collections.sort(this.getInfoPlanDeCarrera());
+        int ultimaElemento = this.getInfoPlanDeCarrera().size() - 1;
+        return this.getInfoPlanDeCarrera().get(ultimaElemento).getNivelPlanDeCarrera();
+    }
 
     // ******************
     // ****** Gets & Sets
 
     public String getObraSocial() {
         return obraSocial;
-    }
-
-    public Posicion getNivelPlanDeCarrera() {
-        return NivelPlanDeCarrera;
-    }
-
-    public void setNivelPlanDeCarrera(final Posicion nivelPlanDeCarrera) {
-        NivelPlanDeCarrera = nivelPlanDeCarrera;
     }
 
     public void setObraSocial(final String obraSocial) {
@@ -96,12 +101,12 @@ public class Empleado extends Persona {
         this.conocimiento = conocimiento;
     }
 
-    public PlanDeCarrera getPlanDeCarrera() {
-        return planDeCarrera;
+    public List<InfoPlanDeCarrera> getInfoPlanDeCarrera() {
+        return infoPlanDeCarrera;
     }
 
-    public void setPlanDeCarrera(final PlanDeCarrera planDeCarrera) {
-        this.planDeCarrera = planDeCarrera;
+    public void setInfoPlanDeCarrera(final List<InfoPlanDeCarrera> infoPlanDeCarrera) {
+        this.infoPlanDeCarrera = infoPlanDeCarrera;
     }
 
 }
