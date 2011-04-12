@@ -9,7 +9,7 @@ import java.util.Map;
 public class Skills {
 
     // private Map<Tecnologia, Categoria> skill;
-    private Map<String, Integer> skill;
+    private final Map<String, Integer> skill;
 
     public Skills() {
         super();
@@ -49,7 +49,7 @@ public class Skills {
         Categoria.addCategoria("Medio");
         Categoria.addCategoria("Experto");
 
-        Skills conocimientos = new Skills();
+        final Skills conocimientos = new Skills();
 
         conocimientos.setSkill("JAVA", "Medio");
         conocimientos.setSkill("Poo", "Basico");

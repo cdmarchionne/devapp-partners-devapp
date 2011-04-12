@@ -10,10 +10,6 @@ public class Categoria {
 
     private static List<String> listaCategoria = new ArrayList<String>();
 
-    public Categoria() {
-        super();
-    }
-
     public static String nombreCategoria(final Integer indice) {
         return listaCategoria.get(indice);
     }
@@ -45,15 +41,23 @@ public class Categoria {
     }
 
     public static Integer bajarCategoria(final Integer valor) {
-        if (0 < valor && valor - 1 < listaCategoria.size())
-            return valor - 1;
-        return valor;
+        Integer valorNuevo = valor;
+
+        if (0 < valor && valor - 1 < listaCategoria.size()) {
+            valorNuevo = valor - 1;
+        }
+
+        return valorNuevo;
     }
 
     public static Integer subirCategoria(final Integer valor) {
-        if (0 <= valor && valor + 1 < listaCategoria.size())
-            return valor + 1;
-        return valor;
+        Integer valorNuevo = valor;
+
+        if (0 <= valor && valor + 1 < listaCategoria.size()) {
+            valorNuevo = valor + 1;
+        }
+
+        return valorNuevo;
 
     }
 
@@ -67,7 +71,7 @@ public class Categoria {
             System.out.println(nombreCategoria);
         }
 
-        Integer experiencia = 0;
+        final Integer experiencia = 0;
         System.out.println(experiencia + " " + Categoria.nombreCategoria(experiencia));
 
     }
