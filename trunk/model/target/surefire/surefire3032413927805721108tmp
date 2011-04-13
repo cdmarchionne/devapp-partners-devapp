@@ -1,0 +1,5 @@
+#surefire
+#Wed Apr 13 02:28:07 ART 2011
+user.dir=/home/leo/workspace/eclipseHelios/devApp/model
+localRepository=/home/leo/.m2/repository
+basedir=/home/leo/workspace/eclipseHelios/devApp/model

@@ -23,10 +23,6 @@ public class FechasXcomprension {
 
     private int repeticiones;
 
-    public FechasXcomprension() {
-
-    }
-
     /** seteo de fin por repeticiones */
     public void set(final Date inicio, final List<Integer> dias, final Intervalo intervalo, final int repeticiones) {
         this.setFechaInicio(inicio);
@@ -87,7 +83,7 @@ public class FechasXcomprension {
      * comprensión.
      */
 
-    // !!! hacer interseccion de listas genericas en el paquete ListUtils
+    // TODO :!!! hacer interseccion de listas genericas en el paquete ListUtils
     public List<Date> interseccion(final FechasXcomprension fxc) {
         List<Date> resultadoList = new ArrayList<Date>();
         List<Date> thisList = this.getFechasXextencion();

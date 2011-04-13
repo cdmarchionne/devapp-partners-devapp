@@ -4,9 +4,13 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
  * Posicion en una carrera.
  */
 public class Posicion {
-    public String nivelNombre;
+    private String nivelNombre;
 
-    public int subnivel;
+    private int subnivel;
+
+    public Posicion() {
+        super();
+    }
 
     public Posicion(final String nivel, final int subnivel) {
         this.setNivelNombre(nivel);
@@ -29,6 +33,12 @@ public class Posicion {
         boolean condicion2 = this.getSubnivel() == ((Posicion) posicion).getSubnivel();
 
         return condicion1 && condicion2;
+    }
+
+    /* TODO : averiguar! */
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException();
     }
 
     public String getNiveNombrel() {

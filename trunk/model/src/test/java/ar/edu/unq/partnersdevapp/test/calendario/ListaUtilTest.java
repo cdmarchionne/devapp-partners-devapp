@@ -10,7 +10,7 @@ import ar.edu.unq.partnersdevapp.dominio.utils.ListaUtils;
  * TODO: description
  */
 public class ListaUtilTest extends TestCase {
-    List<Integer> intlist = new ArrayList<Integer>();
+    private List<Integer> intlist = new ArrayList<Integer>();
 
     @Override
     protected void setUp() throws Exception {
@@ -27,7 +27,8 @@ public class ListaUtilTest extends TestCase {
         deberiaSer.add(2);
 
         ListaUtils.sacarMayoresDe(intlist, 2);
-        assertTrue(intlist.equals(deberiaSer));
+
+        assertEquals("", intlist, deberiaSer);
     }
 
     public void testSacarMenoresDe() {
@@ -38,7 +39,15 @@ public class ListaUtilTest extends TestCase {
         deberiaSer.add(5);
 
         ListaUtils.sacarMenoresDe(intlist, 2);
-        assertTrue(intlist.equals(deberiaSer));
+        assertEquals("", intlist, deberiaSer);
+    }
+
+    public List<Integer> getIntlist() {
+        return intlist;
+    }
+
+    public void setIntlist(final List<Integer> intlist) {
+        this.intlist = intlist;
     }
 
 }

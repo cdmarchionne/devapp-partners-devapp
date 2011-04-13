@@ -11,7 +11,9 @@ import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 
 /**
- * @author leo TODO: test referidos a la creacion de fechas por extencion.
+ * test referidos a la creacion de fechas por extencion.
+ * 
+ * @author leo
  */
 public class FechaComprensionTest extends TestCase {
 
@@ -30,7 +32,7 @@ public class FechaComprensionTest extends TestCase {
         FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, list, Intervalo.getUnaSemana(), 3);
 
-        assertTrue(fxc.getFechasXextencion().containsAll(deberSerList));
+        assertTrue("", fxc.getFechasXextencion().containsAll(deberSerList));
 
     }
 
@@ -55,10 +57,10 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        assertTrue(fechasXextencion.containsAll(deberSerList));
+        assertTrue("", fechasXextencion.containsAll(deberSerList));
 
         fechasXextencion.removeAll(deberSerList);
-        assertTrue(fechasXextencion.isEmpty());
+        assertTrue("", fechasXextencion.isEmpty());
 
     }
 
@@ -71,7 +73,7 @@ public class FechaComprensionTest extends TestCase {
         List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
 
-        assertTrue(fechasXextencion.equals(this.getDosSemana()));
+        assertEquals("", fechasXextencion, this.getDosSemana());
 
     }
 
@@ -84,7 +86,7 @@ public class FechaComprensionTest extends TestCase {
         List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
 
-        assertTrue(fechasXextencion.equals(this.getDosSemanaHabiles()));
+        assertEquals("", fechasXextencion, this.getDosSemanaHabiles());
 
     }
 
@@ -98,7 +100,7 @@ public class FechaComprensionTest extends TestCase {
         List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
 
-        assertTrue(fechasXextencion.equals(this.getDosSemanaHabilesDes()));
+        assertEquals("", fechasXextencion, this.getDosSemanaHabilesDes());
 
     }
 
@@ -109,7 +111,7 @@ public class FechaComprensionTest extends TestCase {
         FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
-        assertTrue(fxc.getRepeticiones() == 3);
+        assertEquals("", fxc.getRepeticiones(), 3);
 
     }
 
@@ -123,7 +125,7 @@ public class FechaComprensionTest extends TestCase {
         List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
 
-        assertTrue(fechasXextencion.equals(this.getTresSemanaHabilesDes()));
+        assertEquals("", fechasXextencion, this.getTresSemanaHabilesDes());
 
     }
 

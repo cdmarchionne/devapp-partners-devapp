@@ -9,7 +9,7 @@ import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 
 public class FechaUtilsTest extends TestCase {
-    Calendar calendario0;
+    private Calendar calendario0;
 
     @Override
     protected void setUp() throws Exception {
@@ -20,14 +20,15 @@ public class FechaUtilsTest extends TestCase {
         @SuppressWarnings("deprecation")
         Date date0 = new Date(99, 4, 5);
         Date date1 = FechaUtils.crearFecha("05/05/1999");
-        assertTrue(date0.equals(date1));
+
+        assertEquals("", date0, date1);
 
     }
 
     public void testIrAlDomingo() {
-        calendario0 = FechaUtils.irAlDomingo(calendario0);
+        this.setCalendario0(FechaUtils.irAlDomingo(this.getCalendario0()));
         boolean condicion = calendario0.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY;
-        assertTrue(condicion);
+        assertTrue("", condicion);
     }
 
     public void testDiasDeLaSemanaApartirDel() {
@@ -44,7 +45,8 @@ public class FechaUtilsTest extends TestCase {
         list.add(Calendar.SATURDAY);
 
         List<Date> listDate = FechaUtils.diasDeLaSemanaApartirDel(date0, list);
-        assertTrue(listDate.equals(deberiaSer));
+
+        assertEquals("", listDate, deberiaSer);
 
     }
 
@@ -62,8 +64,7 @@ public class FechaUtilsTest extends TestCase {
 
         List<Date> listDate = FechaUtils.diasDeLaSemanaHastaEl(date0, list);
 
-        assertTrue(listDate.equals(deberiaSer));
-
+        assertEquals("", listDate, deberiaSer);
     }
 
     public void testDiasDeLaSemanaX() {
@@ -81,7 +82,16 @@ public class FechaUtilsTest extends TestCase {
         list.add(Calendar.SATURDAY);
         // test
         List<Date> listDate = FechaUtils.diasDeLaSemanaX(date0, list);
-        assertTrue(listDate.equals(deberiaSer));
+
+        assertEquals("", listDate, deberiaSer);
+    }
+
+    public Calendar getCalendario0() {
+        return calendario0;
+    }
+
+    public void setCalendario0(final Calendar calendario0) {
+        this.calendario0 = calendario0;
     }
 
 }

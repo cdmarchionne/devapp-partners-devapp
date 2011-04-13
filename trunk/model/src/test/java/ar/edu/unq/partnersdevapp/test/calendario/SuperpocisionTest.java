@@ -10,7 +10,7 @@ import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 
 /**
- * TODO: description
+ * 
  */
 public class SuperpocisionTest extends TestCase {
 
@@ -29,9 +29,9 @@ public class SuperpocisionTest extends TestCase {
         deberSerList.add(FechaUtils.crearFecha("14/04/2011"));
         deberSerList.add(FechaUtils.crearFecha("15/04/2011"));
 
-        assertTrue(fxc0.interseccion(fxc1).containsAll(deberSerList));
+        assertTrue("intersenccion", fxc0.interseccion(fxc1).containsAll(deberSerList));
 
-        assertTrue(fxc0.seSuperpone(fxc1));
+        assertTrue("se superpone", fxc0.seSuperpone(fxc1));
     }
 
     public void testSuperposicionFalse() {
@@ -42,9 +42,9 @@ public class SuperpocisionTest extends TestCase {
         FechasXcomprension fxc1 = new FechasXcomprension();
         fxc1.set(FechaUtils.crearFecha("18/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        assertTrue(fxc0.interseccion(fxc1).isEmpty());
+        assertTrue("isEmpty", fxc0.interseccion(fxc1).isEmpty());
 
-        assertFalse(fxc0.seSuperpone(fxc1));
+        assertFalse("", fxc0.seSuperpone(fxc1));
     }
 
     // HACER TEST DE SUPERPOSICION CON LOS 2 CONSTRUCTORES DIFERENTES

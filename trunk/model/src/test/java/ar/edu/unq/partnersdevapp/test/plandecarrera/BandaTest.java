@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.test.planDeCarrera;
+package ar.edu.unq.partnersdevapp.test.plandecarrera;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.carrera.SubNivel;
 
 /**
- * TODO: description
+ * Tests sobre bandas.
  */
 public class BandaTest extends TestCase {
 
@@ -19,8 +19,9 @@ public class BandaTest extends TestCase {
         deberiaSer.add(0);
         deberiaSer.add(100);
 
-        assertTrue(banda.getBandas().equals(deberiaSer));
-        assertTrue(banda.getSubNivelSuperior(0) == 100);
+        assertEquals("", banda.getBandas(), deberiaSer);
+        assertEquals("", banda.getSubNivelSuperior(0), 100);
+
     }
 
     /** con 1 sub-bandas */
@@ -31,8 +32,9 @@ public class BandaTest extends TestCase {
         deberiaSer.add(0);
         deberiaSer.add(100);
 
-        assertTrue(banda.getBandas().equals(deberiaSer));
-        assertTrue(banda.getSubNivelSuperior(100) == -1);
+        assertEquals("", banda.getBandas(), deberiaSer);
+        assertEquals("", banda.getSubNivelSuperior(100), -1);
+
     }
 
     /** con 2 subBandas */
@@ -44,9 +46,9 @@ public class BandaTest extends TestCase {
         deberiaSer.add(50);
         deberiaSer.add(100);
 
-        assertTrue(banda.getBandas().equals(deberiaSer));
-        assertTrue(banda.getSubNivelSuperior(0) == 50);
-        assertTrue(banda.getSubNivelSuperior(50) == 100);
+        assertEquals("", banda.getBandas(), deberiaSer);
+        assertEquals("", banda.getSubNivelSuperior(0), 50);
+        assertEquals("", banda.getSubNivelSuperior(50), 100);
     }
 
     /** con 3 subBandas */
@@ -59,10 +61,10 @@ public class BandaTest extends TestCase {
         deberiaSer.add(66);
         deberiaSer.add(100);
 
-        assertTrue(banda.getBandas().equals(deberiaSer));
-        assertTrue(banda.getSubNivelSuperior(0) == 33);
-        assertTrue(banda.getSubNivelSuperior(33) == 66);
-        assertTrue(banda.getSubNivelSuperior(66) == 100);
+        assertEquals("", banda.getBandas(), deberiaSer);
+        assertEquals("", banda.getSubNivelSuperior(0), 33);
+        assertEquals("", banda.getSubNivelSuperior(33), 66);
+        assertEquals("", banda.getSubNivelSuperior(66), 100);
 
     }
 
@@ -77,7 +79,7 @@ public class BandaTest extends TestCase {
         deberiaSer.add(75);
         deberiaSer.add(100);
 
-        assertTrue(banda.getBandas().equals(deberiaSer));
+        assertEquals("", banda.getBandas(), deberiaSer);
 
     }
 
