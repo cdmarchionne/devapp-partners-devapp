@@ -8,9 +8,9 @@ import java.util.Calendar;
  */
 public class Intervalo {
 
-    int tipo;
+    private int tipo;
 
-    int cantidad;
+    private int cantidad;
 
     /**
      * Tipo es el entero que corresponde a semana,mes o año

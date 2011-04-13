@@ -11,7 +11,9 @@ import java.util.List;
  */
 public class SubNivel {
 
-    private float CantidadDeSubNiveles;
+    static final int ANCHOBANDA = 100;
+
+    private float cantidadDeSubNiveles;
 
     public SubNivel(final int cantidadDeSubBandas) {
         this.setCantidadDeSubNiveles(cantidadDeSubBandas);
@@ -26,7 +28,7 @@ public class SubNivel {
             list.add((int) posicion);
             posicion = posicion + salto;
         }
-        list.add(100);
+        list.add(ANCHOBANDA);
         return list;
     }
 
@@ -37,7 +39,7 @@ public class SubNivel {
 
     public int getSubNivelSuperior(final int subNivel) {
         int res;
-        res = (int) (subNivel == 100 ? -1 : subNivel + this.getSalto());
+        res = (int) (subNivel == ANCHOBANDA ? -1 : subNivel + this.getSalto());
         res = res > 98 ? 100 : res;
         return res;
 
@@ -46,9 +48,9 @@ public class SubNivel {
     private float getSalto() {
         float salto;
         if (this.getCantidadDeSubNiveles() == 0) {
-            salto = 100;
+            salto = ANCHOBANDA;
         } else {
-            salto = 100 / this.getCantidadDeSubNiveles();
+            salto = ANCHOBANDA / this.getCantidadDeSubNiveles();
         }
         return salto;
     }
@@ -56,11 +58,11 @@ public class SubNivel {
     // **********************
     // ***** Gets & Sets
     public float getCantidadDeSubNiveles() {
-        return CantidadDeSubNiveles;
+        return cantidadDeSubNiveles;
     }
 
     public void setCantidadDeSubNiveles(final float cantidadDeSubNiveles) {
-        CantidadDeSubNiveles = cantidadDeSubNiveles;
+        this.cantidadDeSubNiveles = cantidadDeSubNiveles;
     }
 
 }

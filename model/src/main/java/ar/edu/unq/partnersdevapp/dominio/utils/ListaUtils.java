@@ -4,11 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO: description
+ * Contiene utilidades para manejar listas.
  * 
- * @param <T>
  */
 public class ListaUtils<T> {
+
+    private ListaUtils() {
+        throw new UnsupportedOperationException();
+    }
 
     static public List<Integer> sacarMayoresDe(final List<Integer> list, final int valor) {
         list.retainAll(ListaUtils.sacarMayoresDeAux(list, valor));

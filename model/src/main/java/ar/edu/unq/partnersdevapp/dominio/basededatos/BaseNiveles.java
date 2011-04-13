@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.dominio.baseDeDatos;
+package ar.edu.unq.partnersdevapp.dominio.basededatos;
 
 import java.util.Map;
 
@@ -12,11 +12,11 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.SubNivel;
 public class BaseNiveles {
 
     // mapea jerarquia con nivel(nombre)
-    Map<Integer, String> niveles;
+    private Map<Integer, String> niveles;
 
     // esto lo haria una conexcion real
     public String getNivel(final int nivel) {
-        return this.getNiveles().get(niveles);
+        return this.getNiveles().get(nivel);
     }
 
     // niveles predeterminados

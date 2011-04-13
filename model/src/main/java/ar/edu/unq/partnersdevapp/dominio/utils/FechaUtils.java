@@ -6,23 +6,28 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
- * TODO: description
+ * Utilidales para el manejo de fecha.
  */
 public class FechaUtils {
 
+    private FechaUtils() {
+        throw new UnsupportedOperationException();
+    }
+
     /** Crea una fecha a partir de un string con la dorma dd/MM/yyyy */
     static public Date crearFecha(final String strFecha) {
-        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy");
-        Date d = null;
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        Date date = null;
         try {
-            d = formatoDelTexto.parse(strFecha);
+            date = formatoDelTexto.parse(strFecha);
         } catch (ParseException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+
         }
-        return d;
+        return date;
     }
 
     /**
