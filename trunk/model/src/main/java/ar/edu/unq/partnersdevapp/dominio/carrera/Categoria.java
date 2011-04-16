@@ -4,18 +4,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO: description
+ * Manejo de Categorias. Se pueden agregar, borrar, cambiar el nombre (Metodos
+ * de Clase) Cuando se crea una categoria se le pasa el nombre y dps se puede
+ * subir o bajar el nivel de experiencia
  */
 public class Categoria {
 
     private static List<String> listaCategoria = new ArrayList<String>();
 
-    public static String nombreCategoria(final Integer indice) {
-        return listaCategoria.get(indice);
+    private String categoriaActual;
+
+    public Categoria(final String categoriaActual) {
+        super();
+        this.categoriaActual = categoriaActual;
+
     }
 
     public static Integer indiceCategoria(final String nombreCategoria) {
         return listaCategoria.indexOf(nombreCategoria);
+    }
+
+    public static String nombreCategoria(final Integer indice) {
+        return listaCategoria.get(indice);
+    }
+
+    public static boolean existeCategoria(final String nombre) {
+        return Categoria.getCategorias().contains(nombre);
+    }
+
+    public static String maxima() {
+        return listaCategoria.get(listaCategoria.size() - 1);
+    }
+
+    public static String minima() {
+        return listaCategoria.get(0);
     }
 
     public static void addCategoria(final String nombre) {
@@ -40,39 +62,29 @@ public class Categoria {
         return listaCategoria;
     }
 
-    public static Integer bajarCategoria(final Integer valor) {
-        Integer valorNuevo = valor;
+    public void bajarCategoria() {
+        Integer indiceCategoria = indiceCategoria(categoriaActual);
 
-        if (0 < valor && valor - 1 < listaCategoria.size()) {
-            valorNuevo = valor - 1;
+        if (this.indiceValido(indiceCategoria - 1)) {
+            categoriaActual = nombreCategoria(indiceCategoria - 1);
         }
-
-        return valorNuevo;
-    }
-
-    public static Integer subirCategoria(final Integer valor) {
-        Integer valorNuevo = valor;
-
-        if (0 <= valor && valor + 1 < listaCategoria.size()) {
-            valorNuevo = valor + 1;
-        }
-
-        return valorNuevo;
 
     }
 
-    @SuppressWarnings("null")
-    public static void main(final String[] args) {
-        Categoria.addCategoria("Basico");
-        Categoria.addCategoria("Medio");
-        Categoria.addCategoria("Experto");
+    private boolean indiceValido(final Integer indice) {
+        return 0 <= indice && indice < listaCategoria.size();
+    }
 
-        for (String nombreCategoria : Categoria.getCategorias()) {
-            System.out.println(nombreCategoria);
+    public void subirCategoria() {
+        Integer indiceCategoria = indiceCategoria(categoriaActual);
+
+        if (this.indiceValido(indiceCategoria + 1)) {
+            categoriaActual = nombreCategoria(indiceCategoria + 1);
         }
 
-        final Integer experiencia = 0;
-        System.out.println(experiencia + " " + Categoria.nombreCategoria(experiencia));
+    }
 
+    public String getCategoriaActual() {
+        return categoriaActual;
     }
 }
