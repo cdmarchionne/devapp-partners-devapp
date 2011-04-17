@@ -18,7 +18,7 @@ public class FechaUtils {
     }
 
     /** Crea una fecha a partir de un string con la dorma dd/MM/yyyy */
-    static public Date crearFecha(final String strFecha) {
+    public static Date crearFecha(final String strFecha) {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         Date date = null;
         try {
@@ -47,7 +47,7 @@ public class FechaUtils {
      * FechaUtils.irAlDomingo(calendarAux); } return listRes; }
      */
 
-    static public List<Date> diasDeLaSemanaX(final Date date, final List<Integer> listDate) {
+    public static List<Date> diasDeLaSemanaX(final Date date, final List<Integer> listDate) {
         // Collections.sort(listDate);
         List<Date> listRes = new ArrayList<Date>();
         Calendar calendarAux = Calendar.getInstance();
@@ -64,7 +64,7 @@ public class FechaUtils {
      * Devuelve los dias de la semana indicados, a partir del dia indicado
      * inclusive
      */
-    static public List<Date> diasDeLaSemanaApartirDel(final Date date, final List<Integer> listDate) {
+    public static List<Date> diasDeLaSemanaApartirDel(final Date date, final List<Integer> listDate) {
         Calendar calendario = FechaUtils.getCalendar(date);
         List<Integer> listCopy = new ArrayList<Integer>();
         listCopy.addAll(listDate);
@@ -75,7 +75,7 @@ public class FechaUtils {
     }
 
     /** Devuelve los dias de la semana indicados, a hasta dia indicado inclusive */
-    static public List<Date> diasDeLaSemanaHastaEl(final Date date, final List<Integer> listDate) {
+    public static List<Date> diasDeLaSemanaHastaEl(final Date date, final List<Integer> listDate) {
         Calendar calendario = FechaUtils.getCalendar(date);
         List<Integer> listCopy = new ArrayList<Integer>();
         listCopy.addAll(listDate);
@@ -86,21 +86,21 @@ public class FechaUtils {
     }
 
     /** Dado un calendario , lo devuelve posicionado al domingo anterior */
-    static public Calendar irAlDomingo(final Calendar cal) {
+    public static Calendar irAlDomingo(final Calendar cal) {
         int pos = cal.get(Calendar.DAY_OF_WEEK);
         cal.add(Calendar.DATE, 1 - pos);
         return cal;
     }
 
     /** Devuelve un calendario posicionado en una fecha dada */
-    static public Calendar getCalendar(final String strFecha) {
+    public static Calendar getCalendar(final String strFecha) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(FechaUtils.crearFecha(strFecha));
         return cal;
     }
 
     /** Devuelve un calendario posicionado en una fecha dada */
-    static public Calendar getCalendar(final Date dteFecha) {
+    public static Calendar getCalendar(final Date dteFecha) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(dteFecha);
         return cal;
@@ -110,7 +110,7 @@ public class FechaUtils {
      * Reprecenta la semana de domingo a sábado como lista de enteros. Util para
      * trabajar con un calendario
      */
-    static public List<Integer> getDiasDeLaSemana() {
+    public static List<Integer> getDiasDeLaSemana() {
         List<Integer> list = new ArrayList<Integer>();
         list.add(1);
         list.add(2);
@@ -126,7 +126,7 @@ public class FechaUtils {
      * Reprecenta la semana de lunes a viernes como lista de enteros. Util para
      * trabajar con un calendario
      */
-    static public List<Integer> getDiasHabiles() {
+    public static List<Integer> getDiasHabiles() {
         List<Integer> list = new ArrayList<Integer>();
         list.add(2);
         list.add(3);
