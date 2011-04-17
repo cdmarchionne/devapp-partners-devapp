@@ -8,29 +8,33 @@ import java.util.Set;
  */
 public class Tecnologia {
 
-    private static Set<String> tecnologia = new HashSet<String>();
+    private static Set<String> listaTecnologia = new HashSet<String>();
+
+    private String tecnologiaActual;
+
+    public Tecnologia(final String tecnologiaActual) {
+        super();
+        this.tecnologiaActual = tecnologiaActual;
+    }
 
     public static boolean addTecnologia(final String nombre) {
-        return tecnologia.add(nombre);
+        return listaTecnologia.add(nombre);
     }
 
     public static boolean removeTecnologia(final String nombre) {
-        return tecnologia.remove(nombre);
+        return listaTecnologia.remove(nombre);
     }
 
-    public static boolean esTecnologia(final String nombre) {
-        return tecnologia.contains(nombre);
+    public static void renameCategoria(final String nombreViejo, final String nombreNuevo) {
+        removeTecnologia(nombreViejo);
+        addTecnologia(nombreNuevo);
     }
 
-    public static String getTecnologias() {
-        return tecnologia.toString();
+    public static boolean existeTecnologia(final String nombre) {
+        return listaTecnologia.contains(nombre);
     }
 
-    public static void main(final String[] args) {
-        Tecnologia.addTecnologia("JAVA");
-        Tecnologia.addTecnologia("Poo");
-
-        System.out.println(Tecnologia.getTecnologias());
-
+    public String getTecnologiaActual() {
+        return tecnologiaActual;
     }
 }

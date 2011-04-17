@@ -29,10 +29,14 @@ public class Posicion {
 
     @Override
     public boolean equals(final Object posicion) {
-        boolean condicion1 = this.getNiveNombrel().equals(((Posicion) posicion).getNiveNombrel());
-        boolean condicion2 = this.getSubnivel() == ((Posicion) posicion).getSubnivel();
+        boolean condicionNivel = false;
+        boolean condicionSubNivel = false;
 
-        return condicion1 && condicion2;
+        if (posicion != null) {
+            condicionNivel = this.getNiveNombrel().equals(((Posicion) posicion).getNiveNombrel());
+            condicionSubNivel = this.getSubnivel() == ((Posicion) posicion).getSubnivel();
+        }
+        return condicionNivel && condicionSubNivel;
     }
 
     /* TODO : averiguar! */

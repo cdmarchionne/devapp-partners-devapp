@@ -29,7 +29,7 @@ public class Categoria {
     }
 
     public static boolean existeCategoria(final String nombre) {
-        return Categoria.getCategorias().contains(nombre);
+        return listaCategoria.contains(nombre);
     }
 
     public static String maxima() {
@@ -45,7 +45,7 @@ public class Categoria {
     }
 
     public static void addCategoria(final Integer posicion, final String nombre) {
-        if (!listaCategoria.contains(nombre) && 0 <= posicion && posicion <= listaCategoria.size()) {
+        if (!existeCategoria(nombre) && validarIndiceAddCat(posicion)) {
             listaCategoria.add(posicion, nombre);
         }
     }
@@ -58,27 +58,27 @@ public class Categoria {
         listaCategoria.set(listaCategoria.indexOf(nombreViejo), nombreNuevo);
     }
 
-    public static List<String> getCategorias() {
-        return listaCategoria;
-    }
-
     public void bajarCategoria() {
         Integer indiceCategoria = indiceCategoria(categoriaActual);
 
-        if (this.indiceValido(indiceCategoria - 1)) {
+        if (this.validarIndice(indiceCategoria - 1)) {
             categoriaActual = nombreCategoria(indiceCategoria - 1);
         }
 
     }
 
-    private boolean indiceValido(final Integer indice) {
+    private boolean validarIndice(final Integer indice) {
         return 0 <= indice && indice < listaCategoria.size();
+    }
+
+    private static boolean validarIndiceAddCat(final Integer indice) {
+        return 0 <= indice && indice <= listaCategoria.size();
     }
 
     public void subirCategoria() {
         Integer indiceCategoria = indiceCategoria(categoriaActual);
 
-        if (this.indiceValido(indiceCategoria + 1)) {
+        if (this.validarIndice(indiceCategoria + 1)) {
             categoriaActual = nombreCategoria(indiceCategoria + 1);
         }
 
