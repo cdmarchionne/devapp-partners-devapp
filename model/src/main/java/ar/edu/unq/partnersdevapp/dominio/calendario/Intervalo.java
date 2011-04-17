@@ -22,12 +22,12 @@ public class Intervalo {
 
     // ********************
     // ******* Utils
-    static public Intervalo getUnaSemana() {
+    public static Intervalo getUnaSemana() {
         // ver diferencia con WEEK_OF_YEAR
         return new Intervalo(Calendar.WEEK_OF_MONTH, 1);
     }
 
-    static public Intervalo getUnAnio() {
+    public static Intervalo getUnAnio() {
         return new Intervalo(Calendar.YEAR, 1);
     }
 
