@@ -1,6 +1,7 @@
 package ar.edu.unq.partnersdevapp.dominio.carrera;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -8,58 +9,56 @@ import java.util.Map;
  */
 public class Skills {
 
-    // private Map<Tecnologia, Categoria> skill;
-    private final Map<String, Integer> skill;
+    private Map<Tecnologia, Categoria> skill = new HashMap<Tecnologia, Categoria>();
 
-    public Skills() {
-        super();
-        skill = new HashMap();
+    public void addSkill(final String tecnologia, final String categoria) {
+        this.setSkill(new Tecnologia(tecnologia), new Categoria(categoria));
     }
 
-    public void setSkill(final String tecnologia, final String categoria) {
-        if (Tecnologia.esTecnologia(tecnologia)) {
-            skill.put(tecnologia, Categoria.indiceCategoria(categoria));
+    private void setSkill(final Tecnologia tecnologia, final Categoria categoria) {
+        skill.put(tecnologia, categoria);
+    }
+
+    private Tecnologia buscarTecnologia(final String nombreTecnologiaBuscada) {
+        Tecnologia tecnologiaBuscada = null;
+
+        Iterator<Tecnologia> iterador = skill.keySet().iterator();
+        while (iterador.hasNext()) {
+            Tecnologia tecnologiaParticular = iterador.next();
+            if (nombreTecnologiaBuscada.equals(tecnologiaParticular.getTecnologiaActual())) {
+                tecnologiaBuscada = tecnologiaParticular;
+                break;
+            }
         }
 
+        return tecnologiaBuscada;
     }
 
-    public void bajarCategoria(final String tecnologia) {
+    public void bajarCategoria(final String nombreTecnologiaBuscada) {
+        Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
-        if (skill.containsKey(tecnologia)) {
-            skill.put(tecnologia, Categoria.bajarCategoria(skill.get(tecnologia)));
+        if (tecnologiaBuscada != null) {
+            skill.get(tecnologiaBuscada).bajarCategoria();
         }
     }
 
-    public void subirCategoria(final String tecnologia) {
+    public void subirCategoria(final String nombreTecnologiaBuscada) {
+        Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
-        if (skill.containsKey(tecnologia)) {
-            skill.put(tecnologia, Categoria.subirCategoria(skill.get(tecnologia)));
+        if (tecnologiaBuscada != null) {
+            skill.get(tecnologiaBuscada).subirCategoria();
         }
     }
 
-    public void printSkills() {
-        System.out.println(skill.toString());
+    public String getCategoria(final String nombreTecnologiaBuscada) {
+        Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
+        String categoriaBuscada = null;
+
+        if (tecnologiaBuscada != null) {
+            categoriaBuscada = skill.get(tecnologiaBuscada).getCategoriaActual();
+        }
+
+        return categoriaBuscada;
     }
 
-    public static void main(final String[] args) {
-        Tecnologia.addTecnologia("JAVA");
-        Tecnologia.addTecnologia("Poo");
-
-        Categoria.addCategoria("Basico");
-        Categoria.addCategoria("Medio");
-        Categoria.addCategoria("Experto");
-
-        final Skills conocimientos = new Skills();
-
-        conocimientos.setSkill("JAVA", "Medio");
-        conocimientos.setSkill("Poo", "Basico");
-
-        conocimientos.printSkills();
-
-        conocimientos.subirCategoria("JAVA");
-        conocimientos.subirCategoria("JAVA");
-        conocimientos.subirCategoria("JAVA");
-        conocimientos.printSkills();
-
-    }
 }

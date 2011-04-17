@@ -11,13 +11,13 @@ public class CategoriaTest extends TestCase {
 
     private static final String CATEGORIA_NOMBRE_NUEVO = "CategoriaNombreNuevo";
 
-    private static final String SEMIEXPERTO = "Semi-Experto";
-
-    private static final String EXPERTO = "Experto";
+    private static final String BASICO = "Basico";
 
     private static final String MEDIO = "Medio";
 
-    private static final String BASICO = "Basico";
+    private static final String SEMIEXPERTO = "Semi-Experto";
+
+    private static final String EXPERTO = "Experto";
 
     @Override
     protected void setUp() throws Exception {
