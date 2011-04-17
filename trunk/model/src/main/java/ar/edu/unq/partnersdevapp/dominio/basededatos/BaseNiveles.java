@@ -20,19 +20,19 @@ public class BaseNiveles {
     }
 
     // niveles predeterminados
-    static public Nivel getNivelJunior() {
+    public static Nivel getNivelJunior() {
         return new Nivel("junior", new SubNivel(2), 0);
     }
 
-    static public Nivel getNivelSemiSenior() {
+    public static Nivel getNivelSemiSenior() {
         return new Nivel("semiSenior", new SubNivel(2), 1);
     }
 
-    static public Nivel getNivelSenior() {
+    public static Nivel getNivelSenior() {
         return new Nivel("senior", new SubNivel(3), 2);
     }
 
-    static public Nivel getNiveLider() {
+    public static Nivel getNiveLider() {
         return new Nivel("lider", new SubNivel(4), 3);
     }
 

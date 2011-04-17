@@ -17,17 +17,53 @@ import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
  */
 public class FechaComprensionTest extends TestCase {
 
+    private static final String FECHA_01_04_2011 = "01/04/2011";
+
+    private static final String FECHA_04_04_2011 = "04/04/2011";
+
+    private static final String FECHA_05_04_2011 = "05/04/2011";
+
+    private static final String FECHA_06_04_2011 = "06/04/2011";
+
+    private static final String FECHA_07_04_2011 = "07/04/2011";
+
+    private static final String FECHA_08_04_2011 = "08/04/2011";
+
+    private static final String FECHA_09_04_2011 = "09/04/2011";
+
+    private static final String FECHA_10_04_2011 = "10/04/2011";
+
+    private static final String FECHA_11_04_2011 = "11/04/2011";
+
+    private static final String FECHA_12_04_2011 = "12/04/2011";
+
+    private static final String FECHA_13_04_2011 = "13/04/2011";
+
+    private static final String FECHA_14_04_2011 = "14/04/2011";
+
+    private static final String FECHA_15_04_2011 = "15/04/2011";
+
+    private static final String FECHA_16_04_2011 = "16/04/2011";
+
+    private static final String FECHA_19_04_2011 = "19/04/2011";
+
+    private static final String FECHA_18_04_2011 = "18/04/2011";
+
+    private static final String FECHA_20_04_2011 = "20/04/2011";
+
+    private static final String FECHA_28_03_2011 = "28/03/2011";
+
     // terminar
     public void testSetUnDia() {
-        Date inicio = FechaUtils.crearFecha("05/04/2011");
+        Date inicio = FechaUtils.crearFecha(FECHA_05_04_2011);
 
         List<Integer> list = new ArrayList<Integer>();
         list.add(Calendar.TUESDAY);
 
         List<Date> deberSerList = new ArrayList<Date>();
-        deberSerList.add(FechaUtils.crearFecha("05/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("12/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("19/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_05_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_12_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_19_04_2011));
 
         FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, list, Intervalo.getUnaSemana(), 3);
@@ -37,15 +73,15 @@ public class FechaComprensionTest extends TestCase {
     }
 
     public void testSetDiasManual() {
-        Date inicio = FechaUtils.crearFecha("28/03/2011");
+        Date inicio = FechaUtils.crearFecha(FECHA_28_03_2011);
 
         List<Date> deberSerList = new ArrayList<Date>();
-        deberSerList.add(FechaUtils.crearFecha("28/03/2011"));
-        deberSerList.add(FechaUtils.crearFecha("01/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("04/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("08/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("11/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("15/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_28_03_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_01_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_04_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_08_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_11_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_15_04_2011));
 
         List<Integer> list = new ArrayList<Integer>();
         list.add(Calendar.MONDAY);
@@ -65,7 +101,7 @@ public class FechaComprensionTest extends TestCase {
     }
 
     public void testSetDiasDeLaSemana() {
-        Date inicio = FechaUtils.crearFecha("04/04/2011");
+        Date inicio = FechaUtils.crearFecha(FECHA_04_04_2011);
 
         FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasDeLaSemana(), Intervalo.getUnaSemana(), 2);
@@ -78,7 +114,7 @@ public class FechaComprensionTest extends TestCase {
     }
 
     public void testSetDiasDeLaSemanaHabiles() {
-        Date inicio = FechaUtils.crearFecha("04/04/2011");
+        Date inicio = FechaUtils.crearFecha(FECHA_04_04_2011);
 
         FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
@@ -92,7 +128,7 @@ public class FechaComprensionTest extends TestCase {
 
     /* Con fecha de inicio desfasada */
     public void testSetDiasDeLaSemanaHabilesDes() {
-        Date inicio = FechaUtils.crearFecha("06/04/2011");
+        Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
 
         FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
@@ -105,8 +141,8 @@ public class FechaComprensionTest extends TestCase {
     }
 
     public void testCalcularRepeticiones() {
-        Date inicio = FechaUtils.crearFecha("06/04/2011");
-        Date fin = FechaUtils.crearFecha("20/04/2011");
+        Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
+        Date fin = FechaUtils.crearFecha(FECHA_20_04_2011);
 
         FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
@@ -116,8 +152,8 @@ public class FechaComprensionTest extends TestCase {
     }
 
     public void testSetDiasDeLaSemanaHabilesDesConFechaFin() {
-        Date inicio = FechaUtils.crearFecha("06/04/2011");
-        Date fin = FechaUtils.crearFecha("20/04/2011");
+        Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
+        Date fin = FechaUtils.crearFecha(FECHA_20_04_2011);
 
         FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
@@ -133,20 +169,20 @@ public class FechaComprensionTest extends TestCase {
 
     private List<Date> getDosSemana() {
         List<Date> deberSerList = new ArrayList<Date>();
-        deberSerList.add(FechaUtils.crearFecha("04/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("05/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("06/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("07/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("08/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("09/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("10/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_04_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_05_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_06_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_07_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_08_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_09_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_10_04_2011));
 
-        deberSerList.add(FechaUtils.crearFecha("11/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("12/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("13/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("14/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("15/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("16/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_11_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_12_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_13_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_14_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_15_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_16_04_2011));
         // el domingo perteneceria a la tercer semana.
         // deberSerList.add(FechaUtils.crearFecha("17/04/2011"));
 
@@ -155,17 +191,17 @@ public class FechaComprensionTest extends TestCase {
 
     private List<Date> getDosSemanaHabiles() {
         List<Date> deberSerList = new ArrayList<Date>();
-        deberSerList.add(FechaUtils.crearFecha("04/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("05/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("06/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("07/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("08/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_04_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_05_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_06_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_07_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_08_04_2011));
 
-        deberSerList.add(FechaUtils.crearFecha("11/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("12/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("13/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("14/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("15/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_11_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_12_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_13_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_14_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_15_04_2011));
 
         return deberSerList;
     }
@@ -173,15 +209,15 @@ public class FechaComprensionTest extends TestCase {
     private List<Date> getDosSemanaHabilesDes() {
         List<Date> deberSerList = new ArrayList<Date>();
 
-        deberSerList.add(FechaUtils.crearFecha("06/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("07/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("08/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_06_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_07_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_08_04_2011));
 
-        deberSerList.add(FechaUtils.crearFecha("11/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("12/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("13/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("14/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("15/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_11_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_12_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_13_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_14_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_15_04_2011));
 
         return deberSerList;
     }
@@ -190,19 +226,19 @@ public class FechaComprensionTest extends TestCase {
     private List<Date> getTresSemanaHabilesDes() {
         List<Date> deberSerList = new ArrayList<Date>();
 
-        deberSerList.add(FechaUtils.crearFecha("06/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("07/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("08/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_06_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_07_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_08_04_2011));
 
-        deberSerList.add(FechaUtils.crearFecha("11/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("12/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("13/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("14/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("15/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_11_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_12_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_13_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_14_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_15_04_2011));
 
-        deberSerList.add(FechaUtils.crearFecha("18/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("19/04/2011"));
-        deberSerList.add(FechaUtils.crearFecha("20/04/2011"));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_18_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_19_04_2011));
+        deberSerList.add(FechaUtils.crearFecha(FECHA_20_04_2011));
 
         return deberSerList;
     }

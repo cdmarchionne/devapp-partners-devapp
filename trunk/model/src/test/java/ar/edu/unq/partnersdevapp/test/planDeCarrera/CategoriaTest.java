@@ -51,7 +51,7 @@ public class CategoriaTest extends TestCase {
         Categoria.addCategoria(3, BASICO);
 
         assertTrue(Categoria.existeCategoria(BASICO));
-        assertFalse(Categoria.indiceCategoria(BASICO) == 3);
+        assertNotSame(Categoria.indiceCategoria(BASICO), 3);
     }
 
     public void testBorrarCategoria() {
