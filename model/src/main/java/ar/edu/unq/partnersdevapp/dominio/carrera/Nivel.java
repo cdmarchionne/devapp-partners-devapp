@@ -3,7 +3,7 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
 /**
  * El nivel esta dividido en bandas. La jerarquia es para poder <strong>ordenar
  * e identificar</strong> una lista de niveles.<br/>
- * Ej: Junior [0,50,100]
+ * Ej: Junior [0,50,100] Además contiene datos para el calculo de sueldos
  * 
  * @author leo
  */
@@ -11,20 +11,31 @@ public class Nivel {
 
     private String nombre;
 
-    private SubNivel subNivel;
+    private Banda banda;
 
     private int jerarquia;
+
+    private int sueldoMaximo = 0;
+
+    private int sueldoMinimo = 0;
 
     public Nivel() {
 
     }
 
-    public Nivel(final String nombre, final SubNivel bandas, final int jerarquia) {
-        // TODO: agregarlo al mapeo con mediador
-        this.setSubNivel(bandas);
-        this.setJerarquia(jerarquia);
+    /**
+     * Nota: la jerarquia se autosetea al ingresar el nivel al plan de carrera.
+     * 
+     */
+    public Nivel(final String nombre, final Banda bandas, final int maximo, final int minimo) {
+        this.setBanda(bandas);
         this.setNombre(nombre);
+        this.setSueldoMaximo(maximo);
+        this.setSueldoMinimo(minimo);
+    }
 
+    public void subirJerarquiaUnPunto() {
+        this.setJerarquia(this.getJerarquia() + 1);
     }
 
     @Override
@@ -43,12 +54,12 @@ public class Nivel {
         this.nombre = nombre;
     }
 
-    public SubNivel getSubNivel() {
-        return subNivel;
+    public Banda getBanda() {
+        return banda;
     }
 
-    public void setSubNivel(final SubNivel subNivel) {
-        this.subNivel = subNivel;
+    public void setBanda(final Banda subNivel) {
+        banda = subNivel;
     }
 
     public int getJerarquia() {
@@ -57,6 +68,22 @@ public class Nivel {
 
     public void setJerarquia(final int jerarquia) {
         this.jerarquia = jerarquia;
+    }
+
+    public int getSueldoMaximo() {
+        return sueldoMaximo;
+    }
+
+    public void setSueldoMaximo(final int sueldoMaximo) {
+        this.sueldoMaximo = sueldoMaximo;
+    }
+
+    public int getSueldoMinimo() {
+        return sueldoMinimo;
+    }
+
+    public void setSueldoMinimo(final int sueldoMinimo) {
+        this.sueldoMinimo = sueldoMinimo;
     }
 
 }

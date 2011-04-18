@@ -8,6 +8,7 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.Posicion;
 /**
  * Utilizada para modelar los históricos.
  * 
+ * @author leo
  */
 public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
 

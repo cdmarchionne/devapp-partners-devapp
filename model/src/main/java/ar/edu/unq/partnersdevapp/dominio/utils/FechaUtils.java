@@ -106,6 +106,13 @@ public class FechaUtils {
         return cal;
     }
 
+    /** Verifica si dos dias son consecutivos */
+    static public boolean isConsecutivo(final Date date1, final Date date2) {
+        Calendar cal = FechaUtils.getCalendar(date1);
+        Calendar cal2 = FechaUtils.getCalendar(date2);
+        return cal2.get(Calendar.DATE) - cal.get(Calendar.DATE) == 1;
+    }
+
     /**
      * Reprecenta la semana de domingo a sábado como lista de enteros. Util para
      * trabajar con un calendario

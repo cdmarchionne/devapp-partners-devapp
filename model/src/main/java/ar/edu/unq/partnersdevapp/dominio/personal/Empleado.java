@@ -35,16 +35,39 @@ public class Empleado extends Persona {
         this.getInfoPlanDeCarrera().add(new InfoPlanDeCarrera(fechaInicio, planDeCarrera, posicionInicial));
     }
 
+    // TODO : TEST.
+    /** Calcula el sueldo teniendo en cuanta la posicion actual */
+    public float getSueldo() {
+        return this.getPlanActual().getSueldo(this.getNivelActual());
+    }
+
+    // TODO : Cambiar de plan de carrera. Agregar una info con el plan y la
+    // posicion.
+
+    // TODO : saber históricos . Pedirle a la info. + test
+
+    // TODO : subir de nivel. Perdir el plan y nivel actual. Al plan pedirle el
+    // nuevo nivel pasandole la posicion. Guardar la nueva posicion creando una
+    // nueva info historico.
+
+    // TODO: HACER TEST verificar errores, lista vacia,
+    public Posicion getNivelActual() {
+        return this.getUltimaInfo().getNivelPlanDeCarrera();
+    }
+
     // TODO: verificar errores, lista vacia,
-    public Posicion getPosicionActual() {
+    public PlanDeCarrera getPlanActual() {
+        return this.getUltimaInfo().getPlanDeCarrera();
+    }
+
+    private InfoPlanDeCarrera getUltimaInfo() {
         Collections.sort(this.getInfoPlanDeCarrera());
-        int ultimaElemento = this.getInfoPlanDeCarrera().size() - 1;
-        return this.getInfoPlanDeCarrera().get(ultimaElemento).getNivelPlanDeCarrera();
+        int ultimoElemento = this.getInfoPlanDeCarrera().size() - 1;
+        return this.getInfoPlanDeCarrera().get(ultimoElemento);
     }
 
     // ******************
     // ****** Gets & Sets
-
     public String getObraSocial() {
         return obraSocial;
     }

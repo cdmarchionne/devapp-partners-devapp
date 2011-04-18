@@ -1,12 +1,15 @@
 package ar.edu.unq.partnersdevapp.dominio.carrera;
 
 /**
- * Posicion en una carrera.
+ * Posicion en un nivel. Cuando se asocia a una "info plan" da la posicion
+ * completa.
+ * 
+ * @author leo
  */
 public class Posicion {
     private String nivelNombre;
 
-    private int subnivel;
+    private int banda;
 
     public Posicion() {
         super();
@@ -14,17 +17,17 @@ public class Posicion {
 
     public Posicion(final String nivel, final int subnivel) {
         this.setNivelNombre(nivel);
-        this.setSubnivel(subnivel);
+        this.setBanda(subnivel);
     }
 
     public Posicion(final Posicion posicion) {
-        this.setNivelNombre(posicion.getNiveNombrel());
-        this.setSubnivel(posicion.getSubnivel());
+        this.setNivelNombre(posicion.getNivelNombre());
+        this.setBanda(posicion.getBanda());
     }
 
     @Override
     public String toString() {
-        return "(" + this.getNiveNombrel() + "," + this.getSubnivel() + ")";
+        return "(" + this.getNivelNombre() + "," + this.getBanda() + ")";
     }
 
     @Override
@@ -33,8 +36,8 @@ public class Posicion {
         boolean condicionSubNivel = false;
 
         if (posicion != null) {
-            condicionNivel = this.getNiveNombrel().equals(((Posicion) posicion).getNiveNombrel());
-            condicionSubNivel = this.getSubnivel() == ((Posicion) posicion).getSubnivel();
+            condicionNivel = this.getNivelNombre().equals(((Posicion) posicion).getNivelNombre());
+            condicionSubNivel = this.getBanda() == ((Posicion) posicion).getBanda();
         }
         return condicionNivel && condicionSubNivel;
     }
@@ -45,7 +48,9 @@ public class Posicion {
         throw new UnsupportedOperationException();
     }
 
-    public String getNiveNombrel() {
+    // ******************
+    // ****** Gets & Sets
+    public String getNivelNombre() {
         return nivelNombre;
     }
 
@@ -53,12 +58,12 @@ public class Posicion {
         nivelNombre = nivel;
     }
 
-    public int getSubnivel() {
-        return subnivel;
+    public int getBanda() {
+        return banda;
     }
 
-    public void setSubnivel(final int subnivel) {
-        this.subnivel = subnivel;
+    public void setBanda(final int subnivel) {
+        banda = subnivel;
     }
 
 }
