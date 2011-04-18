@@ -23,27 +23,53 @@ public class PlanDeCarrera {
     }
 
     /**
-     * Agrega un nivel al plan de carrera.<br/>
-     * Obs: Se lo agrega solo al plan de carrera actual.
+     * Agrega el nivel una jerarquia superior a la de nivelLugar desplazando una
+     * jerarquia a sus superiores.
+     * 
+     * TODO : refactor codigo duplicado. Casi .nombre de la carrera se repite
      */
-    public void addNivel(final Nivel nivel) {
-        this.getNiveles().add(nivel);
+    public void addNivelPosterior(final Nivel nivelNuevo, final String nivelLugar) {
+        this.addNivel(nivelNuevo, nivelLugar, 1);
+    }
+
+    /**
+     * Agrega el nivel con una jerarquia inferior a la de nivelLugar desplazando
+     * una jerarquia a sus superiores.
+     */
+    public void addNivelAnterior(final Nivel nivelNuevo, final String nivelLugar) {
+        this.addNivel(nivelNuevo, nivelLugar, 0);
+    }
+
+    private void addNivel(final Nivel nivelNuevo, final String nivelLugar, final int anteriorPosterior) {
+        if (this.getNiveles().isEmpty()) {
+            nivelNuevo.setJerarquia(0);
+        } else {
+            nivelNuevo.setJerarquia(this.getNivel(nivelLugar).getJerarquia() + anteriorPosterior);
+        }
+        List<Nivel> nivelesDisponibles = this.getNiveles();
+        // if nivelesDisponibles not null
+        for (Nivel nivel : nivelesDisponibles) {
+            if (nivel.getJerarquia() >= nivelNuevo.getJerarquia()) {
+                nivel.subirJerarquiaUnPunto();
+            }
+        }
+        this.getNiveles().add(nivelNuevo);
     }
 
     /** Devuelve una posicion de nivel superior */
     public Posicion getNivelSuperior(final Posicion posicion) {
         Posicion nuevaPosicion = new Posicion(posicion);
 
-        Nivel nivel = this.getNivel(posicion.getNiveNombrel());
-        int subNivelNuevo = nivel.getSubNivel().getSubNivelSuperior(posicion.getSubnivel());
+        Nivel nivel = this.getNivel(posicion.getNivelNombre());
+        int nuevaBanda = nivel.getBanda().getSubNivelSuperior(posicion.getBanda());
 
-        if (subNivelNuevo == -1) {
+        if (nuevaBanda == -1) {
             // TODO : caso del que sea el ultimo nivel
             nivel = this.getNivel(nivel.getJerarquia() + 1);
             nuevaPosicion.setNivelNombre(nivel.getNombre());
-            nuevaPosicion.setSubnivel(0);
+            nuevaPosicion.setBanda(0);
         } else {
-            nuevaPosicion.setSubnivel(subNivelNuevo);
+            nuevaPosicion.setBanda(nuevaBanda);
 
         }
         return nuevaPosicion;
@@ -69,6 +95,15 @@ public class PlanDeCarrera {
             }
         }
         return res;
+    }
+
+    /** Calcula en sueldo segun el nivel pasado por parametro */
+    public float getSueldo(final Posicion posicionActual) {
+        Nivel nivelActual = this.getNivel(posicionActual.getNivelNombre());
+        int max = nivelActual.getSueldoMaximo();
+        int min = nivelActual.getSueldoMinimo();
+        float banda = posicionActual.getBanda();
+        return min + banda * (max - min);
     }
 
     // **************************

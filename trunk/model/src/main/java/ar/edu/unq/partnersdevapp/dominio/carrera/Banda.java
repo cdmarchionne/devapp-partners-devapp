@@ -9,14 +9,14 @@ import java.util.List;
  * 
  * @author leo
  */
-public class SubNivel {
+public class Banda {
 
     static final int ANCHOBANDA = 100;
 
-    private float cantidadDeSubNiveles;
+    private float cantidadDeSubBandas;
 
-    public SubNivel(final int cantidadDeSubBandas) {
-        this.setCantidadDeSubNiveles(cantidadDeSubBandas);
+    public Banda(final int cantidadDeSubBandas) {
+        this.setCantidadDeSubBandas(cantidadDeSubBandas);
     }
 
     public List<Integer> getBandas() {
@@ -31,6 +31,9 @@ public class SubNivel {
         list.add(ANCHOBANDA);
         return list;
     }
+
+    // TODO: os empleados actuales deben quedar asignadas correctamente despues
+    // de un cambió
 
     /**
      * Ej: Si la banda es [0,50,100] su actual es 50 , entonces devuelve 100.
@@ -47,22 +50,22 @@ public class SubNivel {
 
     private float getSalto() {
         float salto;
-        if (this.getCantidadDeSubNiveles() == 0) {
+        if (this.getCantidadDeSubBandas() == 0) {
             salto = ANCHOBANDA;
         } else {
-            salto = ANCHOBANDA / this.getCantidadDeSubNiveles();
+            salto = ANCHOBANDA / this.getCantidadDeSubBandas();
         }
         return salto;
     }
 
     // **********************
     // ***** Gets & Sets
-    public float getCantidadDeSubNiveles() {
-        return cantidadDeSubNiveles;
+    public float getCantidadDeSubBandas() {
+        return cantidadDeSubBandas;
     }
 
-    public void setCantidadDeSubNiveles(final float cantidadDeSubNiveles) {
-        this.cantidadDeSubNiveles = cantidadDeSubNiveles;
+    public void setCantidadDeSubBandas(final float cantidadDeSubNiveles) {
+        cantidadDeSubBandas = cantidadDeSubNiveles;
     }
 
 }

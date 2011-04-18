@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.TestCase;
-import ar.edu.unq.partnersdevapp.dominio.carrera.SubNivel;
+import ar.edu.unq.partnersdevapp.dominio.carrera.Banda;
 
 /**
  * Tests sobre bandas.
@@ -13,7 +13,7 @@ public class BandaTest extends TestCase {
 
     /** con 0 sub-bandas */
     public void testBanda0() {
-        SubNivel banda = new SubNivel(0);
+        Banda banda = new Banda(0);
 
         List<Integer> deberiaSer = new ArrayList<Integer>();
         deberiaSer.add(0);
@@ -26,7 +26,7 @@ public class BandaTest extends TestCase {
 
     /** con 1 sub-bandas */
     public void testBanda1() {
-        SubNivel banda = new SubNivel(1);
+        Banda banda = new Banda(1);
 
         List<Integer> deberiaSer = new ArrayList<Integer>();
         deberiaSer.add(0);
@@ -39,7 +39,7 @@ public class BandaTest extends TestCase {
 
     /** con 2 subBandas */
     public void testBanda2() {
-        SubNivel banda = new SubNivel(2);
+        Banda banda = new Banda(2);
 
         List<Integer> deberiaSer = new ArrayList<Integer>();
         deberiaSer.add(0);
@@ -53,7 +53,7 @@ public class BandaTest extends TestCase {
 
     /** con 3 subBandas */
     public void testBanda3() {
-        SubNivel banda = new SubNivel(3);
+        Banda banda = new Banda(3);
 
         List<Integer> deberiaSer = new ArrayList<Integer>();
         deberiaSer.add(0);
@@ -70,7 +70,7 @@ public class BandaTest extends TestCase {
 
     /** con 4 subBandas */
     public void testBanda4() {
-        SubNivel banda = new SubNivel(4);
+        Banda banda = new Banda(4);
 
         List<Integer> deberiaSer = new ArrayList<Integer>();
         deberiaSer.add(0);

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
+import ar.edu.unq.partnersdevapp.exceptions.NoHayDiasQueComputarException;
 
 /**
  * Modela una lista de fechas por comprensión. No soporta fecha de fin
@@ -51,20 +52,24 @@ public class FechasXcomprension {
         Calendar calendario = Calendar.getInstance();
         calendario.setTime(this.getFechaInicio());
 
-        list.addAll(FechaUtils.diasDeLaSemanaApartirDel(calendario.getTime(), this.getDias()));
-        calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
-
-        for (int i = 1; i < this.getRepeticiones() - 1; i++) {
-            list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
-            calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
-        }
-
-        if (this.getFechaFin() == null) {
-            list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
+        if (this.isFechaInicioIgualFin()) {
+            list.add(this.getFechaInicio());
         } else {
-            list.addAll(FechaUtils.diasDeLaSemanaHastaEl(this.getFechaFin(), this.getDias()));
-        }
+            list.addAll(FechaUtils.diasDeLaSemanaApartirDel(calendario.getTime(), this.getDias()));
+            calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
 
+            for (int i = 1; i < this.getRepeticiones() - 1; i++) {
+                list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
+                calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
+            }
+
+            if (this.getFechaFin() == null) {
+                list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
+            } else {
+                list.addAll(FechaUtils.diasDeLaSemanaHastaEl(this.getFechaFin(), this.getDias()));
+            }
+
+        }
         return list;
     }
 
@@ -102,6 +107,43 @@ public class FechasXcomprension {
      */
     public boolean seSuperpone(final FechasXcomprension fxc) {
         return !this.interseccion(fxc).isEmpty();
+    }
+
+    /** Devuelve la cantidad de dias consecutivos a partir del primer día */
+
+    // TODO: no contemplar sabado y domingo. Exepcion lista vacia
+    public int getDiasConsecutivos() throws NoHayDiasQueComputarException {
+        List<Date> list;
+        try {
+            list = this.getFechasXextencion();
+        } catch (NullPointerException e) {
+            throw new NoHayDiasQueComputarException();
+        }
+
+        int totalDias = 1;
+        int i = 1;
+        if (list.size() > 1) {
+            Date dateAnterior = list.get(0);
+            while (FechaUtils.isConsecutivo(dateAnterior, list.get(i))) {
+                totalDias++;
+                i++;
+                dateAnterior = list.get(i - 1);
+            }
+        }
+        return totalDias;
+    }
+
+    /** Devuelve la cantidad total de dias. */
+    public int getDiasTotal() {
+        return this.getFechasXextencion().size();
+    }
+
+    // *****************************************
+    // ********** HELPERS
+    private boolean isFechaInicioIgualFin() {
+        if (this.getFechaFin() != null)
+            return this.getFechaFin().equals(this.getFechaInicio());
+        return false;
     }
 
     // ****************
