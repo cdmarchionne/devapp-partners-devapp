@@ -21,8 +21,8 @@
   </parent>
 
   <modules>
-     <module>partnerdevapp-model</module> 
-     <module>partnerdevapp-persistencia</module> 
+     <module>partnersdevapp-model</module> 
+     <module>partnersdevapp-persistencia</module> 
   </modules>
 
   <dependencies>
