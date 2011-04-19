@@ -13,8 +13,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
-
  
    <parent>
     <groupId>ar.edu.unq</groupId>
@@ -22,11 +20,10 @@
     <version>0.1-SNAPSHOT</version>
   </parent>
 
-<modules>
+  <modules>
      <module>partnerdevapp-model</module> 
      <module>partnerdevapp-persistencia</module> 
-</modules>
-
+  </modules>
 
   <dependencies>
     <dependency>
@@ -35,7 +32,5 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-
-
-</dependencies>
+  </dependencies>
 </project>
