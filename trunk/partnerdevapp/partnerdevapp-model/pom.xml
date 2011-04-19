@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>ar.edu.unq.partnersdevapp</groupId>
-  <artifactId>model</artifactId>
+  <artifactId>partnerdevapp-model</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>model</name>
+  <name>partnerdevapp-model</name>
   <url>http://maven.apache.org</url>
 
   <properties>
@@ -15,17 +15,12 @@
   </properties>
  
 
- 
-   <parent>
+  <parent>
     <groupId>ar.edu.unq</groupId>
     <artifactId>aunq-parent</artifactId>
     <version>0.1-SNAPSHOT</version>
   </parent>
-	
-		<scm>
-		<connection>scm:svn:https://devapp-partners-devapp.googlecode.com/svn/trunk/model</connection>
-		<url>https://devapp-partners-devapp.googlecode.com/svn/trunk</url>
-	</scm>
+
 	
 	
   <dependencies>
