@@ -13,7 +13,7 @@ public class LicenciaTipo {
 
     private int diasConsecutivos;
 
-    private int diasCantidad;
+    private int diasCantidadAnuales;
 
     public LicenciaTipo() {
     }
@@ -27,7 +27,7 @@ public class LicenciaTipo {
         this.setTipo(tipo);
         this.setRemunerable(remunerable);
         this.setDiasConsecutivos(diasConsecutivos);
-        this.setDiasCantidad(diasCantidad);
+        this.setDiasCantidadAnuales(diasCantidad);
     }
 
     // ******************
@@ -56,12 +56,12 @@ public class LicenciaTipo {
         this.diasConsecutivos = diasConsecutivos;
     }
 
-    public int getDiasCantidad() {
-        return diasCantidad;
+    public int getDiasCantidadAnuales() {
+        return diasCantidadAnuales;
     }
 
-    public void setDiasCantidad(final int diasCantidad) {
-        this.diasCantidad = diasCantidad;
+    public void setDiasCantidadAnuales(final int diasCantidadAnuales) {
+        this.diasCantidadAnuales = diasCantidadAnuales;
     }
 
     public String getDescripcion() {

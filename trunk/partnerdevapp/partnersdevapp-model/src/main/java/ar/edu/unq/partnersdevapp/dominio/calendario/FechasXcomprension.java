@@ -65,6 +65,32 @@ public class FechasXcomprension {
 
             if (this.getFechaFin() == null) {
                 list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
+            } else if (!FechaUtils.isMismaSemana(this.getFechaInicio(), this.getFechaFin())) {
+                list.addAll(FechaUtils.diasDeLaSemanaHastaEl(this.getFechaFin(), this.getDias()));
+            }
+
+        }
+        return list;
+    }
+
+    public List<Date> getFechasXextencionBACKUP() {
+        List<Date> list = new ArrayList<Date>();
+        Calendar calendario = Calendar.getInstance();
+        calendario.setTime(this.getFechaInicio());
+
+        if (this.isFechaInicioIgualFin()) {
+            list.add(this.getFechaInicio());
+        } else {
+            list.addAll(FechaUtils.diasDeLaSemanaApartirDel(calendario.getTime(), this.getDias()));
+            calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
+
+            for (int i = 1; i < this.getRepeticiones() - 1; i++) {
+                list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
+                calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
+            }
+
+            if (this.getFechaFin() == null) {
+                list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
             } else {
                 list.addAll(FechaUtils.diasDeLaSemanaHastaEl(this.getFechaFin(), this.getDias()));
             }
@@ -124,7 +150,7 @@ public class FechasXcomprension {
         int i = 1;
         if (list.size() > 1) {
             Date dateAnterior = list.get(0);
-            while (FechaUtils.isConsecutivo(dateAnterior, list.get(i))) {
+            while (i < list.size() && FechaUtils.isConsecutivo(dateAnterior, list.get(i))) {
                 totalDias++;
                 i++;
                 dateAnterior = list.get(i - 1);
