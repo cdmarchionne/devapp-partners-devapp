@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.test.planDeCarrera;
+package ar.edu.unq.partnersdevapp.test.skills;
 
 import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Tecnologia;
