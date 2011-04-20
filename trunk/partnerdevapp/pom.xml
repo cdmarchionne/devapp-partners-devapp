@@ -20,10 +20,18 @@
     <version>0.1-SNAPSHOT</version>
   </parent>
 
+
+   <scm>
+     <connection>scm:svn:https://devapp-partners-devapp.googlecode.com/svn/trunk/partnerdevapp</connection>
+     <url>https://devapp-partners-devapp.googlecode.com/svn/trunk/partnerdevapp</url>
+   </scm>
+
   <modules>
      <module>partnersdevapp-model</module> 
      <module>partnersdevapp-persistencia</module> 
   </modules>
+
+	
 
   <dependencies>
     <dependency>
