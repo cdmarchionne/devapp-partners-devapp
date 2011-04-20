@@ -164,7 +164,6 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        System.err.println(fechasXextencion);
         assertEquals("", fechasXextencion, deberSerList);
 
     }

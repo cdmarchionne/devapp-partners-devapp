@@ -106,6 +106,18 @@ public class FechaUtils {
         return cal;
     }
 
+    public static boolean isMismoAnio(final Date date1, final Date date2) {
+        Calendar cal = FechaUtils.getCalendar(date1);
+        Calendar cal2 = FechaUtils.getCalendar(date2);
+        return cal2.get(Calendar.YEAR) == cal.get(Calendar.YEAR);
+    }
+
+    public static boolean isMismaSemana(final Date date1, final Date date2) {
+        Calendar cal = FechaUtils.getCalendar(date1);
+        Calendar cal2 = FechaUtils.getCalendar(date2);
+        return cal2.get(Calendar.WEEK_OF_MONTH) == cal.get(Calendar.WEEK_OF_MONTH);
+    }
+
     /** Verifica si dos dias son consecutivos */
     static public boolean isConsecutivo(final Date date1, final Date date2) {
         Calendar cal = FechaUtils.getCalendar(date1);
