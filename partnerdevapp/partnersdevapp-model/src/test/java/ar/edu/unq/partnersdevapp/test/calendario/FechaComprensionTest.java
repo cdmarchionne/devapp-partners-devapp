@@ -9,7 +9,6 @@ import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
-import ar.edu.unq.partnersdevapp.exceptions.NoHayDiasQueComputarException;
 
 /**
  * test referidos a la creacion de fechas por extencion.
@@ -183,42 +182,40 @@ public class FechaComprensionTest extends TestCase {
 
     }
 
-    public void testIsConsecutivo() throws NoHayDiasQueComputarException {
-
-        FechasXcomprension fxc = new FechasXcomprension();
-
-        try {
-            fxc.getDiasConsecutivos();
-        } catch (Exception e) {
-            assertEquals(e.getClass(), NoHayDiasQueComputarException.class);
-        }
-
-        Date inicio = FechaUtils.crearFecha("04/04/2011");
-        Date fin = FechaUtils.crearFecha("04/04/2011");
-        fxc = new FechasXcomprension();
-        fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
-
-        System.out.println(fxc.getDiasConsecutivos());
-        assertEquals(fxc.getDiasConsecutivos(), 1);
-
-        inicio = FechaUtils.crearFecha("04/04/2011");
-        fin = FechaUtils.crearFecha("05/04/2011");
-        fxc = new FechasXcomprension();
-        fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
-
-        System.out.println(fxc.getDiasConsecutivos());
-        assertEquals(fxc.getDiasConsecutivos(), 2);
-
-        inicio = FechaUtils.crearFecha("04/04/2011");
-        fin = FechaUtils.crearFecha("08/04/2011");
-        fxc = new FechasXcomprension();
-        fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
-
-        System.out.println(fxc.getDiasConsecutivos());
-        assertEquals(fxc.getDiasConsecutivos(), 5);
-
-    }
-
+    /*
+     * public void testIsConsecutivo() throws NoHayDiasQueComputarException {
+     * 
+     * FechasXcomprension fxc = new FechasXcomprension();
+     * 
+     * try { fxc.getDiasConsecutivos(); } catch (Exception e) {
+     * assertEquals(e.getClass(), NoHayDiasQueComputarException.class); }
+     * 
+     * Date inicio = FechaUtils.crearFecha("04/04/2011"); Date fin =
+     * FechaUtils.crearFecha("04/04/2011"); fxc = new FechasXcomprension();
+     * fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(),
+     * fin);
+     * 
+     * System.out.println(fxc.getDiasConsecutivos());
+     * assertEquals(fxc.getDiasConsecutivos(), 1);
+     * 
+     * inicio = FechaUtils.crearFecha("04/04/2011"); fin =
+     * FechaUtils.crearFecha("05/04/2011"); fxc = new FechasXcomprension();
+     * fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(),
+     * fin);
+     * 
+     * System.out.println(fxc.getDiasConsecutivos());
+     * assertEquals(fxc.getDiasConsecutivos(), 2);
+     * 
+     * inicio = FechaUtils.crearFecha("04/04/2011"); fin =
+     * FechaUtils.crearFecha("08/04/2011"); fxc = new FechasXcomprension();
+     * fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(),
+     * fin);
+     * 
+     * System.out.println(fxc.getDiasConsecutivos());
+     * assertEquals(fxc.getDiasConsecutivos(), 5);
+     * 
+     * }
+     */
     // ***************************************
     // ********* Helpers
 
