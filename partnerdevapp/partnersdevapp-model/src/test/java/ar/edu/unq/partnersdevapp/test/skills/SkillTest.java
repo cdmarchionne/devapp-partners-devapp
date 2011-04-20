@@ -65,4 +65,25 @@ public class SkillTest extends TestCase {
         assertEquals(MEDIO, conocimientos.getCategoria(POO));
     }
 
+    public void testSubirSkill() {
+        Skills conocimientos = new Skills();
+
+        conocimientos.addSkill(JAVA, BASICO);
+        assertEquals(BASICO, conocimientos.getCategoria(JAVA));
+
+        conocimientos.subirCategoria(JAVA);
+        assertFalse(BASICO == conocimientos.getCategoria(JAVA));
+        assertEquals(MEDIO, conocimientos.getCategoria(JAVA));
+    }
+
+    public void testBajarSkill() {
+        Skills conocimientos = new Skills();
+
+        conocimientos.addSkill(POO, MEDIO);
+        assertEquals(MEDIO, conocimientos.getCategoria(POO));
+
+        conocimientos.bajarCategoria(POO);
+        assertFalse(MEDIO == conocimientos.getCategoria(POO));
+        assertEquals(BASICO, conocimientos.getCategoria(POO));
+    }
 }

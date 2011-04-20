@@ -58,6 +58,10 @@ public class Categoria {
         listaCategoria.set(listaCategoria.indexOf(nombreViejo), nombreNuevo);
     }
 
+    public String getCategoriaActual() {
+        return categoriaActual;
+    }
+
     public void bajarCategoria() {
         Integer indiceCategoria = indiceCategoria(categoriaActual);
 
@@ -65,14 +69,6 @@ public class Categoria {
             categoriaActual = nombreCategoria(indiceCategoria - 1);
         }
 
-    }
-
-    private boolean validarIndice(final Integer indice) {
-        return 0 <= indice && indice < listaCategoria.size();
-    }
-
-    private static boolean validarIndiceAddCat(final Integer indice) {
-        return 0 <= indice && indice <= listaCategoria.size();
     }
 
     public void subirCategoria() {
@@ -84,7 +80,15 @@ public class Categoria {
 
     }
 
-    public String getCategoriaActual() {
-        return categoriaActual;
+    public boolean cumbreNecesidades(final Categoria requisito) {
+        return indiceCategoria(categoriaActual) >= indiceCategoria(requisito.getCategoriaActual());
+    }
+
+    private boolean validarIndice(final Integer indice) {
+        return 0 <= indice && indice < listaCategoria.size();
+    }
+
+    private static boolean validarIndiceAddCat(final Integer indice) {
+        return 0 <= indice && indice <= listaCategoria.size();
     }
 }
