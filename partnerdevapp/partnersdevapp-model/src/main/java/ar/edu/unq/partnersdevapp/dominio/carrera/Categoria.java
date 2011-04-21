@@ -16,8 +16,11 @@ public class Categoria {
 
     public Categoria(final String categoriaActual) {
         super();
+        if (!listaCategoria.contains(categoriaActual)) {
+            Categoria.addCategoria(categoriaActual);
+            // throw NoClassDefFoundException;
+        }
         this.categoriaActual = categoriaActual;
-
     }
 
     public static Integer indiceCategoria(final String nombreCategoria) {
@@ -68,7 +71,6 @@ public class Categoria {
         if (this.validarIndice(indiceCategoria - 1)) {
             categoriaActual = nombreCategoria(indiceCategoria - 1);
         }
-
     }
 
     public void subirCategoria() {
@@ -77,11 +79,17 @@ public class Categoria {
         if (this.validarIndice(indiceCategoria + 1)) {
             categoriaActual = nombreCategoria(indiceCategoria + 1);
         }
-
     }
 
     public boolean cumbreNecesidades(final Categoria requisito) {
         return indiceCategoria(categoriaActual) >= indiceCategoria(requisito.getCategoriaActual());
+    }
+
+    public boolean cumbreNecesidades(final String requisito) {
+        // if (!existeCategoria(requisito)) {
+        // Excepcion no existe categoria
+        // }
+        return indiceCategoria(categoriaActual) >= indiceCategoria(requisito);
     }
 
     private boolean validarIndice(final Integer indice) {

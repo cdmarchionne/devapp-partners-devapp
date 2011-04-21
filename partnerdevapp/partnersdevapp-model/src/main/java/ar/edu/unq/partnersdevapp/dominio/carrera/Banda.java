@@ -16,7 +16,7 @@ public class Banda {
     private float cantidadDeSubBandas;
 
     public Banda(final int cantidadDeSubBandas) {
-        this.setCantidadDeSubBandas(cantidadDeSubBandas);
+        this.cantidadDeSubBandas = cantidadDeSubBandas; // this.setCantidadDeSubBandas(cantidadDeSubBandas);
     }
 
     public List<Integer> getBandas() {

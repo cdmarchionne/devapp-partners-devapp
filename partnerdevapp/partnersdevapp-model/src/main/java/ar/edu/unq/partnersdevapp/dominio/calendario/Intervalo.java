@@ -16,8 +16,8 @@ public class Intervalo {
      * Tipo es el entero que corresponde a semana,mes o año
      */
     public Intervalo(final int tipo, final int cantidad) {
-        this.setTipo(tipo);
-        this.setCantidad(cantidad);
+        this.tipo = tipo; // this.setTipo(tipo);
+        this.cantidad = cantidad; // this.setCantidad(cantidad);
     }
 
     // ********************

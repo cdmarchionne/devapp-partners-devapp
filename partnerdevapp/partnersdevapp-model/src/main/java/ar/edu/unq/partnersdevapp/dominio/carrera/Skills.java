@@ -9,7 +9,12 @@ import java.util.Map;
  */
 public class Skills {
 
-    private Map<Tecnologia, Categoria> skill = new HashMap<Tecnologia, Categoria>();
+    private Map<Tecnologia, Categoria> skill;
+
+    public Skills() {
+        super();
+        skill = new HashMap<Tecnologia, Categoria>();
+    }
 
     public void addSkill(final String tecnologia, final String categoria) {
         if (this.buscarTecnologia(tecnologia) == null) {
@@ -33,7 +38,6 @@ public class Skills {
                 break;
             }
         }
-
         return tecnologiaBuscada;
     }
 
@@ -45,7 +49,7 @@ public class Skills {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
         if (tecnologiaBuscada != null) {
-            skill.get(tecnologiaBuscada).bajarCategoria();
+            this.getCategoria(tecnologiaBuscada).bajarCategoria();
         }
     }
 
@@ -53,26 +57,28 @@ public class Skills {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
         if (tecnologiaBuscada != null) {
-            skill.get(tecnologiaBuscada).subirCategoria();
+            this.getCategoria(tecnologiaBuscada).subirCategoria();
         }
     }
 
-    public String getCategoria(final String nombreTecnologiaBuscada) {
+    public String getCategoriaNombre(final String nombreTecnologiaBuscada) {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
-        String categoriaBuscada = null;
+        String categoriaBuscada;
 
         if (tecnologiaBuscada != null) {
-            categoriaBuscada = skill.get(tecnologiaBuscada).getCategoriaActual();
+            categoriaBuscada = this.getCategoria(tecnologiaBuscada).getCategoriaActual();
+        } else {
+            categoriaBuscada = null;
         }
 
         return categoriaBuscada;
     }
 
-    public String getCategoria(final Tecnologia tecnologiaBuscada) {
-        return this.getCategoria(tecnologiaBuscada.getTecnologiaActual());
+    public String getCategoriaNombre(final Tecnologia tecnologiaBuscada) {
+        return this.getCategoriaNombre(tecnologiaBuscada.getTecnologiaActual());
     }
 
-    private boolean satisfaceRequisito(final Skills condiciones) {
+    public boolean satisfaceRequisito(final Skills condiciones) {
         boolean sabe = true;
         Tecnologia tecnologiaParticular;
 
@@ -81,18 +87,20 @@ public class Skills {
         while (iterador.hasNext()) {
             tecnologiaIterador = iterador.next();
             tecnologiaParticular = this.buscarTecnologia(tecnologiaIterador);
-            if (tecnologiaParticular == null
-                    || this.dominaTecnologia(tecnologiaParticular, condiciones.getCategoria(tecnologiaIterador))) {
+            if (!this.dominaTecnologia(tecnologiaParticular, condiciones.getCategoriaNombre(tecnologiaIterador))) {
                 sabe = false;
                 break;
             }
         }
-
         return sabe;
     }
 
     private boolean dominaTecnologia(final Tecnologia tecnologia, final String categoriaMinima) {
-        return skill.get(tecnologia).cumbreNecesidades(new Categoria(categoriaMinima));
+        return tecnologia != null && this.getCategoria(tecnologia).cumbreNecesidades(categoriaMinima);
+    }
+
+    private Categoria getCategoria(final Tecnologia tecnologia) {
+        return skill.get(tecnologia);
     }
 
     private Map<Tecnologia, Categoria> getSkill() {

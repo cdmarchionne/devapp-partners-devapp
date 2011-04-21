@@ -18,8 +18,8 @@ public class PlanDeCarrera {
     private List<Nivel> niveles = new ArrayList<Nivel>();
 
     public PlanDeCarrera(final String especialidad, final String descripcion) {
-        this.setEspecialidad(especialidad);
-        this.setDescripcion(descripcion);
+        this.especialidad = especialidad; // this.setEspecialidad(especialidad);
+        this.descripcion = descripcion; // this.setDescripcion(descripcion);
     }
 
     /**

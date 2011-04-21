@@ -24,10 +24,10 @@ public class Nivel {
      * 
      */
     public Nivel(final String nombre, final Banda bandas, final int maximo, final int minimo) {
-        this.setBanda(bandas);
-        this.setNombre(nombre);
-        this.setSueldoMaximo(maximo);
-        this.setSueldoMinimo(minimo);
+        banda = bandas; // this.setBanda(bandas);
+        this.nombre = nombre; // this.setNombre(nombre);
+        sueldoMaximo = maximo; // this.setSueldoMaximo(maximo);
+        sueldoMinimo = minimo; // this.setSueldoMinimo(minimo);
     }
 
     public void subirJerarquiaUnPunto() {

@@ -16,13 +16,13 @@ public class Posicion {
     }
 
     public Posicion(final String nivel, final int subnivel) {
-        this.setNivelNombre(nivel);
-        this.setBanda(subnivel);
+        nivelNombre = nivel; // this.setNivelNombre(nivel);
+        banda = subnivel; // this.setBanda(subnivel);
     }
 
     public Posicion(final Posicion posicion) {
-        this.setNivelNombre(posicion.getNivelNombre());
-        this.setBanda(posicion.getBanda());
+        nivelNombre = posicion.getNivelNombre(); // this.setNivelNombre(posicion.getNivelNombre());
+        banda = posicion.getBanda(); // this.setBanda(posicion.getBanda());
     }
 
     @Override

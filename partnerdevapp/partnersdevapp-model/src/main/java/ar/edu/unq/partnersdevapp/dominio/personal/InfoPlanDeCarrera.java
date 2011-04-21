@@ -23,9 +23,10 @@ public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
     }
 
     public InfoPlanDeCarrera(final Date date, final PlanDeCarrera planDeCarrera, final Posicion posicion) {
-        this.setFechaInicio(date);
-        this.setNivelPlanDeCarrera(posicion);
-        this.setPlanDeCarrera(planDeCarrera);
+        super();
+        fechaInicio = date; // this.setFechaInicio(date);
+        nivelPlanDeCarrera = posicion; // this.setNivelPlanDeCarrera(posicion);
+        this.planDeCarrera = planDeCarrera; // this.setPlanDeCarrera(planDeCarrera);
     }
 
     @Override
