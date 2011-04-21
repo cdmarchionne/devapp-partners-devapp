@@ -11,6 +11,10 @@ import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaTipo;
  */
 public class BaseDeDatosHelper {
 
+    private BaseDeDatosHelper() {
+        throw new UnsupportedOperationException();
+    }
+
     // *****************************************
     // ******* niveles predeterminados Standars
     static public Nivel getNivelJunior() {

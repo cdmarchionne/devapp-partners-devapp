@@ -6,39 +6,47 @@ import java.util.List;
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayDiasQueComputarException;
+import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
  * Contiene los métodos para validar las licencias.
  */
 public class LicenciaContenedor {
 
-    List<InfoLicencia> infoLicencias = new ArrayList<InfoLicencia>();
-
-    public LicenciaContenedor() {
-
-    }
+    private List<InfoLicencia> infoLicencias = new ArrayList<InfoLicencia>();
 
     /**
      * Agrega una licencia al contenedor. Devuele True si la operacion se
      * realizo con exito Si no cumple con los maximos de dias configurados
-     * devuelve False
+     * devuelve False. No verifica superposicion de fechas!
      * 
      * @throws NoHayDiasQueComputarException
+     * @throws PeriodoIndeterminadoException
      */
     public boolean addLicencia(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
-            throws NoHayDiasQueComputarException {
-        boolean res = false;
-        if (this.isDiasConsecutivosValido(aLicenciaTipo, fechas) && this.isDiasAnualesValido(aLicenciaTipo, fechas)) {
+            throws NoHayDiasQueComputarException, PeriodoIndeterminadoException {
+        boolean condicion = !this.tieneLicenciaIndeterminada() && this.isDiasConsecutivosValido(aLicenciaTipo, fechas)
+                && this.isDiasAnualesValido(aLicenciaTipo, fechas);
+        if (condicion) {
             this.getInfoLicencias().add(new InfoLicencia(aLicenciaTipo, fechas));
-            res = true;
         }
 
+        return condicion;
+    }
+
+    /** Devuelve True si tiene una licencia indeterminada */
+    public boolean tieneLicenciaIndeterminada() {
+        boolean res = false;
+        for (InfoLicencia info : this.getInfoLicencias()) {
+            res = res || info.getFechas().isPeriodoIndeterminado();
+        }
         return res;
     }
 
     // TODO: ver si esta bien usado el equals ! Se supone que es el mismo de la
     // misma base.
-    private boolean isDiasAnualesValido(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas) {
+    private boolean isDiasAnualesValido(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
+            throws PeriodoIndeterminadoException {
         boolean res;
         if (aLicenciaTipo.getDiasCantidadAnuales() == -1) {
             res = true;
@@ -63,15 +71,18 @@ public class LicenciaContenedor {
     }
 
     private boolean isDiasConsecutivosValido(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
-            throws NoHayDiasQueComputarException {
+            throws NoHayDiasQueComputarException, PeriodoIndeterminadoException {
         return aLicenciaTipo.getDiasConsecutivos() == -1
                 || fechas.getDiasConsecutivos() <= aLicenciaTipo.getDiasConsecutivos();
 
     }
 
-    /** */
+    /**
+     * Agrega el path donde se encuentra el archivo del comprobante de dicha
+     * licencia
+     */
     public void addComprobante(final InfoLicencia infoLic, final String pathArchivo) {
-        // TODO: comprobante;
+        this.getInfoLicencias().get(infoLicencias.indexOf(infoLic)).setRutaArchivoComprobante(pathArchivo);
     }
 
     @Override

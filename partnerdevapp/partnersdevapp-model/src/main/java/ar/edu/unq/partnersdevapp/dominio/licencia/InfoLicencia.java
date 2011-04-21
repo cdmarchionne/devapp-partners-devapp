@@ -1,17 +1,18 @@
 package ar.edu.unq.partnersdevapp.dominio.licencia;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
+import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
  * Informacion licencia.
  */
 public class InfoLicencia {
 
-    LicenciaTipo licenciaTipo;
+    private LicenciaTipo licenciaTipo;
 
-    String rutaArchivoComprobante;
+    private String rutaArchivoComprobante;
 
-    FechasXcomprension fechas;
+    private FechasXcomprension fechas;
 
     public InfoLicencia(final LicenciaTipo licTipo, final FechasXcomprension aFechas) {
         licenciaTipo = licTipo;
@@ -20,7 +21,11 @@ public class InfoLicencia {
 
     @Override
     public String toString() {
-        return "(" + licenciaTipo.getTipo() + "," + fechas.getDiasTotal() + ")";
+        try {
+            return "(" + licenciaTipo.getTipo() + "," + fechas.getDiasTotal() + ")";
+        } catch (PeriodoIndeterminadoException e) {
+            return "(" + licenciaTipo.getTipo() + ", indefinido" + ")";
+        }
     }
 
     public LicenciaTipo getLicenciaTipo() {

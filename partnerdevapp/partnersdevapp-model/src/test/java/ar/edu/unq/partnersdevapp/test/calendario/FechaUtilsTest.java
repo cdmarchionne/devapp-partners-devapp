@@ -91,8 +91,8 @@ public class FechaUtilsTest extends TestCase {
         Date date2 = FechaUtils.crearFecha("29/03/2011");
         Date date3 = FechaUtils.crearFecha("30/03/2011");
 
-        assertTrue(FechaUtils.isConsecutivo(date1, date2));
-        assertFalse(FechaUtils.isConsecutivo(date1, date3));
+        assertTrue("", FechaUtils.isConsecutivo(date1, date2));
+        assertFalse("", FechaUtils.isConsecutivo(date1, date3));
     }
 
     public Calendar getCalendario0() {

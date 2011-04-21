@@ -8,13 +8,14 @@ import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
+import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
  * 
  */
 public class SuperpocisionTest extends TestCase {
 
-    public void testSuperposicionTrue() {
+    public void testSuperposicionTrue() throws PeriodoIndeterminadoException {
 
         FechasXcomprension fxc0 = new FechasXcomprension();
         fxc0.set(FechaUtils.crearFecha("04/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
@@ -34,7 +35,7 @@ public class SuperpocisionTest extends TestCase {
         assertTrue("se superpone", fxc0.seSuperpone(fxc1));
     }
 
-    public void testSuperposicionFalse() {
+    public void testSuperposicionFalse() throws PeriodoIndeterminadoException {
 
         FechasXcomprension fxc0 = new FechasXcomprension();
         fxc0.set(FechaUtils.crearFecha("04/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
