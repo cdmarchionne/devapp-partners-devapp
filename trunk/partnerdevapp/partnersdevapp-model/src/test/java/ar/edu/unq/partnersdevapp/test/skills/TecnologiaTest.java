@@ -43,25 +43,33 @@ public class TecnologiaTest extends TestCase {
     }
 
     public void testAgregarTecnologia() {
-        assertTrue(Tecnologia.existeTecnologia(JAVA));
-        assertTrue(Tecnologia.existeTecnologia(POO));
-        assertTrue(Tecnologia.existeTecnologia(MYSQL));
-        assertTrue(Tecnologia.existeTecnologia(WICKET));
-        assertTrue(Tecnologia.existeTecnologia(HIBERNATE));
-        assertTrue(Tecnologia.existeTecnologia(POSTGRE_SQL));
+        String message = "Agrego una Tecnologia";
+
+        assertTrue(message + JAVA, Tecnologia.existeTecnologia(JAVA));
+        assertTrue(message + POO, Tecnologia.existeTecnologia(POO));
+        assertTrue(message + MYSQL, Tecnologia.existeTecnologia(MYSQL));
+        assertTrue(message + WICKET, Tecnologia.existeTecnologia(WICKET));
+        assertTrue(message + HIBERNATE, Tecnologia.existeTecnologia(HIBERNATE));
+        assertTrue(message + POSTGRE_SQL, Tecnologia.existeTecnologia(POSTGRE_SQL));
     }
 
     public void testBorrarTecnologia() {
-        Tecnologia.addTecnologia(TECNOLOGIA_BORRADOR);
-        assertTrue(Tecnologia.existeTecnologia(TECNOLOGIA_BORRADOR));
+        String message;
 
+        message = "Agrego una Tecnologia cualquiera";
+        Tecnologia.addTecnologia(TECNOLOGIA_BORRADOR);
+        assertTrue(message, Tecnologia.existeTecnologia(TECNOLOGIA_BORRADOR));
+
+        message = "Borro esa Tecnologia";
         Tecnologia.removeTecnologia(TECNOLOGIA_BORRADOR);
-        assertFalse(Tecnologia.existeTecnologia(TECNOLOGIA_BORRADOR));
+        assertFalse(message, Tecnologia.existeTecnologia(TECNOLOGIA_BORRADOR));
     }
 
     public void testTecnologia() {
         Tecnologia tecnologiaDePrueba = new Tecnologia(JAVA);
-        assertEquals(JAVA, tecnologiaDePrueba.getTecnologiaActual());
+
+        String message = "Creo una Tecnologia " + JAVA;
+        assertEquals(message, JAVA, tecnologiaDePrueba.getTecnologiaActual());
     }
 
 }

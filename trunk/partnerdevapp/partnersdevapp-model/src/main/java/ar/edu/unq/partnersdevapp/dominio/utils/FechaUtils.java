@@ -8,9 +8,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import org.joda.time.DateTime;
-import org.joda.time.Days;
-
 /**
  * Utilidales para el manejo de fecha.
  */
@@ -124,7 +121,7 @@ public class FechaUtils {
     }
 
     /** Verifica si dos dias son consecutivos */
-    static public boolean isConsecutivo(final Date date1, final Date date2) {
+    public static boolean isConsecutivo(final Date date1, final Date date2) {
         Days days = Days.daysBetween(new DateTime(date1), new DateTime(date2));
         return days.getDays() == 1;
 

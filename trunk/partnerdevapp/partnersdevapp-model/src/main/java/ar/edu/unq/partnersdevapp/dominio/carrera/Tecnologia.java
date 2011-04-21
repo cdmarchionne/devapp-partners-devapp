@@ -14,6 +14,10 @@ public class Tecnologia {
 
     public Tecnologia(final String tecnologiaActual) {
         super();
+        if (!listaTecnologia.contains(tecnologiaActual)) {
+            Tecnologia.addTecnologia(tecnologiaActual);
+            // throw NoClassDefFoundException;
+        }
         this.tecnologiaActual = tecnologiaActual;
     }
 

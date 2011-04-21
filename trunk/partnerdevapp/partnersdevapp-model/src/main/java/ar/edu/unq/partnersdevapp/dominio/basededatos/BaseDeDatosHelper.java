@@ -17,26 +17,26 @@ public class BaseDeDatosHelper {
 
     // *****************************************
     // ******* niveles predeterminados Standars
-    static public Nivel getNivelJunior() {
+    public static Nivel getNivelJunior() {
         return new Nivel("junior", new Banda(2), 0, 0);
     }
 
-    static public Nivel getNivelSemiSenior() {
+    public static Nivel getNivelSemiSenior() {
         return new Nivel("semiSenior", new Banda(2), 0, 0);
     }
 
-    static public Nivel getNivelSenior() {
+    public static Nivel getNivelSenior() {
         return new Nivel("senior", new Banda(3), 0, 0);
     }
 
-    static public Nivel getNiveLlider() {
+    public static Nivel getNiveLlider() {
         return new Nivel("lider", new Banda(4), 0, 0);
     }
 
     // ******************************************
     // ******* Plan de carrera Standar
 
-    static public PlanDeCarrera getPlanDeCarreraStandartTester() {
+    public static PlanDeCarrera getPlanDeCarreraStandartTester() {
         PlanDeCarrera plan = new PlanDeCarrera("tester", "Esto es un plan de tester");
         plan.addNivelAnterior(BaseDeDatosHelper.getNivelJunior(), null);
         plan.addNivelPosterior(BaseDeDatosHelper.getNivelSemiSenior(), "junior");
@@ -48,19 +48,19 @@ public class BaseDeDatosHelper {
 
     // ***********************************************
     // ******** Licencias
-    static public LicenciaTipo getLicenciaVacaciones() {
+    public static LicenciaTipo getLicenciaVacaciones() {
         return new LicenciaTipo("vacaciones", true, -1, -1);
     }
 
-    static public LicenciaTipo getEnfermedad() {
+    public static LicenciaTipo getEnfermedad() {
         return new LicenciaTipo("enfermedad", true, -1, -1);
     }
 
-    static public LicenciaTipo getEstudio() {
+    public static LicenciaTipo getEstudio() {
         return new LicenciaTipo("estudio", true, 2, 12);
     }
 
-    static public LicenciaTipo getMudanza() {
+    public static LicenciaTipo getMudanza() {
         return new LicenciaTipo("mudanza", true, 2, 5);
     }
 }
