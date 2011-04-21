@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.joda.time.DateTime;
+import org.joda.time.Days;
+
 /**
  * Utilidales para el manejo de fecha.
  */
@@ -17,15 +20,17 @@ public class FechaUtils {
         throw new UnsupportedOperationException();
     }
 
-    /** Crea una fecha a partir de un string con la dorma dd/MM/yyyy */
+    /**
+     * Crea una fecha a partir de un string con la dorma dd/MM/yyyy TODO :
+     * manejar la excepcion como corresponde
+     */
     public static Date crearFecha(final String strFecha) {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         Date date = null;
         try {
             date = formatoDelTexto.parse(strFecha);
         } catch (ParseException e) {
-            // TODO Auto-generated catch block
-
+            date = Calendar.getInstance().getTime();
         }
         return date;
     }
@@ -120,9 +125,9 @@ public class FechaUtils {
 
     /** Verifica si dos dias son consecutivos */
     static public boolean isConsecutivo(final Date date1, final Date date2) {
-        Calendar cal = FechaUtils.getCalendar(date1);
-        Calendar cal2 = FechaUtils.getCalendar(date2);
-        return cal2.get(Calendar.DATE) - cal.get(Calendar.DATE) == 1;
+        Days days = Days.daysBetween(new DateTime(date1), new DateTime(date2));
+        return days.getDays() == 1;
+
     }
 
     /**

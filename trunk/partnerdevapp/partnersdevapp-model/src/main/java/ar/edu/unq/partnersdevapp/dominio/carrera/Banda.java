@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class Banda {
 
-    static final int ANCHOBANDA = 100;
+    private static final int ANCHOBANDA = 100;
 
     private float cantidadDeSubBandas;
 

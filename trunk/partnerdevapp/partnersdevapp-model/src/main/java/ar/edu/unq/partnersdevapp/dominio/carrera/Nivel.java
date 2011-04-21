@@ -19,10 +19,6 @@ public class Nivel {
 
     private int sueldoMinimo = 0;
 
-    public Nivel() {
-
-    }
-
     /**
      * Nota: la jerarquia se autosetea al ingresar el nivel al plan de carrera.
      * 

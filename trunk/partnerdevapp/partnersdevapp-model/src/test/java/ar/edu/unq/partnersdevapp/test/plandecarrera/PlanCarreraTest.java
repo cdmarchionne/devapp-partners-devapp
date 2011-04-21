@@ -19,15 +19,15 @@ public class PlanCarreraTest extends TestCase {
         PlanDeCarrera plan = new PlanDeCarrera("tecnico", "cosas de tecnico");
 
         plan.addNivelPosterior(BaseDeDatosHelper.getNivelSemiSenior(), null);
-        assertEquals(plan.getNivel(SEMISENIOR).getJerarquia(), 0);
+        assertEquals("", plan.getNivel(SEMISENIOR).getJerarquia(), 0);
 
         plan.addNivelPosterior(BaseDeDatosHelper.getNivelSenior(), SEMISENIOR);
-        assertEquals(plan.getNivel(SEMISENIOR).getJerarquia(), 0);
-        assertEquals(plan.getNivel(SENIOR).getJerarquia(), 1);
+        assertEquals("", plan.getNivel(SEMISENIOR).getJerarquia(), 0);
+        assertEquals("", plan.getNivel(SENIOR).getJerarquia(), 1);
 
         plan.addNivelPosterior(new Nivel("xxx", null, 0, 0), SEMISENIOR);
-        assertEquals(plan.getNivel(SEMISENIOR).getJerarquia(), 0);
-        assertEquals(plan.getNivel(SENIOR).getJerarquia(), 2);
+        assertEquals("", plan.getNivel(SEMISENIOR).getJerarquia(), 0);
+        assertEquals("", plan.getNivel(SENIOR).getJerarquia(), 2);
 
     }
 
@@ -35,15 +35,15 @@ public class PlanCarreraTest extends TestCase {
         PlanDeCarrera plan = new PlanDeCarrera("tecnico", "cosas de tecnico");
 
         plan.addNivelAnterior(BaseDeDatosHelper.getNivelSenior(), null);
-        assertEquals(plan.getNivel(SENIOR).getJerarquia(), 0);
+        assertEquals("", plan.getNivel(SENIOR).getJerarquia(), 0);
 
         plan.addNivelAnterior(BaseDeDatosHelper.getNivelSemiSenior(), SENIOR);
-        assertEquals(plan.getNivel(SEMISENIOR).getJerarquia(), 0);
-        assertEquals(plan.getNivel(SENIOR).getJerarquia(), 1);
+        assertEquals("", plan.getNivel(SEMISENIOR).getJerarquia(), 0);
+        assertEquals("", plan.getNivel(SENIOR).getJerarquia(), 1);
 
         plan.addNivelAnterior(new Nivel("xxx", null, 0, 0), SENIOR);
-        assertEquals(plan.getNivel(SEMISENIOR).getJerarquia(), 0);
-        assertEquals(plan.getNivel(SENIOR).getJerarquia(), 2);
+        assertEquals("", plan.getNivel(SEMISENIOR).getJerarquia(), 0);
+        assertEquals("", plan.getNivel(SENIOR).getJerarquia(), 2);
 
     }
 

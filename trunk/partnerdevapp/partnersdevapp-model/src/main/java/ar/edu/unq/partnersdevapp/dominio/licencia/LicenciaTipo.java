@@ -15,9 +15,6 @@ public class LicenciaTipo {
 
     private int diasCantidadAnuales;
 
-    public LicenciaTipo() {
-    }
-
     /**
      * tipo : motivo remunerable: se se le paga en esos dias de ausencia.<br/>
      * diasConsecutivos y diasCantidad Son anuales. (-1) para el caso de
