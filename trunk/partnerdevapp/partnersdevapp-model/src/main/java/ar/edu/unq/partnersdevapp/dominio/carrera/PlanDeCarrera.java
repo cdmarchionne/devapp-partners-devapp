@@ -64,8 +64,6 @@ public class PlanDeCarrera {
     /**
      * Devuelve una posicion de nivel superior
      * 
-     * @throws NoExisteNivelSuperior
-     * @throws NoHayResultadoException
      */
     public Posicion getNivelSuperior(final Posicion posicion) throws NoHayResultadoException {
         Posicion nuevaPosicion = new Posicion(posicion);

@@ -5,7 +5,6 @@ import ar.edu.unq.partnersdevapp.dominio.basededatos.BaseDeDatosHelper;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Nivel;
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Posicion;
-import ar.edu.unq.partnersdevapp.exceptions.NoExisteNivelSuperior;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 
 public class PlanCarreraTest extends TestCase {
@@ -49,7 +48,7 @@ public class PlanCarreraTest extends TestCase {
 
     }
 
-    public void testSubirNivel() throws NoExisteNivelSuperior, NoHayResultadoException {
+    public void testSubirNivel() throws NoHayResultadoException {
 
         PlanDeCarrera plan = BaseDeDatosHelper.getPlanDeCarreraStandartTester();
 
@@ -78,7 +77,7 @@ public class PlanCarreraTest extends TestCase {
         try {
             plan.getNivelSuperior(oldPosicion);
         } catch (Exception e) {
-            assertTrue(e.getClass().equals(NoHayResultadoException.class));
+            assertTrue("", e.getClass().equals(NoHayResultadoException.class));
         }
 
     }
