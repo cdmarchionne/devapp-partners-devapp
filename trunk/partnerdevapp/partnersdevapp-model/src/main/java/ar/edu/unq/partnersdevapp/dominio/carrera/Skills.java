@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * TODO: description
+ * PONER DESCRIPCION
  */
 public class Skills {
 

@@ -1,7 +1,7 @@
 package ar.edu.unq.partnersdevapp.dominio.personal;
 
 /**
- * TODO: description
+ * PONER DESCRIPCION
  */
 public class Persona {
 

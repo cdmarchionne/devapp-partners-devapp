@@ -3,7 +3,6 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unq.partnersdevapp.exceptions.NoExisteNivelSuperior;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 
 /**
@@ -68,7 +67,7 @@ public class PlanDeCarrera {
      * @throws NoExisteNivelSuperior
      * @throws NoHayResultadoException
      */
-    public Posicion getNivelSuperior(final Posicion posicion) throws NoExisteNivelSuperior, NoHayResultadoException {
+    public Posicion getNivelSuperior(final Posicion posicion) throws NoHayResultadoException {
         Posicion nuevaPosicion = new Posicion(posicion);
 
         Nivel nivel = this.getNivel(posicion.getNivelNombre());
@@ -92,9 +91,8 @@ public class PlanDeCarrera {
      */
     public Nivel getNivel(final String nombre) throws NoHayResultadoException {
         for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getNombre().equals(nombre)) {
+            if (nivel.getNombre().equals(nombre))
                 return nivel;
-            }
         }
         throw new NoHayResultadoException();
     }
@@ -106,9 +104,8 @@ public class PlanDeCarrera {
      */
     public Nivel getNivel(final int jerarquia) throws NoHayResultadoException {
         for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getJerarquia() == jerarquia) {
+            if (nivel.getJerarquia() == jerarquia)
                 return nivel;
-            }
         }
         throw new NoHayResultadoException();
     }

@@ -73,7 +73,7 @@ public class LicenciaContenedor {
     }
 
     private boolean isDiasConsecutivosValido(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
-            throws NoHayResultadoException, PeriodoIndeterminadoException {
+            throws PeriodoIndeterminadoException {
         return aLicenciaTipo.getDiasConsecutivos() == -1
                 || fechas.getDiasConsecutivos() <= aLicenciaTipo.getDiasConsecutivos();
 

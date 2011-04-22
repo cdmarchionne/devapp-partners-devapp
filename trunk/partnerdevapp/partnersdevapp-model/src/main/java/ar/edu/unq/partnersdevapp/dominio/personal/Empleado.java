@@ -11,7 +11,7 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.Skills;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 
 /**
- * TODO: description
+ * PONER DESCRIPCION
  */
 public class Empleado extends Persona {
 
@@ -36,7 +36,7 @@ public class Empleado extends Persona {
         this.getInfoPlanDeCarrera().add(new InfoPlanDeCarrera(fechaInicio, planDeCarrera, posicionInicial));
     }
 
-    // TODO : TEST.
+    // haver TEST.
     /**
      * Calcula el sueldo teniendo en cuanta la posicion actual
      * 
@@ -46,21 +46,21 @@ public class Empleado extends Persona {
         return this.getPlanActual().getSueldo(this.getNivelActual());
     }
 
-    // TODO : Cambiar de plan de carrera. Agregar una info con el plan y la
+    // : Cambiar de plan de carrera. Agregar una info con el plan y la
     // posicion.
 
-    // TODO : saber históricos . Pedirle a la info. + test
+    // : saber históricos . Pedirle a la info. + test
 
-    // TODO : subir de nivel. Perdir el plan y nivel actual. Al plan pedirle el
+    // : subir de nivel. Perdir el plan y nivel actual. Al plan pedirle el
     // nuevo nivel pasandole la posicion. Guardar la nueva posicion creando una
     // nueva info historico.
 
-    // TODO: HACER TEST verificar errores, lista vacia,
+    // : HACER TEST verificar errores, lista vacia,
     public Posicion getNivelActual() {
         return this.getUltimaInfo().getNivelPlanDeCarrera();
     }
 
-    // TODO: verificar errores, lista vacia,
+    // : verificar errores, lista vacia,
     public PlanDeCarrera getPlanActual() {
         return this.getUltimaInfo().getPlanDeCarrera();
     }
