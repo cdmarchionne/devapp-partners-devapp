@@ -7,7 +7,7 @@ import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.utils.ListaUtils;
 
 /**
- * TODO: description
+ * Test de FechaUtils
  */
 public class ListaUtilTest extends TestCase {
     private List<Integer> intlist = new ArrayList<Integer>();

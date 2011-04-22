@@ -4,6 +4,7 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.Banda;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Nivel;
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaTipo;
+import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 
 /**
  * Para simular una entrada por base de datos. Podria ser una clase intermedia
@@ -36,7 +37,7 @@ public class BaseDeDatosHelper {
     // ******************************************
     // ******* Plan de carrera Standar
 
-    public static PlanDeCarrera getPlanDeCarreraStandartTester() {
+    public static PlanDeCarrera getPlanDeCarreraStandartTester() throws NoHayResultadoException {
         PlanDeCarrera plan = new PlanDeCarrera("tester", "Esto es un plan de tester");
         plan.addNivelAnterior(BaseDeDatosHelper.getNivelJunior(), null);
         plan.addNivelPosterior(BaseDeDatosHelper.getNivelSemiSenior(), "junior");

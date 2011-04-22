@@ -5,7 +5,7 @@ import java.util.List;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
-import ar.edu.unq.partnersdevapp.exceptions.NoHayDiasQueComputarException;
+import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
@@ -20,11 +20,11 @@ public class LicenciaContenedor {
      * realizo con exito Si no cumple con los maximos de dias configurados
      * devuelve False. No verifica superposicion de fechas!
      * 
-     * @throws NoHayDiasQueComputarException
+     * @throws NoHayResultadoException
      * @throws PeriodoIndeterminadoException
      */
     public boolean addLicencia(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
-            throws NoHayDiasQueComputarException, PeriodoIndeterminadoException {
+            throws NoHayResultadoException, PeriodoIndeterminadoException {
         boolean condicion = !this.tieneLicenciaIndeterminada() && this.isDiasConsecutivosValido(aLicenciaTipo, fechas)
                 && this.isDiasAnualesValido(aLicenciaTipo, fechas);
         if (condicion) {
@@ -43,7 +43,6 @@ public class LicenciaContenedor {
         return res;
     }
 
-    // TODO: ver si esta bien usado el equals ! Se supone que es el mismo de la
     // misma base.
     private boolean isDiasAnualesValido(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
             throws PeriodoIndeterminadoException {
@@ -71,7 +70,7 @@ public class LicenciaContenedor {
     }
 
     private boolean isDiasConsecutivosValido(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
-            throws NoHayDiasQueComputarException, PeriodoIndeterminadoException {
+            throws NoHayResultadoException, PeriodoIndeterminadoException {
         return aLicenciaTipo.getDiasConsecutivos() == -1
                 || fechas.getDiasConsecutivos() <= aLicenciaTipo.getDiasConsecutivos();
 

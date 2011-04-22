@@ -3,6 +3,9 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.partnersdevapp.exceptions.NoExisteNivelSuperior;
+import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
+
 /**
  * 
  * Modela la idea de niveles en una especialidad.
@@ -18,29 +21,32 @@ public class PlanDeCarrera {
     private List<Nivel> niveles = new ArrayList<Nivel>();
 
     public PlanDeCarrera(final String especialidad, final String descripcion) {
-        this.especialidad = especialidad; // this.setEspecialidad(especialidad);
-        this.descripcion = descripcion; // this.setDescripcion(descripcion);
+        this.setEspecialidad(especialidad);
+        this.setDescripcion(descripcion);
     }
 
     /**
      * Agrega el nivel una jerarquia superior a la de nivelLugar desplazando una
      * jerarquia a sus superiores.
      * 
-     * TODO : refactor codigo duplicado. Casi .nombre de la carrera se repite
+     * @throws NoHayResultadoException
      */
-    public void addNivelPosterior(final Nivel nivelNuevo, final String nivelLugar) {
+    public void addNivelPosterior(final Nivel nivelNuevo, final String nivelLugar) throws NoHayResultadoException {
         this.addNivel(nivelNuevo, nivelLugar, 1);
     }
 
     /**
      * Agrega el nivel con una jerarquia inferior a la de nivelLugar desplazando
      * una jerarquia a sus superiores.
+     * 
+     * @throws NoHayResultadoException
      */
-    public void addNivelAnterior(final Nivel nivelNuevo, final String nivelLugar) {
+    public void addNivelAnterior(final Nivel nivelNuevo, final String nivelLugar) throws NoHayResultadoException {
         this.addNivel(nivelNuevo, nivelLugar, 0);
     }
 
-    private void addNivel(final Nivel nivelNuevo, final String nivelLugar, final int anteriorPosterior) {
+    private void addNivel(final Nivel nivelNuevo, final String nivelLugar, final int anteriorPosterior)
+            throws NoHayResultadoException {
         if (this.getNiveles().isEmpty()) {
             nivelNuevo.setJerarquia(0);
         } else {
@@ -56,15 +62,19 @@ public class PlanDeCarrera {
         this.getNiveles().add(nivelNuevo);
     }
 
-    /** Devuelve una posicion de nivel superior */
-    public Posicion getNivelSuperior(final Posicion posicion) {
+    /**
+     * Devuelve una posicion de nivel superior
+     * 
+     * @throws NoExisteNivelSuperior
+     * @throws NoHayResultadoException
+     */
+    public Posicion getNivelSuperior(final Posicion posicion) throws NoExisteNivelSuperior, NoHayResultadoException {
         Posicion nuevaPosicion = new Posicion(posicion);
 
         Nivel nivel = this.getNivel(posicion.getNivelNombre());
         int nuevaBanda = nivel.getBanda().getSubNivelSuperior(posicion.getBanda());
 
         if (nuevaBanda == -1) {
-            // TODO : caso del que sea el ultimo nivel
             nivel = this.getNivel(nivel.getJerarquia() + 1);
             nuevaPosicion.setNivelNombre(nivel.getNombre());
             nuevaPosicion.setBanda(0);
@@ -75,35 +85,48 @@ public class PlanDeCarrera {
         return nuevaPosicion;
     }
 
-    /** Devuelve el nivel de la lista de niveles. Busca por nombre */
-    public Nivel getNivel(final String nombre) {
-        Nivel res = null;
+    /**
+     * Devuelve el nivel de la lista de niveles. Busca por nombre
+     * 
+     * @throws NoHayResultadoException
+     */
+    public Nivel getNivel(final String nombre) throws NoHayResultadoException {
         for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getNombre().equals(nombre)) {
-                res = nivel;
-            }
+            if (nivel.getNombre().equals(nombre))
+                return nivel;
         }
-        return res;
+        throw new NoHayResultadoException();
     }
 
-    /** Devuelve el nivel de la lista de niveles. Busca por jerarquia */
-    public Nivel getNivel(final int jerarquia) {
-        Nivel res = null;
+    /**
+     * Devuelve el nivel de la lista de niveles. Busca por jerarquia
+     * 
+     * @throws NoHayResultadoException
+     */
+    public Nivel getNivel(final int jerarquia) throws NoHayResultadoException {
         for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getJerarquia() == jerarquia) {
-                res = nivel;
-            }
+            if (nivel.getJerarquia() == jerarquia)
+                return nivel;
         }
-        return res;
+        throw new NoHayResultadoException();
     }
 
-    /** Calcula en sueldo segun el nivel pasado por parametro */
-    public float getSueldo(final Posicion posicionActual) {
+    /**
+     * Calcula en sueldo segun el nivel pasado por parametro
+     * 
+     * @throws NoHayResultadoException
+     */
+    public float getSueldo(final Posicion posicionActual) throws NoHayResultadoException {
         Nivel nivelActual = this.getNivel(posicionActual.getNivelNombre());
         int max = nivelActual.getSueldoMaximo();
         int min = nivelActual.getSueldoMinimo();
         float banda = posicionActual.getBanda();
         return min + banda * (max - min);
+    }
+
+    @Override
+    public String toString() {
+        return "{" + this.getEspecialidad() + "-" + this.getNiveles() + "}";
     }
 
     // **************************

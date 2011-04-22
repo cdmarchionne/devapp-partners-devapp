@@ -11,11 +11,11 @@ import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
 import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaContenedor;
 import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaTipo;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
-import ar.edu.unq.partnersdevapp.exceptions.NoHayDiasQueComputarException;
+import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
- * TODO: description
+ * Test de Licencia
  */
 public class LicenciaTest extends TestCase {
     private static final String FECHA_07_04_2011 = "07/04/2011";
@@ -24,7 +24,7 @@ public class LicenciaTest extends TestCase {
 
     private static final String FECHA_09_04_2011 = "09/04/2011";
 
-    public void testLicenciaMaximosConsecutivos() throws NoHayDiasQueComputarException, PeriodoIndeterminadoException {
+    public void testLicenciaMaximosConsecutivos() throws NoHayResultadoException, PeriodoIndeterminadoException {
         LicenciaTipo licTipo = BaseDeDatosHelper.getEstudio();
         LicenciaContenedor licContenedor = new LicenciaContenedor();
         List<Integer> list = new ArrayList<Integer>();
@@ -53,7 +53,7 @@ public class LicenciaTest extends TestCase {
         assertFalse("", licContenedor.addLicencia(licTipo, fechas));
     }
 
-    public void testLicenciaMaximosAnueles() throws NoHayDiasQueComputarException, PeriodoIndeterminadoException {
+    public void testLicenciaMaximosAnueles() throws NoHayResultadoException, PeriodoIndeterminadoException {
         LicenciaTipo licTipo = BaseDeDatosHelper.getMudanza();
         LicenciaContenedor licContenedor = new LicenciaContenedor();
 
@@ -77,7 +77,7 @@ public class LicenciaTest extends TestCase {
         assertTrue("", licContenedor.addLicencia(licTipo, fechas));
     }
 
-    public void testLicenciaIndefinida() throws NoHayDiasQueComputarException, PeriodoIndeterminadoException {
+    public void testLicenciaIndefinida() throws NoHayResultadoException, PeriodoIndeterminadoException {
         LicenciaTipo licTipo = BaseDeDatosHelper.getEnfermedad();
         LicenciaContenedor licContenedor = new LicenciaContenedor();
 

@@ -34,106 +34,81 @@ public class CategoriaTest extends TestCase {
     }
 
     public void testAgregarCategoria() {
-        String message = "Agrego categoria ";
-
-        assertEquals(message + BASICO, BASICO, Categoria.nombreCategoria(0));
-        assertEquals(message + MEDIO, MEDIO, Categoria.nombreCategoria(1));
-        assertEquals(message + EXPERTO, EXPERTO, Categoria.nombreCategoria(2));
+        assertEquals("", BASICO, Categoria.nombreCategoria(0));
+        assertEquals("", MEDIO, Categoria.nombreCategoria(1));
+        assertEquals("", EXPERTO, Categoria.nombreCategoria(2));
     }
 
     public void testAgregarCategoriaPonderada() {
         Categoria.addCategoria(2, SEMIEXPERTO);
-        String message;
 
-        message = "Agrego categoria intermedia";
-        assertEquals(message, SEMIEXPERTO, Categoria.nombreCategoria(2));
-        message = "La categoria " + EXPERTO + " cambio de Nivel";
-        assertEquals(message, EXPERTO, Categoria.nombreCategoria(3));
+        assertEquals("", SEMIEXPERTO, Categoria.nombreCategoria(2));
+        assertEquals("", EXPERTO, Categoria.nombreCategoria(3));
 
     }
 
     public void testAgregarCategoriaDuplicada() {
-        String message;
-
-        message = "La categoria " + BASICO + " ya existe";
-        assertTrue(message, Categoria.existeCategoria(BASICO));
-
         Categoria.addCategoria(3, BASICO);
-        message = "La categoria " + BASICO + " no se agrego pq ya existe";
-        assertNotSame(message, Categoria.indiceCategoria(BASICO), 3);
+
+        assertTrue("", Categoria.existeCategoria(BASICO));
+        assertNotSame("", Categoria.indiceCategoria(BASICO), 3);
     }
 
     public void testBorrarCategoria() {
-        String message;
-
-        message = "Agrego una categoria cualquiera";
         Categoria.addCategoria(CATEGORIA_BORRADOR);
-        assertTrue(message, Categoria.existeCategoria(CATEGORIA_BORRADOR));
+        assertTrue("", Categoria.existeCategoria(CATEGORIA_BORRADOR));
 
-        message = "Borro esa categoria";
         Categoria.removeCategoria(CATEGORIA_BORRADOR);
-        assertFalse(message, Categoria.existeCategoria(CATEGORIA_BORRADOR));
+        assertFalse("", Categoria.existeCategoria(CATEGORIA_BORRADOR));
     }
 
     public void testCambiarNombreDeCategoria() {
-        String message = "Agrego una categoria cualquiera y le cambio el nombre";
-
         Categoria.addCategoria(CATEGORIA_BORRADOR);
         Categoria.renameCategoria(CATEGORIA_BORRADOR, CATEGORIA_NOMBRE_NUEVO);
 
-        assertFalse(message, Categoria.existeCategoria(CATEGORIA_BORRADOR));
-        assertTrue(message, Categoria.existeCategoria(CATEGORIA_NOMBRE_NUEVO));
+        assertFalse("", Categoria.existeCategoria(CATEGORIA_BORRADOR));
+        assertTrue("", Categoria.existeCategoria(CATEGORIA_NOMBRE_NUEVO));
     }
 
     public void testSubirCategoria() {
         Categoria categoriaDePrueba = new Categoria(BASICO);
-        String message;
 
-        message = "Creo una categoria " + BASICO;
-        assertEquals(message, BASICO, categoriaDePrueba.getCategoriaActual());
+        assertEquals("", BASICO, categoriaDePrueba.getCategoriaActual());
 
-        message = "Subo la categoria a " + MEDIO;
         categoriaDePrueba.subirCategoria();
-        assertEquals(message, MEDIO, categoriaDePrueba.getCategoriaActual());
+        assertEquals("", MEDIO, categoriaDePrueba.getCategoriaActual());
 
-        message = "Subo la categoria a " + EXPERTO;
         categoriaDePrueba.subirCategoria();
-        assertEquals(message, EXPERTO, categoriaDePrueba.getCategoriaActual());
+        assertEquals("", EXPERTO, categoriaDePrueba.getCategoriaActual());
 
     }
 
     public void testSubirCategoriaTope() {
         Categoria categoriaDePrueba = new Categoria(Categoria.maxima());
-        String message = "Las categorias tienen un tope Maximo y no suben mas";
 
         categoriaDePrueba.subirCategoria();
-        assertEquals(message, Categoria.maxima(), categoriaDePrueba.getCategoriaActual());
+        assertEquals("", Categoria.maxima(), categoriaDePrueba.getCategoriaActual());
 
     }
 
     public void testBajarCategoria() {
         Categoria categoriaDePrueba = new Categoria(EXPERTO);
-        String message;
 
-        message = "Creo una categoria " + EXPERTO;
-        assertEquals(message, EXPERTO, categoriaDePrueba.getCategoriaActual());
+        assertEquals("", EXPERTO, categoriaDePrueba.getCategoriaActual());
 
-        message = "Bajo la categoria a " + MEDIO;
         categoriaDePrueba.bajarCategoria();
-        assertEquals(message, MEDIO, categoriaDePrueba.getCategoriaActual());
+        assertEquals("", MEDIO, categoriaDePrueba.getCategoriaActual());
 
-        message = "Bajo la categoria a " + BASICO;
         categoriaDePrueba.bajarCategoria();
-        assertEquals(message, BASICO, categoriaDePrueba.getCategoriaActual());
+        assertEquals("", BASICO, categoriaDePrueba.getCategoriaActual());
 
     }
 
     public void testBajarCategoriaTope() {
         Categoria categoriaDePrueba = new Categoria(Categoria.minima());
-        String message = "Las categorias tienen un tope minimi y no bajan mas";
 
         categoriaDePrueba.bajarCategoria();
-        assertEquals(message, Categoria.minima(), categoriaDePrueba.getCategoriaActual());
+        assertEquals("", Categoria.minima(), categoriaDePrueba.getCategoriaActual());
 
     }
 }
