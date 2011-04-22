@@ -1,7 +1,7 @@
 package ar.edu.unq.partnersdevapp.exceptions;
 
 /**
- * TODO: description
+ * 
  */
 public class NoHayResultadoException extends Exception {
 

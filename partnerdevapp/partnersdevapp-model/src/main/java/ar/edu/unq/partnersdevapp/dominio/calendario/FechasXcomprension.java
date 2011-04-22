@@ -70,9 +70,9 @@ public class FechasXcomprension {
         Calendar calendario = Calendar.getInstance();
         calendario.setTime(this.getFechaInicio());
 
-        if (this.isPeriodoIndeterminado()) {
+        if (this.isPeriodoIndeterminado())
             throw new PeriodoIndeterminadoException();
-        } else {
+        else {
             if (this.isFechaInicioIgualFin()) {
                 list.add(this.getFechaInicio());
             } else {
