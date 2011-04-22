@@ -47,14 +47,17 @@ public class LicenciaContenedor {
     private boolean isDiasAnualesValido(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
             throws PeriodoIndeterminadoException {
         boolean res;
+        List<InfoLicencia> infoLics;
+        int diaAcumulados;
+
         if (aLicenciaTipo.getDiasCantidadAnuales() == -1) {
             res = true;
         } else {
-            List<InfoLicencia> infoLics = this.getInfoLicencias();
-            int diaAcumulados = 0;
+            infoLics = this.getInfoLicencias();
+            diaAcumulados = 0;
             for (InfoLicencia info : infoLics) {
                 if (this.isMismoAnioYLicenciafinal(aLicenciaTipo, fechas, info)) {
-                    diaAcumulados = diaAcumulados + info.getFechas().getDiasTotal();
+                    diaAcumulados += info.getFechas().getDiasTotal();
                 }
             }
             res = diaAcumulados + fechas.getDiasTotal() <= aLicenciaTipo.getDiasCantidadAnuales();

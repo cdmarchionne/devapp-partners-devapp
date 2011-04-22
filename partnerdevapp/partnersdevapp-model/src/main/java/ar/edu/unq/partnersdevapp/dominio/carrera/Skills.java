@@ -63,15 +63,15 @@ public class Skills {
 
     public String getCategoriaNombre(final String nombreTecnologiaBuscada) {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
-        String categoriaBuscada;
-
-        if (tecnologiaBuscada != null) {
-            categoriaBuscada = this.getCategoria(tecnologiaBuscada).getCategoriaActual();
-        } else {
-            categoriaBuscada = null;
-        }
-
-        return categoriaBuscada;
+        // String categoriaBuscada = null;
+        //
+        // if (tecnologiaBuscada != null) {
+        // categoriaBuscada =
+        // this.getCategoria(tecnologiaBuscada).getCategoriaActual();
+        // }
+        //
+        // return categoriaBuscada;
+        return tecnologiaBuscada != null ? this.getCategoria(tecnologiaBuscada).getCategoriaActual() : null;
     }
 
     public String getCategoriaNombre(final Tecnologia tecnologiaBuscada) {
