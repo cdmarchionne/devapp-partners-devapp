@@ -16,13 +16,13 @@ public class Posicion {
     }
 
     public Posicion(final String nivel, final int subnivel) {
-        nivelNombre = nivel; // this.setNivelNombre(nivel);
-        banda = subnivel; // this.setBanda(subnivel);
+        this.setNivelNombre(nivel);
+        this.setBanda(subnivel);
     }
 
     public Posicion(final Posicion posicion) {
-        nivelNombre = posicion.getNivelNombre(); // this.setNivelNombre(posicion.getNivelNombre());
-        banda = posicion.getBanda(); // this.setBanda(posicion.getBanda());
+        this.setNivelNombre(posicion.getNivelNombre());
+        this.setBanda(posicion.getBanda());
     }
 
     @Override
@@ -30,22 +30,15 @@ public class Posicion {
         return "(" + this.getNivelNombre() + "," + this.getBanda() + ")";
     }
 
-    @Override
-    public boolean equals(final Object posicion) {
+    public boolean isIgual(final Posicion aPosicion) {
         boolean condicionNivel = false;
         boolean condicionSubNivel = false;
 
-        if (posicion != null) {
-            condicionNivel = this.getNivelNombre().equals(((Posicion) posicion).getNivelNombre());
-            condicionSubNivel = this.getBanda() == ((Posicion) posicion).getBanda();
+        if (aPosicion != null) {
+            condicionNivel = this.getNivelNombre().equals(aPosicion.getNivelNombre());
+            condicionSubNivel = this.getBanda() == aPosicion.getBanda();
         }
         return condicionNivel && condicionSubNivel;
-    }
-
-    /* TODO : averiguar! */
-    @Override
-    public int hashCode() {
-        throw new UnsupportedOperationException();
     }
 
     // ******************

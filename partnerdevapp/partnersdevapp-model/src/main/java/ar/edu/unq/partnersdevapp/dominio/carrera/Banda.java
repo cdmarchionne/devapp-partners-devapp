@@ -16,36 +16,35 @@ public class Banda {
     private float cantidadDeSubBandas;
 
     public Banda(final int cantidadDeSubBandas) {
-        this.cantidadDeSubBandas = cantidadDeSubBandas; // this.setCantidadDeSubBandas(cantidadDeSubBandas);
+        this.setCantidadDeSubBandas(cantidadDeSubBandas);
     }
 
     public List<Integer> getBandas() {
         List<Integer> list = new ArrayList<Integer>();
         float posicion = 0;
-        float salto = this.getSalto();
 
         while (posicion < 99) {
             list.add((int) posicion);
-            posicion = posicion + salto;
+            posicion = posicion + this.getSalto();
         }
         list.add(ANCHOBANDA);
         return list;
     }
 
-    // TODO: os empleados actuales deben quedar asignadas correctamente despues
-    // de un cambió
-
     /**
      * Ej: Si la banda es [0,50,100] su actual es 50 , entonces devuelve 100.
      * Pero su fuera 100 devuelve -1.
      * */
-
     public int getSubNivelSuperior(final int subNivel) {
-        int res;
-        res = (int) (subNivel == ANCHOBANDA ? -1 : subNivel + this.getSalto());
-        res = res > 98 ? 100 : res;
-        return res;
+        int res = (int) (subNivel == ANCHOBANDA ? -1 : subNivel + this.getSalto());
+        return this.redondearSiEsNecesario(res);
 
+    }
+
+    /** Ej: 3 * 3,33 = 9.99 redondea a 100 */
+    /** Ej: 3 * 3,33 = 9.99 redondea a 100 */
+    private int redondearSiEsNecesario(final int res) {
+        return res > 98 ? 100 : res;
     }
 
     private float getSalto() {

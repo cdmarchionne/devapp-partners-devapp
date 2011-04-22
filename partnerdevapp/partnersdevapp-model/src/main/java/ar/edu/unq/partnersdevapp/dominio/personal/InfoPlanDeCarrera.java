@@ -23,15 +23,14 @@ public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
     }
 
     public InfoPlanDeCarrera(final Date date, final PlanDeCarrera planDeCarrera, final Posicion posicion) {
-        super();
-        fechaInicio = date; // this.setFechaInicio(date);
-        nivelPlanDeCarrera = posicion; // this.setNivelPlanDeCarrera(posicion);
-        this.planDeCarrera = planDeCarrera; // this.setPlanDeCarrera(planDeCarrera);
+        this.setFechaInicio(date);
+        this.setNivelPlanDeCarrera(posicion);
+        this.setPlanDeCarrera(planDeCarrera);
     }
 
     @Override
     public int compareTo(final InfoPlanDeCarrera plan) {
-        return (int) (this.getFechaInicio().getTime() - plan.getFechaInicio().getTime());
+        return this.getFechaInicio().compareTo(plan.getFechaInicio());
     }
 
     // **************************

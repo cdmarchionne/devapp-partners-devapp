@@ -8,6 +8,7 @@ import java.util.List;
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Posicion;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Skills;
+import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 
 /**
  * TODO: description
@@ -36,8 +37,12 @@ public class Empleado extends Persona {
     }
 
     // TODO : TEST.
-    /** Calcula el sueldo teniendo en cuanta la posicion actual */
-    public float getSueldo() {
+    /**
+     * Calcula el sueldo teniendo en cuanta la posicion actual
+     * 
+     * @throws NoHayResultadoException
+     */
+    public float getSueldo() throws NoHayResultadoException {
         return this.getPlanActual().getSueldo(this.getNivelActual());
     }
 

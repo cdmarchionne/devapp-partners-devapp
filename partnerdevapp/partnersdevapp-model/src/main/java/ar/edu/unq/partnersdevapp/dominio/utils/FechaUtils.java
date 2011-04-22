@@ -21,18 +21,16 @@ public class FechaUtils {
     }
 
     /**
-     * Crea una fecha a partir de un string con la dorma dd/MM/yyyy TODO :
-     * manejar la excepcion como corresponde
+     * Crea una fecha a partir de un string con la dorma dd/MM/yyyy
      */
+
     public static Date crearFecha(final String strFecha) {
         SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        Date date = null;
         try {
-            date = formatoDelTexto.parse(strFecha);
+            return formatoDelTexto.parse(strFecha);
         } catch (ParseException e) {
-            date = Calendar.getInstance().getTime();
+            return Calendar.getInstance().getTime();
         }
-        return date;
     }
 
     /**

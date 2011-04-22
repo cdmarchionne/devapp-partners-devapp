@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
-import ar.edu.unq.partnersdevapp.exceptions.NoHayDiasQueComputarException;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
@@ -26,18 +25,18 @@ public class FechasXcomprension {
     private Integer repeticiones;
 
     /** seteo de fin por repeticiones */
-    public void set(final Date inicio, final List<Integer> dias, final Intervalo intervalo, final int repeticiones) {
-        this.setParametrosEnComun(inicio, dias, intervalo);
+    public void set(final Date inicio, final List<Integer> aDias, final Intervalo aIntervalo, final int aRepeticiones) {
+        this.setParametrosEnComun(inicio, aDias, aIntervalo);
 
-        this.setRepeticiones(repeticiones);
+        this.setRepeticiones(aRepeticiones);
     }
 
     /** seteo de fin por fecha */
-    public void set(final Date inicio, final List<Integer> dias, final Intervalo intervalo, final Date fechaFin) {
-        this.setParametrosEnComun(inicio, dias, intervalo);
+    public void set(final Date inicio, final List<Integer> aDias, final Intervalo aIntervalo, final Date aFechaFin) {
+        this.setParametrosEnComun(inicio, aDias, aIntervalo);
 
-        this.setFechaFin(fechaFin);
-        if (fechaFin != null) {
+        this.setFechaFin(aFechaFin);
+        if (aFechaFin != null) {
             this.setRepeticiones(this.calcularRepeticiones());
         }
     }
@@ -48,8 +47,10 @@ public class FechasXcomprension {
      * fecha de fin.<br>
      * Por ejemplo : tienia baja medica indetermina, vuelve a trabajar, entonces
      * queda el periodo bien definido.
+     * 
+     * @param
      */
-    public void definirFechaFin(final Date dateFin) {
+    public final void definirFechaFin(final Date dateFin) {
         this.setDias(FechaUtils.getDiasDeLaSemana());
         this.setIntervalo(Intervalo.getUnaSemana());
         this.setFechaFin(dateFin);
@@ -69,7 +70,9 @@ public class FechasXcomprension {
         Calendar calendario = Calendar.getInstance();
         calendario.setTime(this.getFechaInicio());
 
-        if (!this.isPeriodoIndeterminado()) {
+        if (this.isPeriodoIndeterminado())
+            throw new PeriodoIndeterminadoException();
+        else {
             if (this.isFechaInicioIgualFin()) {
                 list.add(this.getFechaInicio());
             } else {
@@ -86,10 +89,8 @@ public class FechasXcomprension {
                 } else if (!FechaUtils.isMismaSemana(this.getFechaInicio(), this.getFechaFin())) {
                     list.addAll(FechaUtils.diasDeLaSemanaHastaEl(this.getFechaFin(), this.getDias()));
                 }
-
             }
-        } else
-            throw new PeriodoIndeterminadoException();
+        }
 
         return list;
     }
@@ -127,12 +128,12 @@ public class FechasXcomprension {
      * @throws PeriodoIndeterminadoException
      */
 
-    // TODO :!!! hacer interseccion de listas genericas en el paquete ListUtils
     public List<Date> interseccion(final FechasXcomprension fxc) throws PeriodoIndeterminadoException {
         List<Date> resultadoList = new ArrayList<Date>();
-        List<Date> thisList = this.getFechasXextencion();
-        List<Date> paramList = fxc.getFechasXextencion();
-        for (Date date : paramList) {
+        List<Date> thisList = new ArrayList<Date>();
+        thisList.addAll(this.getFechasXextencion());
+
+        for (Date date : fxc.getFechasXextencion()) {
             if (thisList.contains(date)) {
                 resultadoList.add(date);
             }
@@ -155,20 +156,13 @@ public class FechasXcomprension {
     }
 
     /**
-     * Devuelve la cantidad de dias consecutivos a partir del primer día
+     * Devuelve la cantidad de dias consecutivos a partir del primer día No
+     * contempla sabado y domingo.
      * 
      * @throws PeriodoIndeterminadoException
      */
-
-    // TODO: no contemplar sabado y domingo. Exepcion lista vacia
-    public int getDiasConsecutivos() throws NoHayDiasQueComputarException, PeriodoIndeterminadoException {
-        List<Date> list;
-        try {
-            list = this.getFechasXextencion();
-        } catch (NullPointerException e) {
-            throw new NoHayDiasQueComputarException();
-        }
-
+    public int getDiasConsecutivos() throws PeriodoIndeterminadoException {
+        List<Date> list = this.getFechasXextencion();
         int totalDias = 1;
         int iterador = 1;
         if (list.size() > 1) {
@@ -194,10 +188,10 @@ public class FechasXcomprension {
     // *****************************************
     // ********** HELPERS
 
-    private void setParametrosEnComun(final Date inicio, final List<Integer> dias, final Intervalo intervalo) {
+    private void setParametrosEnComun(final Date inicio, final List<Integer> aDias, final Intervalo aIntervalo) {
         this.setFechaInicio(inicio);
-        this.setDias(dias);
-        this.setIntervalo(intervalo);
+        this.setDias(aDias);
+        this.setIntervalo(aIntervalo);
     }
 
     /**
