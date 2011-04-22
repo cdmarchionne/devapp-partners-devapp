@@ -92,8 +92,9 @@ public class PlanDeCarrera {
      */
     public Nivel getNivel(final String nombre) throws NoHayResultadoException {
         for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getNombre().equals(nombre))
+            if (nivel.getNombre().equals(nombre)) {
                 return nivel;
+            }
         }
         throw new NoHayResultadoException();
     }
@@ -105,8 +106,9 @@ public class PlanDeCarrera {
      */
     public Nivel getNivel(final int jerarquia) throws NoHayResultadoException {
         for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getJerarquia() == jerarquia)
+            if (nivel.getJerarquia() == jerarquia) {
                 return nivel;
+            }
         }
         throw new NoHayResultadoException();
     }
