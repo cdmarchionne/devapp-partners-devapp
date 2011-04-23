@@ -73,7 +73,7 @@ public class PlanCarreraTest extends TestCase {
         assertTrue("", plan.getNivelSuperior(oldPosicion).isIgual(newPosicion));
 
         oldPosicion = new Posicion(LIDER, 100);
-        // newPosicion = new Posicion(LIDER, 100);
+        newPosicion = new Posicion(LIDER, 100);
         try {
             plan.getNivelSuperior(oldPosicion);
         } catch (Exception e) {
