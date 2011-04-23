@@ -39,6 +39,20 @@
       <artifactId>joda-time</artifactId>
      <version>1.6.2</version>
      </dependency>
+  
+    <dependency>
+     <groupId>oro</groupId>
+      <artifactId>oro</artifactId>
+     <version>2.0.8</version>
+     <type>jar</type>
+     </dependency>
+  
+    <dependency>
+     <groupId>javax.mail</groupId>
+      <artifactId>mail</artifactId>
+     <version>1.4.1</version>
+     <type>jar</type>
+     </dependency>
   </dependencies>
   
 </project>

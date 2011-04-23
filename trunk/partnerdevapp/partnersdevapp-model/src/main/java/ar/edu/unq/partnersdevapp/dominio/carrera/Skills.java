@@ -71,7 +71,7 @@ public class Skills {
         // }
         //
         // return categoriaBuscada;
-        return tecnologiaBuscada == null ? this.getCategoria(tecnologiaBuscada).getCategoriaActual() : null;
+        return tecnologiaBuscada != null ? this.getCategoria(tecnologiaBuscada).getCategoriaActual() : null;
     }
 
     public String getCategoriaNombre(final Tecnologia tecnologiaBuscada) {

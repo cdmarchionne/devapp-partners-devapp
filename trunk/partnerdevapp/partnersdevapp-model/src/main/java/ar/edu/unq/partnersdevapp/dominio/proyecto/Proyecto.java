@@ -80,8 +80,8 @@ public class Proyecto {
     }
 
     public float getEsfuerzoDias() {
-        return !personalAsignado.isEmpty() ? esfuerzoEstimado / (personalAsignado.size() * HORAS_DIARIAS_TRABAJADAS)
-                : -1;
+        return !personalAsignado.isEmpty() ? (float) esfuerzoEstimado
+                / (personalAsignado.size() * HORAS_DIARIAS_TRABAJADAS) : -1;
     }
 
     public float getEsfuerzoMensual() {

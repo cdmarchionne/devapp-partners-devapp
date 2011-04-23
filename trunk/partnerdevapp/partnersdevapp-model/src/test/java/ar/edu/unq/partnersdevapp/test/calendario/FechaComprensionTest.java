@@ -54,40 +54,28 @@ public class FechaComprensionTest extends TestCase {
 
     private static final String FECHA_28_03_2011 = "28/03/2011";
 
-    private static Date inicio;
-
-    private static Date fin;
-
-    private static List<Integer> list = new ArrayList<Integer>();
-
-    private static List<Date> deberSerList = new ArrayList<Date>();
-
-    private static FechasXcomprension fxc = new FechasXcomprension();
-
-    private static List<Date> fechasXextencion;
-
     public void testSetUnDia() throws PeriodoIndeterminadoException {
-        inicio = FechaUtils.crearFecha(FECHA_05_04_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_05_04_2011);
 
-        list = new ArrayList<Integer>();
-        list.add(Calendar.TUESDAY);
+        List lista = new ArrayList<Integer>();
+        lista.add(Calendar.TUESDAY);
 
-        deberSerList = new ArrayList<Date>();
-        deberSerList.add(FechaUtils.crearFecha(FECHA_05_04_2011));
-        deberSerList.add(FechaUtils.crearFecha(FECHA_12_04_2011));
-        deberSerList.add(FechaUtils.crearFecha(FECHA_19_04_2011));
+        List<Date> deberSerList1 = new ArrayList<Date>();
+        deberSerList1.add(FechaUtils.crearFecha(FECHA_05_04_2011));
+        deberSerList1.add(FechaUtils.crearFecha(FECHA_12_04_2011));
+        deberSerList1.add(FechaUtils.crearFecha(FECHA_19_04_2011));
 
-        fxc = new FechasXcomprension();
-        fxc.set(inicio, list, Intervalo.getUnaSemana(), 3);
+        FechasXcomprension fxc = new FechasXcomprension();
+        fxc.set(inicio, lista, Intervalo.getUnaSemana(), 3);
 
-        assertTrue("", fxc.getFechasXextencion().containsAll(deberSerList));
+        assertTrue("", fxc.getFechasXextencion().containsAll(deberSerList1));
 
     }
 
     public void testSetDiasManual() throws PeriodoIndeterminadoException {
-        inicio = FechaUtils.crearFecha(FECHA_28_03_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_28_03_2011);
 
-        deberSerList = new ArrayList<Date>();
+        List<Date> deberSerList = new ArrayList<Date>();
         deberSerList.add(FechaUtils.crearFecha(FECHA_28_03_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_01_04_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_04_04_2011));
@@ -95,15 +83,15 @@ public class FechaComprensionTest extends TestCase {
         deberSerList.add(FechaUtils.crearFecha(FECHA_11_04_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_15_04_2011));
 
-        list = new ArrayList<Integer>();
-        list.add(Calendar.MONDAY);
-        list.add(Calendar.FRIDAY);
+        List<Integer> lista = new ArrayList<Integer>();
+        lista.add(Calendar.MONDAY);
+        lista.add(Calendar.FRIDAY);
 
         // Lunes y viernes - cada una semana - durante 3 semanas
-        fxc = new FechasXcomprension();
-        fxc.set(inicio, list, Intervalo.getUnaSemana(), 3);
+        FechasXcomprension fxc = new FechasXcomprension();
+        fxc.set(inicio, lista, Intervalo.getUnaSemana(), 3);
 
-        fechasXextencion = fxc.getFechasXextencion();
+        List<Date> fechasXextencion = fxc.getFechasXextencion();
 
         assertTrue("", fechasXextencion.containsAll(deberSerList));
 
@@ -113,12 +101,12 @@ public class FechaComprensionTest extends TestCase {
     }
 
     public void testSetDiasDeLaSemana() throws PeriodoIndeterminadoException {
-        inicio = FechaUtils.crearFecha(FECHA_04_04_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_04_04_2011);
 
-        fxc = new FechasXcomprension();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasDeLaSemana(), Intervalo.getUnaSemana(), 2);
 
-        fechasXextencion = fxc.getFechasXextencion();
+        List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
 
         assertEquals("", fechasXextencion, this.getDosSemana());
@@ -126,12 +114,12 @@ public class FechaComprensionTest extends TestCase {
     }
 
     public void testSetDiasDeLaSemanaHabiles() throws PeriodoIndeterminadoException {
-        inicio = FechaUtils.crearFecha(FECHA_04_04_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_04_04_2011);
 
-        fxc = new FechasXcomprension();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        fechasXextencion = fxc.getFechasXextencion();
+        List<Date> fechasXextencion = fxc.getFechasXextencion();
         fechasXextencion = fxc.getFechasXextencion();
 
         assertEquals("", fechasXextencion, this.getDosSemanaHabiles());
@@ -140,23 +128,21 @@ public class FechaComprensionTest extends TestCase {
 
     /* Con fecha de inicio desfasada */
     public void testSetDiasDeLaSemanaHabilesDes() throws PeriodoIndeterminadoException {
-        inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
 
-        fxc = new FechasXcomprension();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        fechasXextencion = fxc.getFechasXextencion();
-        fechasXextencion = fxc.getFechasXextencion();
-
+        List<Date> fechasXextencion = fxc.getFechasXextencion();
         assertEquals("", fechasXextencion, this.getDosSemanaHabilesDes());
 
     }
 
     public void testCalcularRepeticiones() {
-        inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
-        fin = FechaUtils.crearFecha(FECHA_20_04_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
+        Date fin = FechaUtils.crearFecha(FECHA_20_04_2011);
 
-        fxc = new FechasXcomprension();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
         assertSame("", fxc.getRepeticiones(), 3);
@@ -164,10 +150,10 @@ public class FechaComprensionTest extends TestCase {
     }
 
     public void testCalcularRepeticionesConIntervalo() {
-        inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
-        fin = FechaUtils.crearFecha(FECHA_20_04_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
+        Date fin = FechaUtils.crearFecha(FECHA_20_04_2011);
 
-        fxc = new FechasXcomprension();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), new Intervalo(Calendar.WEEK_OF_YEAR, 2), fin);
 
         assertSame("", fxc.getRepeticiones(), 2);
@@ -175,9 +161,9 @@ public class FechaComprensionTest extends TestCase {
     }
 
     public void testPeriodoIndefinido() throws PeriodoIndeterminadoException {
-        inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
 
-        fxc = new FechasXcomprension();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), null, null);
 
         assertSame("", fxc.getRepeticiones(), null);
@@ -196,29 +182,29 @@ public class FechaComprensionTest extends TestCase {
 
     // Fecha inicio igual fecha fin
     public void testSetDiasDeLaSemanaHabilesDesConFechaFinIgual() throws PeriodoIndeterminadoException {
-        inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
-        fin = FechaUtils.crearFecha(FECHA_06_04_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
+        Date fin = FechaUtils.crearFecha(FECHA_06_04_2011);
 
-        fxc = new FechasXcomprension();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
-        deberSerList = new ArrayList<Date>();
+        List<Date> deberSerList = new ArrayList<Date>();
         deberSerList.add(FechaUtils.crearFecha(FECHA_06_04_2011));
 
-        fechasXextencion = fxc.getFechasXextencion();
+        List<Date> fechasXextencion = fxc.getFechasXextencion();
 
         assertEquals("", fechasXextencion, deberSerList);
 
     }
 
     public void testSetDiasDeLaSemanaHabilesDesConFechaFin() throws PeriodoIndeterminadoException {
-        inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
-        fin = FechaUtils.crearFecha(FECHA_20_04_2011);
+        Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
+        Date fin = FechaUtils.crearFecha(FECHA_20_04_2011);
 
-        fxc = new FechasXcomprension();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
-        fechasXextencion = fxc.getFechasXextencion();
+        List<Date> fechasXextencion = fxc.getFechasXextencion();
 
         assertEquals("", fechasXextencion, this.getTresSemanaHabilesDes());
 
@@ -262,7 +248,7 @@ public class FechaComprensionTest extends TestCase {
     // ********* Helpers
 
     private List<Date> getDosSemana() {
-        deberSerList = new ArrayList<Date>();
+        List<Date> deberSerList = new ArrayList<Date>();
         deberSerList.add(FechaUtils.crearFecha(FECHA_04_04_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_05_04_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_06_04_2011));
@@ -284,7 +270,7 @@ public class FechaComprensionTest extends TestCase {
     }
 
     private List<Date> getDosSemanaHabiles() {
-        deberSerList = new ArrayList<Date>();
+        List<Date> deberSerList = new ArrayList<Date>();
         deberSerList.add(FechaUtils.crearFecha(FECHA_04_04_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_05_04_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_06_04_2011));
@@ -301,7 +287,7 @@ public class FechaComprensionTest extends TestCase {
     }
 
     private List<Date> getDosSemanaHabilesDes() {
-        deberSerList = new ArrayList<Date>();
+        List<Date> deberSerList = new ArrayList<Date>();
 
         deberSerList.add(FechaUtils.crearFecha(FECHA_06_04_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_07_04_2011));
@@ -318,7 +304,7 @@ public class FechaComprensionTest extends TestCase {
 
     /** Tres semanas habiles defasadas del 06/04 al 20/04 */
     private List<Date> getTresSemanaHabilesDes() {
-        deberSerList = new ArrayList<Date>();
+        List<Date> deberSerList = new ArrayList<Date>();
 
         deberSerList.add(FechaUtils.crearFecha(FECHA_06_04_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_07_04_2011));
