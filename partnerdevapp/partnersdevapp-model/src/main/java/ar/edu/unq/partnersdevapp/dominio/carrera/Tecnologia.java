@@ -10,7 +10,7 @@ public class Tecnologia {
 
     private static Set<String> listaTecnologia = new HashSet<String>();
 
-    private String tecnologiaActual;
+    private transient String tecnologiaActual;
 
     public Tecnologia(final String tecnologiaActual) {
         super();

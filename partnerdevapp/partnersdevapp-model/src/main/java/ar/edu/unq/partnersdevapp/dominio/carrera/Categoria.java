@@ -12,7 +12,7 @@ public class Categoria {
 
     private static List<String> listaCategoria = new ArrayList<String>();
 
-    private String categoriaActual;
+    private transient String categoriaActual;
 
     public Categoria(final String categoriaActual) {
         super();
