@@ -116,27 +116,27 @@ public class Direccion {
         return calle + " " + altura;
     }
 
-    public String toFullString() {
-        StringBuffer direccion = new StringBuffer(this.toString());
-        if (!piso.isEmpty()) {
-            direccion.append(", Piso: " + piso);
-        }
-        if (!depto.isEmpty()) {
-            direccion.append(" Dto: " + depto);
-        }
-        if (!codigoPostal.isEmpty()) {
-            direccion.append("(CP: " + codigoPostal + ")");
-        }
-        if (!localidad.isEmpty()) {
-            direccion.append(". " + localidad);
-        }
-        if (!provincia.isEmpty()) {
-            direccion.append(". " + provincia);
-        }
-        if (!pais.isEmpty()) {
-            direccion.append(". " + pais);
-        }
-
-        return new String(direccion);
-    }
+    // public String toFullString() {
+    // StringBuffer direccion = new StringBuffer(this.toString());
+    // if (!piso.isEmpty()) {
+    // direccion.append(", Piso: " + piso);
+    // }
+    // if (!depto.isEmpty()) {
+    // direccion.append(" Dto: " + depto);
+    // }
+    // if (!codigoPostal.isEmpty()) {
+    // direccion.append("(CP: " + codigoPostal + ")");
+    // }
+    // if (!localidad.isEmpty()) {
+    // direccion.append(". " + localidad);
+    // }
+    // if (!provincia.isEmpty()) {
+    // direccion.append(". " + provincia);
+    // }
+    // if (!pais.isEmpty()) {
+    // direccion.append(". " + pais);
+    // }
+    //
+    // return direccion.toString();
+    // }
 }
