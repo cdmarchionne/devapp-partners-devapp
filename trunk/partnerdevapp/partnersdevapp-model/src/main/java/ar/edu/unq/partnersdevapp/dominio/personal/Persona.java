@@ -1,5 +1,7 @@
 package ar.edu.unq.partnersdevapp.dominio.personal;
 
+import ar.edu.unq.partnersdevapp.dominio.utils.Direccion;
+
 /**
  * PONER DESCRIPCION
  */
@@ -11,9 +13,7 @@ public class Persona {
 
     private String dni;
 
-    private String direccion;
-
-    private String localidad;
+    private Direccion domicilio;
 
     private String telefono;
 
@@ -26,13 +26,13 @@ public class Persona {
     }
 
     public Persona(final String nombre, final String apellido, final String dni, final String direccion,
-            final String localidad, final String telefono, final String email, final String universidad) {
+            final Integer altura, final String localidad, final String telefono, final String email,
+            final String universidad) {
         super();
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        this.direccion = direccion;
-        this.localidad = localidad;
+        domicilio = new Direccion(direccion, altura, localidad);
         this.telefono = telefono;
         this.email = email;
         this.universidad = universidad;
@@ -58,24 +58,12 @@ public class Persona {
         return dni;
     }
 
-    public void setDni(final String dni) {
-        this.dni = dni;
+    public Direccion getDireccion() {
+        return domicilio;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(final String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(final String localidad) {
-        this.localidad = localidad;
+    public void setDireccion(final String calle, final Integer altura) {
+        domicilio = new Direccion(calle, altura);
     }
 
     public String getTelefono() {
