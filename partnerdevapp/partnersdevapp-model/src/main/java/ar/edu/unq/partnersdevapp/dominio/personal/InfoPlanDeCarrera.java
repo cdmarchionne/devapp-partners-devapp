@@ -33,6 +33,11 @@ public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
         return this.getFechaInicio().compareTo(plan.getFechaInicio());
     }
 
+    @Override
+    public String toString() {
+        return "{" + fechaInicio + "," + planDeCarrera.getEspecialidad() + "," + nivelPlanDeCarrera + "} \n";
+    }
+
     // **************************
     // ******* Gets & Sets
     public Date getFechaInicio() {

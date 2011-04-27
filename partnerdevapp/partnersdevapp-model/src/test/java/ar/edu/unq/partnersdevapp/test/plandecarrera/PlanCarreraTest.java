@@ -54,28 +54,28 @@ public class PlanCarreraTest extends TestCase {
 
         Posicion oldPosicion = new Posicion(JUNIOR, 50);
         Posicion newPosicion = new Posicion(JUNIOR, 100);
-        assertTrue("", plan.getNivelSuperior(oldPosicion).isIgual(newPosicion));
+        assertTrue("", plan.getPosicionSuperior(oldPosicion).isIgual(newPosicion));
 
         oldPosicion = new Posicion(SENIOR, 33);
         newPosicion = new Posicion(SENIOR, 66);
-        assertTrue("", plan.getNivelSuperior(oldPosicion).isIgual(newPosicion));
+        assertTrue("", plan.getPosicionSuperior(oldPosicion).isIgual(newPosicion));
 
         oldPosicion = new Posicion(JUNIOR, 33);
         newPosicion = new Posicion(SENIOR, 66);
-        assertFalse("", plan.getNivelSuperior(oldPosicion).isIgual(newPosicion));
+        assertFalse("", plan.getPosicionSuperior(oldPosicion).isIgual(newPosicion));
 
         oldPosicion = new Posicion(JUNIOR, 100);
         newPosicion = new Posicion(SEMISENIOR, 0);
-        assertTrue("", plan.getNivelSuperior(oldPosicion).isIgual(newPosicion));
+        assertTrue("", plan.getPosicionSuperior(oldPosicion).isIgual(newPosicion));
 
         oldPosicion = new Posicion(SENIOR, 100);
         newPosicion = new Posicion(LIDER, 0);
-        assertTrue("", plan.getNivelSuperior(oldPosicion).isIgual(newPosicion));
+        assertTrue("", plan.getPosicionSuperior(oldPosicion).isIgual(newPosicion));
 
         oldPosicion = new Posicion(LIDER, 100);
         newPosicion = new Posicion(LIDER, 100);
         try {
-            plan.getNivelSuperior(oldPosicion);
+            plan.getPosicionSuperior(oldPosicion);
         } catch (Exception e) {
             assertTrue("", e.getClass().equals(NoHayResultadoException.class));
         }

@@ -62,10 +62,10 @@ public class PlanDeCarrera {
     }
 
     /**
-     * Devuelve una posicion de nivel superior
+     * Devuelve una posicion superior
      * 
      */
-    public Posicion getNivelSuperior(final Posicion posicion) throws NoHayResultadoException {
+    public Posicion getPosicionSuperior(final Posicion posicion) throws NoHayResultadoException {
         Posicion nuevaPosicion = new Posicion(posicion);
 
         Nivel nivel = this.getNivel(posicion.getNivelNombre());
@@ -118,7 +118,7 @@ public class PlanDeCarrera {
         int max = nivelActual.getSueldoMaximo();
         int min = nivelActual.getSueldoMinimo();
         float banda = posicionActual.getBanda();
-        return min + banda * (max - min);
+        return min + banda / 100 * (max - min);
     }
 
     @Override

@@ -19,19 +19,19 @@ public class BaseDeDatosHelper {
     // *****************************************
     // ******* niveles predeterminados Standars
     public static Nivel getNivelJunior() {
-        return new Nivel("junior", new Banda(2), 0, 0);
+        return new Nivel("junior", new Banda(2), 2000, 1000);
     }
 
     public static Nivel getNivelSemiSenior() {
-        return new Nivel("semiSenior", new Banda(2), 0, 0);
+        return new Nivel("semiSenior", new Banda(2), 4000, 2000);
     }
 
     public static Nivel getNivelSenior() {
-        return new Nivel("senior", new Banda(3), 0, 0);
+        return new Nivel("senior", new Banda(3), 5500, 4000);
     }
 
     public static Nivel getNiveLlider() {
-        return new Nivel("lider", new Banda(4), 0, 0);
+        return new Nivel("lider", new Banda(4), 8000, 5500);
     }
 
     // ******************************************
