@@ -1,6 +1,7 @@
 package ar.edu.unq.partnersdevapp.dominio.personal;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -31,43 +32,59 @@ public class Empleado extends Persona {
 
     private Skills conocimiento;
 
+    public Empleado() {
+        super();
+    }
+
+    /** Agrega un informacion nueva de su plan de carrera. */
     public void addPlanDeCarrera(final Date fechaInicio, final PlanDeCarrera planDeCarrera,
             final Posicion posicionInicial) {
         this.getInfoPlanDeCarrera().add(new InfoPlanDeCarrera(fechaInicio, planDeCarrera, posicionInicial));
     }
 
-    // haver TEST.
     /**
-     * Calcula el sueldo teniendo en cuanta la posicion actual
+     * Calcula el sueldo teniendo en cuenta la posicion actual
      * 
      * @throws NoHayResultadoException
      */
     public float getSueldo() throws NoHayResultadoException {
-        return this.getPlanActual().getSueldo(this.getNivelActual());
+        return this.getPlanActual().getSueldo(this.getPosicionActual());
     }
 
-    // : Cambiar de plan de carrera. Agregar una info con el plan y la
-    // posicion.
+    /**
+     * Sube solo una posicon en el plan de carrera.
+     * 
+     * @throws NoHayResultadoException
+     */
+    public void subirPosicion() throws NoHayResultadoException {
+        this.subirPosicion(Calendar.getInstance().getTime());
+    }
 
-    // : saber históricos . Pedirle a la info. + test
+    public void subirPosicion(final Date date) throws NoHayResultadoException {
+        Posicion posicionNueva = this.getPlanActual().getPosicionSuperior(this.getPosicionActual());
+        this.addPlanDeCarrera(date, this.getPlanActual(), posicionNueva);
+    }
 
-    // : subir de nivel. Perdir el plan y nivel actual. Al plan pedirle el
-    // nuevo nivel pasandole la posicion. Guardar la nueva posicion creando una
-    // nueva info historico.
-
-    // : HACER TEST verificar errores, lista vacia,
-    public Posicion getNivelActual() {
+    /** Devuelve la ultima posicion en el plan de carrera actual */
+    public Posicion getPosicionActual() throws NoHayResultadoException {
         return this.getUltimaInfo().getNivelPlanDeCarrera();
     }
 
-    // : verificar errores, lista vacia,
-    public PlanDeCarrera getPlanActual() {
+    /**
+     * Devuelve el último plan de carrera
+     * 
+     * @throws NoHayResultadoException
+     */
+    public PlanDeCarrera getPlanActual() throws NoHayResultadoException {
         return this.getUltimaInfo().getPlanDeCarrera();
     }
 
-    private InfoPlanDeCarrera getUltimaInfo() {
+    /** Devuelve la informacion correspondiente al ultimo plan de carrera */
+    private InfoPlanDeCarrera getUltimaInfo() throws NoHayResultadoException {
         Collections.sort(this.getInfoPlanDeCarrera());
         int ultimoElemento = this.getInfoPlanDeCarrera().size() - 1;
+        if (ultimoElemento < 0)
+            throw new NoHayResultadoException();
         return this.getInfoPlanDeCarrera().get(ultimoElemento);
     }
 

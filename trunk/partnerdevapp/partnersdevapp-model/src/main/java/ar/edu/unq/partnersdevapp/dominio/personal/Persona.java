@@ -22,7 +22,7 @@ public class Persona {
     private String universidad;
 
     public Persona() {
-        throw new UnsupportedOperationException();
+
     }
 
     public Persona(final String nombre, final String apellido, final String dni, final String direccion,
