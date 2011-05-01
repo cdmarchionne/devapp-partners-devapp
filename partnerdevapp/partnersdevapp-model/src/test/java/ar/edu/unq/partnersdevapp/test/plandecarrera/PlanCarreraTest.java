@@ -78,6 +78,8 @@ public class PlanCarreraTest extends TestCase {
             plan.getPosicionSuperior(oldPosicion);
         } catch (Exception e) {
             assertTrue("", e.getClass().equals(NoHayResultadoException.class));
+        } finally {
+            assertTrue("", oldPosicion.isIgual(newPosicion));
         }
 
     }

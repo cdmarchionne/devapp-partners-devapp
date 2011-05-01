@@ -7,22 +7,27 @@ import ar.edu.unq.partnersdevapp.dominio.utils.Direccion;
  */
 public class Persona {
 
-    private String nombre;
+    protected String nombre;
 
-    private String apellido;
+    protected String apellido;
 
-    private String dni;
+    @SuppressWarnings("PMD")
+    protected String dni;
 
-    private Direccion domicilio;
+    @SuppressWarnings("PMD")
+    protected Direccion domicilio;
 
-    private String telefono;
+    protected String telefono;
 
-    private String email;
+    protected String email;
 
-    private String universidad;
+    protected String universidad;
 
-    public Persona() {
-
+    public Persona(final String nombre, final String apellido, final String dni) {
+        super();
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
     }
 
     public Persona(final String nombre, final String apellido, final String dni, final String direccion,
