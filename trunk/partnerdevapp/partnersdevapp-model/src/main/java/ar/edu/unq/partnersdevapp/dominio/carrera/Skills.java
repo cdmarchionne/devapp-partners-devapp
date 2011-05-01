@@ -9,7 +9,7 @@ import java.util.Map;
  */
 public class Skills {
 
-    private Map<Tecnologia, Categoria> skill;
+    private final Map<Tecnologia, Categoria> skill;
 
     public Skills() {
         super();
@@ -71,7 +71,7 @@ public class Skills {
         // }
         //
         // return categoriaBuscada;
-        return tecnologiaBuscada != null ? this.getCategoria(tecnologiaBuscada).getCategoriaActual() : null;
+        return tecnologiaBuscada == null ? null : this.getCategoria(tecnologiaBuscada).getCategoriaActual();
     }
 
     public String getCategoriaNombre(final Tecnologia tecnologiaBuscada) {

@@ -11,14 +11,16 @@ import ar.edu.unq.partnersdevapp.dominio.personal.Cliente;
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
 
 /**
- * TODO: description
+ * TODO: Asignacion Automatica de Personas
  */
+@SuppressWarnings("unused")
 public class Proyecto {
 
     private static final Integer HORAS_DIARIAS_TRABAJADAS = 8;
 
     private static final Integer HORAS_MENSUALES_TRABAJADAS = 21 * HORAS_DIARIAS_TRABAJADAS;
 
+    @SuppressWarnings("PMD")
     private String nombre;
 
     private Cliente cliente;
@@ -27,6 +29,7 @@ public class Proyecto {
 
     private Integer esfuerzoEstimado;
 
+    @SuppressWarnings("PMD")
     private Set<Empleado> personalAsignado;
 
     private Map<Empleado, Integer> horasHombre;
@@ -63,7 +66,7 @@ public class Proyecto {
     }
 
     public boolean faltaEsfuerzo() {
-        return this.horasAsignadas() < esfuerzoEstimado;
+        return horasAsignadas() < esfuerzoEstimado;
     }
 
     private Integer horasAsignadas() {
@@ -79,15 +82,25 @@ public class Proyecto {
         return esfuerzoEstimado;
     }
 
-    public float getEsfuerzoDias() {
-        return !personalAsignado.isEmpty() ? (float) esfuerzoEstimado
-                / (personalAsignado.size() * HORAS_DIARIAS_TRABAJADAS) : -1;
-    }
+    // public float getEsfuerzoDias() {
+    // if (personalAsignado.isEmpty()) {
+    // throw new
+    // RuntimeException("Todavia no hay personal Asignado al Proyecto");
+    // }
+    //
+    // return (float) esfuerzoEstimado / (personalAsignado.size() *
+    // HORAS_DIARIAS_TRABAJADAS);
+    // }
 
-    public float getEsfuerzoMensual() {
-        return !personalAsignado.isEmpty() ? esfuerzoEstimado / (personalAsignado.size() * HORAS_MENSUALES_TRABAJADAS)
-                : -1;
-    }
+    // public float getEsfuerzoMensual() {
+    // if (personalAsignado.isEmpty()) {
+    // throw new
+    // RuntimeException("Todavia no hay personal Asignado al Proyecto");
+    // }
+    //
+    // return (float) esfuerzoEstimado / (personalAsignado.size() *
+    // HORAS_MENSUALES_TRABAJADAS);
+    // }
 
     public void setEsfuerzoEstimado(final Integer esfuerzoEstimado) {
         this.esfuerzoEstimado = esfuerzoEstimado;
@@ -106,7 +119,7 @@ public class Proyecto {
      * cierta cantidad de horas
      */
     public boolean addEmpleadoManual(final Empleado empleado, final Integer cantidadHoras) {
-        boolean agregar = this.faltaEsfuerzo() && this.esUnEmpleadoApto(empleado);
+        boolean agregar = faltaEsfuerzo() && esUnEmpleadoApto(empleado);
 
         if (agregar) {
             personalAsignado.add(empleado);
@@ -116,7 +129,7 @@ public class Proyecto {
     }
 
     private boolean condicionesEmpleadoAutomatico(final Empleado empleado) {
-        return this.esUnEmpleadoApto(empleado);
+        return esUnEmpleadoApto(empleado);
     }
 
     public Set<Empleado> getEmpleadosAutomatico(final Set<Empleado> empleados) {
@@ -126,7 +139,7 @@ public class Proyecto {
         Iterator<Empleado> iterador = empleados.iterator();
         while (iterador.hasNext()) {
             empleadoParticular = iterador.next();
-            if (this.condicionesEmpleadoAutomatico(empleadoParticular)) {
+            if (condicionesEmpleadoAutomatico(empleadoParticular)) {
                 empleadosCandidatos.add(empleadoParticular);
             }
         }

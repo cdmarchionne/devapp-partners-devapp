@@ -4,8 +4,8 @@ public class Cliente extends Persona {
 
     private String razonSocial;
 
-    public Cliente(final String razonSocial) {
-        super();
+    public Cliente(final String nombre, final String apellido, final String dni, final String razonSocial) {
+        super(nombre, apellido, dni);
         this.razonSocial = razonSocial;
     }
 
