@@ -38,8 +38,8 @@ public class Empleado extends Persona {
 
     public Empleado(final String nombre, final String apellido, final String dni, final Date fechaIngreso,
             final List<InfoPlanDeCarrera> infoPlanDeCarrera, final Skills conocimiento) {
-        super(nombre, apellido, dni);
-        this.fechaIngreso = fechaIngreso;
+        this(nombre, apellido, dni);
+        this.fechaIngreso = (Date) fechaIngreso.clone();
         this.infoPlanDeCarrera = infoPlanDeCarrera;
         this.conocimiento = conocimiento;
     }
@@ -140,11 +140,11 @@ public class Empleado extends Persona {
     }
 
     public Date getFechaIngreso() {
-        return fechaIngreso;
+        return (Date) fechaIngreso.clone();
     }
 
     public void setFechaIngreso(final Date fechaIngreso) {
-        this.fechaIngreso = fechaIngreso;
+        this.fechaIngreso = (Date) fechaIngreso.clone();
     }
 
     public Skills getConocimiento() {
