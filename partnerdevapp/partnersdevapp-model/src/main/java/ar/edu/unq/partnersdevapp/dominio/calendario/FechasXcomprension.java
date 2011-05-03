@@ -216,11 +216,11 @@ public class FechasXcomprension {
     // ****************
     // **** Gets & sets
     public Date getFechaInicio() {
-        return fechaInicio;
+        return (Date) fechaInicio.clone();
     }
 
     public void setFechaInicio(final Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+        this.fechaInicio = (Date) fechaInicio.clone();
     }
 
     public List<Integer> getDias() {
@@ -240,11 +240,11 @@ public class FechasXcomprension {
     }
 
     public Date getFechaFin() {
-        return fechaFin;
+        return (Date) fechaFin.clone();
     }
 
     public void setFechaFin(final Date fechaFin) {
-        this.fechaFin = fechaFin;
+        this.fechaFin = (Date) fechaFin.clone();
     }
 
     public Integer getRepeticiones() {
