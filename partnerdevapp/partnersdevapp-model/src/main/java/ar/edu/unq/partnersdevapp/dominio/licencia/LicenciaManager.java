@@ -9,9 +9,11 @@ import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
- * Contiene los métodos para validar las licencias.
+ * Maneja las licencias de un empleado.
+ * 
+ * @author leo
  */
-public class LicenciaContenedor {
+public class LicenciaManager {
 
     private List<InfoLicencia> infoLicencias = new ArrayList<InfoLicencia>();
 

@@ -8,7 +8,7 @@ import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.basededatos.BaseDeDatosHelper;
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
-import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaContenedor;
+import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaManager;
 import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaTipo;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
@@ -26,7 +26,7 @@ public class LicenciaTest extends TestCase {
 
     public void testLicenciaMaximosConsecutivos() throws NoHayResultadoException, PeriodoIndeterminadoException {
         LicenciaTipo licTipo = BaseDeDatosHelper.getEstudio();
-        LicenciaContenedor licContenedor = new LicenciaContenedor();
+        LicenciaManager licContenedor = new LicenciaManager();
         List<Integer> list = new ArrayList<Integer>();
         FechasXcomprension fechas = new FechasXcomprension();
 
@@ -55,7 +55,7 @@ public class LicenciaTest extends TestCase {
 
     public void testLicenciaMaximosAnueles() throws NoHayResultadoException, PeriodoIndeterminadoException {
         LicenciaTipo licTipo = BaseDeDatosHelper.getMudanza();
-        LicenciaContenedor licContenedor = new LicenciaContenedor();
+        LicenciaManager licContenedor = new LicenciaManager();
 
         List<Integer> list = this.getListJuevesViernes();
 
@@ -79,7 +79,7 @@ public class LicenciaTest extends TestCase {
 
     public void testLicenciaIndefinida() throws NoHayResultadoException, PeriodoIndeterminadoException {
         LicenciaTipo licTipo = BaseDeDatosHelper.getEnfermedad();
-        LicenciaContenedor licContenedor = new LicenciaContenedor();
+        LicenciaManager licContenedor = new LicenciaManager();
 
         FechasXcomprension fechas = new FechasXcomprension();
         fechas.set(FechaUtils.crearFecha(FECHA_07_04_2011), null, null, null);
