@@ -16,7 +16,7 @@ public class Banda {
     private float cantidadDeSubBandas;
 
     public Banda(final int cantidadDeSubBandas) {
-        this.setCantidadDeSubBandas(cantidadDeSubBandas);
+        setCantidadDeSubBandas(cantidadDeSubBandas);
     }
 
     public List<Integer> getBandas() {
@@ -25,7 +25,7 @@ public class Banda {
 
         while (posicion < 99) {
             list.add((int) posicion);
-            posicion = posicion + this.getSalto();
+            posicion = posicion + getSalto();
         }
         list.add(ANCHOBANDA);
         return list;
@@ -36,8 +36,8 @@ public class Banda {
      * Pero su fuera 100 devuelve -1.
      * */
     public int getSubNivelSuperior(final int subNivel) {
-        int res = (int) (subNivel == ANCHOBANDA ? -1 : subNivel + this.getSalto());
-        return this.redondearSiEsNecesario(res);
+        int res = (int) (subNivel == ANCHOBANDA ? -1 : subNivel + getSalto());
+        return redondearSiEsNecesario(res);
 
     }
 
@@ -49,10 +49,10 @@ public class Banda {
 
     private float getSalto() {
         float salto;
-        if (this.getCantidadDeSubBandas() == 0) {
+        if (getCantidadDeSubBandas() == 0) {
             salto = ANCHOBANDA;
         } else {
-            salto = ANCHOBANDA / this.getCantidadDeSubBandas();
+            salto = ANCHOBANDA / getCantidadDeSubBandas();
         }
         return salto;
     }

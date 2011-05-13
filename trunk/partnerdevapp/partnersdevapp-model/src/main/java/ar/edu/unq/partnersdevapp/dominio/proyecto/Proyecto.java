@@ -25,7 +25,7 @@ public class Proyecto {
 
     private Cliente cliente;
 
-    private Skills conocimientosNecesarios;
+    private Skills requerimientos;
 
     private Integer esfuerzoEstimado;
 
@@ -34,12 +34,12 @@ public class Proyecto {
 
     private Map<Empleado, Integer> horasHombre;
 
-    public Proyecto(final String nombre, final Cliente cliente, final Skills conocimientosNecesarios,
+    public Proyecto(final String nombre, final Cliente cliente, final Skills skillMinimos,
             final Integer esfuerzoEstimado) {
         super();
         this.nombre = nombre;
         this.cliente = cliente;
-        this.conocimientosNecesarios = conocimientosNecesarios;
+        this.requerimientos = skillMinimos;
         this.esfuerzoEstimado = esfuerzoEstimado;
         personalAsignado = new HashSet<Empleado>();
         horasHombre = new HashMap<Empleado, Integer>();
@@ -57,12 +57,12 @@ public class Proyecto {
         this.cliente = cliente;
     }
 
-    public Skills getConocimientosNecesarios() {
-        return conocimientosNecesarios;
+    public Skills getRequerimientos() {
+        return requerimientos;
     }
 
-    public void setConocimientosNecesarios(final Skills conocimientosNecesarios) {
-        this.conocimientosNecesarios = conocimientosNecesarios;
+    public void setRequerimientos(final Skills skillMinimos) {
+        this.requerimientos = skillMinimos;
     }
 
     public boolean faltaEsfuerzo() {
@@ -111,7 +111,7 @@ public class Proyecto {
     }
 
     private boolean esUnEmpleadoApto(final Empleado empleado) {
-        return empleado.getConocimiento().satisfaceRequisito(conocimientosNecesarios);
+        return empleado.getConocimiento().satisfaceRequisito(requerimientos);
     }
 
     /**

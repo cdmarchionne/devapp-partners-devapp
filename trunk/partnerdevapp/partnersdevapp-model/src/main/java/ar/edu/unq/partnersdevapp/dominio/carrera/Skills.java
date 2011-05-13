@@ -18,7 +18,7 @@ public class Skills {
 
     public void addSkill(final String tecnologia, final String categoria) {
         if (this.buscarTecnologia(tecnologia) == null) {
-            this.setSkill(new Tecnologia(tecnologia), new Categoria(categoria));
+            setSkill(new Tecnologia(tecnologia), new Categoria(categoria));
         }
     }
 
@@ -49,7 +49,7 @@ public class Skills {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
         if (tecnologiaBuscada != null) {
-            this.getCategoria(tecnologiaBuscada).bajarCategoria();
+            getCategoria(tecnologiaBuscada).bajarCategoria();
         }
     }
 
@@ -57,7 +57,7 @@ public class Skills {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
         if (tecnologiaBuscada != null) {
-            this.getCategoria(tecnologiaBuscada).subirCategoria();
+            getCategoria(tecnologiaBuscada).subirCategoria();
         }
     }
 
@@ -71,7 +71,7 @@ public class Skills {
         // }
         //
         // return categoriaBuscada;
-        return tecnologiaBuscada == null ? null : this.getCategoria(tecnologiaBuscada).getCategoriaActual();
+        return tecnologiaBuscada == null ? null : getCategoria(tecnologiaBuscada).getCategoriaActual();
     }
 
     public String getCategoriaNombre(final Tecnologia tecnologiaBuscada) {
@@ -87,7 +87,7 @@ public class Skills {
         while (iterador.hasNext()) {
             tecnologiaIterador = iterador.next();
             tecnologiaParticular = this.buscarTecnologia(tecnologiaIterador);
-            if (!this.dominaTecnologia(tecnologiaParticular, condiciones.getCategoriaNombre(tecnologiaIterador))) {
+            if (!dominaTecnologia(tecnologiaParticular, condiciones.getCategoriaNombre(tecnologiaIterador))) {
                 sabe = false;
                 break;
             }
@@ -96,7 +96,7 @@ public class Skills {
     }
 
     private boolean dominaTecnologia(final Tecnologia tecnologia, final String categoriaMinima) {
-        return tecnologia != null && this.getCategoria(tecnologia).cumbreNecesidades(categoriaMinima);
+        return tecnologia != null && getCategoria(tecnologia).cumbreNecesidades(categoriaMinima);
     }
 
     private Categoria getCategoria(final Tecnologia tecnologia) {
