@@ -26,18 +26,18 @@ public class FechasXcomprension {
 
     /** seteo de fin por repeticiones */
     public void set(final Date inicio, final List<Integer> aDias, final Intervalo aIntervalo, final int aRepeticiones) {
-        this.setParametrosEnComun(inicio, aDias, aIntervalo);
+        setParametrosEnComun(inicio, aDias, aIntervalo);
 
-        this.setRepeticiones(aRepeticiones);
+        setRepeticiones(aRepeticiones);
     }
 
     /** seteo de fin por fecha */
     public void set(final Date inicio, final List<Integer> aDias, final Intervalo aIntervalo, final Date aFechaFin) {
-        this.setParametrosEnComun(inicio, aDias, aIntervalo);
+        setParametrosEnComun(inicio, aDias, aIntervalo);
 
-        this.setFechaFin(aFechaFin);
+        setFechaFin(aFechaFin);
         if (aFechaFin != null) {
-            this.setRepeticiones(this.calcularRepeticiones());
+            setRepeticiones(calcularRepeticiones());
         }
     }
 
@@ -51,10 +51,10 @@ public class FechasXcomprension {
      * @param
      */
     public final void definirFechaFin(final Date dateFin) {
-        this.setDias(FechaUtils.getDiasDeLaSemana());
-        this.setIntervalo(Intervalo.getUnaSemana());
-        this.setFechaFin(dateFin);
-        this.setRepeticiones(this.calcularRepeticiones());
+        setDias(FechaUtils.getDiasDeLaSemana());
+        setIntervalo(Intervalo.getUnaSemana());
+        setFechaFin(dateFin);
+        setRepeticiones(calcularRepeticiones());
     }
 
     /**
@@ -68,26 +68,26 @@ public class FechasXcomprension {
     public List<Date> getFechasXextencion() throws PeriodoIndeterminadoException {
         List<Date> list = new ArrayList<Date>();
         Calendar calendario = Calendar.getInstance();
-        calendario.setTime(this.getFechaInicio());
+        calendario.setTime(getFechaInicio());
 
-        if (this.isPeriodoIndeterminado())
+        if (isPeriodoIndeterminado()) {
             throw new PeriodoIndeterminadoException();
-        else {
-            if (this.isFechaInicioIgualFin()) {
-                list.add(this.getFechaInicio());
+        } else {
+            if (isFechaInicioIgualFin()) {
+                list.add(getFechaInicio());
             } else {
-                list.addAll(FechaUtils.diasDeLaSemanaApartirDel(calendario.getTime(), this.getDias()));
-                calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
+                list.addAll(FechaUtils.diasDeLaSemanaApartirDel(calendario.getTime(), getDias()));
+                calendario.add(getIntervalo().getTipo(), getIntervalo().getCantidad());
 
-                for (int i = 1; i < this.getRepeticiones() - 1; i++) {
-                    list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
-                    calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
+                for (int i = 1; i < getRepeticiones() - 1; i++) {
+                    list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), getDias()));
+                    calendario.add(getIntervalo().getTipo(), getIntervalo().getCantidad());
                 }
 
-                if (this.getFechaFin() == null) {
-                    list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
-                } else if (!FechaUtils.isMismaSemana(this.getFechaInicio(), this.getFechaFin())) {
-                    list.addAll(FechaUtils.diasDeLaSemanaHastaEl(this.getFechaFin(), this.getDias()));
+                if (getFechaFin() == null) {
+                    list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), getDias()));
+                } else if (!FechaUtils.isMismaSemana(getFechaInicio(), getFechaFin())) {
+                    list.addAll(FechaUtils.diasDeLaSemanaHastaEl(getFechaFin(), getDias()));
                 }
             }
         }
@@ -98,23 +98,23 @@ public class FechasXcomprension {
     public List<Date> getFechasXextencionBACKUP() {
         List<Date> list = new ArrayList<Date>();
         Calendar calendario = Calendar.getInstance();
-        calendario.setTime(this.getFechaInicio());
+        calendario.setTime(getFechaInicio());
 
-        if (this.isFechaInicioIgualFin()) {
-            list.add(this.getFechaInicio());
+        if (isFechaInicioIgualFin()) {
+            list.add(getFechaInicio());
         } else {
-            list.addAll(FechaUtils.diasDeLaSemanaApartirDel(calendario.getTime(), this.getDias()));
-            calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
+            list.addAll(FechaUtils.diasDeLaSemanaApartirDel(calendario.getTime(), getDias()));
+            calendario.add(getIntervalo().getTipo(), getIntervalo().getCantidad());
 
-            for (int i = 1; i < this.getRepeticiones() - 1; i++) {
-                list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
-                calendario.add(this.getIntervalo().getTipo(), this.getIntervalo().getCantidad());
+            for (int i = 1; i < getRepeticiones() - 1; i++) {
+                list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), getDias()));
+                calendario.add(getIntervalo().getTipo(), getIntervalo().getCantidad());
             }
 
-            if (this.getFechaFin() == null) {
-                list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), this.getDias()));
+            if (getFechaFin() == null) {
+                list.addAll(FechaUtils.diasDeLaSemanaX(calendario.getTime(), getDias()));
             } else {
-                list.addAll(FechaUtils.diasDeLaSemanaHastaEl(this.getFechaFin(), this.getDias()));
+                list.addAll(FechaUtils.diasDeLaSemanaHastaEl(getFechaFin(), getDias()));
             }
 
         }
@@ -131,7 +131,7 @@ public class FechasXcomprension {
     public List<Date> interseccion(final FechasXcomprension fxc) throws PeriodoIndeterminadoException {
         List<Date> resultadoList = new ArrayList<Date>();
         List<Date> thisList = new ArrayList<Date>();
-        thisList.addAll(this.getFechasXextencion());
+        thisList.addAll(getFechasXextencion());
 
         for (Date date : fxc.getFechasXextencion()) {
             if (thisList.contains(date)) {
@@ -148,11 +148,11 @@ public class FechasXcomprension {
      * @throws PeriodoIndeterminadoException
      */
     public boolean seSuperpone(final FechasXcomprension fxc) throws PeriodoIndeterminadoException {
-        return !this.interseccion(fxc).isEmpty();
+        return !interseccion(fxc).isEmpty();
     }
 
     public boolean isPeriodoIndeterminado() {
-        return this.getFechaFin() == null && this.getRepeticiones() == null;
+        return getFechaFin() == null && getRepeticiones() == null;
     }
 
     /**
@@ -162,7 +162,7 @@ public class FechasXcomprension {
      * @throws PeriodoIndeterminadoException
      */
     public int getDiasConsecutivos() throws PeriodoIndeterminadoException {
-        List<Date> list = this.getFechasXextencion();
+        List<Date> list = getFechasXextencion();
         int totalDias = 1;
         int iterador = 1;
         if (list.size() > 1) {
@@ -182,16 +182,16 @@ public class FechasXcomprension {
      * @throws PeriodoIndeterminadoException
      */
     public int getDiasTotal() throws PeriodoIndeterminadoException {
-        return this.getFechasXextencion().size();
+        return getFechasXextencion().size();
     }
 
     // *****************************************
     // ********** HELPERS
 
     private void setParametrosEnComun(final Date inicio, final List<Integer> aDias, final Intervalo aIntervalo) {
-        this.setFechaInicio(inicio);
-        this.setDias(aDias);
-        this.setIntervalo(aIntervalo);
+        setFechaInicio(inicio);
+        setDias(aDias);
+        setIntervalo(aIntervalo);
     }
 
     /**
@@ -201,15 +201,15 @@ public class FechasXcomprension {
     private int calcularRepeticiones() {
         Calendar diaAux = FechaUtils.getCalendar(fechaInicio);
         int repeticionesAux = 1;
-        while (diaAux.getTime().before(this.getFechaFin())) {
+        while (diaAux.getTime().before(getFechaFin())) {
             repeticionesAux++;
-            diaAux.add(intervalo.getTipo(), this.getIntervalo().getCantidad());
+            diaAux.add(intervalo.getTipo(), getIntervalo().getCantidad());
         }
         return repeticionesAux;
     }
 
     private boolean isFechaInicioIgualFin() {
-        return this.getFechaFin() != null && this.getFechaFin().equals(this.getFechaInicio());
+        return getFechaFin() != null && getFechaFin().equals(getFechaInicio());
 
     }
 

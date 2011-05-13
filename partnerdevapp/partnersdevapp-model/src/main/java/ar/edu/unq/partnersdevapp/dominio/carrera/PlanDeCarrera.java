@@ -20,8 +20,8 @@ public class PlanDeCarrera {
     private List<Nivel> niveles = new ArrayList<Nivel>();
 
     public PlanDeCarrera(final String especialidad, final String descripcion) {
-        this.setEspecialidad(especialidad);
-        this.setDescripcion(descripcion);
+        setEspecialidad(especialidad);
+        setDescripcion(descripcion);
     }
 
     /**
@@ -31,7 +31,7 @@ public class PlanDeCarrera {
      * @throws NoHayResultadoException
      */
     public void addNivelPosterior(final Nivel nivelNuevo, final String nivelLugar) throws NoHayResultadoException {
-        this.addNivel(nivelNuevo, nivelLugar, 1);
+        addNivel(nivelNuevo, nivelLugar, 1);
     }
 
     /**
@@ -41,24 +41,24 @@ public class PlanDeCarrera {
      * @throws NoHayResultadoException
      */
     public void addNivelAnterior(final Nivel nivelNuevo, final String nivelLugar) throws NoHayResultadoException {
-        this.addNivel(nivelNuevo, nivelLugar, 0);
+        addNivel(nivelNuevo, nivelLugar, 0);
     }
 
     private void addNivel(final Nivel nivelNuevo, final String nivelLugar, final int anteriorPosterior)
             throws NoHayResultadoException {
-        if (this.getNiveles().isEmpty()) {
+        if (getNiveles().isEmpty()) {
             nivelNuevo.setJerarquia(0);
         } else {
             nivelNuevo.setJerarquia(this.getNivel(nivelLugar).getJerarquia() + anteriorPosterior);
         }
-        List<Nivel> nivelesDisponibles = this.getNiveles();
+        List<Nivel> nivelesDisponibles = getNiveles();
         // if nivelesDisponibles not null
         for (Nivel nivel : nivelesDisponibles) {
             if (nivel.getJerarquia() >= nivelNuevo.getJerarquia()) {
                 nivel.subirJerarquiaUnPunto();
             }
         }
-        this.getNiveles().add(nivelNuevo);
+        getNiveles().add(nivelNuevo);
     }
 
     /**
@@ -88,7 +88,7 @@ public class PlanDeCarrera {
      * @throws NoHayResultadoException
      */
     public Nivel getNivel(final String nombre) throws NoHayResultadoException {
-        for (Nivel nivel : this.getNiveles()) {
+        for (Nivel nivel : getNiveles()) {
             if (nivel.getNombre().equals(nombre)) {
                 return nivel;
             }
@@ -102,7 +102,7 @@ public class PlanDeCarrera {
      * @throws NoHayResultadoException
      */
     public Nivel getNivel(final int jerarquia) throws NoHayResultadoException {
-        for (Nivel nivel : this.getNiveles()) {
+        for (Nivel nivel : getNiveles()) {
             if (nivel.getJerarquia() == jerarquia) {
                 return nivel;
             }
@@ -125,7 +125,7 @@ public class PlanDeCarrera {
 
     @Override
     public String toString() {
-        return "{" + this.getEspecialidad() + "-" + this.getNiveles() + "}";
+        return "{" + getEspecialidad() + "-" + getNiveles() + "}";
     }
 
     // **************************

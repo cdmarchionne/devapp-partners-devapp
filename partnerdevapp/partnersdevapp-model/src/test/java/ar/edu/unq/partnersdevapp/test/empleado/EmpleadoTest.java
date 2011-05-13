@@ -32,24 +32,24 @@ public class EmpleadoTest extends TestCase {
 
     public void testGetPlanActual() throws NoHayResultadoException {
         try {
-            empleado.getPlanActual();
+            empleado.getPlanDeCarreraManager().getPlanActual();
         } catch (Exception e) {
             assertEquals(MENSAJE, e.getClass(), NoHayResultadoException.class);
         }
 
-        empleado.addPlanDeCarrera(FECHA_01_04_2011, plan, new Posicion(POSICION, 66));
-        assertTrue(MENSAJE, new Posicion(POSICION, 66).isIgual(empleado.getPosicionActual()));
+        empleado.getPlanDeCarreraManager().addPlanDeCarrera(FECHA_01_04_2011, plan, new Posicion(POSICION, 66));
+        assertTrue(MENSAJE, new Posicion(POSICION, 66).isIgual(empleado.getPlanDeCarreraManager().getPosicionActual()));
     }
 
     public void testSubirPosicion() throws NoHayResultadoException {
-        empleado.addPlanDeCarrera(FECHA_01_04_2011, plan, new Posicion(POSICION, 66));
-        assertTrue(MENSAJE, new Posicion(POSICION, 66).isIgual(empleado.getPosicionActual()));
+        empleado.getPlanDeCarreraManager().addPlanDeCarrera(FECHA_01_04_2011, plan, new Posicion(POSICION, 66));
+        assertTrue(MENSAJE, new Posicion(POSICION, 66).isIgual(empleado.getPlanDeCarreraManager().getPosicionActual()));
 
-        empleado.subirPosicion();
-        assertTrue(MENSAJE, new Posicion(POSICION, 100).isIgual(empleado.getPosicionActual()));
+        empleado.getPlanDeCarreraManager().subirPosicion();
+        assertTrue(MENSAJE, new Posicion(POSICION, 100).isIgual(empleado.getPlanDeCarreraManager().getPosicionActual()));
 
-        empleado.subirPosicion();
-        assertTrue(MENSAJE, new Posicion("lider", 00).isIgual(empleado.getPosicionActual()));
+        empleado.getPlanDeCarreraManager().subirPosicion();
+        assertTrue(MENSAJE, new Posicion("lider", 00).isIgual(empleado.getPlanDeCarreraManager().getPosicionActual()));
 
     }
 
@@ -64,7 +64,7 @@ public class EmpleadoTest extends TestCase {
     // }
 
     public void testSueldo() throws NoHayResultadoException {
-        empleado.addPlanDeCarrera(FECHA_01_04_2011, plan, new Posicion(POSICION, 66));
+        empleado.getPlanDeCarreraManager().addPlanDeCarrera(FECHA_01_04_2011, plan, new Posicion(POSICION, 66));
         assertEquals(MENSAJE, empleado.getSueldo(), 4990.0f);
 
     }

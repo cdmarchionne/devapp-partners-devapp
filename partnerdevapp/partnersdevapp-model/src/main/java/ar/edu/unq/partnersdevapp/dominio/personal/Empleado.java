@@ -53,8 +53,7 @@ public class Empleado extends Persona {
      */
 
     public float getSueldo() throws NoHayResultadoException {
-        return this.getPlanDeCarreraManager().getPlanActual()
-                .getSueldo(this.getPlanDeCarreraManager().getPosicionActual());
+        return getPlanDeCarreraManager().getPlanActual().getSueldo(getPlanDeCarreraManager().getPosicionActual());
     }
 
     // ******************

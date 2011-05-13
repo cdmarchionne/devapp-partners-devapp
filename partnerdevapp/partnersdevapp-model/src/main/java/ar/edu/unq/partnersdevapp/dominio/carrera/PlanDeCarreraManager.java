@@ -22,7 +22,7 @@ public class PlanDeCarreraManager {
     /** Agrega un informacion nueva de su plan de carrera. */
     public void addPlanDeCarrera(final Date fechaInicio, final PlanDeCarrera planDeCarrera,
             final Posicion posicionInicial) {
-        this.getInfoPlanDeCarrera().add(new InfoPlanDeCarrera(fechaInicio, planDeCarrera, posicionInicial));
+        getInfoPlanDeCarrera().add(new InfoPlanDeCarrera(fechaInicio, planDeCarrera, posicionInicial));
     }
 
     /**
@@ -35,13 +35,13 @@ public class PlanDeCarreraManager {
     }
 
     public void subirPosicion(final Date date) throws NoHayResultadoException {
-        Posicion posicionNueva = this.getPlanActual().getPosicionSuperior(this.getPosicionActual());
-        this.addPlanDeCarrera(date, this.getPlanActual(), posicionNueva);
+        Posicion posicionNueva = getPlanActual().getPosicionSuperior(getPosicionActual());
+        addPlanDeCarrera(date, getPlanActual(), posicionNueva);
     }
 
     /** Devuelve la ultima posicion en el plan de carrera actual */
     public Posicion getPosicionActual() throws NoHayResultadoException {
-        return this.getUltimaInfo().getNivelPlanDeCarrera();
+        return getUltimaInfo().getNivelPlanDeCarrera();
     }
 
     /**
@@ -50,16 +50,17 @@ public class PlanDeCarreraManager {
      * @throws NoHayResultadoException
      */
     public PlanDeCarrera getPlanActual() throws NoHayResultadoException {
-        return this.getUltimaInfo().getPlanDeCarrera();
+        return getUltimaInfo().getPlanDeCarrera();
     }
 
     /** Devuelve la informacion correspondiente al ultimo plan de carrera */
     private InfoPlanDeCarrera getUltimaInfo() throws NoHayResultadoException {
-        Collections.sort(this.getInfoPlanDeCarrera());
-        int ultimoElemento = this.getInfoPlanDeCarrera().size() - 1;
-        if (ultimoElemento < 0)
+        Collections.sort(getInfoPlanDeCarrera());
+        int ultimoElemento = getInfoPlanDeCarrera().size() - 1;
+        if (ultimoElemento < 0) {
             throw new NoHayResultadoException();
-        return this.getInfoPlanDeCarrera().get(ultimoElemento);
+        }
+        return getInfoPlanDeCarrera().get(ultimoElemento);
     }
 
     // ******************

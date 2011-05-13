@@ -68,7 +68,7 @@ public class Categoria {
     public void bajarCategoria() {
         Integer indiceCategoria = indiceCategoria(categoriaActual);
 
-        if (this.validarIndice(indiceCategoria - 1)) {
+        if (validarIndice(indiceCategoria - 1)) {
             categoriaActual = nombreCategoria(indiceCategoria - 1);
         }
     }
@@ -76,7 +76,7 @@ public class Categoria {
     public void subirCategoria() {
         Integer indiceCategoria = indiceCategoria(categoriaActual);
 
-        if (this.validarIndice(indiceCategoria + 1)) {
+        if (validarIndice(indiceCategoria + 1)) {
             categoriaActual = nombreCategoria(indiceCategoria + 1);
         }
     }
