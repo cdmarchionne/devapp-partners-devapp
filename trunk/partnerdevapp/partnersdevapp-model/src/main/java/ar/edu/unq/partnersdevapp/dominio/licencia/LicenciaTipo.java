@@ -2,6 +2,8 @@ package ar.edu.unq.partnersdevapp.dominio.licencia;
 
 /**
  * Modela un TIPO de licencia configurable.
+ * 
+ * @author leo
  */
 public class LicenciaTipo {
 
@@ -16,7 +18,8 @@ public class LicenciaTipo {
     private int diasCantidadAnuales;
 
     /**
-     * tipo : motivo remunerable: se se le paga en esos dias de ausencia.<br/>
+     * tipo : motivo<br/>
+     * remunerable: se se le paga en esos dias de ausencia.<br/>
      * diasConsecutivos y diasCantidad Son anuales. (-1) para el caso de
      * inderminado<br/>
      */

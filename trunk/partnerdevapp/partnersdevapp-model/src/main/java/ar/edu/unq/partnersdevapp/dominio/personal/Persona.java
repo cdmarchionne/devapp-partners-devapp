@@ -43,6 +43,10 @@ public class Persona {
         this.universidad = universidad;
     }
 
+    public Persona() {
+        super();
+    }
+
     public String getNombre() {
         return nombre;
     }
