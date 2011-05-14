@@ -60,12 +60,12 @@ public class PlanCarreraTest extends TestCase {
         newPosicion = new Posicion(SENIOR, 66);
         assertTrue("", plan.getPosicionSuperior(oldPosicion).isIgual(newPosicion));
 
-        oldPosicion = new Posicion(JUNIOR, 33);
-        newPosicion = new Posicion(SENIOR, 66);
-        assertFalse("", plan.getPosicionSuperior(oldPosicion).isIgual(newPosicion));
-
         oldPosicion = new Posicion(JUNIOR, 100);
         newPosicion = new Posicion(SEMISENIOR, 0);
+        assertTrue("", plan.getPosicionSuperior(oldPosicion).isIgual(newPosicion));
+
+        oldPosicion = new Posicion(SEMISENIOR, 100);
+        newPosicion = new Posicion(SENIOR, 0);
         assertTrue("", plan.getPosicionSuperior(oldPosicion).isIgual(newPosicion));
 
         oldPosicion = new Posicion(SENIOR, 100);

@@ -3,7 +3,7 @@ package ar.edu.unq.partnersdevapp.dominio.calendario;
 import java.util.Calendar;
 
 /**
- * Representa un lapso de tiempo. Ver metodos estaricos como ejemplo de uso.
+ * Representa un lapso de tiempo. Ver metodos estaticos como ejemplo de uso.
  * 
  */
 public class Intervalo {

@@ -1,11 +1,9 @@
 package ar.edu.unq.partnersdevapp.dominio.proyecto;
 
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
+import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Skills;
 import ar.edu.unq.partnersdevapp.dominio.personal.Cliente;
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
@@ -16,10 +14,6 @@ import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
 @SuppressWarnings("unused")
 public class Proyecto {
 
-    private static final Integer HORAS_DIARIAS_TRABAJADAS = 8;
-
-    private static final Integer HORAS_MENSUALES_TRABAJADAS = 21 * HORAS_DIARIAS_TRABAJADAS;
-
     @SuppressWarnings("PMD")
     private String nombre;
 
@@ -27,22 +21,25 @@ public class Proyecto {
 
     private Skills requerimientos;
 
+    // Cantidad de Horas de trabajo necesarias para realizar el Proyecto
     private Integer esfuerzoEstimado;
 
     @SuppressWarnings("PMD")
     private Set<Empleado> personalAsignado;
 
-    private Map<Empleado, Integer> horasHombre;
+    private FechasXcomprension fecha;
+
+    private transient AsignacionStrategy asignacion;
 
     public Proyecto(final String nombre, final Cliente cliente, final Skills skillMinimos,
             final Integer esfuerzoEstimado) {
         super();
         this.nombre = nombre;
         this.cliente = cliente;
-        this.requerimientos = skillMinimos;
+        requerimientos = skillMinimos;
         this.esfuerzoEstimado = esfuerzoEstimado;
         personalAsignado = new HashSet<Empleado>();
-        horasHombre = new HashMap<Empleado, Integer>();
+        asignacion = new AsignacionStrategy(this);
     }
 
     public String getNombre() {
@@ -62,45 +59,20 @@ public class Proyecto {
     }
 
     public void setRequerimientos(final Skills skillMinimos) {
-        this.requerimientos = skillMinimos;
+        requerimientos = skillMinimos;
     }
 
-    public boolean faltaEsfuerzo() {
-        return horasAsignadas() < esfuerzoEstimado;
+    protected FechasXcomprension getFecha() {
+        return fecha;
     }
 
-    private Integer horasAsignadas() {
-        Integer horasTotales = 0;
-
-        for (Integer horasPersonales : horasHombre.values()) {
-            horasTotales += horasPersonales;
-        }
-        return horasTotales;
+    protected void setFecha(final FechasXcomprension fecha) {
+        this.fecha = fecha;
     }
 
     public Integer getEsfuerzoEstimado() {
         return esfuerzoEstimado;
     }
-
-    // public float getEsfuerzoDias() {
-    // if (personalAsignado.isEmpty()) {
-    // throw new
-    // RuntimeException("Todavia no hay personal Asignado al Proyecto");
-    // }
-    //
-    // return (float) esfuerzoEstimado / (personalAsignado.size() *
-    // HORAS_DIARIAS_TRABAJADAS);
-    // }
-
-    // public float getEsfuerzoMensual() {
-    // if (personalAsignado.isEmpty()) {
-    // throw new
-    // RuntimeException("Todavia no hay personal Asignado al Proyecto");
-    // }
-    //
-    // return (float) esfuerzoEstimado / (personalAsignado.size() *
-    // HORAS_MENSUALES_TRABAJADAS);
-    // }
 
     public void setEsfuerzoEstimado(final Integer esfuerzoEstimado) {
         this.esfuerzoEstimado = esfuerzoEstimado;
@@ -110,48 +82,12 @@ public class Proyecto {
         return personalAsignado;
     }
 
-    private boolean esUnEmpleadoApto(final Empleado empleado) {
-        return empleado.getConocimiento().satisfaceRequisito(requerimientos);
-    }
-
-    /**
-     * Agrego un Empleado a un Proyecto e indico que trabajara en el durante
-     * cierta cantidad de horas
-     */
-    public boolean addEmpleadoManual(final Empleado empleado, final Integer cantidadHoras) {
-        boolean agregar = faltaEsfuerzo() && esUnEmpleadoApto(empleado);
-
-        if (agregar) {
-            personalAsignado.add(empleado);
-            horasHombre.put(empleado, cantidadHoras);
-        }
-        return agregar;
-    }
-
-    private boolean condicionesEmpleadoAutomatico(final Empleado empleado) {
-        return esUnEmpleadoApto(empleado);
+    public void addPersonal(final Empleado empleado) {
+        personalAsignado.add(empleado);
     }
 
     public Set<Empleado> getEmpleadosAutomatico(final Set<Empleado> empleados) {
-        Set<Empleado> empleadosCandidatos = new HashSet<Empleado>();
-        Empleado empleadoParticular;
-
-        Iterator<Empleado> iterador = empleados.iterator();
-        while (iterador.hasNext()) {
-            empleadoParticular = iterador.next();
-            if (condicionesEmpleadoAutomatico(empleadoParticular)) {
-                empleadosCandidatos.add(empleadoParticular);
-            }
-        }
-        return empleadosCandidatos;
-    }
-
-    public Map<Empleado, Integer> getHorasHombre() {
-        return horasHombre;
-    }
-
-    public void setHorasHombre(final Map<Empleado, Integer> horasHombre) {
-        this.horasHombre = horasHombre;
+        return asignacion.getEmpleadosAutomatico(empleados);
     }
 
 }
