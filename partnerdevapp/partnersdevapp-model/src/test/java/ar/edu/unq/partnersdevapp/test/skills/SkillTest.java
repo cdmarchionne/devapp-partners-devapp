@@ -1,7 +1,7 @@
 package ar.edu.unq.partnersdevapp.test.skills;
 
 import junit.framework.TestCase;
-import ar.edu.unq.partnersdevapp.dominio.carrera.Categoria;
+import ar.edu.unq.partnersdevapp.dominio.carrera.Experiencia;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Skills;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Tecnologia;
 
@@ -41,9 +41,9 @@ public class SkillTest extends TestCase {
         Tecnologia.addTecnologia(HIBERNATE);
         Tecnologia.addTecnologia(POSTGRE_SQL);
 
-        Categoria.addCategoria(0, BASICO);
-        Categoria.addCategoria(1, MEDIO);
-        Categoria.addCategoria(2, EXPERTO);
+        Experiencia.addExperiencia(0, BASICO);
+        Experiencia.addExperiencia(1, MEDIO);
+        Experiencia.addExperiencia(2, EXPERTO);
     }
 
     @Override
@@ -55,9 +55,9 @@ public class SkillTest extends TestCase {
         Tecnologia.removeTecnologia(HIBERNATE);
         Tecnologia.removeTecnologia(POSTGRE_SQL);
 
-        Categoria.removeCategoria(BASICO);
-        Categoria.removeCategoria(MEDIO);
-        Categoria.removeCategoria(EXPERTO);
+        Experiencia.removeExperiencia(BASICO);
+        Experiencia.removeExperiencia(MEDIO);
+        Experiencia.removeExperiencia(EXPERTO);
     }
 
     public void testAgregarSkill() {
@@ -66,11 +66,11 @@ public class SkillTest extends TestCase {
 
         conocimientos.addSkill(JAVA, BASICO);
         message = AGREGO_EL_CONOCIMIENTO + BASICO + DE + JAVA;
-        assertEquals(message, BASICO, conocimientos.getCategoriaNombre(JAVA));
+        assertEquals(message, BASICO, conocimientos.getExperienciaNombre(JAVA));
 
         conocimientos.addSkill(POO, MEDIO);
         message = AGREGO_EL_CONOCIMIENTO + MEDIO + DE + POO;
-        assertEquals(message, MEDIO, conocimientos.getCategoriaNombre(POO));
+        assertEquals(message, MEDIO, conocimientos.getExperienciaNombre(POO));
     }
 
     public void testSubirSkill() {
@@ -79,13 +79,13 @@ public class SkillTest extends TestCase {
 
         conocimientos.addSkill(JAVA, BASICO);
         message = AGREGO_EL_CONOCIMIENTO + BASICO + DE + JAVA;
-        assertEquals(message, BASICO, conocimientos.getCategoriaNombre(JAVA));
+        assertEquals(message, BASICO, conocimientos.getExperienciaNombre(JAVA));
 
-        conocimientos.subirCategoria(JAVA);
+        conocimientos.subirExperiencia(JAVA);
         message = "Subi el conocimiento de " + JAVA;
-        assertNotSame(message, BASICO, conocimientos.getCategoriaNombre(JAVA));
+        assertNotSame(message, BASICO, conocimientos.getExperienciaNombre(JAVA));
         message = "El conocimiento de " + JAVA + " es " + MEDIO;
-        assertEquals(message, MEDIO, conocimientos.getCategoriaNombre(JAVA));
+        assertEquals(message, MEDIO, conocimientos.getExperienciaNombre(JAVA));
     }
 
     public void testBajarSkill() {
@@ -94,13 +94,13 @@ public class SkillTest extends TestCase {
 
         conocimientos.addSkill(POO, MEDIO);
         message = AGREGO_EL_CONOCIMIENTO + MEDIO + DE + POO;
-        assertEquals(message, MEDIO, conocimientos.getCategoriaNombre(POO));
+        assertEquals(message, MEDIO, conocimientos.getExperienciaNombre(POO));
 
-        conocimientos.bajarCategoria(POO);
+        conocimientos.bajarExperiencia(POO);
         message = "Bajo el conocimiento de " + POO;
-        assertNotSame(message, MEDIO, conocimientos.getCategoriaNombre(POO));
+        assertNotSame(message, MEDIO, conocimientos.getExperienciaNombre(POO));
         message = "El conocimiento de " + POO + " es " + BASICO;
-        assertEquals(message, BASICO, conocimientos.getCategoriaNombre(POO));
+        assertEquals(message, BASICO, conocimientos.getExperienciaNombre(POO));
     }
 
     public void testCumpleMismasCondiciones() {
@@ -113,11 +113,11 @@ public class SkillTest extends TestCase {
         message = "Los requisitos de conocimiento son: " + POO + ", " + MEDIO;
         assertTrue(message, conocimientos.satisfaceRequisito(requisitos));
 
-        conocimientos.bajarCategoria(POO);
+        conocimientos.bajarExperiencia(POO);
         message = "Bajo los conocimiento de " + POO;
         assertFalse(message, conocimientos.satisfaceRequisito(requisitos));
 
-        requisitos.bajarCategoria(POO);
+        requisitos.bajarExperiencia(POO);
         message = "Bajo los requisitos de " + POO;
         assertTrue(message, conocimientos.satisfaceRequisito(requisitos));
     }
@@ -132,12 +132,12 @@ public class SkillTest extends TestCase {
         message = "Los requisitos de conocimiento son: " + POO + ", " + MEDIO;
         assertFalse(message, conocimientos.satisfaceRequisito(requisitos));
 
-        requisitos.subirCategoria(POO);
+        requisitos.subirExperiencia(POO);
         message = "Subo los requisitos de " + POO;
         assertFalse(message, conocimientos.satisfaceRequisito(requisitos));
 
-        requisitos.bajarCategoria(POO);
-        conocimientos.subirCategoria(POO);
+        requisitos.bajarExperiencia(POO);
+        conocimientos.subirExperiencia(POO);
         message = "Bajo los requisitos de " + POO + " y Subo los conocimientos " + POO;
         assertTrue(message, conocimientos.satisfaceRequisito(requisitos));
     }
@@ -158,7 +158,7 @@ public class SkillTest extends TestCase {
         message = "Los requisitos de conocimiento son Varios";
         assertTrue(message, conocimientos.satisfaceRequisito(requisitos));
 
-        requisitos.subirCategoria(POO);
+        requisitos.subirExperiencia(POO);
         message = "Subo los requisitos";
         assertFalse(message, conocimientos.satisfaceRequisito(requisitos));
     }
@@ -179,9 +179,9 @@ public class SkillTest extends TestCase {
         message = "Los requisitos de conocimiento son Exigentes";
         assertFalse(message, conocimientos.satisfaceRequisito(requisitos));
 
-        conocimientos.subirCategoria(JAVA);
-        conocimientos.subirCategoria(JAVA);
-        conocimientos.subirCategoria(POO);
+        conocimientos.subirExperiencia(JAVA);
+        conocimientos.subirExperiencia(JAVA);
+        conocimientos.subirExperiencia(POO);
         message = "Subo los conocimientos para alcanzarlos";
         assertTrue(message, conocimientos.satisfaceRequisito(requisitos));
     }

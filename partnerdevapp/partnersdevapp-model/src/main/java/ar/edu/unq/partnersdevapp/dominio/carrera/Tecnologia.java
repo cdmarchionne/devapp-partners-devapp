@@ -29,7 +29,7 @@ public class Tecnologia {
         return listaTecnologia.remove(nombre);
     }
 
-    public static void renameCategoria(final String nombreViejo, final String nombreNuevo) {
+    public static void renameExperiencia(final String nombreViejo, final String nombreNuevo) {
         removeTecnologia(nombreViejo);
         addTecnologia(nombreNuevo);
     }

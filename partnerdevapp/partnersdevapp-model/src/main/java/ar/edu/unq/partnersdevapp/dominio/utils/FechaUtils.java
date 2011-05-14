@@ -16,6 +16,10 @@ import org.joda.time.Days;
  */
 public class FechaUtils {
 
+    public static final Integer HORAS_DIARIAS_TRABAJADAS = 8;
+
+    public static final Integer HORAS_MENSUALES_TRABAJADAS = 21 * HORAS_DIARIAS_TRABAJADAS;
+
     private FechaUtils() {
         throw new UnsupportedOperationException();
     }

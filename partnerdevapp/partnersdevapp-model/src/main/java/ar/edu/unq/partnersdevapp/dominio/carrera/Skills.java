@@ -5,25 +5,35 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * PONER DESCRIPCION
+ * Los Skills son un conjunto de caracteristicas. Mantienen la relacion de los
+ * conocimientos sobre una Tecnologia con un determinado Nivel de experiencia
  */
 public class Skills {
 
-    private final Map<Tecnologia, Categoria> skill;
+    private final Map<Tecnologia, Experiencia> skill;
 
     public Skills() {
         super();
-        skill = new HashMap<Tecnologia, Categoria>();
+        skill = new HashMap<Tecnologia, Experiencia>();
     }
 
-    public void addSkill(final String tecnologia, final String categoria) {
+    /** Metodo para Agregar el conocimiento de una tecnologia nueva */
+    public void addSkill(final String tecnologia, final String experiencia) {
         if (this.buscarTecnologia(tecnologia) == null) {
-            setSkill(new Tecnologia(tecnologia), new Categoria(categoria));
+            setSkill(new Tecnologia(tecnologia), new Experiencia(experiencia));
         }
     }
 
-    private void setSkill(final Tecnologia tecnologia, final Categoria categoria) {
-        skill.put(tecnologia, categoria);
+    private void setSkill(final Tecnologia tecnologia, final Experiencia experiencia) {
+        skill.put(tecnologia, experiencia);
+    }
+
+    /**
+     * Busco dentro de mis conocimientos una determinada tecnologia y si la
+     * tengo la devuelvo
+     */
+    private Tecnologia buscarTecnologia(final Tecnologia tecnologiaBuscada) {
+        return this.buscarTecnologia(tecnologiaBuscada.getTecnologiaActual());
     }
 
     private Tecnologia buscarTecnologia(final String nombreTecnologiaBuscada) {
@@ -41,43 +51,38 @@ public class Skills {
         return tecnologiaBuscada;
     }
 
-    private Tecnologia buscarTecnologia(final Tecnologia tecnologiaBuscada) {
-        return this.buscarTecnologia(tecnologiaBuscada.getTecnologiaActual());
-    }
-
-    public void bajarCategoria(final String nombreTecnologiaBuscada) {
+    /** Bajo un Nivel de Experiencia en el dominio de una Tecnologia determinada */
+    public void bajarExperiencia(final String nombreTecnologiaBuscada) {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
         if (tecnologiaBuscada != null) {
-            getCategoria(tecnologiaBuscada).bajarCategoria();
+            getExperiencia(tecnologiaBuscada).bajarExperiencia();
         }
     }
 
-    public void subirCategoria(final String nombreTecnologiaBuscada) {
+    /** Subo un Nivel de Experiencia en el dominio de una Tecnologia determinada */
+    public void subirExperiencia(final String nombreTecnologiaBuscada) {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
         if (tecnologiaBuscada != null) {
-            getCategoria(tecnologiaBuscada).subirCategoria();
+            getExperiencia(tecnologiaBuscada).subirExperiencia();
         }
     }
 
-    public String getCategoriaNombre(final String nombreTecnologiaBuscada) {
+    /**
+     * Devuelvo el Nivel de Experiencia en el dominio de una Tecnologia
+     * determinada
+     */
+    public String getExperienciaNombre(final Tecnologia tecnologiaBuscada) {
+        return this.getExperienciaNombre(tecnologiaBuscada.getTecnologiaActual());
+    }
+
+    public String getExperienciaNombre(final String nombreTecnologiaBuscada) {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
-        // String categoriaBuscada = null;
-        //
-        // if (tecnologiaBuscada != null) {
-        // categoriaBuscada =
-        // this.getCategoria(tecnologiaBuscada).getCategoriaActual();
-        // }
-        //
-        // return categoriaBuscada;
-        return tecnologiaBuscada == null ? null : getCategoria(tecnologiaBuscada).getCategoriaActual();
+        return tecnologiaBuscada == null ? null : getExperiencia(tecnologiaBuscada).getExperienciaActual();
     }
 
-    public String getCategoriaNombre(final Tecnologia tecnologiaBuscada) {
-        return this.getCategoriaNombre(tecnologiaBuscada.getTecnologiaActual());
-    }
-
+    /** Compruebo si todos mis conocimientos satisfacen las condiciones minimas */
     public boolean satisfaceRequisito(final Skills condiciones) {
         boolean sabe = true;
         Tecnologia tecnologiaParticular;
@@ -87,7 +92,7 @@ public class Skills {
         while (iterador.hasNext()) {
             tecnologiaIterador = iterador.next();
             tecnologiaParticular = this.buscarTecnologia(tecnologiaIterador);
-            if (!dominaTecnologia(tecnologiaParticular, condiciones.getCategoriaNombre(tecnologiaIterador))) {
+            if (!dominaTecnologia(tecnologiaParticular, condiciones.getExperienciaNombre(tecnologiaIterador))) {
                 sabe = false;
                 break;
             }
@@ -95,15 +100,16 @@ public class Skills {
         return sabe;
     }
 
-    private boolean dominaTecnologia(final Tecnologia tecnologia, final String categoriaMinima) {
-        return tecnologia != null && getCategoria(tecnologia).cumbreNecesidades(categoriaMinima);
+    /** Verifico si mi conocimientos satisfacen una condicion minima */
+    private boolean dominaTecnologia(final Tecnologia tecnologia, final String experienciaMinima) {
+        return tecnologia != null && getExperiencia(tecnologia).cumbreNecesidades(experienciaMinima);
     }
 
-    private Categoria getCategoria(final Tecnologia tecnologia) {
+    private Experiencia getExperiencia(final Tecnologia tecnologia) {
         return skill.get(tecnologia);
     }
 
-    private Map<Tecnologia, Categoria> getSkill() {
+    private Map<Tecnologia, Experiencia> getSkill() {
         return skill;
     }
 

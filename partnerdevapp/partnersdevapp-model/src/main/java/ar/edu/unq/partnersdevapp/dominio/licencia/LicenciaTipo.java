@@ -24,10 +24,10 @@ public class LicenciaTipo {
      * inderminado<br/>
      */
     public LicenciaTipo(final String tipo, final boolean remunerable, final int diasConsecutivos, final int diasCantidad) {
-        this.tipo = tipo; // this.setTipo(tipo);
-        this.remunerable = remunerable; // this.setRemunerable(remunerable);
-        this.diasConsecutivos = diasConsecutivos; // this.setDiasConsecutivos(diasConsecutivos);
-        diasCantidadAnuales = diasCantidad; // this.setDiasCantidadAnuales(diasCantidad);
+        this.tipo = tipo;
+        this.remunerable = remunerable;
+        this.diasConsecutivos = diasConsecutivos;
+        diasCantidadAnuales = diasCantidad;
     }
 
     // ******************
