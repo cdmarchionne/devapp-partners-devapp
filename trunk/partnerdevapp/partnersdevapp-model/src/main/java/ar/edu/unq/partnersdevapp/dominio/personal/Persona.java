@@ -1,6 +1,6 @@
 package ar.edu.unq.partnersdevapp.dominio.personal;
 
-import ar.edu.unq.partnersdevapp.dominio.utils.Direccion;
+import ar.edu.unq.partnersdevapp.dominio.basededatos.Direccion;
 
 /**
  * PONER DESCRIPCION

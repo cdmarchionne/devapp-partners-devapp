@@ -38,7 +38,8 @@ public class AsignacionStrategy {
      * Agrego un Empleado a un Proyecto e indico que trabajara en el durante
      * cierta cantidad de horas
      */
-    public void addEmpleadoManual(final Empleado empleado, final Integer cantidadHoras) {
+    public void addEmpleadoManual(final Empleado empleado) {
+        Integer cantidadHoras = 0;
         if (!getProyecto().getPersonalAsignado().contains(empleado)) {
             getProyecto().addPersonal(empleado);
             horasHombre.put(empleado, cantidadHoras);

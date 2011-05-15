@@ -6,7 +6,7 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.Skills;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Tecnologia;
 
 /**
- * TODO: description
+ * Test de Skill
  */
 public class SkillTest extends TestCase {
 
@@ -60,6 +60,7 @@ public class SkillTest extends TestCase {
         Experiencia.removeExperiencia(EXPERTO);
     }
 
+    /** Compruebo que se puedan crear Skill personalizados */
     public void testAgregarSkill() {
         Skills conocimientos = new Skills();
         String message;
@@ -73,6 +74,10 @@ public class SkillTest extends TestCase {
         assertEquals(message, MEDIO, conocimientos.getExperienciaNombre(POO));
     }
 
+    /**
+     * Compruebo que se pueda Subir la Experiencia de una Tecnologia en los
+     * Skill
+     */
     public void testSubirSkill() {
         Skills conocimientos = new Skills();
         String message;
@@ -88,6 +93,10 @@ public class SkillTest extends TestCase {
         assertEquals(message, MEDIO, conocimientos.getExperienciaNombre(JAVA));
     }
 
+    /**
+     * Compruebo que se pueda Bajar la Experiencia de una Tecnologia en los
+     * Skill
+     */
     public void testBajarSkill() {
         Skills conocimientos = new Skills();
         String message;
@@ -103,6 +112,10 @@ public class SkillTest extends TestCase {
         assertEquals(message, BASICO, conocimientos.getExperienciaNombre(POO));
     }
 
+    /**
+     * Comparo dos Skill con una Tecnologia sola y verifico que un Conocimiento
+     * cumpla con un Requisito
+     */
     public void testCumpleMismasCondiciones() {
         Skills conocimientos = new Skills();
         Skills requisitos = new Skills();
@@ -122,6 +135,10 @@ public class SkillTest extends TestCase {
         assertTrue(message, conocimientos.satisfaceRequisito(requisitos));
     }
 
+    /**
+     * Comparo dos Skill con una Tecnologia sola y verifico que un Conocimiento
+     * NO cumpla con un Requisito
+     */
     public void testNoCumpleMismasCondiciones() {
         Skills conocimientos = new Skills();
         Skills requisitos = new Skills();
@@ -142,6 +159,10 @@ public class SkillTest extends TestCase {
         assertTrue(message, conocimientos.satisfaceRequisito(requisitos));
     }
 
+    /**
+     * Comparo dos Skill con varias Tecnologias y verifico que un Conocimiento
+     * cumpla con un Requisito
+     */
     public void testCumpleDistintasCondiciones() {
         Skills conocimientos = new Skills();
         Skills requisitos = new Skills();
@@ -163,6 +184,10 @@ public class SkillTest extends TestCase {
         assertFalse(message, conocimientos.satisfaceRequisito(requisitos));
     }
 
+    /**
+     * Comparo dos Skill con varias Tecnologias y verifico que un Conocimiento
+     * NO cumpla con un Requisito
+     */
     public void testNoCumpleDistintasCondiciones() {
         Skills conocimientos = new Skills();
         Skills requisitos = new Skills();
