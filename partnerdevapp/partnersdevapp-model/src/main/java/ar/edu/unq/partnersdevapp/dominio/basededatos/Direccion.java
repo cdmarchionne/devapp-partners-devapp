@@ -1,7 +1,7 @@
-package ar.edu.unq.partnersdevapp.dominio.utils;
+package ar.edu.unq.partnersdevapp.dominio.basededatos;
 
 /**
- * TODO: description
+ * Clase utilizada para manejar de forma completa las Direcciones de calles
  */
 public class Direccion {
 

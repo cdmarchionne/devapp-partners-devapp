@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Tecnologia;
 
 /**
- * TODO: description
+ * Test de Tecnologia
  */
 public class TecnologiaTest extends TestCase {
 
@@ -42,6 +42,7 @@ public class TecnologiaTest extends TestCase {
         Tecnologia.removeTecnologia(POSTGRE_SQL);
     }
 
+    /** Compruebo que se puedan Crear Tecnologias personalizadas */
     public void testAgregarTecnologia() {
         String message = "Agrego una Tecnologia";
 
@@ -53,6 +54,7 @@ public class TecnologiaTest extends TestCase {
         assertTrue(message + POSTGRE_SQL, Tecnologia.existeTecnologia(POSTGRE_SQL));
     }
 
+    /** Compruebo que se puedan Crear y Borrar una Tecnologia */
     public void testBorrarTecnologia() {
         String message;
 
@@ -65,6 +67,7 @@ public class TecnologiaTest extends TestCase {
         assertFalse(message, Tecnologia.existeTecnologia(TECNOLOGIA_BORRADOR));
     }
 
+    /** Compruebo que se puedan Crear Tecnologias de Prueba */
     public void testTecnologia() {
         Tecnologia tecnologiaDePrueba = new Tecnologia(JAVA);
 

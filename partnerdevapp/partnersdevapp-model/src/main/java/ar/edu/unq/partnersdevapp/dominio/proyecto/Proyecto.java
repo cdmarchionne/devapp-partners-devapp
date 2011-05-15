@@ -9,9 +9,9 @@ import ar.edu.unq.partnersdevapp.dominio.personal.Cliente;
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
 
 /**
- * TODO: Asignacion Automatica de Personas
+ * Administracion de Proyectos
  */
-@SuppressWarnings("unused")
+
 public class Proyecto {
 
     @SuppressWarnings("PMD")
@@ -84,6 +84,10 @@ public class Proyecto {
 
     public void addPersonal(final Empleado empleado) {
         personalAsignado.add(empleado);
+    }
+
+    public void addEmpleadoManual(final Empleado empleado) {
+        asignacion.addEmpleadoManual(empleado);
     }
 
     public Set<Empleado> getEmpleadosAutomatico(final Set<Empleado> empleados) {

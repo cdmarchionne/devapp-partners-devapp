@@ -29,6 +29,7 @@ public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
     }
 
     @Override
+    @SuppressWarnings("FindBugs")
     public int compareTo(final InfoPlanDeCarrera plan) {
         return getFechaInicio().compareTo(plan.getFechaInicio());
     }
