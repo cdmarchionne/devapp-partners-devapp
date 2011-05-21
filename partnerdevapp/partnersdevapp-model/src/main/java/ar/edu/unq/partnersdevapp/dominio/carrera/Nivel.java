@@ -1,5 +1,7 @@
 package ar.edu.unq.partnersdevapp.dominio.carrera;
 
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
+
 /**
  * El nivel esta dividido en bandas. La jerarquia es para poder <strong>ordenar
  * e identificar</strong> una lista de niveles.<br/>
@@ -7,7 +9,7 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
  * 
  * @author leo
  */
-public class Nivel {
+public class Nivel extends Entidad {
 
     private String nombre;
 
