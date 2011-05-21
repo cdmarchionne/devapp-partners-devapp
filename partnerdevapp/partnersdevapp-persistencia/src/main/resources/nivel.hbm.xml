@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.edu.unq.partnersdevapp.dominio.carrera">
+
+	<class name="Nivel" table="nivel">
+
+		<id name="id">
+			<generator class="native" />
+		</id>
+		
+		<property name="nombre" column="nombre" />
+		<property name="jerarquia" column="jerarquia" />
+		<property name="sueldoMaximo" column="sueldoMaximo" />
+		<property name="sueldoMinimo" column="sueldoMinimo" />
+		
+		<component name="banda" class="Banda">
+	          <property name="cantidadDeSubBandas"/>
+	     </component>
+	     
+	</class>
+
+</hibernate-mapping>
