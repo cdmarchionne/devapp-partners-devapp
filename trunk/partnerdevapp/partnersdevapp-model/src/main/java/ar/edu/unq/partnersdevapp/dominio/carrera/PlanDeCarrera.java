@@ -3,6 +3,7 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 
 /**
@@ -11,7 +12,7 @@ import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
  * 
  * @author leo
  */
-public class PlanDeCarrera {
+public class PlanDeCarrera extends Entidad {
 
     private String especialidad;
 
@@ -20,8 +21,8 @@ public class PlanDeCarrera {
     private List<Nivel> niveles = new ArrayList<Nivel>();
 
     public PlanDeCarrera(final String especialidad, final String descripcion) {
-        setEspecialidad(especialidad);
-        setDescripcion(descripcion);
+        this.setEspecialidad(especialidad);
+        this.setDescripcion(descripcion);
     }
 
     /**
@@ -31,7 +32,7 @@ public class PlanDeCarrera {
      * @throws NoHayResultadoException
      */
     public void addNivelPosterior(final Nivel nivelNuevo, final String nivelLugar) throws NoHayResultadoException {
-        addNivel(nivelNuevo, nivelLugar, 1);
+        this.addNivel(nivelNuevo, nivelLugar, 1);
     }
 
     /**
@@ -41,24 +42,24 @@ public class PlanDeCarrera {
      * @throws NoHayResultadoException
      */
     public void addNivelAnterior(final Nivel nivelNuevo, final String nivelLugar) throws NoHayResultadoException {
-        addNivel(nivelNuevo, nivelLugar, 0);
+        this.addNivel(nivelNuevo, nivelLugar, 0);
     }
 
     private void addNivel(final Nivel nivelNuevo, final String nivelLugar, final int anteriorPosterior)
             throws NoHayResultadoException {
-        if (getNiveles().isEmpty()) {
+        if (this.getNiveles().isEmpty()) {
             nivelNuevo.setJerarquia(0);
         } else {
             nivelNuevo.setJerarquia(this.getNivel(nivelLugar).getJerarquia() + anteriorPosterior);
         }
-        List<Nivel> nivelesDisponibles = getNiveles();
+        List<Nivel> nivelesDisponibles = this.getNiveles();
         // if nivelesDisponibles not null
         for (Nivel nivel : nivelesDisponibles) {
             if (nivel.getJerarquia() >= nivelNuevo.getJerarquia()) {
                 nivel.subirJerarquiaUnPunto();
             }
         }
-        getNiveles().add(nivelNuevo);
+        this.getNiveles().add(nivelNuevo);
     }
 
     /**
@@ -88,10 +89,9 @@ public class PlanDeCarrera {
      * @throws NoHayResultadoException
      */
     public Nivel getNivel(final String nombre) throws NoHayResultadoException {
-        for (Nivel nivel : getNiveles()) {
-            if (nivel.getNombre().equals(nombre)) {
+        for (Nivel nivel : this.getNiveles()) {
+            if (nivel.getNombre().equals(nombre))
                 return nivel;
-            }
         }
         throw new NoHayResultadoException();
     }
@@ -102,10 +102,9 @@ public class PlanDeCarrera {
      * @throws NoHayResultadoException
      */
     public Nivel getNivel(final int jerarquia) throws NoHayResultadoException {
-        for (Nivel nivel : getNiveles()) {
-            if (nivel.getJerarquia() == jerarquia) {
+        for (Nivel nivel : this.getNiveles()) {
+            if (nivel.getJerarquia() == jerarquia)
                 return nivel;
-            }
         }
         throw new NoHayResultadoException();
     }
@@ -125,7 +124,7 @@ public class PlanDeCarrera {
 
     @Override
     public String toString() {
-        return "{" + getEspecialidad() + "-" + getNiveles() + "}";
+        return "{" + this.getEspecialidad() + "-" + this.getNiveles() + "}";
     }
 
     // **************************
