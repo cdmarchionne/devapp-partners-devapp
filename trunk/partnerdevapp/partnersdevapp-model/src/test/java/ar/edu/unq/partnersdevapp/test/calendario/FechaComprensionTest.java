@@ -106,7 +106,7 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        assertEquals("", fechasXextencion, getDosSemana());
+        assertEquals("", fechasXextencion, this.getDosSemana());
     }
 
     public void testSetDiasDeLaSemanaHabiles() throws PeriodoIndeterminadoException {
@@ -117,7 +117,7 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        assertEquals("", fechasXextencion, getDosSemanaHabiles());
+        assertEquals("", fechasXextencion, this.getDosSemanaHabiles());
     }
 
     /* Con fecha de inicio desfasada */
@@ -129,7 +129,7 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        assertEquals("", fechasXextencion, getDosSemanaHabilesDes());
+        assertEquals("", fechasXextencion, this.getDosSemanaHabilesDes());
     }
 
     public void testCalcularRepeticiones() {
@@ -196,44 +196,43 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        assertEquals("", fechasXextencion, getTresSemanaHabilesDes());
+        assertEquals("", fechasXextencion, this.getTresSemanaHabilesDes());
 
     }
 
-    /*
-     * public void testIsConsecutivo() throws NoHayDiasQueComputarException,
-     * PeriodoIndeterminadoException {
-     * 
-     * fxc = new FechasXcomprension();
-     * 
-     * try { fxc.getDiasConsecutivos(); } catch (Exception e) {
-     * assertEquals(e.getClass(), NoHayDiasQueComputarException.class); }
-     * 
-     * inicio = FechaUtils.crearFecha("04/04/2011"); fin =
-     * FechaUtils.crearFecha("04/04/2011"); fxc = new FechasXcomprension();
-     * fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(),
-     * fin);
-     * 
-     * System.out.println(fxc.getDiasConsecutivos());
-     * assertEquals(fxc.getDiasConsecutivos(), 1);
-     * 
-     * inicio = FechaUtils.crearFecha("04/04/2011"); fin =
-     * FechaUtils.crearFecha("05/04/2011"); fxc = new FechasXcomprension();
-     * fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(),
-     * fin);
-     * 
-     * System.out.println(fxc.getFechasXextencion());
-     * System.out.println(fxc.getDiasConsecutivos());
-     * assertEquals(fxc.getDiasConsecutivos(), 2);
-     * 
-     * inicio = FechaUtils.crearFecha("04/04/2011"); fin =
-     * FechaUtils.crearFecha("08/04/2011"); fxc = new FechasXcomprension();
-     * fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(),
-     * fin);
-     * 
-     * System.out.println(fxc.getDiasConsecutivos());
-     * assertEquals(fxc.getDiasConsecutivos(), 5); }
-     */
+    public void testIsConsecutivo() throws PeriodoIndeterminadoException {
+
+        FechasXcomprension fxc = new FechasXcomprension();
+
+        assertTrue(fxc.getFechasXextencion().isEmpty());
+        assertEquals(fxc.getDiasConsecutivos(), 0);
+
+        Date inicio = FechaUtils.crearFecha("04/04/2011");
+        Date fin = FechaUtils.crearFecha("04/04/2011");
+        fxc = new FechasXcomprension();
+        fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
+
+        assertEquals(fxc.getDiasConsecutivos(), 1);
+
+        // TODO: no crea bien este tipo de fecha
+        // inicio = FechaUtils.crearFecha("04/04/2011");
+        // fin = FechaUtils.crearFecha("10/04/2011");
+        // fxc = new FechasXcomprension();
+        // fxc.set(inicio, FechaUtils.getDiasHabiles(),
+        // Intervalo.getUnaSemana(), fin);
+        //
+        // System.out.println(fxc.getFechasXextencion());
+        // System.out.println(fxc.getDiasConsecutivos());
+        // assertEquals(fxc.getDiasConsecutivos(), 2);
+
+        inicio = FechaUtils.crearFecha("04/04/2011");
+        fin = FechaUtils.crearFecha("08/04/2011");
+        fxc = new FechasXcomprension();
+        fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
+
+        assertEquals(fxc.getDiasConsecutivos(), 5);
+    }
+
     // ***************************************
     // ********* Helpers
 

@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
+import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
@@ -64,8 +65,12 @@ public class FechasXcomprension {
      * fechas posteriores hasta completar la semana de la mismo.
      * 
      * @throws PeriodoIndeterminadoException
+     * @throws NoHayResultadoException
      * */
     public List<Date> getFechasXextencion() throws PeriodoIndeterminadoException {
+        if (fechaInicio == null)
+            return new ArrayList<Date>();
+
         List<Date> list = new ArrayList<Date>();
         Calendar calendario = Calendar.getInstance();
         calendario.setTime(this.getFechaInicio());
@@ -121,16 +126,14 @@ public class FechasXcomprension {
         return list;
     }
 
-    // TODO: la inversa de insterseccion
-    // TODO : no lista , devolver f x comprencion
     // TODO : un superpone más liviano
     /**
      * Devuele la lista de días resultante de la interseccion con otra fecha por
      * comprensión.
      * 
      * @throws PeriodoIndeterminadoException
+     * @throws NoHayResultadoException
      */
-
     public List<Date> interseccion(final FechasXcomprension fxc) throws PeriodoIndeterminadoException {
         List<Date> resultadoList = new ArrayList<Date>();
         List<Date> thisList = new ArrayList<Date>();
@@ -145,10 +148,31 @@ public class FechasXcomprension {
     }
 
     /**
+     * Quita los elementos que coinciden con los pasados por parametros
+     * 
+     * @throws NoHayResultadoException
+     */
+    public List<Date> restar(final FechasXcomprension fxc) throws PeriodoIndeterminadoException,
+            NoHayResultadoException {
+        List<Date> resultadoList = new ArrayList<Date>();
+        resultadoList.addAll(fxc.getFechasXextencion());
+        List<Date> thisList = new ArrayList<Date>();
+        thisList.addAll(this.getFechasXextencion());
+
+        for (Date date : fxc.getFechasXextencion()) {
+            if (thisList.contains(date)) {
+                resultadoList.remove(date);
+            }
+        }
+        return resultadoList;
+    }
+
+    /**
      * Devielve True si hay por lo menos un día en cumún entre las dos fechas
      * por comprensión.
      * 
      * @throws PeriodoIndeterminadoException
+     * @throws NoHayResultadoException
      */
     public boolean seSuperpone(final FechasXcomprension fxc) throws PeriodoIndeterminadoException {
         return !this.interseccion(fxc).isEmpty();
@@ -163,9 +187,12 @@ public class FechasXcomprension {
      * contempla sabado y domingo.
      * 
      * @throws PeriodoIndeterminadoException
+     * @throws NoHayResultadoException
      */
     public int getDiasConsecutivos() throws PeriodoIndeterminadoException {
         List<Date> list = this.getFechasXextencion();
+        if (list.isEmpty())
+            return 0;
         int totalDias = 1;
         int iterador = 1;
         if (list.size() > 1) {
@@ -183,6 +210,7 @@ public class FechasXcomprension {
      * Devuelve la cantidad total de dias.
      * 
      * @throws PeriodoIndeterminadoException
+     * @throws NoHayResultadoException
      */
     public int getDiasTotal() throws PeriodoIndeterminadoException {
         return this.getFechasXextencion().size();
