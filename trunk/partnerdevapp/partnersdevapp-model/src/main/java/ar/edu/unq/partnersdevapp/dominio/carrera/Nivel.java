@@ -26,6 +26,7 @@ public class Nivel extends Entidad {
      * 
      */
     public Nivel(final String nombre, final Banda bandas, final int maximo, final int minimo) {
+        super();
         this.setBanda(bandas);
         this.setNombre(nombre);
         this.setSueldoMaximo(maximo);

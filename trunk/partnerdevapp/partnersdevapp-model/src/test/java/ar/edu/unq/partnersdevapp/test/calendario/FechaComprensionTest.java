@@ -204,15 +204,15 @@ public class FechaComprensionTest extends TestCase {
 
         FechasXcomprension fxc = new FechasXcomprension();
 
-        assertTrue(fxc.getFechasXextencion().isEmpty());
-        assertEquals(fxc.getDiasConsecutivos(), 0);
+        assertTrue("", fxc.getFechasXextencion().isEmpty());
+        assertEquals("", fxc.getDiasConsecutivos(), 0);
 
         Date inicio = FechaUtils.crearFecha("04/04/2011");
         Date fin = FechaUtils.crearFecha("04/04/2011");
         fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
-        assertEquals(fxc.getDiasConsecutivos(), 1);
+        assertEquals("", fxc.getDiasConsecutivos(), 1);
 
         // TODO: no crea bien este tipo de fecha
         // inicio = FechaUtils.crearFecha("04/04/2011");
@@ -230,7 +230,7 @@ public class FechaComprensionTest extends TestCase {
         fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
-        assertEquals(fxc.getDiasConsecutivos(), 5);
+        assertEquals("", fxc.getDiasConsecutivos(), 5);
     }
 
     // ***************************************

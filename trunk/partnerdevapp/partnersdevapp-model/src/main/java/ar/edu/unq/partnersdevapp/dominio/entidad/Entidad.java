@@ -12,7 +12,6 @@ public class Entidad implements Persistible {
     public Entidad() {
     }
 
-    @SuppressWarnings("unused")
     public Entidad(final String id) {
         this();
     }

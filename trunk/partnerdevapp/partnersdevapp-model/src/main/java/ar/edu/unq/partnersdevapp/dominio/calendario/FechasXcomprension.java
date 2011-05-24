@@ -68,16 +68,15 @@ public class FechasXcomprension {
      * @throws NoHayResultadoException
      * */
     public List<Date> getFechasXextencion() throws PeriodoIndeterminadoException {
-        if (fechaInicio == null)
-            return new ArrayList<Date>();
+        if (fechaInicio == null) { return new ArrayList<Date>(); }
 
         List<Date> list = new ArrayList<Date>();
         Calendar calendario = Calendar.getInstance();
         calendario.setTime(this.getFechaInicio());
 
-        if (this.isPeriodoIndeterminado())
+        if (this.isPeriodoIndeterminado()) {
             throw new PeriodoIndeterminadoException();
-        else {
+        } else {
             if (this.isFechaInicioIgualFin()) {
                 list.add(this.getFechaInicio());
             } else {
@@ -191,8 +190,7 @@ public class FechasXcomprension {
      */
     public int getDiasConsecutivos() throws PeriodoIndeterminadoException {
         List<Date> list = this.getFechasXextencion();
-        if (list.isEmpty())
-            return 0;
+        if (list.isEmpty()) { return 0; }
         int totalDias = 1;
         int iterador = 1;
         if (list.size() > 1) {

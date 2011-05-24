@@ -1,7 +1,7 @@
 package ar.edu.unq.partnersdevapp.dominio.entidad;
 
 /**
- * TODO: description
+ * 
  */
 public interface Persistible {
 
