@@ -18,9 +18,11 @@ public class Banda extends Entidad {
     private int cantidadDeSubBandas;
 
     public Banda() {
+        super();
     }
 
     public Banda(final int cantidadDeSubBandas) {
+        super();
         this.setCantidadDeSubBandas(cantidadDeSubBandas);
     }
 

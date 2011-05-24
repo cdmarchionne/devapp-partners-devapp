@@ -21,6 +21,7 @@ public class PlanDeCarrera extends Entidad {
     private List<Nivel> niveles = new ArrayList<Nivel>();
 
     public PlanDeCarrera(final String especialidad, final String descripcion) {
+        super();
         this.setEspecialidad(especialidad);
         this.setDescripcion(descripcion);
     }
@@ -90,8 +91,7 @@ public class PlanDeCarrera extends Entidad {
      */
     public Nivel getNivel(final String nombre) throws NoHayResultadoException {
         for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getNombre().equals(nombre))
-                return nivel;
+            if (nivel.getNombre().equals(nombre)) { return nivel; }
         }
         throw new NoHayResultadoException();
     }
@@ -103,8 +103,7 @@ public class PlanDeCarrera extends Entidad {
      */
     public Nivel getNivel(final int jerarquia) throws NoHayResultadoException {
         for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getJerarquia() == jerarquia)
-                return nivel;
+            if (nivel.getJerarquia() == jerarquia) { return nivel; }
         }
         throw new NoHayResultadoException();
     }
