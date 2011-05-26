@@ -14,38 +14,45 @@ import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
  * 
  */
 public class SuperpocisionTest extends TestCase {
+    private static final String MENSAJE = "test de interseccion";
+
+    List<Date> deberSerList = new ArrayList<Date>();
+
+    FechasXcomprension fxc0 = new FechasXcomprension();
+
+    FechasXcomprension fxc1 = new FechasXcomprension();
 
     public void testSuperposicionTrue() throws PeriodoIndeterminadoException {
 
-        FechasXcomprension fxc0 = new FechasXcomprension();
+        fxc0 = new FechasXcomprension();
         fxc0.set(FechaUtils.crearFecha("04/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        FechasXcomprension fxc1 = new FechasXcomprension();
+        fxc1 = new FechasXcomprension();
         fxc1.set(FechaUtils.crearFecha("11/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        List<Date> deberSerList = new ArrayList<Date>();
+        deberSerList.clear();
         deberSerList.add(FechaUtils.crearFecha("11/04/2011"));
         deberSerList.add(FechaUtils.crearFecha("12/04/2011"));
         deberSerList.add(FechaUtils.crearFecha("13/04/2011"));
         deberSerList.add(FechaUtils.crearFecha("14/04/2011"));
         deberSerList.add(FechaUtils.crearFecha("15/04/2011"));
 
-        assertTrue("intersenccion", fxc0.interseccion(fxc1).containsAll(deberSerList));
+        assertTrue(MENSAJE, fxc0.interseccion(fxc1).containsAll(deberSerList));
 
-        assertTrue("se superpone", fxc0.seSuperpone(fxc1));
+        assertTrue(MENSAJE, fxc0.seSuperpone(fxc1));
     }
 
     public void testSuperposicionFalse() throws PeriodoIndeterminadoException {
 
-        FechasXcomprension fxc0 = new FechasXcomprension();
+        fxc0 = new FechasXcomprension();
         fxc0.set(FechaUtils.crearFecha("04/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        FechasXcomprension fxc1 = new FechasXcomprension();
+        fxc1 = new FechasXcomprension();
         fxc1.set(FechaUtils.crearFecha("18/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        assertTrue("isEmpty", fxc0.interseccion(fxc1).isEmpty());
+        assertTrue(MENSAJE, fxc0.interseccion(fxc1).isEmpty());
 
-        assertFalse("", fxc0.seSuperpone(fxc1));
+        assertFalse(MENSAJE, fxc0.seSuperpone(fxc1));
     }
 
     // HACER TEST DE SUPERPOSICION CON LOS 2 CONSTRUCTORES DIFERENTES
