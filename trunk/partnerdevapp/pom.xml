@@ -29,6 +29,7 @@
   <modules>
      <module>partnersdevapp-model</module> 
      <module>partnersdevapp-persistencia</module> 
+	 <module>partnersdevapp-vista</module> 
   </modules>
 
 	
