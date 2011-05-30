@@ -1,11 +1,17 @@
 package ar.edu.unq.partnersdevapp.dominio.personal;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
+import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarreraManager;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Skills;
 import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaManager;
+import ar.edu.unq.partnersdevapp.dominio.proyecto.ProyectoManager;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
+import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
  * PONER DESCRIPCION
@@ -28,6 +34,8 @@ public class Empleado extends Persona {
     private PlanDeCarreraManager planDeCarreraManager = new PlanDeCarreraManager();
 
     private LicenciaManager licenciaManager = new LicenciaManager();
+
+    private ProyectoManager proyectoManager = new ProyectoManager();
 
     private Skills conocimiento;
 
@@ -130,4 +138,31 @@ public class Empleado extends Persona {
         this.licenciaManager = licenciaManager;
     }
 
+    public void setProyectoManager(final ProyectoManager proyectoManager) {
+        this.proyectoManager = proyectoManager;
+    }
+
+    public ProyectoManager getProyectoManager() {
+        return proyectoManager;
+    }
+
+    /**
+     * Calculo los dias libres que tiene para realizar un Proyecto Nuevo.
+     * Recorro todas las Licencias y Proyectos que tiene asignados.
+     */
+    public List<Date> diasLibres(final FechasXcomprension fechaProyecto) throws PeriodoIndeterminadoException {
+        List<Date> diasLibres = fechaProyecto.getFechasXextencion();
+        Set<Date> fechasOcupado = new HashSet<Date>();
+
+        for (FechasXcomprension fechasLicencia : getLicenciaManager().diasOcupados(fechaProyecto)) {
+            fechasOcupado.addAll(fechasLicencia.getFechasXextencion());
+        }
+
+        for (FechasXcomprension fechasProyecto : getProyectoManager().diasOcupados(fechaProyecto)) {
+            fechasOcupado.addAll(fechasProyecto.getFechasXextencion());
+        }
+
+        diasLibres.removeAll(fechasOcupado);
+        return diasLibres;
+    }
 }

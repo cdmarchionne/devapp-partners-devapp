@@ -27,10 +27,10 @@ public class LicenciaManager {
      */
     public boolean addLicencia(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
             throws NoHayResultadoException, PeriodoIndeterminadoException {
-        boolean condicion = !this.tieneLicenciaIndeterminada() && this.isDiasConsecutivosValido(aLicenciaTipo, fechas)
-                && this.isDiasAnualesValido(aLicenciaTipo, fechas);
+        boolean condicion = !tieneLicenciaIndeterminada() && isDiasConsecutivosValido(aLicenciaTipo, fechas)
+                && isDiasAnualesValido(aLicenciaTipo, fechas);
         if (condicion) {
-            this.getInfoLicencias().add(new InfoLicencia(aLicenciaTipo, fechas));
+            getInfoLicencias().add(new InfoLicencia(aLicenciaTipo, fechas));
         }
 
         return condicion;
@@ -39,7 +39,7 @@ public class LicenciaManager {
     /** Devuelve True si tiene una licencia indeterminada */
     public boolean tieneLicenciaIndeterminada() {
         boolean res = false;
-        for (InfoLicencia info : this.getInfoLicencias()) {
+        for (InfoLicencia info : getInfoLicencias()) {
             res = res || info.getFechas().isPeriodoIndeterminado();
         }
         return res;
@@ -55,10 +55,10 @@ public class LicenciaManager {
         if (aLicenciaTipo.getDiasCantidadAnuales() == -1) {
             res = true;
         } else {
-            infoLics = this.getInfoLicencias();
+            infoLics = getInfoLicencias();
             diaAcumulados = 0;
             for (InfoLicencia info : infoLics) {
-                if (this.isMismoAnioYLicenciafinal(aLicenciaTipo, fechas, info)) {
+                if (isMismoAnioYLicenciafinal(aLicenciaTipo, fechas, info)) {
                     diaAcumulados += info.getFechas().getDiasTotal();
                 }
             }
@@ -86,12 +86,12 @@ public class LicenciaManager {
      * licencia
      */
     public void addComprobante(final InfoLicencia infoLic, final String pathArchivo) {
-        this.getInfoLicencias().get(infoLicencias.indexOf(infoLic)).setRutaArchivoComprobante(pathArchivo);
+        getInfoLicencias().get(infoLicencias.indexOf(infoLic)).setRutaArchivoComprobante(pathArchivo);
     }
 
     @Override
     public String toString() {
-        return this.getInfoLicencias().toString();
+        return getInfoLicencias().toString();
     }
 
     // ******************
@@ -102,6 +102,29 @@ public class LicenciaManager {
 
     public void setInfoLicencias(final List<InfoLicencia> infoLicencias) {
         this.infoLicencias = infoLicencias;
+    }
+
+    /** Dias que tiene solicitados licencia */
+    public List<FechasXcomprension> diasOcupados() {
+        List<FechasXcomprension> diasOcupados = new ArrayList<FechasXcomprension>();
+
+        for (InfoLicencia infoLicencia : infoLicencias) {
+            diasOcupados.add(infoLicencia.getFechas());
+        }
+        return diasOcupados;
+    }
+
+    /** Dias que tiene solicitados licencia que coinciden con una fecha dada */
+    public List<FechasXcomprension> diasOcupados(final FechasXcomprension fechaProyecto)
+            throws PeriodoIndeterminadoException {
+        List<FechasXcomprension> diasOcupados = new ArrayList<FechasXcomprension>();
+
+        for (InfoLicencia infoLicencia : infoLicencias) {
+            if (fechaProyecto.seSuperpone(infoLicencia.getFechas())) {
+                diasOcupados.add(infoLicencia.getFechas());
+            }
+        }
+        return diasOcupados;
     }
 
 }

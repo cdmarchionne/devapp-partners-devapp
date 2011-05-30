@@ -105,6 +105,32 @@ public class Skills {
         return tecnologia != null && getExperiencia(tecnologia).cumbreNecesidades(experienciaMinima);
     }
 
+    /**
+     * Devuelvo un puntaje referido a los conocimientos. Mientras mas cercano a
+     * los requisitos esta mas chico es el numero
+     */
+    public Integer diferenciaRequisitos(final Skills condiciones) {
+        Integer puntaje = 0;
+        Tecnologia tecnologiaParticular;
+
+        Tecnologia tecnologiaIterador;
+        Iterator<Tecnologia> iterador = condiciones.getSkill().keySet().iterator();
+        while (iterador.hasNext()) {
+            tecnologiaIterador = iterador.next();
+            tecnologiaParticular = this.buscarTecnologia(tecnologiaIterador);
+            puntaje += puntajeTecnologia(tecnologiaParticular, condiciones.getExperienciaNombre(tecnologiaIterador));
+        }
+        return puntaje;
+    }
+
+    /**
+     * Devuelvo un puntaje referido al dominio de una Tecnologia. Mientras mas
+     * cercano a los requisitos esta mas chico es el numero
+     */
+    private Integer puntajeTecnologia(final Tecnologia tecnologia, final String experienciaMinima) {
+        return getExperiencia(tecnologia).difenciaNecesidades(experienciaMinima);
+    }
+
     private Experiencia getExperiencia(final Tecnologia tecnologia) {
         return skill.get(tecnologia);
     }
