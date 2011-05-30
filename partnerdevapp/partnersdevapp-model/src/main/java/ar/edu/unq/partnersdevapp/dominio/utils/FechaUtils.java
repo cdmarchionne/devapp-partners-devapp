@@ -42,8 +42,8 @@ public class FechaUtils {
                 || FechaUtils.isEntre(d2I, d1I, d1F) || FechaUtils.isEntre(d2F, d1I, d1F);
     }
 
-    public static boolean isEntre(final Date d, final Date dI, final Date dF) {
-        return d.after(dI) && d.before(dF);
+    public static boolean isEntre(final Date dia, final Date diaInicio, final Date diaFinal) {
+        return dia.after(diaInicio) && dia.before(diaFinal);
     }
 
     /**

@@ -62,11 +62,11 @@ public class Proyecto {
         requerimientos = skillMinimos;
     }
 
-    protected FechasXcomprension getFecha() {
+    public FechasXcomprension getFecha() {
         return fecha;
     }
 
-    protected void setFecha(final FechasXcomprension fecha) {
+    public void setFecha(final FechasXcomprension fecha) {
         this.fecha = fecha;
     }
 
@@ -92,6 +92,11 @@ public class Proyecto {
 
     public Set<Empleado> getEmpleadosAutomatico(final Set<Empleado> empleados) {
         return asignacion.getEmpleadosAutomatico(empleados);
+    }
+
+    @Override
+    public boolean equals(final Object proyecto) {
+        return getNombre().equals(((Proyecto) proyecto).getNombre());
     }
 
 }

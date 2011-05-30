@@ -108,6 +108,18 @@ public class Experiencia {
     }
 
     /**
+     * Calculo la diferencia de mi Nivel de Experiencia Actual y el Requisito de
+     * Experiencia deseado
+     */
+    public Integer difenciaNecesidades(final Experiencia requisito) {
+        return difenciaNecesidades(requisito.getExperienciaActual());
+    }
+
+    public Integer difenciaNecesidades(final String requisito) {
+        return indiceExperiencia(experienciaActual) - indiceExperiencia(requisito);
+    }
+
+    /**
      * Comprueba que mi Nivel de Experiencia Actual cumpla con el Requisito de
      * Experiencia deseado
      */
@@ -116,10 +128,7 @@ public class Experiencia {
     }
 
     public boolean cumbreNecesidades(final String requisito) {
-        // if (!existeExperiencia(requisito)) {
-        // Excepcion no existe Experiencia
-        // }
-        return indiceExperiencia(experienciaActual) >= indiceExperiencia(requisito);
+        return difenciaNecesidades(requisito) >= 0;
     }
 
 }

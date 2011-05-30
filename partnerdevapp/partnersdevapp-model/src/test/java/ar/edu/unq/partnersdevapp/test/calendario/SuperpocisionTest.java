@@ -16,21 +16,15 @@ import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 public class SuperpocisionTest extends TestCase {
     private static final String MENSAJE = "test de interseccion";
 
-    List<Date> deberSerList = new ArrayList<Date>();
-
-    FechasXcomprension fxc0 = new FechasXcomprension();
-
-    FechasXcomprension fxc1 = new FechasXcomprension();
-
     public void testSuperposicionTrue() throws PeriodoIndeterminadoException {
 
-        fxc0 = new FechasXcomprension();
+        FechasXcomprension fxc0 = new FechasXcomprension();
         fxc0.set(FechaUtils.crearFecha("04/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        fxc1 = new FechasXcomprension();
+        FechasXcomprension fxc1 = new FechasXcomprension();
         fxc1.set(FechaUtils.crearFecha("11/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        deberSerList.clear();
+        List<Date> deberSerList = new ArrayList<Date>();
         deberSerList.add(FechaUtils.crearFecha("11/04/2011"));
         deberSerList.add(FechaUtils.crearFecha("12/04/2011"));
         deberSerList.add(FechaUtils.crearFecha("13/04/2011"));
@@ -44,10 +38,10 @@ public class SuperpocisionTest extends TestCase {
 
     public void testSuperposicionFalse() throws PeriodoIndeterminadoException {
 
-        fxc0 = new FechasXcomprension();
+        FechasXcomprension fxc0 = new FechasXcomprension();
         fxc0.set(FechaUtils.crearFecha("04/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
-        fxc1 = new FechasXcomprension();
+        FechasXcomprension fxc1 = new FechasXcomprension();
         fxc1.set(FechaUtils.crearFecha("18/04/2011"), FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
         assertTrue(MENSAJE, fxc0.interseccion(fxc1).isEmpty());

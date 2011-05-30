@@ -1,12 +1,15 @@
 package ar.edu.unq.partnersdevapp.dominio.proyecto;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
+import ar.edu.unq.partnersdevapp.dominio.personal.EmpleadoPrioridad;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
@@ -50,6 +53,7 @@ public class AsignacionStrategy {
         return horasAsignadas() < getProyecto().getEsfuerzoEstimado();
     }
 
+    /** Cantidad de horas que el Proyecto tiene asignadas con empleados */
     private Integer horasAsignadas() {
         Integer horasTotales = 0;
 
@@ -59,8 +63,12 @@ public class AsignacionStrategy {
         return horasTotales;
     }
 
+    /**
+     * Calculo de cantidad minima de personal para dedicarse exclusivamente al
+     * proyecto toda la jornada
+     */
     public Integer cantPersonalMinimo() {
-        int diasHabiles;
+        int diasHabiles = 0;
         try {
             diasHabiles = proyecto.getFecha().getDiasConsecutivos();
         } catch (PeriodoIndeterminadoException e) {
@@ -69,15 +77,33 @@ public class AsignacionStrategy {
         return proyecto.getEsfuerzoEstimado() / (diasHabiles * FechaUtils.HORAS_DIARIAS_TRABAJADAS);
     }
 
+    /** Condiciones necesarias para que un Empleado trabaje en un proyecto */
+    private boolean condicionesEmpleadoAutomatico(final Empleado empleado) {
+        return esUnEmpleadoApto(empleado) && !diasLibres(empleado).isEmpty();
+    }
+
+    /** Verifico si el empleado es apto para el proyecto */
     private boolean esUnEmpleadoApto(final Empleado empleado) {
         return empleado.getConocimiento().satisfaceRequisito(getProyecto().getRequerimientos());
     }
 
-    private boolean condicionesEmpleadoAutomatico(final Empleado empleado) {
-        return esUnEmpleadoApto(empleado);
-        // Revisra que este presente
+    /** Verifico si el empleado es apto para el proyecto */
+    private Integer diferenciaRequisitosDelEmpleado(final Empleado empleado) {
+        return empleado.getConocimiento().diferenciaRequisitos(getProyecto().getRequerimientos());
     }
 
+    /** Dias libres del empleado en la fecha de realizacion del proyecto */
+    private List<Date> diasLibres(final Empleado empleado) {
+        List<Date> diasLibres;
+        try {
+            diasLibres = empleado.diasLibres(proyecto.getFecha());
+        } catch (PeriodoIndeterminadoException e) {
+            throw new UnsupportedOperationException();
+        }
+        return diasLibres;
+    }
+
+    /** Recomendacion Automatica de empleados sin Calsificacion x Prioridad */
     public Set<Empleado> getEmpleadosAutomatico(final Set<Empleado> empleados) {
         Set<Empleado> empleadosCandidatos = new HashSet<Empleado>();
         Empleado empleadoParticular;
@@ -87,6 +113,27 @@ public class AsignacionStrategy {
             empleadoParticular = iterador.next();
             if (condicionesEmpleadoAutomatico(empleadoParticular)) {
                 empleadosCandidatos.add(empleadoParticular);
+            }
+        }
+        return empleadosCandidatos;
+    }
+
+    /** Recomendacion Automatica de empleados con Calsificacion x Prioridad */
+    public Set<EmpleadoPrioridad> getEmpleadosAutomaticoPriority(final Set<Empleado> empleados) {
+        Set<EmpleadoPrioridad> empleadosCandidatos = new HashSet<EmpleadoPrioridad>();
+        Empleado empleadoParticular;
+        Integer diferenciaDeRequisitos;
+        List<Date> diasLibres;
+
+        Iterator<Empleado> iterador = empleados.iterator();
+        while (iterador.hasNext()) {
+            empleadoParticular = iterador.next();
+            diasLibres = diasLibres(empleadoParticular);
+            diferenciaDeRequisitos = diferenciaRequisitosDelEmpleado(empleadoParticular);
+
+            if (diferenciaDeRequisitos >= 0 && !diasLibres.isEmpty()) {
+                empleadosCandidatos.add(new EmpleadoPrioridad(empleadoParticular, diferenciaDeRequisitos, diasLibres
+                        .size()));
             }
         }
         return empleadosCandidatos;
