@@ -13,6 +13,10 @@ public class LogService {
 
     }
 
+    public void log(final String msg) {
+        LOG.info(msg);
+    }
+
     public void test() {
         LOG.info("test");
     }

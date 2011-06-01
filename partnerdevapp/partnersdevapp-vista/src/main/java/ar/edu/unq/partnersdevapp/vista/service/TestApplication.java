@@ -6,6 +6,8 @@ import org.apache.wicket.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
+import ar.edu.unq.partnersdevapp.vista.pages.Page1;
+
 public class TestApplication extends AuthenticatedWebApplication {
 
     private MounterURL aMounterURL;
@@ -16,7 +18,7 @@ public class TestApplication extends AuthenticatedWebApplication {
         return logService;
     }
 
-    public void setGeneralService(final LogService logService) {
+    public void setLogService(final LogService logService) {
         this.logService = logService;
     }
 
@@ -41,12 +43,12 @@ public class TestApplication extends AuthenticatedWebApplication {
 
     @Override
     protected Class<? extends WebPage> getSignInPageClass() {
-        return Home.class;
+        return Page1.class;
     }
 
     @Override
     public Class<? extends Page> getHomePage() {
-        return Home.class;
+        return Page1.class;
     }
 
     public String getContextPath() {
