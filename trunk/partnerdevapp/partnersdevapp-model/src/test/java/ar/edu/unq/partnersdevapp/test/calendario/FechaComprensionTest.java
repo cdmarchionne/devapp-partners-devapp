@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import junit.framework.TestCase;
-import ar.edu.unq.partnersdevapp.dominio.calendario.InfoLicencia;
+import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
@@ -65,7 +65,7 @@ public class FechaComprensionTest extends TestCase {
         deberSerList.add(FechaUtils.crearFecha(FECHA_12_04_2011));
         deberSerList.add(FechaUtils.crearFecha(FECHA_19_04_2011));
 
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, list, Intervalo.getUnaSemana(), 3);
 
         assertTrue("", fxc.getFechasXextencion().containsAll(deberSerList));
@@ -87,7 +87,7 @@ public class FechaComprensionTest extends TestCase {
         list.add(Calendar.FRIDAY);
 
         // Lunes y viernes - cada una semana - durante 3 semanas
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, list, Intervalo.getUnaSemana(), 3);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
@@ -101,7 +101,7 @@ public class FechaComprensionTest extends TestCase {
     public void testSetDiasDeLaSemana() throws PeriodoIndeterminadoException {
         Date inicio = FechaUtils.crearFecha(FECHA_04_04_2011);
 
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasDeLaSemana(), Intervalo.getUnaSemana(), 2);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
@@ -112,7 +112,7 @@ public class FechaComprensionTest extends TestCase {
     public void testSetDiasDeLaSemanaHabiles() throws PeriodoIndeterminadoException {
         Date inicio = FechaUtils.crearFecha(FECHA_04_04_2011);
 
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
@@ -124,7 +124,7 @@ public class FechaComprensionTest extends TestCase {
     public void testSetDiasDeLaSemanaHabilesDes() throws PeriodoIndeterminadoException {
         Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
 
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), 2);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
@@ -136,7 +136,7 @@ public class FechaComprensionTest extends TestCase {
         Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
         Date fin = FechaUtils.crearFecha(FECHA_20_04_2011);
 
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
         assertSame("", fxc.getRepeticiones(), 3);
@@ -146,7 +146,7 @@ public class FechaComprensionTest extends TestCase {
         Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
         Date fin = FechaUtils.crearFecha(FECHA_20_04_2011);
 
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), new Intervalo(Calendar.WEEK_OF_YEAR, 2), fin);
 
         assertSame("", fxc.getRepeticiones(), 2);
@@ -155,7 +155,7 @@ public class FechaComprensionTest extends TestCase {
     public void testPeriodoIndefinido() throws PeriodoIndeterminadoException {
         Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
 
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), null, null);
 
         assertSame("", fxc.getRepeticiones(), null);
@@ -176,7 +176,7 @@ public class FechaComprensionTest extends TestCase {
         Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
         Date fin = FechaUtils.crearFecha(FECHA_06_04_2011);
 
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
         List<Date> deberSerList = new ArrayList<Date>();
@@ -191,7 +191,7 @@ public class FechaComprensionTest extends TestCase {
         Date inicio = FechaUtils.crearFecha(FECHA_06_04_2011);
         Date fin = FechaUtils.crearFecha(FECHA_20_04_2011);
 
-        InfoLicencia fxc = new InfoLicencia();
+        FechasXcomprension fxc = new FechasXcomprension();
         fxc.set(inicio, FechaUtils.getDiasHabiles(), Intervalo.getUnaSemana(), fin);
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
