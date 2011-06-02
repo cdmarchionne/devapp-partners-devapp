@@ -1,15 +1,15 @@
 package ar.edu.unq.partnersdevapp.dominio.personal;
 
 /**
- * TODO: description
+ * Informacion de soporte para la asignacion automatica de Empleados a Proyectos
  */
 public class EmpleadoPrioridad {
 
-    private transient Empleado empleado;
+    private Empleado empleado;
 
-    private transient Integer requisitos;
+    private Integer requisitos;
 
-    private transient Integer cantDiasLibres;
+    private Integer cantDiasLibres;
 
     public EmpleadoPrioridad(final Empleado empleado, final Integer requisitos, final Integer cantDiasLibres) {
         super();
@@ -22,12 +22,23 @@ public class EmpleadoPrioridad {
         return empleado;
     }
 
+    public void setEmpleado(final Empleado empleado) {
+        this.empleado = empleado;
+    }
+
     public Integer getRequisitos() {
         return requisitos;
+    }
+
+    public void setRequisitos(final Integer requisitos) {
+        this.requisitos = requisitos;
     }
 
     public Integer getCantDiasLibres() {
         return cantDiasLibres;
     }
 
+    public void setCantDiasLibres(final Integer cantDiasLibres) {
+        this.cantDiasLibres = cantDiasLibres;
+    }
 }
