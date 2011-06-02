@@ -5,8 +5,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.collections.ListUtils;
+
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
-import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
@@ -72,7 +73,6 @@ public class FechasXcomprension {
      * fechas posteriores hasta completar la semana de la mismo.
      * 
      * @throws PeriodoIndeterminadoException
-     * @throws NoHayResultadoException
      * */
     public List<Date> getFechasXextencion() throws PeriodoIndeterminadoException {
         if (fechaInicio == null) {
@@ -121,7 +121,6 @@ public class FechasXcomprension {
      * comprensión.
      * 
      * @throws PeriodoIndeterminadoException
-     * @throws NoHayResultadoException
      */
     @SuppressWarnings("unchecked")
     public List<Date> interseccion(final FechasXcomprension fxc) throws PeriodoIndeterminadoException {
@@ -130,8 +129,6 @@ public class FechasXcomprension {
 
     /**
      * Quita los elementos que coinciden con los pasados por parametros
-     * 
-     * @throws NoHayResultadoException
      */
     @SuppressWarnings("unchecked")
     public List<Date> restar(final FechasXcomprension fxc) throws PeriodoIndeterminadoException {
@@ -143,7 +140,6 @@ public class FechasXcomprension {
      * por comprensión.
      * 
      * @throws PeriodoIndeterminadoException
-     * @throws NoHayResultadoException
      */
     public boolean seSuperpone(final FechasXcomprension fxc) throws PeriodoIndeterminadoException {
         // return !this.interseccion(fxc).isEmpty();
@@ -159,7 +155,6 @@ public class FechasXcomprension {
      * contempla sabado y domingo.
      * 
      * @throws PeriodoIndeterminadoException
-     * @throws NoHayResultadoException
      */
     public int getDiasConsecutivos() throws PeriodoIndeterminadoException {
         List<Date> list = getFechasXextencion();
@@ -183,7 +178,6 @@ public class FechasXcomprension {
      * Devuelve la cantidad total de dias.
      * 
      * @throws PeriodoIndeterminadoException
-     * @throws NoHayResultadoException
      */
     public int getDiasTotal() throws PeriodoIndeterminadoException {
         return getFechasXextencion().size();

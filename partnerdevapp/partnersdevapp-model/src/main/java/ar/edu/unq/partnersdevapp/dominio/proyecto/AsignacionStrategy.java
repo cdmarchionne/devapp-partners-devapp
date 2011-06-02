@@ -124,6 +124,7 @@ public class AsignacionStrategy {
         Empleado empleadoParticular;
         Integer diferenciaDeRequisitos;
         List<Date> diasLibres;
+        EmpleadoPrioridad empleadoPrioridad;
 
         Iterator<Empleado> iterador = empleados.iterator();
         while (iterador.hasNext()) {
@@ -132,8 +133,8 @@ public class AsignacionStrategy {
             diferenciaDeRequisitos = diferenciaRequisitosDelEmpleado(empleadoParticular);
 
             if (diferenciaDeRequisitos >= 0 && !diasLibres.isEmpty()) {
-                empleadosCandidatos.add(new EmpleadoPrioridad(empleadoParticular, diferenciaDeRequisitos, diasLibres
-                        .size()));
+                empleadoPrioridad = new EmpleadoPrioridad(empleadoParticular, diferenciaDeRequisitos, diasLibres.size());
+                empleadosCandidatos.add(empleadoPrioridad);
             }
         }
         return empleadosCandidatos;

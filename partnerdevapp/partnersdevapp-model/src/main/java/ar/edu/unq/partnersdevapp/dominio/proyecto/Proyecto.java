@@ -96,7 +96,12 @@ public class Proyecto {
 
     @Override
     public boolean equals(final Object proyecto) {
-        return getNombre().equals(((Proyecto) proyecto).getNombre());
+        return proyecto == null ? false : getNombre().equals(((Proyecto) proyecto).getNombre());
     }
+
+    // @Override
+    // public int hashCode() {
+    // return 10;
+    // }
 
 }

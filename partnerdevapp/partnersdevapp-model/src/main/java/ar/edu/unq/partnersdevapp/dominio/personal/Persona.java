@@ -3,7 +3,7 @@ package ar.edu.unq.partnersdevapp.dominio.personal;
 import ar.edu.unq.partnersdevapp.dominio.basededatos.Direccion;
 
 /**
- * PONER DESCRIPCION
+ * Datos Personales
  */
 public class Persona {
 
@@ -11,11 +11,9 @@ public class Persona {
 
     protected String apellido;
 
-    @SuppressWarnings("PMD")
     protected String dni;
 
-    @SuppressWarnings("PMD")
-    protected Direccion domicilio;
+    protected Direccion direccion;
 
     protected String telefono;
 
@@ -37,7 +35,7 @@ public class Persona {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
-        domicilio = new Direccion(direccion, altura, localidad);
+        this.direccion = new Direccion(direccion, altura, localidad);
         this.telefono = telefono;
         this.email = email;
         this.universidad = universidad;
@@ -67,12 +65,16 @@ public class Persona {
         return dni;
     }
 
+    public void setDni(final String dni) {
+        this.dni = dni;
+    }
+
     public Direccion getDireccion() {
-        return domicilio;
+        return direccion;
     }
 
     public void setDireccion(final String calle, final Integer altura) {
-        domicilio = new Direccion(calle, altura);
+        direccion = new Direccion(calle, altura);
     }
 
     public String getTelefono() {

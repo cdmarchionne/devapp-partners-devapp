@@ -1,16 +1,16 @@
 package ar.edu.unq.partnersdevapp.dominio.entidad;
 
 /**
- * 
+ * Persistible
  */
 public interface Persistible {
 
-    public int getId();
+    Integer getId();
 
-    public void setId(int id);
+    void setId(Integer id);
 
-    // public int getVersion();
+    Long getVersion();
 
-    // public void setVersion(int version);
+    void setVersion(Long version);
 
 }
