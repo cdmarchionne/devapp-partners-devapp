@@ -38,7 +38,7 @@ padding:0px;
 margin: 0px;
 margin-left: auto;
 margin-right: auto;
-} 
+}  
 
 /* ----------banner for logo-------------- */
 #banner {
@@ -77,6 +77,8 @@ background-color: #ffffff;  /* color of the content column */
 
 /* -----------------content--------------------- */ 
 #content{ 
+	 
+	 min-height:800px;
 position: relative; 
 margin: 0px; 
 }
