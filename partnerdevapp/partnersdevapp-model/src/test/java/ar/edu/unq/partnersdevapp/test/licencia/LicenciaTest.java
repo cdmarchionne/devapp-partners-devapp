@@ -57,7 +57,7 @@ public class LicenciaTest extends TestCase {
         LicenciaTipo licTipo = BaseDeDatosHelper.getMudanza();
         LicenciaManager licContenedor = new LicenciaManager();
 
-        List<Integer> list = this.getListJuevesViernes();
+        List<Integer> list = getListJuevesViernes();
 
         FechasXcomprension fechas = new FechasXcomprension();
         fechas.set(FechaUtils.crearFecha(FECHA_07_04_2011), list, Intervalo.getUnaSemana(),

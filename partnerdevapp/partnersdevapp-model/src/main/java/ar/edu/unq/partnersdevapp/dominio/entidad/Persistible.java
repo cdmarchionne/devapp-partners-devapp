@@ -5,9 +5,9 @@ package ar.edu.unq.partnersdevapp.dominio.entidad;
  */
 public interface Persistible {
 
-    Integer getId();
+    int getId();
 
-    void setId(Integer id);
+    void setId(int id);
 
     Long getVersion();
 

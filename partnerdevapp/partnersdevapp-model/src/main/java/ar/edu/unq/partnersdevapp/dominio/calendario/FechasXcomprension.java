@@ -16,6 +16,7 @@ import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
  * menor de los dias de la semana elegidos.
  */
 public class FechasXcomprension {
+
     private Date fechaInicio;
 
     private List<Integer> dias;
@@ -143,7 +144,7 @@ public class FechasXcomprension {
      */
     public boolean seSuperpone(final FechasXcomprension fxc) throws PeriodoIndeterminadoException {
         // return !this.interseccion(fxc).isEmpty();
-        return FechaUtils.superpone(fechaInicio, getFechaFin(), fxc.getFechaInicio(), fxc.getFechaFin());
+        return FechaUtils.superpone(getFechaInicio(), getFechaFin(), fxc.getFechaInicio(), fxc.getFechaFin());
     }
 
     public boolean isPeriodoIndeterminado() {
@@ -238,10 +239,12 @@ public class FechasXcomprension {
     }
 
     public Date getFechaFin() {
+        // return (Date) fechaFin.clone();
         return fechaFin;
     }
 
     public void setFechaFin(final Date fechaFin) {
+        // this.fechaFin = (Date) fechaFin.clone();
         this.fechaFin = fechaFin;
     }
 

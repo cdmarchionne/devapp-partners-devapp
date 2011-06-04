@@ -27,8 +27,10 @@ public class LicenciaManager {
      */
     public boolean addLicencia(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
             throws NoHayResultadoException, PeriodoIndeterminadoException {
-        boolean condicion = !tieneLicenciaIndeterminada() && isDiasConsecutivosValido(aLicenciaTipo, fechas)
-                && isDiasAnualesValido(aLicenciaTipo, fechas);
+        boolean condicion = !tieneLicenciaIndeterminada();
+        condicion = condicion && isDiasConsecutivosValido(aLicenciaTipo, fechas);
+        condicion = condicion && isDiasAnualesValido(aLicenciaTipo, fechas);
+
         if (condicion) {
             getInfoLicencias().add(new InfoLicencia(aLicenciaTipo, fechas));
         }

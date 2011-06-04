@@ -29,7 +29,34 @@ public class ProyectoManager {
     }
 
     protected void addProyecto(final Proyecto proyecto, final List<FechasXcomprension> diasAsignados) {
-        infoProyectos.add(new InfoProyecto(proyecto, diasAsignados));
+        InfoProyecto infoProyectoNuevo = getInfoProyectoExistente(proyecto);
+
+        if (infoProyectoNuevo == null) {
+            infoProyectoNuevo = new InfoProyecto(proyecto, diasAsignados);
+            infoProyectos.add(infoProyectoNuevo);
+        } else {
+            addMasDiasAsignados(infoProyectoNuevo, diasAsignados);
+        }
+
+    }
+
+    private void addMasDiasAsignados(final InfoProyecto infoProyectoNuevo, final List<FechasXcomprension> diasAsignados) {
+        List<FechasXcomprension> diasAsignadosAnteriores = infoProyectoNuevo.getDiasAsignados();
+        diasAsignadosAnteriores.addAll(diasAsignados);
+        infoProyectoNuevo.setDiasAsignados(diasAsignadosAnteriores);
+    }
+
+    private InfoProyecto getInfoProyectoExistente(final Proyecto proyecto) {
+        InfoProyecto infoProyectoNuevo = null;
+
+        for (InfoProyecto infoProyectoExistente : infoProyectos) {
+            if (infoProyectoExistente.getProyecto().equals(proyecto)) {
+                infoProyectoNuevo = infoProyectoExistente;
+                break;
+            }
+        }
+
+        return infoProyectoNuevo;
     }
 
     protected void removeProyecto(final Proyecto proyecto) {

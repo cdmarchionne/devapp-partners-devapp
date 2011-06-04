@@ -35,7 +35,54 @@ public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
 
     @Override
     public boolean equals(final Object obj) {
-        return obj == null ? false : compareTo((InfoPlanDeCarrera) obj) == 0;
+        // return obj == null ? false : compareTo((InfoPlanDeCarrera) obj) == 0;
+        boolean rta = false;
+
+        if (!(obj == null || getClass() != obj.getClass())) {
+            if (this == obj) {
+                rta = true;
+            } else {
+                rta = isSame((InfoPlanDeCarrera) obj);
+            }
+        }
+        return rta;
+    }
+
+    private boolean isSame(final InfoPlanDeCarrera infoPlanDeCarrera) {
+        boolean rta;
+
+        if (equalsFechaInicio(infoPlanDeCarrera) && equalsPlanDeCarrera(infoPlanDeCarrera)
+                && equalsNivelPlanDeCarrera(infoPlanDeCarrera)) {
+            rta = true;
+        } else {
+            rta = false;
+        }
+
+        return rta;
+    }
+
+    private boolean equalsFechaInicio(final InfoPlanDeCarrera infoPlanDeCarrera) {
+        return getFechaInicio() == null ? infoPlanDeCarrera.getFechaInicio() == null : getFechaInicio().equals(
+                infoPlanDeCarrera.getFechaInicio());
+    }
+
+    private boolean equalsPlanDeCarrera(final InfoPlanDeCarrera infoPlanDeCarrera) {
+        return getPlanDeCarrera() == null ? infoPlanDeCarrera.getPlanDeCarrera() == null : getPlanDeCarrera().equals(
+                infoPlanDeCarrera.getPlanDeCarrera());
+    }
+
+    private boolean equalsNivelPlanDeCarrera(final InfoPlanDeCarrera infoPlanDeCarrera) {
+        return getNivelPlanDeCarrera() == null ? infoPlanDeCarrera.getNivelPlanDeCarrera() == null
+                : getNivelPlanDeCarrera().equals(infoPlanDeCarrera.getNivelPlanDeCarrera());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 10;
+        result += getFechaInicio() == null ? 0 : getFechaInicio().hashCode();
+        result += getPlanDeCarrera() == null ? 0 : getPlanDeCarrera().hashCode();
+        result += getNivelPlanDeCarrera() == null ? 0 : getNivelPlanDeCarrera().hashCode();
+        return result;
     }
 
     @Override

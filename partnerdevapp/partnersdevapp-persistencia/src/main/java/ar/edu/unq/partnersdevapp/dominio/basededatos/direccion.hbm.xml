@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.edu.unq.partnersdevapp.dominio.basededatos">
+
+	<class name="Direccion" table="direccion">
+
+		<id name="id">
+			<generator class="native" />
+		</id>
+		
+		<property name="calle" column="calle" type="string" />
+		<property name="altura" column="altura" type="int" />
+		<property name="piso" column="piso" type="string" />
+		<property name="depto" column="dpto" type="string" />
+		<property name="localidad" column="loc" type="string" />
+		<property name="codigoPostal" column="cp" type="string" />
+		<property name="provincia" column="prov" type="string" />
+		<property name="pais" column="pais" type="string" />
+
+	</class>
+
+</hibernate-mapping>

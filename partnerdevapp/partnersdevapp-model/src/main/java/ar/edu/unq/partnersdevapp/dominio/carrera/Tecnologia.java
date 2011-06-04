@@ -3,10 +3,12 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
 import java.util.HashSet;
 import java.util.Set;
 
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
+
 /**
  * PONER DESCRIPCION
  */
-public class Tecnologia {
+public class Tecnologia extends Entidad {
 
     private static Set<String> listaTecnologia = new HashSet<String>();
 

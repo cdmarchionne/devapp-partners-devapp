@@ -1,6 +1,7 @@
 package ar.edu.unq.partnersdevapp.dominio.proyecto;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
@@ -90,18 +91,34 @@ public class Proyecto {
         asignacion.addEmpleadoManual(empleado);
     }
 
+    public void addEmpleadoManual(final Empleado empleado, final List<FechasXcomprension> diasAsignados) {
+        asignacion.addEmpleadoManual(empleado, diasAsignados);
+    }
+
     public Set<Empleado> getEmpleadosAutomatico(final Set<Empleado> empleados) {
         return asignacion.getEmpleadosAutomatico(empleados);
     }
 
     @Override
-    public boolean equals(final Object proyecto) {
-        return proyecto == null ? false : getNombre().equals(((Proyecto) proyecto).getNombre());
+    public boolean equals(final Object obj) {
+        // return proyecto == null ? false : getNombre().equals(((Proyecto)
+        // obj).getNombre());
+        boolean rta = false;
+
+        if (!(obj == null || getClass() != obj.getClass())) {
+            if (this == obj) {
+                rta = true;
+            } else {
+                Proyecto proyecto = (Proyecto) obj;
+                rta = getNombre() == null ? proyecto.getNombre() == null : getNombre().equals(proyecto.getNombre());
+            }
+        }
+        return rta;
     }
 
-    // @Override
-    // public int hashCode() {
-    // return 10;
-    // }
+    @Override
+    public int hashCode() {
+        return 10 + getNombre() == null ? 0 : getNombre().hashCode();
+    }
 
 }
