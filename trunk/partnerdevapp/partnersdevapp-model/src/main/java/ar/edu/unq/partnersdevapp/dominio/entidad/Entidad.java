@@ -5,7 +5,7 @@ package ar.edu.unq.partnersdevapp.dominio.entidad;
  */
 public class Entidad implements Persistible {
 
-    private Integer id;
+    private int id;
 
     private Long version;
 
@@ -13,19 +13,19 @@ public class Entidad implements Persistible {
         super();
     }
 
-    public Entidad(final Integer id, final Long version) {
+    public Entidad(final int id, final Long version) {
         this();
         this.id = id;
         this.version = version;
     }
 
     @Override
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
     @Override
-    public void setId(final Integer id) {
+    public void setId(final int id) {
         this.id = id;
     }
 

@@ -1,5 +1,6 @@
 package ar.edu.unq.partnersdevapp.dominio.proyecto;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,13 +9,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
 import ar.edu.unq.partnersdevapp.dominio.personal.EmpleadoPrioridad;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
- * TODO: Asignacion Automatica en Construccion
+ * Asignacion De empleados a Proyectos de forma Manual y Automatica
  */
 public class AsignacionStrategy {
 
@@ -41,12 +43,20 @@ public class AsignacionStrategy {
      * Agrego un Empleado a un Proyecto e indico que trabajara en el durante
      * cierta cantidad de horas
      */
-    public void addEmpleadoManual(final Empleado empleado) {
+    public void addEmpleadoManual(final Empleado empleado, final List<FechasXcomprension> diasAsignados) {
         Integer cantidadHoras = 0;
         if (!getProyecto().getPersonalAsignado().contains(empleado)) {
             getProyecto().addPersonal(empleado);
+            for (FechasXcomprension fecha : diasAsignados) {
+                cantidadHoras += horasProductivas(fecha);
+            }
             horasHombre.put(empleado, cantidadHoras);
+            empleado.getProyectoManager().addProyecto(proyecto, diasAsignados);
         }
+    }
+
+    public void addEmpleadoManual(final Empleado empleado) {
+        addEmpleadoManual(empleado, FechaUtils.crearFechaXcomprension(diasLibres(empleado)));
     }
 
     public boolean faltaEsfuerzo() {
@@ -68,13 +78,22 @@ public class AsignacionStrategy {
      * proyecto toda la jornada
      */
     public Integer cantPersonalMinimo() {
+        return proyecto.getEsfuerzoEstimado() / horasProductivas(proyecto.getFecha());
+    }
+
+    /** Calculo de la cantidad de horas Hombre en n dias */
+    private int horasProductivas(final int diasHabiles) {
+        return diasHabiles * FechaUtils.HORAS_DIARIAS_TRABAJADAS;
+    }
+
+    private int horasProductivas(final FechasXcomprension fecha) {
         int diasHabiles = 0;
         try {
-            diasHabiles = proyecto.getFecha().getDiasConsecutivos();
+            diasHabiles = fecha.getDiasConsecutivos();
         } catch (PeriodoIndeterminadoException e) {
             throw new UnsupportedOperationException(e);
         }
-        return proyecto.getEsfuerzoEstimado() / (diasHabiles * FechaUtils.HORAS_DIARIAS_TRABAJADAS);
+        return horasProductivas(diasHabiles);
     }
 
     /** Condiciones necesarias para que un Empleado trabaje en un proyecto */
@@ -94,11 +113,11 @@ public class AsignacionStrategy {
 
     /** Dias libres del empleado en la fecha de realizacion del proyecto */
     private List<Date> diasLibres(final Empleado empleado) {
-        List<Date> diasLibres;
+        List<Date> diasLibres = null;
         try {
             diasLibres = empleado.diasLibres(proyecto.getFecha());
         } catch (PeriodoIndeterminadoException e) {
-            throw new UnsupportedOperationException();
+            diasLibres = new ArrayList<Date>();
         }
         return diasLibres;
     }

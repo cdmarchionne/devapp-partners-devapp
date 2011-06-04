@@ -16,8 +16,8 @@ public class PeriodoGannt {
     public PeriodoGannt(final String descripcion, final Date fechaInicio, final Date fechaFin) {
         super();
         this.descripcion = descripcion;
-        this.fechaInicio = fechaInicio;
-        this.fechaFin = fechaFin;
+        this.fechaInicio = (Date) fechaInicio.clone();
+        this.fechaFin = (Date) fechaFin.clone();
     }
 
     protected String getDescripcion() {
@@ -29,19 +29,19 @@ public class PeriodoGannt {
     }
 
     public Date getFechaInicio() {
-        return fechaInicio;
+        return (Date) fechaInicio.clone();
     }
 
     public void setFechaInicio(final Date fechaInicio) {
-        this.fechaInicio = fechaInicio;
+        this.fechaInicio = (Date) fechaInicio.clone();
     }
 
     public Date getFechaFin() {
-        return fechaFin;
+        return (Date) fechaFin.clone();
     }
 
     public void setFechaFin(final Date fechaFin) {
-        this.fechaFin = fechaFin;
+        this.fechaFin = (Date) fechaFin.clone();
     }
 
 }

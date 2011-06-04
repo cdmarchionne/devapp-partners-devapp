@@ -11,6 +11,9 @@ import java.util.Locale;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 
+import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
+import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
+
 /**
  * Utilidales para el manejo de fecha.
  */
@@ -38,8 +41,11 @@ public class FechaUtils {
     }
 
     public static boolean superpone(final Date d1I, final Date d1F, final Date d2I, final Date d2F) {
-        return FechaUtils.isEntre(d1I, d2I, d2F) || FechaUtils.isEntre(d1F, d2I, d2F)
-                || FechaUtils.isEntre(d2I, d1I, d1F) || FechaUtils.isEntre(d2F, d1I, d1F);
+        // return FechaUtils.isEntre(d1I, d2I, d2F) || FechaUtils.isEntre(d1F,
+        // d2I, d2F)
+        // || FechaUtils.isEntre(d2I, d1I, d1F) || FechaUtils.isEntre(d2F, d1I,
+        // d1F);
+        return isEntre(d2I, d1I, d1F) || isEntre(d2F, d1I, d1F);
     }
 
     public static boolean isEntre(final Date dia, final Date diaInicio, final Date diaFinal) {
@@ -129,7 +135,9 @@ public class FechaUtils {
     }
 
     public static boolean isMismaSemana(final Date date1, final Date date2) {
-        if (date2 == null) { return false; }
+        if (date2 == null) {
+            return false;
+        }
         Calendar cal = FechaUtils.getCalendar(date1);
         Calendar cal2 = FechaUtils.getCalendar(date2);
         return cal2.get(Calendar.WEEK_OF_MONTH) == cal.get(Calendar.WEEK_OF_MONTH);
@@ -170,6 +178,30 @@ public class FechaUtils {
         list.add(5);
         list.add(6);
         return list;
+    }
+
+    /** A partir de una lista de dias la comprimo */
+    @SuppressWarnings("PMD")
+    public static List<FechasXcomprension> crearFechaXcomprension(final List<Date> dias) {
+        List<FechasXcomprension> listaDeFechasComprimidas = new ArrayList<FechasXcomprension>();
+
+        List<Date> diasOrdenados = ordenarDiasConsecutivos(dias);
+
+        for (Date dia : diasOrdenados) {
+            List<Integer> list = new ArrayList<Integer>();
+            Calendar.getInstance().setTime(dia);
+            list.add(Calendar.DAY_OF_WEEK);
+
+            FechasXcomprension fechaComprimidas = new FechasXcomprension();
+            fechaComprimidas.set(dia, list, Intervalo.getUnaSemana(), dia);
+            listaDeFechasComprimidas.add(fechaComprimidas);
+        }
+
+        return listaDeFechasComprimidas;
+    }
+
+    public static List<Date> ordenarDiasConsecutivos(final List<Date> dias) {
+        return dias;
     }
 
 }

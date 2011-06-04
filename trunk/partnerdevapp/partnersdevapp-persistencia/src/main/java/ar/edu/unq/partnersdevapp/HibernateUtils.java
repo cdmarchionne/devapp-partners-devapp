@@ -5,14 +5,30 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtils {
 
+    // private static final HibernateUtils INSTANCE = new HibernateUtils();
+
     private static final SessionFactory SESSIONFACTORY = buildSessionFactory();
 
-    private static synchronized SessionFactory buildSessionFactory() {
-        return new Configuration().configure().buildSessionFactory();
+    private HibernateUtils() {
+        super();
     }
 
-    public static synchronized SessionFactory getSessionFactory() {
-        return SESSIONFACTORY;
+    // public static HibernateUtils getInstance() {
+    // synchronized (INSTANCE) {
+    // return INSTANCE;
+    // }
+    // }
+
+    private static SessionFactory buildSessionFactory() {
+        synchronized (SESSIONFACTORY) {
+            return new Configuration().configure().buildSessionFactory();
+        }
+    }
+
+    public static SessionFactory getSessionFactory() {
+        synchronized (SESSIONFACTORY) {
+            return SESSIONFACTORY;
+        }
     }
 
 }
