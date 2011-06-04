@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.5" timestamp="2011-06-04T00:57:07.402">
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/components/AltaComponent.java">
+<violation beginline="12" endline="12" begincolumn="0" endcolumn="0" rule="ShortVariable" ruleset="Naming Rules" package="ar.edu.unq.partnersdevapp.vista.components" class="AltaComponent" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like id
+</violation>
+</file>
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/components/AltaPlan.java">
+<violation beginline="17" endline="17" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="ar.edu.unq.partnersdevapp.vista.components" class="AltaPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="17" endline="17" begincolumn="0" endcolumn="0" rule="SingularField" ruleset="Design Rules" package="ar.edu.unq.partnersdevapp.vista.components" class="AltaPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SingularField" priority="3">
+Perhaps 'form' could be replaced by a local variable.
+</violation>
+<violation beginline="19" endline="19" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="ar.edu.unq.partnersdevapp.vista.components" class="AltaPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="21" endline="21" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="ar.edu.unq.partnersdevapp.vista.components" class="AltaPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="21" endline="21" begincolumn="0" endcolumn="0" rule="SingularField" ruleset="Design Rules" package="ar.edu.unq.partnersdevapp.vista.components" class="AltaPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SingularField" priority="3">
+Perhaps 'field' could be replaced by a local variable.
+</violation>
+<violation beginline="23" endline="23" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="ar.edu.unq.partnersdevapp.vista.components" class="AltaPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="23" endline="23" begincolumn="0" endcolumn="0" rule="SingularField" ruleset="Design Rules" package="ar.edu.unq.partnersdevapp.vista.components" class="AltaPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SingularField" priority="3">
+Perhaps 'field2' could be replaced by a local variable.
+</violation>
+<violation beginline="25" endline="25" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="ar.edu.unq.partnersdevapp.vista.components" class="AltaPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+</file>
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/pages/BasePage.java">
+<violation beginline="19" endline="19" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="ar.edu.unq.partnersdevapp.vista.pages" class="BasePage" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="22" endline="22" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="ar.edu.unq.partnersdevapp.vista.pages" class="BasePage" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="24" endline="27" begincolumn="0" endcolumn="0" rule="CallSuperInConstructor" ruleset="Controversial Rules" package="ar.edu.unq.partnersdevapp.vista.pages" class="BasePage" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#CallSuperInConstructor" priority="3">
+It is a good practice to call super() in a constructor
+</violation>
+</file>
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/pages/Page1.java">
+<violation beginline="6" endline="8" begincolumn="0" endcolumn="0" rule="CallSuperInConstructor" ruleset="Controversial Rules" package="ar.edu.unq.partnersdevapp.vista.pages" class="Page1" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#CallSuperInConstructor" priority="3">
+It is a good practice to call super() in a constructor
+</violation>
+</file>
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/service/AddPlan.java">
+<violation beginline="14" endline="14" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="AddPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="14" endline="14" begincolumn="0" endcolumn="0" rule="DefaultPackage" ruleset="Controversial Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="AddPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#DefaultPackage" priority="3">
+Use explicit scoping instead of the default package private level
+</violation>
+<violation beginline="16" endline="18" begincolumn="0" endcolumn="0" rule="UnnecessaryConstructor" ruleset="Controversial Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="AddPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnnecessaryConstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+<violation beginline="16" endline="18" begincolumn="0" endcolumn="0" rule="UncommentedEmptyConstructor" ruleset="Design Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="AddPlan" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyConstructor" priority="3">
+Document empty constructor
+</violation>
+</file>
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/service/BeanEjemplo.java">
+<violation beginline="15" endline="15" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="BeanEjemplo" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'value' is not assigned and could be declared final
+</violation>
+</file>
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/service/LogService.java">
+<violation beginline="7" endline="7" begincolumn="0" endcolumn="0" rule="AvoidFieldNameMatchingMethodName" ruleset="Naming Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="LogService" externalInfoUrl="http://pmd.sourceforge.net/rules/naming.html#AvoidFieldNameMatchingMethodName" priority="3">
+It is somewhat confusing to have a field name with the same name as a method
+</violation>
+<violation beginline="10" endline="10" begincolumn="0" endcolumn="0" rule="UnconditionalIfStatement" ruleset="Basic Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="LogService" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UnconditionalIfStatement" priority="3">
+Do not use if statements that are always true or always false
+</violation>
+</file>
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/service/MounterURL.java">
+<violation beginline="9" endline="9" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="MounterURL" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+</file>
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/service/TestApplication.java">
+<violation beginline="13" endline="13" begincolumn="0" endcolumn="0" rule="BeanMembersShouldSerialize" ruleset="JavaBean Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="TestApplication" externalInfoUrl="http://pmd.sourceforge.net/rules/javabeans.html#BeanMembersShouldSerialize" priority="3">
+Found non-transient, non-static member. Please mark as transient or provide accessors.
+</violation>
+<violation beginline="25" endline="27" begincolumn="0" endcolumn="0" rule="UnnecessaryConstructor" ruleset="Controversial Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="TestApplication" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnnecessaryConstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+<violation beginline="25" endline="27" begincolumn="0" endcolumn="0" rule="UncommentedEmptyConstructor" ruleset="Design Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="TestApplication" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#UncommentedEmptyConstructor" priority="3">
+Document empty constructor
+</violation>
+<violation beginline="25" endline="27" begincolumn="0" endcolumn="0" rule="CallSuperInConstructor" ruleset="Controversial Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="TestApplication" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#CallSuperInConstructor" priority="3">
+It is a good practice to call super() in a constructor
+</violation>
+<violation beginline="35" endline="35" begincolumn="0" endcolumn="0" rule="UnusedPrivateMethod" ruleset="Unused Code Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="TestApplication" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateMethod" priority="3">
+Avoid unused private methods such as 'mountUrl(String,Class,String...)'.
+</violation>
+</file>
+<file name="src/main/java/ar/edu/unq/partnersdevapp/vista/service/WebSession.java">
+<violation beginline="16" endline="16" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="WebSession" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'password' is not assigned and could be declared final
+</violation>
+<violation beginline="16" endline="16" begincolumn="0" endcolumn="0" rule="MethodArgumentCouldBeFinal" ruleset="Optimization Rules" package="ar.edu.unq.partnersdevapp.vista.service" class="WebSession" externalInfoUrl="http://pmd.sourceforge.net/rules/optimizations.html#MethodArgumentCouldBeFinal" priority="3">
+Parameter 'username' is not assigned and could be declared final
+</violation>
+</file>
+</pmd>
