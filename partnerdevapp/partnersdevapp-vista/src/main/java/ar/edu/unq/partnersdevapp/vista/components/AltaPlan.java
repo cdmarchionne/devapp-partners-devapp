@@ -1,28 +1,32 @@
 package ar.edu.unq.partnersdevapp.vista.components;
 
 import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
-import ar.edu.unq.partnersdevapp.vista.service.AddPlan;
+import ar.edu.unq.partnersdevapp.vista.service.PlanBean;
 
 /**
  * @author leo
+ * @param <T>
  */
-public class AltaPlan extends BasePage {
+public class AltaPlan<T> extends BasePage {
 
     private Form<PlanDeCarrera> form;
 
-    private AddPlan addPlan = new AddPlan();
+    @SpringBean(name = "planBean")
+    private PlanBean planBean;
 
-    private TextField<AddPlan> field;
+    private TextField<PlanBean> field;
 
-    private TextField<AddPlan> field2;
+    private TextField<PlanBean> field2;
 
-    static final String FORMPLAN = "formPlan";
+    private DropDownChoice<?> combo;
 
     public AltaPlan() {
         super();
@@ -30,10 +34,12 @@ public class AltaPlan extends BasePage {
     }
 
     public void iniciar() {
-        form = new Form<PlanDeCarrera>(FORMPLAN);
-        field = new TextField<AddPlan>("descripcionText", new PropertyModel<AddPlan>(this.getAddPlan(), "descripcion"));
-        field2 = new TextField<AddPlan>("especialidadText", new PropertyModel<AddPlan>(this.getAddPlan(),
-                "especialidad"));
+        form = new Form<PlanDeCarrera>("formPlan");
+        field = new TextField<PlanBean>("descripcionText", new PropertyModel<PlanBean>(planBean, "descripcion"));
+        field2 = new TextField<PlanBean>("especialidadText", new PropertyModel<PlanBean>(planBean, "especialidad"));
+        PropertyModel<PlanBean> model = new PropertyModel<PlanBean>(planBean, "nivelList");
+        combo = new DropDownChoice("nivelCombo", model);
+        form.add(combo);
         form.add(field);
         form.add(field2);
 
@@ -42,11 +48,7 @@ public class AltaPlan extends BasePage {
 
             @Override
             public void onSubmit() {
-                // String value = (String) field.getModelObject();
-                // Component label;
-                // label.setDefaultModelObject(value);
-                // field.setModelObject("");
-                AltaPlan.this.getAddPlan().add();
+                AltaPlan.this.getPlanBean().insert();
             }
         });
 
@@ -54,11 +56,44 @@ public class AltaPlan extends BasePage {
         // this.add(label = new Label("message", new Model("")));
     }
 
-    public void setAddPlan(final AddPlan addPlan) {
-        this.addPlan = addPlan;
+    public Form<PlanDeCarrera> getForm() {
+        return form;
     }
 
-    public AddPlan getAddPlan() {
-        return addPlan;
+    public void setForm(final Form<PlanDeCarrera> form) {
+        this.form = form;
     }
+
+    public PlanBean getPlanBean() {
+        return planBean;
+    }
+
+    public void setPlanBean(final PlanBean planBean) {
+        this.planBean = planBean;
+    }
+
+    public TextField<PlanBean> getField() {
+        return field;
+    }
+
+    public void setField(final TextField<PlanBean> field) {
+        this.field = field;
+    }
+
+    public TextField<PlanBean> getField2() {
+        return field2;
+    }
+
+    public void setField2(final TextField<PlanBean> field2) {
+        this.field2 = field2;
+    }
+
+    public DropDownChoice<?> getCombo() {
+        return combo;
+    }
+
+    public void setCombo(final DropDownChoice<?> combo) {
+        this.combo = combo;
+    }
+
 }
