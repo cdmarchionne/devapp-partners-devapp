@@ -28,8 +28,9 @@
 	<!-- beans de spring  -->
 	<bean id="service.log" class="ar.edu.unq.partnersdevapp.vista.service.LogService" />
 
-	<bean id="unBean" class="ar.edu.unq.partnersdevapp.vista.service.BeanEjemplo">
-			<property name="show" value="Ejemplo de wicket-spring" /> 
-	</bean>
+	
+	
+	<bean id="planBean" class="ar.edu.unq.partnersdevapp.vista.service.PlanBean" />				 
+
 
 </beans>
