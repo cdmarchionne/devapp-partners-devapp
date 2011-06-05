@@ -20,9 +20,9 @@
 		<property name="current_session_context_class">thread</property>
 
 		<!-- Disable the second-level cache -->
-		<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
+		<!--<property name="cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 		<property name="hibernate.cache.use_query_cache">true</property>
-
+-->
 
 		<!-- Echo all executed SQL to stdout -->
 		<property name="show_sql">true</property>
