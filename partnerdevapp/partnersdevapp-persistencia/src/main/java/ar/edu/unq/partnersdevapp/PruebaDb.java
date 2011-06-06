@@ -8,7 +8,7 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 
 /**
- * TODO: description
+ * XXX los test deben tener el nombre "Test" , ademas es un test que tiene un main ??
  */
 public class PruebaDb {
 

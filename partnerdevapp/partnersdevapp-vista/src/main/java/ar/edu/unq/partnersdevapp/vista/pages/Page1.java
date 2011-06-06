@@ -2,6 +2,10 @@ package ar.edu.unq.partnersdevapp.vista.pages;
 
 import org.apache.wicket.markup.html.basic.Label;
 
+/**
+ * 
+ * XXX, ???
+ */
 public class Page1 extends BasePage {
     public Page1() {
         super();

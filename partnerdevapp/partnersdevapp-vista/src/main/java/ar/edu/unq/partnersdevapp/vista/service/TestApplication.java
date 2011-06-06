@@ -8,6 +8,11 @@ import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 import ar.edu.unq.partnersdevapp.vista.pages.Page1;
 
+/**
+ * 
+ * XXX cambiar el nombre
+ * 
+ */
 public class TestApplication extends AuthenticatedWebApplication {
 
     private MounterURL aMounterURL;

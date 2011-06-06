@@ -3,7 +3,7 @@ package ar.edu.unq.partnersdevapp.vista.service;
 import org.apache.log4j.Logger;
 
 /**
- * TODO: description
+ * XXX, los servicios deben ir en otro proyecto, no en el de presentacion
  */
 public class LogService {
 

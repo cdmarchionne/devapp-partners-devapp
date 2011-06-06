@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  * Contiene utilidades para manejar listas.
- * 
+ * XXX CommosCollections, CollectionsUtils, Collections, etc etc
  */
 public class ListaUtils<T> {
 

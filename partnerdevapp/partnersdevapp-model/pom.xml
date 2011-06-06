@@ -20,6 +20,18 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 	
+		 <reporting>
+                <plugins>
+                        <plugin>
+                                <groupId>net.sf</groupId>
+                                <artifactId>stat-scm</artifactId>
+                                <configuration>
+                                        <skip>true</skip>
+                                </configuration>
+                        </plugin>
+                </plugins>
+        </reporting>
+
  
   
 </project>
