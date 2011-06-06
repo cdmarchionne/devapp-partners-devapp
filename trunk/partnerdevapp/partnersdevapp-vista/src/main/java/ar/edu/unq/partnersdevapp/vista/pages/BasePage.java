@@ -7,14 +7,14 @@ import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import ar.edu.unq.partnersdevapp.vista.components.AltaPlan;
 
 /**
- * TODO: description
+ * Pagina Basico Principal
  */
 
 public abstract class BasePage extends WebPage {
 
     public BasePage() {
-
-        this.iniciar();
+        super();
+        iniciar();
     }
 
     private void iniciar() {

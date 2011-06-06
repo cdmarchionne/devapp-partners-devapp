@@ -15,7 +15,7 @@ import ar.edu.unq.partnersdevapp.vista.pages.Page1;
  */
 public class TestApplication extends AuthenticatedWebApplication {
 
-    private MounterURL aMounterURL;
+    private transient MounterURL aMounterURL;
 
     private LogService logService;
 
@@ -27,14 +27,10 @@ public class TestApplication extends AuthenticatedWebApplication {
         this.logService = logService;
     }
 
-    public TestApplication() {
-
-    }
-
     @Override
     public void init() {
         aMounterURL = new MounterURL(this);
-        this.addComponentInstantiationListener(new SpringComponentInjector(this));
+        addComponentInstantiationListener(new SpringComponentInjector(this));
     }
 
     private void mountUrl(final String mountPath, final Class<? extends WebPage> pageClass, final String... parameters) {
@@ -57,7 +53,7 @@ public class TestApplication extends AuthenticatedWebApplication {
     }
 
     public String getContextPath() {
-        return this.getServletContext().getContextPath();
+        return getServletContext().getContextPath();
     }
 
 }

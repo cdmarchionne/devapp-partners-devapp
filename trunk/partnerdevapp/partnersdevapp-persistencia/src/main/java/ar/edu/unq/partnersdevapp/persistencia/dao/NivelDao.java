@@ -11,10 +11,6 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.Nivel;
  */
 public class NivelDao {
 
-    public NivelDao() {
-        super();
-    }
-
     /** Pedirle a la base todos los niveles */
     public List<Nivel> getAll() {
         List<Nivel> list = new ArrayList<Nivel>();
