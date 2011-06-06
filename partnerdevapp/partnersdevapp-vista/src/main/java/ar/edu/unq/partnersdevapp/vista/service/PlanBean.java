@@ -9,19 +9,19 @@ import ar.edu.unq.partnersdevapp.persistencia.dao.NivelDao;
 import ar.edu.unq.partnersdevapp.persistencia.dao.PlanDeCarreraDao;
 
 /**
- * TODO: description
+ * PlanBean
  */
 public class PlanBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private PlanDeCarrera plan;
+    private transient PlanDeCarrera plan;
 
     private List<Nivel> nivelList;
 
-    private NivelDao nivelDao;
+    private transient NivelDao nivelDao;
 
-    private PlanDeCarreraDao planDao;
+    private transient PlanDeCarreraDao planDao;
 
     public PlanBean() {
         plan = new PlanDeCarrera("especialidad", "descripcion");

@@ -6,7 +6,7 @@ import org.apache.wicket.request.target.coding.MixedParamHybridUrlCodingStrategy
 
 public class MounterURL {
 
-    private WebApplication webApplication;
+    private transient WebApplication webApplication;
 
     /**
      * @param webApplication
