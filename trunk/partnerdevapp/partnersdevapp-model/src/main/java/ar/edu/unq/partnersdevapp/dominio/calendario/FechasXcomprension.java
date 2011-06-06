@@ -14,6 +14,7 @@ import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
  * Modela una lista de fechas por comprensión. No soporta fecha de fin
  * indefinida o infinita. Es recomendable que la fecha de inicio coincida con el
  * menor de los dias de la semana elegidos.
+ * XXX mucho de este comportamiento esta implementado en jodatime
  */
 public class FechasXcomprension {
 

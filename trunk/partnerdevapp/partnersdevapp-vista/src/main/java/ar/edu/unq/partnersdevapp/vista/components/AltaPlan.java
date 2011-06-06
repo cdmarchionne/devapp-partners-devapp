@@ -80,6 +80,9 @@ public class AltaPlan<T> extends BasePage {
         this.field = field;
     }
 
+    /**
+     * XXX no es un nombre apropiado
+     */
     public TextField<PlanBean> getField2() {
         return field2;
     }

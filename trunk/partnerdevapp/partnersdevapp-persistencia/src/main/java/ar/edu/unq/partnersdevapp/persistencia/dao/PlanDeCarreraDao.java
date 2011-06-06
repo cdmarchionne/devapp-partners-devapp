@@ -3,7 +3,7 @@ package ar.edu.unq.partnersdevapp.persistencia.dao;
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 
 /**
- * TODO: description
+ * XXX falta hacer todos los accesosrs a la persistencia
  */
 public class PlanDeCarreraDao {
 

@@ -9,7 +9,9 @@ import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 /**
  * Para simular una entrada por base de datos. Podria ser una clase intermedia
  * que le pida ciertas cosas a la base
+ * XXX simular base de datos en model ?? eso no deberia pasar jamas :) 
  */
+
 public class BaseDeDatosHelper {
 
     private BaseDeDatosHelper() {
