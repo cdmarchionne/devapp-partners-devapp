@@ -14,6 +14,8 @@ import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
  */
 public class PlanDeCarrera extends Entidad {
 
+    private static final long serialVersionUID = 1L;
+
     private String especialidad;
 
     private String descripcion;

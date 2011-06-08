@@ -11,6 +11,8 @@ import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
  */
 public class Nivel extends Entidad {
 
+    private static final long serialVersionUID = 1L;
+
     private String nombre;
 
     private Banda banda;

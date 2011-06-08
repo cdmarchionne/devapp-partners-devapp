@@ -106,7 +106,7 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        assertEquals("", fechasXextencion, getDosSemana());
+        assertEquals("", fechasXextencion, this.getDosSemana());
     }
 
     public void testSetDiasDeLaSemanaHabiles() throws PeriodoIndeterminadoException {
@@ -117,7 +117,7 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        assertEquals("", fechasXextencion, getDosSemanaHabiles());
+        assertEquals("", fechasXextencion, this.getDosSemanaHabiles());
     }
 
     /* Con fecha de inicio desfasada */
@@ -129,7 +129,7 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        assertEquals("", fechasXextencion, getDosSemanaHabilesDes());
+        assertEquals("", fechasXextencion, this.getDosSemanaHabilesDes());
     }
 
     public void testCalcularRepeticiones() {
@@ -196,7 +196,7 @@ public class FechaComprensionTest extends TestCase {
 
         List<Date> fechasXextencion = fxc.getFechasXextencion();
 
-        assertEquals("", fechasXextencion, getTresSemanaHabilesDes());
+        assertEquals("", fechasXextencion, this.getTresSemanaHabilesDes());
 
     }
 
@@ -312,4 +312,5 @@ public class FechaComprensionTest extends TestCase {
 
         return deberSerList;
     }
+
 }
