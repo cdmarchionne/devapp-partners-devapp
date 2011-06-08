@@ -1,9 +1,13 @@
 package ar.edu.unq.partnersdevapp.dominio.entidad;
 
+import java.io.Serializable;
+
 /**
  * Entidad
  */
-public class Entidad implements Persistible {
+public class Entidad implements Persistible, Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private int id;
 

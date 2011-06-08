@@ -10,6 +10,8 @@ import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
  */
 public class Tecnologia extends Entidad {
 
+    private static final long serialVersionUID = 1L;
+
     private static Set<String> listaTecnologia = new HashSet<String>();
 
     private transient String tecnologiaActual;

@@ -13,6 +13,8 @@ import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
  */
 public class Banda extends Entidad {
 
+    private static final long serialVersionUID = 1L;
+
     private static final int ANCHO_BANDA = 100;
 
     private int cantidadDeSubBandas;

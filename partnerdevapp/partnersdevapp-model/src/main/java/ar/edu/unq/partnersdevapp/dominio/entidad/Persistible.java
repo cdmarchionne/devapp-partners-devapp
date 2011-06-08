@@ -1,5 +1,6 @@
 package ar.edu.unq.partnersdevapp.dominio.entidad;
 
+
 /**
  * Persistible
  */
