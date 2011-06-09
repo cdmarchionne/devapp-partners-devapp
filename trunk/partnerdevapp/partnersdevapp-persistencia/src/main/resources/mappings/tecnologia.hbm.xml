@@ -9,11 +9,12 @@
 			<generator class="sequence" />
 		</id>
 		
+		<!-- OJO QUE ES STATIC NO TIENE GETTERS 
 		<set name="listaTecnologia" table="tecnologia">
             <key column="id"/>
             <element type="string" column="tecnologia"/>
         </set>
-    
+     -->
 	</class>
 
 </hibernate-mapping>
