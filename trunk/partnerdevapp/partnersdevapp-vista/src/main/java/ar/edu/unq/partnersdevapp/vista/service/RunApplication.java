@@ -13,7 +13,7 @@ import ar.edu.unq.partnersdevapp.vista.pages.Page1;
  * XXX cambiar el nombre
  * 
  */
-public class TestApplication extends AuthenticatedWebApplication {
+public class RunApplication extends AuthenticatedWebApplication {
 
     private transient MounterURL aMounterURL;
 
