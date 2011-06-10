@@ -15,7 +15,7 @@ public class PlanBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private transient PlanDeCarrera plan;
+    private PlanDeCarrera plan;
 
     private List<Nivel> nivelList;
 

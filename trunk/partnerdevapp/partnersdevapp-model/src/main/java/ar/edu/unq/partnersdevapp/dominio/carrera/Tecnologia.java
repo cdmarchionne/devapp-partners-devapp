@@ -14,7 +14,7 @@ public class Tecnologia extends Entidad {
 
     private static Set<String> listaTecnologia = new HashSet<String>();
 
-    private transient String tecnologiaActual;
+    private String tecnologiaActual;
 
     public Tecnologia(final String tecnologiaActual) {
         super();
@@ -45,4 +45,9 @@ public class Tecnologia extends Entidad {
     public String getTecnologiaActual() {
         return tecnologiaActual;
     }
+
+    public void setTecnologiaActual(final String tecnologiaActual) {
+        this.tecnologiaActual = tecnologiaActual;
+    }
+
 }
