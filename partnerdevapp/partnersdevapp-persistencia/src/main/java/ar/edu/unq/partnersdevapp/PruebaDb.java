@@ -8,7 +8,8 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 
 /**
- * XXX los test deben tener el nombre "Test" , ademas es un test que tiene un main ??
+ * XXX los test deben tener el nombre "Test" , ademas es un test que tiene un
+ * main ??
  */
 public class PruebaDb {
 
@@ -16,8 +17,8 @@ public class PruebaDb {
         PlanDeCarrera plan = new PlanDeCarrera("tecnico", "cosas de tecnico");
 
         plan.addNivelPosterior(BaseDeDatosHelper.getNivelSemiSenior(), null);
-        plan.addNivelPosterior(BaseDeDatosHelper.getNivelSenior(), "semiSenior");
-        plan.addNivelPosterior(new Nivel("xxx", null, 0, 0), "semiSenior");
+        plan.addNivelPosterior(BaseDeDatosHelper.getNivelSenior(), BaseDeDatosHelper.getNivelSemiSenior());
+        plan.addNivelPosterior(new Nivel("xxx", null, 0, 0), BaseDeDatosHelper.getNivelSemiSenior());
 
         Session sesion = HibernateUtils.getSessionFactory().getCurrentSession();
         sesion.beginTransaction();
