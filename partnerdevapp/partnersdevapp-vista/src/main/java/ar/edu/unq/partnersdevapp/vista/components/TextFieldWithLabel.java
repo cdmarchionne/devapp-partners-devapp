@@ -1,0 +1,34 @@
+package ar.edu.unq.partnersdevapp.vista.components;
+
+import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.PropertyModel;
+
+/**
+ * TODO: description
+ */
+public class TextFieldWithLabel extends MarkupContainer {
+    private static final long serialVersionUID = 1L;
+
+    public TextFieldWithLabel(final String id) {
+        super(id);
+    }
+
+    public TextFieldWithLabel(final Object model, final String campo, final boolean esRequerido) {
+        super(campo.toString() + "Container");
+        this.add(new Label(campo.toString() + "Label", campo));
+        this.add(this.crearTextField(model, campo, esRequerido));
+    }
+
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    private TextField crearTextField(final Object model, final String campo, final boolean esRequerido) {
+        PropertyModel pm = new PropertyModel(model, campo);
+        TextField textField = new TextField(campo.toString() + "Field", pm);
+        if (esRequerido) {
+            textField.setRequired(true);
+        }
+        return textField;
+    }
+
+}

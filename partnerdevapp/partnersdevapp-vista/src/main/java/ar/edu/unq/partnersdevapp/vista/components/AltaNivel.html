@@ -1,0 +1,40 @@
+<html>
+<head>   Plan De Carrera </head>
+<body>
+
+<wicket:extend>
+<h1>Alta de Nivel</h1>
+
+<form wicket:id="nivelForm" class="Nivel">
+  
+        <div       wicket:id="nombreContainer">
+            <span  wicket:id="nombreLabel"  />
+            <input wicket:id="nombreField" type="text" />
+        </div>
+        
+        <div       wicket:id="bandaContainer">
+            <span  wicket:id="bandaLabel"  />
+            <input wicket:id="bandaField" type="text" />
+        </div>
+    
+        <div       wicket:id="sueldoMaximoContainer">
+            <span  wicket:id="sueldoMaximoLabel"  />
+            <input wicket:id="sueldoMaximoField" type="text" />
+        </div>
+
+        <div       wicket:id="sueldoMinimoContainer">
+            <span  wicket:id="sueldoMinimoLabel"  />
+            <input wicket:id="sueldoMinimoField" type="text" />
+        </div>
+
+  		<select wicket:id="nivelCombo"></select>
+  	  		
+  		<input wicket:id="button" type="submit" value="insertar" />
+
+ </form>
+ 
+</wicket:extend>
+
+</body>
+</html>
+

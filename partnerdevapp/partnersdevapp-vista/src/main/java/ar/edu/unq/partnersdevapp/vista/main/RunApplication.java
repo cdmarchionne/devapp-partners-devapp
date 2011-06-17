@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.vista.service;
+package ar.edu.unq.partnersdevapp.vista.main;
 
 import org.apache.wicket.Page;
 import org.apache.wicket.authentication.AuthenticatedWebApplication;
@@ -10,7 +10,6 @@ import ar.edu.unq.partnersdevapp.vista.pages.Page1;
 
 /**
  * 
- * XXX cambiar el nombre
  * 
  */
 public class RunApplication extends AuthenticatedWebApplication {
@@ -30,7 +29,7 @@ public class RunApplication extends AuthenticatedWebApplication {
     @Override
     public void init() {
         aMounterURL = new MounterURL(this);
-        addComponentInstantiationListener(new SpringComponentInjector(this));
+        this.addComponentInstantiationListener(new SpringComponentInjector(this));
     }
 
     private void mountUrl(final String mountPath, final Class<? extends WebPage> pageClass, final String... parameters) {
@@ -53,7 +52,7 @@ public class RunApplication extends AuthenticatedWebApplication {
     }
 
     public String getContextPath() {
-        return getServletContext().getContextPath();
+        return this.getServletContext().getContextPath();
     }
 
 }

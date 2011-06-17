@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.vista.service;
+package ar.edu.unq.partnersdevapp.vista.main;
 
 import org.apache.log4j.Logger;
 
