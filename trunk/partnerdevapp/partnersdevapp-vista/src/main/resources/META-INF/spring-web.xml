@@ -22,12 +22,13 @@
 	</bean>
 
 	
-	<bean id="wicketApplication" class="ar.edu.unq.partnersdevapp.vista.service.RunApplication">
+	<bean id="wicketApplication" class="ar.edu.unq.partnersdevapp.vista.main.RunApplication">
 		<property name="logService" ref="service.log" />
 	</bean>
 	
 	<!-- beans de spring  -->
-	<bean id="service.log" class="ar.edu.unq.partnersdevapp.vista.service.LogService" />
+	<bean id="service.log" class="ar.edu.unq.partnersdevapp.vista.main.LogService" />
 	
-	<bean id="planBean" class="ar.edu.unq.partnersdevapp.vista.service.PlanBean" />
+
+	<bean id="nivelBean" class="ar.edu.unq.partnersdevapp.vista.main.NivelBean" />
 </beans>
