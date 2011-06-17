@@ -79,7 +79,6 @@ public class PlanCarreraTest extends TestCase {
         } catch (Exception e) {
             assertTrue("", e.getClass().equals(NoHayResultadoException.class));
         } finally {
-            System.out.println(newPosicion);
             assertTrue("", newPosicion.isIgual(new Posicion(LIDER, 100)));
         }
 
