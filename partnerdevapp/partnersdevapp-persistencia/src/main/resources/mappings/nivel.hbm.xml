@@ -10,7 +10,6 @@
 		</id>
 		
 		<property name="nombre" column="nombre" />
-		<property name="jerarquia" column="jerarquia" />
 		<property name="sueldoMaximo" column="sueldoMaximo" />
 		<property name="sueldoMinimo" column="sueldoMinimo" />
 		
