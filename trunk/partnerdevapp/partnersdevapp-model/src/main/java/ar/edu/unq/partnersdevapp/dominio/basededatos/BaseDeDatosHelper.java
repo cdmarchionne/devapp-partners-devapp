@@ -8,8 +8,8 @@ import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 
 /**
  * Para simular una entrada por base de datos. Podria ser una clase intermedia
- * que le pida ciertas cosas a la base
- * XXX simular base de datos en model ?? eso no deberia pasar jamas :) 
+ * que le pida ciertas cosas a la base XXX simular base de datos en model ?? eso
+ * no deberia pasar jamas :)
  */
 
 public class BaseDeDatosHelper {
@@ -42,9 +42,9 @@ public class BaseDeDatosHelper {
     public static PlanDeCarrera getPlanDeCarreraStandartTester() throws NoHayResultadoException {
         PlanDeCarrera plan = new PlanDeCarrera("tester", "Esto es un plan de tester");
         plan.addNivelAnterior(BaseDeDatosHelper.getNivelJunior(), null);
-        plan.addNivelPosterior(BaseDeDatosHelper.getNivelSemiSenior(), "junior");
-        plan.addNivelPosterior(BaseDeDatosHelper.getNivelSenior(), "semiSenior");
-        plan.addNivelPosterior(BaseDeDatosHelper.getNiveLlider(), "senior");
+        plan.addNivelPosterior(BaseDeDatosHelper.getNivelSemiSenior(), BaseDeDatosHelper.getNivelJunior());
+        plan.addNivelPosterior(BaseDeDatosHelper.getNivelSenior(), BaseDeDatosHelper.getNivelSemiSenior());
+        plan.addNivelPosterior(BaseDeDatosHelper.getNiveLlider(), BaseDeDatosHelper.getNivelSenior());
 
         return plan;
     }

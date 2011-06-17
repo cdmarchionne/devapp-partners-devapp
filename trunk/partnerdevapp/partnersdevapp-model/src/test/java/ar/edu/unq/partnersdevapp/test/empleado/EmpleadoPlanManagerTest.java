@@ -4,6 +4,7 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.basededatos.BaseDeDatosHelper;
+import ar.edu.unq.partnersdevapp.dominio.carrera.Nivel;
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Posicion;
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
@@ -17,7 +18,7 @@ public class EmpleadoPlanManagerTest extends TestCase {
 
     private static final String MENSAJE = "FALLO Test Empleado";
 
-    private static final String SENIOR = "senior";
+    private static final Nivel SENIOR = BaseDeDatosHelper.getNivelSenior();
 
     private static final Date FECHA_01_04_2011 = FechaUtils.crearFecha("01/04/2011");
 
@@ -50,7 +51,8 @@ public class EmpleadoPlanManagerTest extends TestCase {
         assertTrue(MENSAJE, new Posicion(SENIOR, 100).isIgual(empleado.getPlanDeCarreraManager().getPosicionActual()));
 
         empleado.getPlanDeCarreraManager().subirPosicion();
-        assertTrue(MENSAJE, new Posicion("lider", 00).isIgual(empleado.getPlanDeCarreraManager().getPosicionActual()));
+        assertTrue(MENSAJE, new Posicion(BaseDeDatosHelper.getNiveLlider(), 00).isIgual(empleado
+                .getPlanDeCarreraManager().getPosicionActual()));
 
     }
 

@@ -34,8 +34,8 @@ public class PlanDeCarrera extends Entidad {
      * 
      * @throws NoHayResultadoException
      */
-    public void addNivelPosterior(final Nivel nivelNuevo, final String nivelLugar) throws NoHayResultadoException {
-        this.addNivel(nivelNuevo, nivelLugar, 1);
+    public void addNivelPosterior(final Nivel nivelNuevo, final Nivel nivelExistente) throws NoHayResultadoException {
+        this.addNivel(nivelNuevo, nivelExistente, 1);
     }
 
     /**
@@ -44,70 +44,53 @@ public class PlanDeCarrera extends Entidad {
      * 
      * @throws NoHayResultadoException
      */
-    public void addNivelAnterior(final Nivel nivelNuevo, final String nivelLugar) throws NoHayResultadoException {
-        this.addNivel(nivelNuevo, nivelLugar, 0);
+    public void addNivelAnterior(final Nivel nivelNuevo, final Nivel nivelExistente) throws NoHayResultadoException {
+        this.addNivel(nivelNuevo, nivelExistente, 0);
     }
 
-    private void addNivel(final Nivel nivelNuevo, final String nivelLugar, final int anteriorPosterior)
+    private void addNivel(final Nivel nivelNuevo, final Nivel nivelExistente, final int anteriorPosterior)
             throws NoHayResultadoException {
-        if (this.getNiveles().isEmpty()) {
-            nivelNuevo.setJerarquia(0);
-        } else {
-            nivelNuevo.setJerarquia(this.getNivel(nivelLugar).getJerarquia() + anteriorPosterior);
-        }
-        List<Nivel> nivelesDisponibles = this.getNiveles();
-        // if nivelesDisponibles not null
-        for (Nivel nivel : nivelesDisponibles) {
-            if (nivel.getJerarquia() >= nivelNuevo.getJerarquia()) {
-                nivel.subirJerarquiaUnPunto();
+        try {
+            if (this.getNiveles().isEmpty()) {
+                this.getNiveles().add(nivelNuevo);
+            } else {
+                int lugarJerarquico = this.getJerarquiaDeNivel(nivelExistente) + anteriorPosterior;
+                this.getNiveles().add(lugarJerarquico, nivelNuevo);
             }
+
+        } catch (Exception e) {
+            throw new NoHayResultadoException();
         }
-        this.getNiveles().add(nivelNuevo);
+
     }
 
     /**
      * Devuelve una posicion superior
      * 
+     * @throws NoHayResultadoException
+     * 
      */
-    public Posicion getPosicionSuperior(final Posicion posicion) throws NoHayResultadoException {
+    public Posicion getPosicionSuperior(final Posicion posicion) {
         Posicion nuevaPosicion = new Posicion(posicion);
 
-        Nivel nivel = this.getNivel(posicion.getNivelNombre());
-        int nuevaBanda = nivel.getBanda().getSubNivelSuperior(posicion.getBanda());
+        int lugarJerarquico = this.getJerarquiaDeNivel(posicion.getNivel());
+        Nivel nivelActual = this.getNiveles().get(lugarJerarquico);
+
+        int nuevaBanda = nivelActual.getBanda().getSubNivelSuperior(posicion.getNumeroDeBanda());
 
         if (nuevaBanda == -1) {
-            nivel = this.getNivel(nivel.getJerarquia() + 1);
-            nuevaPosicion.setNivelNombre(nivel.getNombre());
-            nuevaPosicion.setBanda(0);
+            try {
+                nuevaPosicion.setNivel(this.getNivelEnJerarquia(lugarJerarquico + 1));
+                nuevaPosicion.setNumeroDeBanda(0);
+            } catch (NoHayResultadoException e) {
+                nuevaPosicion.setNumeroDeBanda(100);
+            }
+
         } else {
-            nuevaPosicion.setBanda(nuevaBanda);
+            nuevaPosicion.setNumeroDeBanda(nuevaBanda);
 
         }
         return nuevaPosicion;
-    }
-
-    /**
-     * Devuelve el nivel de la lista de niveles. Busca por nombre
-     * 
-     * @throws NoHayResultadoException
-     */
-    public Nivel getNivel(final String nombre) throws NoHayResultadoException {
-        for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getNombre().equals(nombre)) { return nivel; }
-        }
-        throw new NoHayResultadoException();
-    }
-
-    /**
-     * Devuelve el nivel de la lista de niveles. Busca por jerarquia
-     * 
-     * @throws NoHayResultadoException
-     */
-    public Nivel getNivel(final int jerarquia) throws NoHayResultadoException {
-        for (Nivel nivel : this.getNiveles()) {
-            if (nivel.getJerarquia() == jerarquia) { return nivel; }
-        }
-        throw new NoHayResultadoException();
     }
 
     /**
@@ -116,16 +99,30 @@ public class PlanDeCarrera extends Entidad {
      * @throws NoHayResultadoException
      */
     public float getSueldo(final Posicion posicionActual) throws NoHayResultadoException {
-        Nivel nivelActual = this.getNivel(posicionActual.getNivelNombre());
+        Nivel nivelActual = posicionActual.getNivel();
         int max = nivelActual.getSueldoMaximo();
         int min = nivelActual.getSueldoMinimo();
-        float banda = posicionActual.getBanda();
+        float banda = posicionActual.getNumeroDeBanda();
         return min + banda / 100 * (max - min);
     }
 
     @Override
     public String toString() {
         return "{" + this.getEspecialidad() + "-" + this.getNiveles() + "}";
+    }
+
+    /** Devuelve la jerarquia de un nivel en el plan actual */
+    public int getJerarquiaDeNivel(final Nivel nivel) {
+        return this.getNiveles().indexOf(nivel);
+    }
+
+    public Nivel getNivelEnJerarquia(final int index) throws NoHayResultadoException {
+        try {
+            return this.getNiveles().get(index);
+        } catch (Exception e) {
+            throw new NoHayResultadoException();
+        }
+
     }
 
     // **************************
@@ -146,12 +143,12 @@ public class PlanDeCarrera extends Entidad {
         this.descripcion = descripcion;
     }
 
-    public List<Nivel> getNiveles() {
-        return niveles;
-    }
-
     public void setNiveles(final List<Nivel> niveles) {
         this.niveles = niveles;
+    }
+
+    public List<Nivel> getNiveles() {
+        return niveles;
     }
 
 }
