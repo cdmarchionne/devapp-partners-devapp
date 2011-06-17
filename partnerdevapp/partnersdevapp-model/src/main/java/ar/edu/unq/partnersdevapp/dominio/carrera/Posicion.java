@@ -7,27 +7,28 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
  * @author leo
  */
 public class Posicion {
-    private String nivelNombre;
 
-    private int banda;
+    private Nivel nivel;
+
+    private int numeroDeBanda;
 
     public Posicion() {
         super();
     }
 
-    public Posicion(final String nivel, final int subnivel) {
-        this.setNivelNombre(nivel);
-        this.setBanda(subnivel);
+    public Posicion(final Nivel nivel, final int subnivel) {
+        this.setNivel(nivel);
+        this.setNumeroDeBanda(subnivel);
     }
 
     public Posicion(final Posicion posicion) {
-        this.setNivelNombre(posicion.getNivelNombre());
-        this.setBanda(posicion.getBanda());
+        this.setNivel(posicion.getNivel());
+        this.setNumeroDeBanda(posicion.getNumeroDeBanda());
     }
 
     @Override
     public String toString() {
-        return "(" + this.getNivelNombre() + "," + this.getBanda() + ")";
+        return "(" + this.getNivel() + "," + this.getNumeroDeBanda() + ")";
     }
 
     public boolean isIgual(final Posicion aPosicion) {
@@ -35,28 +36,28 @@ public class Posicion {
         boolean condicionSubNivel = false;
 
         if (aPosicion != null) {
-            condicionNivel = this.getNivelNombre().equals(aPosicion.getNivelNombre());
-            condicionSubNivel = this.getBanda() == aPosicion.getBanda();
+            condicionNivel = this.getNivel().equals(aPosicion.getNivel());
+            condicionSubNivel = this.getNumeroDeBanda() == aPosicion.getNumeroDeBanda();
         }
         return condicionNivel && condicionSubNivel;
     }
 
     // ******************
     // ****** Gets & Sets
-    public String getNivelNombre() {
-        return nivelNombre;
+
+    public int getNumeroDeBanda() {
+        return numeroDeBanda;
     }
 
-    public void setNivelNombre(final String nivel) {
-        nivelNombre = nivel;
+    public void setNumeroDeBanda(final int subnivel) {
+        numeroDeBanda = subnivel;
     }
 
-    public int getBanda() {
-        return banda;
+    public void setNivel(final Nivel nivel) {
+        this.nivel = nivel;
     }
 
-    public void setBanda(final int subnivel) {
-        banda = subnivel;
+    public Nivel getNivel() {
+        return nivel;
     }
-
 }

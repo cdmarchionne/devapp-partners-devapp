@@ -4,6 +4,7 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 import ar.edu.unq.partnersdevapp.dominio.basededatos.BaseDeDatosHelper;
+import ar.edu.unq.partnersdevapp.dominio.carrera.Nivel;
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Posicion;
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
@@ -14,7 +15,7 @@ import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
  * Test de Empleado
  */
 public class EmpleadoTest extends TestCase {
-    private static final String POSICION = "senior";
+    private static final Nivel POSICION = BaseDeDatosHelper.getNivelSenior();
 
     private static final String MENSAJE = "Test Empleado";
 

@@ -5,7 +5,8 @@ import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 /**
  * El nivel esta dividido en bandas. La jerarquia es para poder <strong>ordenar
  * e identificar</strong> una lista de niveles.<br/>
- * Ej: Junior [0,50,100] Además contiene datos para el calculo de sueldos
+ * Es decir que existe un ti Ej: Junior [0,50,100] Además contiene datos para el
+ * calculo de sueldos
  * 
  * @author leo
  */
@@ -16,8 +17,6 @@ public class Nivel extends Entidad {
     private String nombre;
 
     private Banda banda;
-
-    private int jerarquia;
 
     private int sueldoMaximo = 0;
 
@@ -35,13 +34,14 @@ public class Nivel extends Entidad {
         this.setSueldoMinimo(minimo);
     }
 
-    public void subirJerarquiaUnPunto() {
-        this.setJerarquia(this.getJerarquia() + 1);
+    @Override
+    public boolean equals(final Object obj) {
+        return this.getNombre().equals(((Nivel) obj).getNombre());
     }
 
     @Override
     public String toString() {
-        return "(" + this.getJerarquia() + "," + this.getNombre() + ")";
+        return "(" + this.getNombre() + ")";
     }
 
     // **********************
@@ -61,14 +61,6 @@ public class Nivel extends Entidad {
 
     public void setBanda(final Banda subNivel) {
         banda = subNivel;
-    }
-
-    public int getJerarquia() {
-        return jerarquia;
-    }
-
-    public void setJerarquia(final int jerarquia) {
-        this.jerarquia = jerarquia;
     }
 
     public int getSueldoMaximo() {
