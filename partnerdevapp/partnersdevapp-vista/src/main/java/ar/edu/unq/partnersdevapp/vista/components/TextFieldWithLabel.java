@@ -11,21 +11,20 @@ import org.apache.wicket.model.PropertyModel;
 public class TextFieldWithLabel extends MarkupContainer {
     private static final long serialVersionUID = 1L;
 
-    @SuppressWarnings("PMD")
     public TextFieldWithLabel(final String id) {
         super(id);
     }
 
     public TextFieldWithLabel(final Object model, final String campo, final boolean esRequerido) {
-        super(campo + "Container");
-        this.add(new Label(campo + "Label", campo));
+        super(campo.toString() + "Container");
+        this.add(new Label(campo.toString() + "Label", campo));
         this.add(this.crearTextField(model, campo, esRequerido));
     }
 
     @SuppressWarnings({ "rawtypes", "unchecked" })
     private TextField crearTextField(final Object model, final String campo, final boolean esRequerido) {
-        PropertyModel property = new PropertyModel(model, campo);
-        TextField textField = new TextField(campo + "Field", property);
+        PropertyModel pm = new PropertyModel(model, campo);
+        TextField textField = new TextField(campo.toString() + "Field", pm);
         if (esRequerido) {
             textField.setRequired(true);
         }
