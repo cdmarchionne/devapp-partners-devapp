@@ -31,9 +31,9 @@ public class InfoProyecto {
         return proyecto;
     }
 
-    protected void setProyecto(final Proyecto proyecto) {
-        throw new UnsupportedOperationException();
-    }
+    // protected void setProyecto(final Proyecto proyecto) {
+    // throw new UnsupportedOperationException();
+    // }
 
     public List<FechasXcomprension> getDiasAsignados() {
         return diasAsignados;

@@ -24,18 +24,18 @@ public class ProyectoManager {
         return infoProyectos;
     }
 
-    protected void setInfoProyectos(final Set<InfoProyecto> infoProyectos) {
-        throw new UnsupportedOperationException();
-    }
+    // protected void setInfoProyectos(final Set<InfoProyecto> infoProyectos) {
+    // throw new UnsupportedOperationException();
+    // }
 
     protected void addProyecto(final Proyecto proyecto, final List<FechasXcomprension> diasAsignados) {
-        InfoProyecto infoProyectoNuevo = getInfoProyectoExistente(proyecto);
+        InfoProyecto infoProyectoNuevo = this.getInfoProyectoExistente(proyecto);
 
         if (infoProyectoNuevo == null) {
             infoProyectoNuevo = new InfoProyecto(proyecto, diasAsignados);
             infoProyectos.add(infoProyectoNuevo);
         } else {
-            addMasDiasAsignados(infoProyectoNuevo, diasAsignados);
+            this.addMasDiasAsignados(infoProyectoNuevo, diasAsignados);
         }
 
     }

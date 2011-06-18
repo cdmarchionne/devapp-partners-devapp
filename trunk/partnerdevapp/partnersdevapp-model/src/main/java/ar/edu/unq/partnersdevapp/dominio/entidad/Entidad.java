@@ -9,6 +9,7 @@ public class Entidad implements Persistible, Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @SuppressWarnings("PMD")
     private int id;
 
     private Long version;
@@ -17,6 +18,7 @@ public class Entidad implements Persistible, Serializable {
         super();
     }
 
+    @SuppressWarnings("PMD")
     public Entidad(final int id, final Long version) {
         this();
         this.id = id;
@@ -28,6 +30,7 @@ public class Entidad implements Persistible, Serializable {
         return id;
     }
 
+    @SuppressWarnings("PMD")
     @Override
     public void setId(final int id) {
         this.id = id;

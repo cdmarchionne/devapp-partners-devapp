@@ -12,6 +12,7 @@ public class SkillTest extends TestCase {
 
     private static final String AGREGO_EL_CONOCIMIENTO = "Agrego el conocimiento ";
 
+    @SuppressWarnings("PMD")
     private static final String DE = " de ";
 
     private static final String JAVA = "JAVA";
