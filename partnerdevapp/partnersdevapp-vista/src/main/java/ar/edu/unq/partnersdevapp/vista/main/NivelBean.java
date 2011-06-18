@@ -3,9 +3,9 @@ package ar.edu.unq.partnersdevapp.vista.main;
 import java.io.Serializable;
 import java.util.List;
 
-import ar.edu.unq.partnersdevapp.dto.planDeCarreraDto.NivelDto;
-import ar.edu.unq.partnersdevapp.dto.utils.NivelUtilsDto;
 import ar.edu.unq.partnersdevapp.persistencia.dao.NivelDao;
+import ar.edu.unq.partnersdevapp.service.dto.planDeCarreraDto.NivelDto;
+import ar.edu.unq.partnersdevapp.service.dto.utils.NivelUtilsDto;
 
 /**
  * servicio para persistir nivel
