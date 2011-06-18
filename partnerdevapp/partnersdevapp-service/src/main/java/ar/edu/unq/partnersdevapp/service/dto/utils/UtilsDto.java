@@ -1,5 +1,8 @@
 package ar.edu.unq.partnersdevapp.service.dto.utils;
 
+import java.util.List;
+
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 
 
 /**
