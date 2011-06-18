@@ -9,13 +9,15 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.partnersdevapp.service.dto.Dto;
-import ar.edu.unq.partnersdevapp.service.dto.planDeCarreraDto.NivelDto;
-import ar.edu.unq.partnersdevapp.service.dto.planDeCarreraDto.NivelListaDto;
+import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelDto;
+import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelListaDto;
 import ar.edu.unq.partnersdevapp.vista.main.NivelBean;
 import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
 
 /**
+ * 
  * Página en la que se puede dar de alta,editar o borra un Nivel
+ * 
  */
 public class AltaNivel<T extends Dto> extends BasePage {
 
@@ -24,7 +26,7 @@ public class AltaNivel<T extends Dto> extends BasePage {
     @SpringBean(name = "nivelBean")
     private NivelBean service;
 
-    private NivelDto model = new NivelDto();
+    private NivelDto model = new NivelDto("", 0, 0, 0);
 
     private NivelListaDto modelLista = new NivelListaDto();
 
