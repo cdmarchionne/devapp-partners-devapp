@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 public class HibernateUtils {
 
     // private static final HibernateUtils INSTANCE = new HibernateUtils();
-
+    @SuppressWarnings("PMD")
     private static final SessionFactory SESSIONFACTORY = buildSessionFactory();
 
     private HibernateUtils() {

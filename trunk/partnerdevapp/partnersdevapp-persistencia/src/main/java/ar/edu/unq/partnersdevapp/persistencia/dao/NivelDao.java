@@ -16,6 +16,7 @@ public class NivelDao extends HibernateDaoSupport {
     /**
      * Pedirle a la base todos los niveles TODO: ++DB implementar
      * */
+
     public List<Nivel> findAll() {
         List<Nivel> list = new ArrayList<Nivel>();
         list.add(BaseDeDatosHelper.getNivelJunior());
