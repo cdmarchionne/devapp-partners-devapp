@@ -46,4 +46,12 @@ public class MounterURL {
                 redirectOnBookmarkableRequest, parameters);
         webApplication.mount(urls);
     }
+
+    public void setWebApplication(final WebApplication webApplication) {
+        this.webApplication = webApplication;
+    }
+
+    public WebApplication getWebApplication() {
+        return webApplication;
+    }
 }

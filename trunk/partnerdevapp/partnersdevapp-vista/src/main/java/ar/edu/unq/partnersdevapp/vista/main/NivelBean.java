@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import ar.edu.unq.partnersdevapp.persistencia.dao.NivelDao;
-import ar.edu.unq.partnersdevapp.service.dto.planDeCarreraDto.NivelDto;
+import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelDto;
 import ar.edu.unq.partnersdevapp.service.dto.utils.NivelUtilsDto;
 
 /**
@@ -14,7 +14,7 @@ public class NivelBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    NivelDao nivelDao;
+    private NivelDao nivelDao;
 
     public NivelBean() {
         nivelDao = new NivelDao();
@@ -25,7 +25,7 @@ public class NivelBean implements Serializable {
     }
 
     public void insert() {
-        System.out.println("**inserto");
+        // System.out.println("**inserto");
     }
 
     // G y S
