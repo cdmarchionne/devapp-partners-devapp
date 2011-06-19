@@ -5,8 +5,7 @@ import java.util.List;
 
 import ar.edu.unq.partnersdevapp.dominio.carrera.Banda;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Nivel;
-import ar.edu.unq.partnersdevapp.service.dto.planDeCarreraDto.NivelDto;
-
+import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelDto;
 
 /**
  * TODO: ver de hacer la convercion con reflec
@@ -29,7 +28,7 @@ public class NivelUtilsDto {
 
     static public List<NivelDto> realToDto(final List<Nivel> list) {
         List<NivelDto> newList = new ArrayList<NivelDto>();
-        for (Nivel nivel :list) {
+        for (Nivel nivel : list) {
             newList.add(NivelUtilsDto.realToDto(nivel));
         }
         return newList;
