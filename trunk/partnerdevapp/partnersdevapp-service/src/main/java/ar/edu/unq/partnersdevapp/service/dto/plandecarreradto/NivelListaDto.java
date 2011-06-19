@@ -1,10 +1,9 @@
-package ar.edu.unq.partnersdevapp.service.dto.planDeCarreraDto;
+package ar.edu.unq.partnersdevapp.service.dto.plandecarreradto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unq.partnersdevapp.service.dto.Dto;
-
 
 /**
  * Para transferir lista de niveles
@@ -21,8 +20,6 @@ public class NivelListaDto implements Dto {
         super();
         nivelesDto = new ArrayList<NivelDto>();
     }
-
-    
 
     public void setNivelesDto(final List<NivelDto> nivelesDto) {
         this.nivelesDto = nivelesDto;

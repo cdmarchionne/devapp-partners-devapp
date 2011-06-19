@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.service.dto.planDeCarreraDto;
+package ar.edu.unq.partnersdevapp.service.dto.plandecarreradto;
 
 import ar.edu.unq.partnersdevapp.service.dto.Dto;
 
