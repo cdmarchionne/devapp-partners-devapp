@@ -27,11 +27,7 @@
   		<version>1.0-SNAPSHOT</version>
  	</dependency>
  		
-    <dependency>
- 		 <groupId>ar.edu.unq.partnersdevapp</groupId>
-  		 <artifactId>partnersdevapp-service</artifactId>
-  		 <version>1.0-SNAPSHOT</version>
- 	</dependency>
+
 
 
 <dependency>
