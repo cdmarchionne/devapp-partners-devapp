@@ -35,7 +35,7 @@ public class Nivel extends Entidad {
     }
 
     @Override
-    public boolean equals(final Object obj) {
+    public boolean equals(final Object obj) { // NOPMD
         return this.getNombre().equals(((Nivel) obj).getNombre());
     }
 
