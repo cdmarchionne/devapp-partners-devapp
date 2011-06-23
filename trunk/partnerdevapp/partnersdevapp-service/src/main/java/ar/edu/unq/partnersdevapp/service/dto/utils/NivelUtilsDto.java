@@ -8,7 +8,7 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.Nivel;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelDto;
 
 /**
- * TODO: ver de hacer la convercion con reflec
+ * ver de hacer la convercion con reflec
  */
 public class NivelUtilsDto {
     private NivelUtilsDto() {

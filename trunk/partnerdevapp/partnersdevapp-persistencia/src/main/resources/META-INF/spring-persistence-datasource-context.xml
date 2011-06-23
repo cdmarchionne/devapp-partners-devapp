@@ -32,12 +32,12 @@
 		
 
 <!-- 	</bean> -->
-	
-	<!-- TODO UNQ la entrega debe usar hsqldb 
-	     *** Cambiar el Dialect cuando swicheao la base!-->
+	  
+	  
+	  <!--   *** Cambiar el Dialect cuando swicheao la base!-->
 	<bean id="persistence.sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
+	 	<property name="dataSource" ref="dataSource" />
 
 		<property name="hibernateProperties">
 			<props>

@@ -61,7 +61,7 @@ public class EmpleadoPlanManagerTest extends TestCase {
      * mas cercana
      */
     // public void testIntegridadDatosDePlan() {
-    // // TODO: agregar los metodos para modificar bandas. Cada vez que se hace
+    // // ***agregar los metodos para modificar bandas. Cada vez que se hace
     // // una operacion de estas hay que modificar todas las posiciones
     // // afectadas.
     // }

@@ -14,7 +14,9 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.Nivel;
 public class NivelDao extends HibernateDaoSupport {
 
     /**
-     * Pedirle a la base todos los niveles TODO: ++DB implementar
+     * Pedirle a la base todos los niveles
+     * 
+     * ++DB implementar
      * */
 
     public List<Nivel> findAll() {

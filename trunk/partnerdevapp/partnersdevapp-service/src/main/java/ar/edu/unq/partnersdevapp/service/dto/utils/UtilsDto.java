@@ -1,7 +1,7 @@
 package ar.edu.unq.partnersdevapp.service.dto.utils;
 
 /**
- * TODO: ver manejo de genericos
+ * ver manejo de genericos
  */
 public interface UtilsDto {
 
