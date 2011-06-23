@@ -59,7 +59,7 @@ public class PlanDeCarrera extends Entidad {
             }
 
         } catch (Exception e) {
-            throw new NoHayResultadoException();
+            throw new NoHayResultadoException(); // NOPMD
         }
 
     }
@@ -120,7 +120,7 @@ public class PlanDeCarrera extends Entidad {
         try {
             return this.getNiveles().get(index);
         } catch (Exception e) {
-            throw new NoHayResultadoException();
+            throw new NoHayResultadoException(); // NOPMD
         }
 
     }
