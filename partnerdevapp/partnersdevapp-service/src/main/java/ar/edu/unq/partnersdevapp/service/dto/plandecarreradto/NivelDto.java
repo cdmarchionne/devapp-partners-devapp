@@ -9,7 +9,7 @@ public class NivelDto implements Dto {
 
     private static final long serialVersionUID = 1L;
 
-    private int id;
+    private int id; // NOPMD
 
     private String nombre;
 
@@ -20,13 +20,9 @@ public class NivelDto implements Dto {
 
     private int sueldoMinimo;
 
-    public NivelDto() {
-
-    }
-
-    public NivelDto(final String nombre2, final int i, final int sueldoMaximo2, final int sueldoMinimo2) {
+    public NivelDto(final String nombre2, final int aBanda, final int sueldoMaximo2, final int sueldoMinimo2) {
         nombre = nombre2;
-        banda = i;
+        banda = aBanda;
         sueldoMaximo = sueldoMaximo2;
         sueldoMinimo = sueldoMinimo2;
     }
@@ -37,7 +33,7 @@ public class NivelDto implements Dto {
     }
 
     // *** G y S
-    public void setId(final int id) {
+    public void setId(final int id) {// NOPMD
         this.id = id;
     }
 
