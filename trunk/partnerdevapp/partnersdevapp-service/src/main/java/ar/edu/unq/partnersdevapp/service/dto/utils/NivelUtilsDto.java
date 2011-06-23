@@ -11,6 +11,9 @@ import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelDto;
  * TODO: ver de hacer la convercion con reflec
  */
 public class NivelUtilsDto {
+    private NivelUtilsDto() {
+        throw new UnsupportedOperationException();
+    }
 
     static public Nivel dtoToReal(final NivelDto dto) {
         Nivel nivel = new Nivel(dto.getNombre(), new Banda(dto.getBanda()), dto.getSueldoMaximo(),

@@ -1,12 +1,14 @@
 package ar.edu.unq.partnersdevapp.service.dto.utils;
 
-
 /**
  * TODO: puedo usar esto para la convercion , ver que si un atributo es otra
  * clase hay que transformarla tambien
  */
 public class DtoConvercion {
 
+    public DtoConvercion() {
+        throw new UnsupportedOperationException();
+    }
     // Field[] atributo = ClaseA.class.getDeclaredFields();
     //
     // Method metodoGet = ClaseA.class.getMethod("getA", null);
