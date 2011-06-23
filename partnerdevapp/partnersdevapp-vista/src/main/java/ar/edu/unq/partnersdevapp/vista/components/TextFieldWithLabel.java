@@ -6,13 +6,12 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
 
 /**
- * TODO: description
+ * 
  */
 public class TextFieldWithLabel extends MarkupContainer {
     private static final long serialVersionUID = 1L;
 
-    @SuppressWarnings("PMD")
-    public TextFieldWithLabel(final String id) {
+    public TextFieldWithLabel(final String id) {// NOPMD
         super(id);
     }
 

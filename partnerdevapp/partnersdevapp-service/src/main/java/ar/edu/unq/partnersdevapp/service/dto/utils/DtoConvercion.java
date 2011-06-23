@@ -1,8 +1,8 @@
 package ar.edu.unq.partnersdevapp.service.dto.utils;
 
 /**
- * TODO: puedo usar esto para la convercion , ver que si un atributo es otra
- * clase hay que transformarla tambien
+ * puedo usar esto para la convercion , ver que si un atributo es otra clase hay
+ * que transformarla tambien
  */
 public class DtoConvercion {
 
