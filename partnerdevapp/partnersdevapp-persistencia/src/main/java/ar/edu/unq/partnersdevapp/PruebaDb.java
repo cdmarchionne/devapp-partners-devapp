@@ -13,6 +13,10 @@ import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
  */
 public class PruebaDb {
 
+    private PruebaDb() {
+        throw new UnsupportedOperationException();
+    }
+
     public static void main(final String[] args) throws NoHayResultadoException {
         PlanDeCarrera plan = new PlanDeCarrera("tecnico", "cosas de tecnico");
 
