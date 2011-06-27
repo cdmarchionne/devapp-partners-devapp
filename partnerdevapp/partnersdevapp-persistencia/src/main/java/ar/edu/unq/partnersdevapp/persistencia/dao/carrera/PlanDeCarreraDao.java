@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.persistencia.dao;
+package ar.edu.unq.partnersdevapp.persistencia.dao.carrera;
 
 import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 
@@ -8,7 +8,7 @@ import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
 public class PlanDeCarreraDao {
 
     public void insert(final PlanDeCarrera plan) {
-
+        plan.getId();
         // System.out.println("inserto plan " + " " + plan);
     }
 }

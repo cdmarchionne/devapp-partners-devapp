@@ -3,35 +3,31 @@
 		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-			<!--******* Para HSQLDB -->
+			<!--******* Para HSQLDB 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />
 		<property name="url" value="jdbc:hsqldb:mem:devapp" />
-		<property name="username" value="root" />
-		<property name="password" value="root" />
+		<property name="username" value="as" />
+		<property name="password" value="" />
 		<property name="defaultAutoCommit" value="false" />
 		<property name="poolPreparedStatements" value="true" />
 		<property name="initialSize" value="20" />
 		<property name="maxActive" value="30" />
-		<property name="maxIdle" value="25" />
-		
-
-	</bean>
+		<property name="maxIdle" value="25" />	
+	</bean>-->
 	
 			<!--******* Para MYSQL --> 
-<!-- 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> -->
-<!-- 		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
-<!-- 		<property name="url" value="jdbc:mysql://localhost:3306/persistence" /> -->
-<!-- 		<property name="username" value="root" /> -->
-<!-- 		<property name="password" value="root" /> -->
-<!-- 		<property name="defaultAutoCommit" value="false" /> -->
-<!-- 		<property name="poolPreparedStatements" value="true" /> -->
-<!-- 		<property name="initialSize" value="20" /> -->
-<!-- 		<property name="maxActive" value="30" /> -->
-<!-- 		<property name="maxIdle" value="25" /> -->
-		
-
-<!-- 	</bean> -->
+ 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"> 
+	 		<property name="driverClassName" value="com.mysql.jdbc.Driver" /> 
+	 		<property name="url" value="jdbc:mysql://localhost/devapp" /> 
+	 		<property name="username" value="root" /> 
+	 		<property name="password" value="root" /> 
+	 		<property name="defaultAutoCommit" value="false" /> 
+	 		<property name="poolPreparedStatements" value="true" /> 
+	 		<property name="initialSize" value="20" /> 
+	 		<property name="maxActive" value="30" /> 
+ 	 		<property name="maxIdle" value="25" /> 
+	 	</bean> 
 	  
 	  
 	  <!--   *** Cambiar el Dialect cuando swicheao la base!-->
@@ -42,8 +38,8 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
-		  <!-- <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> -->
-				<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>
+		   		<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> 
+			<!--<prop key="hibernate.dialect">org.hibernate.dialect.HSQLDialect</prop>-->
 				<prop key="hibernate.hbm2ddl.auto">create</prop>
 				
 				<prop key="hibernate.cglib.use_reflection_optimizer">true</prop>

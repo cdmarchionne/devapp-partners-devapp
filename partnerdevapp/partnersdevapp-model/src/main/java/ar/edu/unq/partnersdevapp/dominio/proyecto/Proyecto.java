@@ -15,7 +15,6 @@ import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
 
 public class Proyecto {
 
-    @SuppressWarnings("PMD")
     private String nombre;
 
     private Cliente cliente;
@@ -25,7 +24,6 @@ public class Proyecto {
     // Cantidad de Horas de trabajo necesarias para realizar el Proyecto
     private Integer esfuerzoEstimado;
 
-    @SuppressWarnings("PMD")
     private Set<Empleado> personalAsignado;
 
     private FechasXcomprension fecha;
@@ -105,12 +103,13 @@ public class Proyecto {
         // obj).getNombre());
         boolean rta = false;
 
-        if (!(obj == null || getClass() != obj.getClass())) {
+        if (!(obj == null || this.getClass() != obj.getClass())) {
             if (this == obj) {
                 rta = true;
             } else {
                 Proyecto proyecto = (Proyecto) obj;
-                rta = getNombre() == null ? proyecto.getNombre() == null : getNombre().equals(proyecto.getNombre());
+                rta = this.getNombre() == null ? proyecto.getNombre() == null : this.getNombre().equals(
+                        proyecto.getNombre());
             }
         }
         return rta;
@@ -118,7 +117,7 @@ public class Proyecto {
 
     @Override
     public int hashCode() {
-        return 10 + getNombre() == null ? 0 : getNombre().hashCode();
+        return 10 + this.getNombre() == null ? 0 : this.getNombre().hashCode();
     }
 
 }

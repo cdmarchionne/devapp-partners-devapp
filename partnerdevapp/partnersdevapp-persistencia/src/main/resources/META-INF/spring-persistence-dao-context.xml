@@ -3,11 +3,12 @@
 		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-<!--
-	<bean id="persistence.employeeDAO" class="ar.edu.unq.wannaplay.persistence.daos.EmployeeDAO">
+	<bean id="persistence.nivelDao" class="ar.edu.unq.partnersdevapp.persistencia.dao.carrera.NivelDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory"/>
-	</bean>
+</bean>
 	
+
+<!--	
 	<bean id="persistence.projectDAO" class="ar.edu.unq.wannaplay.persistence.daos.ProjectDAO">
 		<property name="sessionFactory" ref="persistence.sessionFactory"/>
 	</bean>

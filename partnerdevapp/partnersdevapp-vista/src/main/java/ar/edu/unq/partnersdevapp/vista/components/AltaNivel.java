@@ -8,10 +8,10 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import ar.edu.unq.partnersdevapp.service.carrera.NivelService;
 import ar.edu.unq.partnersdevapp.service.dto.Dto;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelDto;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelListaDto;
-import ar.edu.unq.partnersdevapp.vista.main.NivelBean;
 import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
 
 /**
@@ -23,8 +23,8 @@ public class AltaNivel<T extends Dto> extends BasePage {
 
     private Form<NivelDto> form;
 
-    @SpringBean(name = "nivelBean")
-    private NivelBean service;
+    @SpringBean(name = "service.nivelService")
+    private NivelService service;
 
     private NivelDto model = new NivelDto("", 0, 0, 0);
 
@@ -52,8 +52,8 @@ public class AltaNivel<T extends Dto> extends BasePage {
 
             @Override
             public void onSubmit() {
-                // AltaNivel.this.getService().insert( DTO );
-                AltaNivel.this.getService().insert();
+                AltaNivel.this.getService().save(model);
+
             }
         });
 
@@ -87,11 +87,11 @@ public class AltaNivel<T extends Dto> extends BasePage {
         this.form = form;
     }
 
-    public NivelBean getService() {
+    public NivelService getService() {
         return service;
     }
 
-    public void setService(final NivelBean service) {
+    public void setService(final NivelService service) {
         this.service = service;
     }
 
@@ -111,11 +111,12 @@ public class AltaNivel<T extends Dto> extends BasePage {
         this.comboNiveles = comboNiveles;
     }
 
+    public NivelListaDto getModelLista() {
+        return modelLista;
+    }
+
     public void setModelLista(final NivelListaDto modelLista) {
         this.modelLista = modelLista;
     }
 
-    public NivelListaDto getModelLista() {
-        return modelLista;
-    }
 }
