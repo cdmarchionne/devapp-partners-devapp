@@ -3,22 +3,13 @@
 		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-	<!-- 
-	<bean id="service.employeeService" class="ar.edu.unq.wannaplay.services.EmployeeService">
-		<property name="dao" ref="persistence.employeeDAO"/>
-		<property name="skillService" ref="service.skillService"/>
-	</bean>
 
-	<bean id="service.projectService" class="ar.edu.unq.wannaplay.services.ProjectService">
-		<property name="dao" ref="persistence.projectDAO"/>
-	</bean>
+<bean id="service.nivelService"	class="ar.edu.unq.partnersdevapp.service.carrera.NivelService">
+	<property name="nivelDao" ref="persistence.nivelDao"/>
+</bean>
+
+<bean id="service.planService"	class="ar.edu.unq.partnersdevapp.service.carrera.PlanService">
 	
-	<bean id="service.careerPlanService" class="ar.edu.unq.wannaplay.services.CareerPlanService">
-		<property name="dao" ref="persistence.careerPlanManagerDAO"/>
-	</bean>
-	
-	<bean id="service.skillService" class="ar.edu.unq.wannaplay.services.SkillService">
-		<property name="dao" ref="persistence.skillDAO"/>
-	</bean>
-	 -->
+</bean>
+
 </beans>

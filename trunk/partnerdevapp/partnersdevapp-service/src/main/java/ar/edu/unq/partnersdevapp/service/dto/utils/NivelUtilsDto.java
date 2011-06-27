@@ -31,8 +31,10 @@ public class NivelUtilsDto {
 
     static public List<NivelDto> realToDto(final List<Nivel> list) {
         List<NivelDto> newList = new ArrayList<NivelDto>();
-        for (Nivel nivel : list) {
-            newList.add(NivelUtilsDto.realToDto(nivel));
+        if (list != null) {
+            for (Nivel nivel : list) {
+                newList.add(NivelUtilsDto.realToDto(nivel));
+            }
         }
         return newList;
     }

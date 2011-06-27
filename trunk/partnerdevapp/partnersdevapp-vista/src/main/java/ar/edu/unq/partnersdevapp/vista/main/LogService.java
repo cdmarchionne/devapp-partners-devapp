@@ -3,10 +3,11 @@ package ar.edu.unq.partnersdevapp.vista.main;
 import org.apache.log4j.Logger;
 
 /**
- * XXX, los servicios deben ir en otro proyecto, no en el de presentacion
+ ** YYY-llevarlo al proyecto de servicios. Problema de dependencias
  */
 public class LogService {
 
+    // protected static final Logger LOG = Logger.getLogger(LogService.class);
     protected static final Logger LOG = Logger.getLogger(LogService.class);
 
     public LogService() {

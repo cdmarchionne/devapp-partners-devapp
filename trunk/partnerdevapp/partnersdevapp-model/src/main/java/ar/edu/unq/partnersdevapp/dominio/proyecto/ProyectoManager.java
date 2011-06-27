@@ -13,7 +13,7 @@ import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
  */
 public class ProyectoManager {
 
-    private Set<InfoProyecto> infoProyectos;
+    private Set<InfoProyecto> infoProyectos;// NOPMD
 
     public ProyectoManager() {
         super();

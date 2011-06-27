@@ -22,8 +22,7 @@ public class AsignacionStrategy {
 
     private Proyecto proyecto;
 
-    @SuppressWarnings("PMD")
-    private Map<Empleado, Integer> horasHombre;
+    private Map<Empleado, Integer> horasHombre;// NOPMD
 
     public AsignacionStrategy(final Proyecto proyecto) {
         super();
@@ -45,10 +44,10 @@ public class AsignacionStrategy {
      */
     public void addEmpleadoManual(final Empleado empleado, final List<FechasXcomprension> diasAsignados) {
         Integer cantidadHoras = 0;
-        if (!getProyecto().getPersonalAsignado().contains(empleado)) {
-            getProyecto().addPersonal(empleado);
+        if (!this.getProyecto().getPersonalAsignado().contains(empleado)) {
+            this.getProyecto().addPersonal(empleado);
             for (FechasXcomprension fecha : diasAsignados) {
-                cantidadHoras += horasProductivas(fecha);
+                cantidadHoras += this.horasProductivas(fecha);
             }
             horasHombre.put(empleado, cantidadHoras);
             empleado.getProyectoManager().addProyecto(proyecto, diasAsignados);
@@ -56,11 +55,11 @@ public class AsignacionStrategy {
     }
 
     public void addEmpleadoManual(final Empleado empleado) {
-        addEmpleadoManual(empleado, FechaUtils.crearFechaXcomprension(diasLibres(empleado)));
+        this.addEmpleadoManual(empleado, FechaUtils.crearFechaXcomprension(this.diasLibres(empleado)));
     }
 
     public boolean faltaEsfuerzo() {
-        return horasAsignadas() < getProyecto().getEsfuerzoEstimado();
+        return this.horasAsignadas() < this.getProyecto().getEsfuerzoEstimado();
     }
 
     /** Cantidad de horas que el Proyecto tiene asignadas con empleados */
@@ -78,7 +77,7 @@ public class AsignacionStrategy {
      * proyecto toda la jornada
      */
     public Integer cantPersonalMinimo() {
-        return proyecto.getEsfuerzoEstimado() / horasProductivas(proyecto.getFecha());
+        return proyecto.getEsfuerzoEstimado() / this.horasProductivas(proyecto.getFecha());
     }
 
     /** Calculo de la cantidad de horas Hombre en n dias */
@@ -93,22 +92,22 @@ public class AsignacionStrategy {
         } catch (PeriodoIndeterminadoException e) {
             throw new UnsupportedOperationException(e);
         }
-        return horasProductivas(diasHabiles);
+        return this.horasProductivas(diasHabiles);
     }
 
     /** Condiciones necesarias para que un Empleado trabaje en un proyecto */
     private boolean condicionesEmpleadoAutomatico(final Empleado empleado) {
-        return esUnEmpleadoApto(empleado) && !diasLibres(empleado).isEmpty();
+        return this.esUnEmpleadoApto(empleado) && !this.diasLibres(empleado).isEmpty();
     }
 
     /** Verifico si el empleado es apto para el proyecto */
     private boolean esUnEmpleadoApto(final Empleado empleado) {
-        return empleado.getConocimiento().satisfaceRequisito(getProyecto().getRequerimientos());
+        return empleado.getConocimiento().satisfaceRequisito(this.getProyecto().getRequerimientos());
     }
 
     /** Verifico si el empleado es apto para el proyecto */
     private Integer diferenciaRequisitosDelEmpleado(final Empleado empleado) {
-        return empleado.getConocimiento().diferenciaRequisitos(getProyecto().getRequerimientos());
+        return empleado.getConocimiento().diferenciaRequisitos(this.getProyecto().getRequerimientos());
     }
 
     /** Dias libres del empleado en la fecha de realizacion del proyecto */
@@ -130,7 +129,7 @@ public class AsignacionStrategy {
         Iterator<Empleado> iterador = empleados.iterator();
         while (iterador.hasNext()) {
             empleadoParticular = iterador.next();
-            if (condicionesEmpleadoAutomatico(empleadoParticular)) {
+            if (this.condicionesEmpleadoAutomatico(empleadoParticular)) {
                 empleadosCandidatos.add(empleadoParticular);
             }
         }
@@ -148,8 +147,8 @@ public class AsignacionStrategy {
         Iterator<Empleado> iterador = empleados.iterator();
         while (iterador.hasNext()) {
             empleadoParticular = iterador.next();
-            diasLibres = diasLibres(empleadoParticular);
-            diferenciaDeRequisitos = diferenciaRequisitosDelEmpleado(empleadoParticular);
+            diasLibres = this.diasLibres(empleadoParticular);
+            diferenciaDeRequisitos = this.diferenciaRequisitosDelEmpleado(empleadoParticular);
 
             if (diferenciaDeRequisitos >= 0 && !diasLibres.isEmpty()) {
                 empleadoPrioridad = new EmpleadoPrioridad(empleadoParticular, diferenciaDeRequisitos, diasLibres.size());

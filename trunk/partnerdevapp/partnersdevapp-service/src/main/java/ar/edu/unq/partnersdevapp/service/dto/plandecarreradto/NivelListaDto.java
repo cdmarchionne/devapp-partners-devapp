@@ -22,6 +22,9 @@ public class NivelListaDto implements Dto {
     }
 
     public void setNivelesDto(final List<NivelDto> nivelesDto) {
+        if (nivelesDto == null) {
+            System.out.println("***null");
+        }
         this.nivelesDto = nivelesDto;
     }
 

@@ -135,9 +135,7 @@ public class FechaUtils {
     }
 
     public static boolean isMismaSemana(final Date date1, final Date date2) {
-        if (date2 == null) {
-            return false;
-        }
+        if (date2 == null) { return false; }
         Calendar cal = FechaUtils.getCalendar(date1);
         Calendar cal2 = FechaUtils.getCalendar(date2);
         return cal2.get(Calendar.WEEK_OF_MONTH) == cal.get(Calendar.WEEK_OF_MONTH);
@@ -181,8 +179,8 @@ public class FechaUtils {
     }
 
     /** A partir de una lista de dias la comprimo */
-    @SuppressWarnings("PMD")
-    public static List<FechasXcomprension> crearFechaXcomprension(final List<Date> dias) {
+
+    public static List<FechasXcomprension> crearFechaXcomprension(final List<Date> dias) {// NOPMD
         List<FechasXcomprension> listaDeFechasComprimidas = new ArrayList<FechasXcomprension>();
 
         List<Date> diasOrdenados = ordenarDiasConsecutivos(dias);

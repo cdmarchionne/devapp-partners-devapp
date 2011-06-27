@@ -4,11 +4,10 @@ package ar.edu.unq.partnersdevapp.dominio.entidad;
  * Persistible
  */
 public interface Persistible {
-    @SuppressWarnings("PMD")
-    int getId();
 
-    @SuppressWarnings("PMD")
-    void setId(int id);
+    int getId();// NOPMD
+
+    void setId(int id);// NOPMD
 
     Long getVersion();
 

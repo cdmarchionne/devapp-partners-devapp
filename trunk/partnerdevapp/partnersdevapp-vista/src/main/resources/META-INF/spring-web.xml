@@ -28,7 +28,6 @@
 	
 	<!-- beans de spring  -->
 	<bean id="service.log" class="ar.edu.unq.partnersdevapp.vista.main.LogService" />
+	 	
 	
-
-	<bean id="nivelBean" class="ar.edu.unq.partnersdevapp.vista.main.NivelBean" />
 </beans>
