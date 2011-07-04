@@ -64,8 +64,8 @@ public abstract class HibernateGenericDao<T> extends HibernateDaoSupport impleme
     }
 
     @Override
-    public void deleteById(final Serializable id) {
-        this.getHibernateTemplate().delete(this.findById(id));
+    public void deleteById(final Serializable ididid) {
+        this.getHibernateTemplate().delete(this.findById(ididid));
     }
 
     public Class<T> getPersistentClass() {

@@ -17,13 +17,14 @@ public class Intervalo extends Entidad {
     private int cantidad;
 
     public Intervalo() {
-
+        super();
     }
 
     /**
      * Tipo es el entero que corresponde a semana,mes o año
      */
     public Intervalo(final int aTipo, final int aCantidad) {
+        super();
         tipo = aTipo;
         cantidad = aCantidad;
     }

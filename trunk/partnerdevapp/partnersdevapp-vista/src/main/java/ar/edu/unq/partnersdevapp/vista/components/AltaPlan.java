@@ -9,7 +9,7 @@ import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.PlanDto;
 import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
 
 /**
- * TODO: description
+ * 
  */
 public class AltaPlan extends BasePage {
 
@@ -51,4 +51,21 @@ public class AltaPlan extends BasePage {
     public PlanDto getModel() {
         return model;
     }
+
+    public Form<PlanDto> getForm() {
+        return form;
+    }
+
+    public void setForm(final Form<PlanDto> form) {
+        this.form = form;
+    }
+
+    public PlanService getService() {
+        return service;
+    }
+
+    public void setService(final PlanService service) {
+        this.service = service;
+    }
+
 }

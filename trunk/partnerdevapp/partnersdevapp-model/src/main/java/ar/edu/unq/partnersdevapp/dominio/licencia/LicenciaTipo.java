@@ -28,6 +28,7 @@ public class LicenciaTipo extends Entidad {
      * inderminado<br/>
      */
     public LicenciaTipo(final String tipo, final boolean remunerable, final int diasConsecutivos, final int diasCantidad) {
+        super();
         this.tipo = tipo;
         this.remunerable = remunerable;
         this.diasConsecutivos = diasConsecutivos;
@@ -35,7 +36,7 @@ public class LicenciaTipo extends Entidad {
     }
 
     public LicenciaTipo() {
-
+        super();
     }
 
     @Override

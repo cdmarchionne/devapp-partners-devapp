@@ -23,6 +23,7 @@ public class Nivel extends Entidad {
     private int sueldoMinimo = 0;
 
     public Nivel() {
+        super();
     }
 
     /**

@@ -21,11 +21,13 @@ public class Posicion extends Entidad {
     }
 
     public Posicion(final Nivel nivel, final int subnivel) {
+        super();
         this.setNivel(nivel);
         this.setNumeroDeBanda(subnivel);
     }
 
     public Posicion(final Posicion posicion) {
+        super();
         this.setNivel(posicion.getNivel());
         this.setNumeroDeBanda(posicion.getNumeroDeBanda());
     }

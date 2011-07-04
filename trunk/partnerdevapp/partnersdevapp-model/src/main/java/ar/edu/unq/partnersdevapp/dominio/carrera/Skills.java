@@ -140,8 +140,8 @@ public class Skills extends Entidad {
         return skill;
     }
 
-    public void setSkill(final Map<Tecnologia, Experiencia> s) {
-        skill = s;
+    public void setSkill(final Map<Tecnologia, Experiencia> skills) {
+        skill = skills;
     }
 
     public void setSkill(final Tecnologia tecnologia, final Experiencia experiencia) {
