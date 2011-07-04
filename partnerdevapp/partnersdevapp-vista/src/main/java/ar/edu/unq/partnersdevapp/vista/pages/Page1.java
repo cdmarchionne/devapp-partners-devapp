@@ -18,4 +18,11 @@ public class Page1 extends BasePage {
 
     }
 
+    public void setDefaultValueService(final DefaultValue defaultValueService) {
+        this.defaultValueService = defaultValueService;
+    }
+
+    public DefaultValue getDefaultValueService() {
+        return defaultValueService;
+    }
 }

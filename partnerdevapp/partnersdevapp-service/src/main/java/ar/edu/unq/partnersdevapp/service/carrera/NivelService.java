@@ -20,8 +20,8 @@ public class NivelService implements Serializable {
         return NivelUtilsDto.realToDto(this.getNivelDao().findAll());
     }
 
-    public List<NivelDto> findByPlan_id(final int id) {
-        return NivelUtilsDto.realToDto(nivelDao.findByIdPlan_Id(id));
+    public List<NivelDto> findByPlanid(final int id) {
+        return NivelUtilsDto.realToDto(nivelDao.findByIdPlanId(id));
     }
 
     public void save(final NivelDto nivelDto) {

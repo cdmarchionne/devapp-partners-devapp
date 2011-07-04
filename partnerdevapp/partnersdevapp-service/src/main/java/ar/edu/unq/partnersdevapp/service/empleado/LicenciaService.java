@@ -9,7 +9,7 @@ import ar.edu.unq.partnersdevapp.persistencia.dao.personal.LicenciaDao;
  */
 public class LicenciaService {
 
-    LicenciaDao licenciaDao;
+    private LicenciaDao licenciaDao;
 
     public void save(final LicenciaTipo model) {
         licenciaDao.save(model);

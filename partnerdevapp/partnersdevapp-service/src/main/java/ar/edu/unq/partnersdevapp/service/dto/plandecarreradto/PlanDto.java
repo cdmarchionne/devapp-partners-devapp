@@ -16,7 +16,7 @@ public class PlanDto implements Dto {
     private String descripcion;
 
     public PlanDto() {
-
+        super();
     }
 
     @Override

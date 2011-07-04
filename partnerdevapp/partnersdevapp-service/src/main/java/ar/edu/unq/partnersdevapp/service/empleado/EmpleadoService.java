@@ -17,7 +17,7 @@ import ar.edu.unq.partnersdevapp.service.defaultValue.Factory;
  */
 public class EmpleadoService {
 
-    EmpleadoDao empleadoDao;
+    private EmpleadoDao empleadoDao;
 
     @Transactional
     public void asignar(final Empleado empleado, final LicenciaTipo licencia) throws NoHayResultadoException,

@@ -17,12 +17,13 @@ import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
  */
 public class EmpleadoSelect extends BasePage {
 
-    List<EmpleadoDto> model;
+    private List<EmpleadoDto> model;
 
     @SpringBean(name = "service.empleadoService")
-    EmpleadoService empleadoService;
+    private EmpleadoService empleadoService;
 
     public EmpleadoSelect() {
+        super();
         this.setModel(EmpleadoUtilsDto.realToDto(empleadoService.findAll()));
         this.add(this.getListView());
     }
@@ -54,4 +55,13 @@ public class EmpleadoSelect extends BasePage {
     public List<EmpleadoDto> getModel() {
         return model;
     }
+
+    public EmpleadoService getEmpleadoService() {
+        return empleadoService;
+    }
+
+    public void setEmpleadoService(final EmpleadoService empleadoService) {
+        this.empleadoService = empleadoService;
+    }
+
 }

@@ -17,12 +17,13 @@ import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
  */
 public class AltaLicencia extends BasePage {
 
-    LicenciaTipo model = new LicenciaTipo();
+    private LicenciaTipo model = new LicenciaTipo();
 
     @SpringBean(name = "service.licenciaService")
-    LicenciaService service;
+    private LicenciaService service;
 
     public AltaLicencia() {
+        super();
         this.iniciar();
     }
 
@@ -55,33 +56,27 @@ public class AltaLicencia extends BasePage {
             private static final long serialVersionUID = 1L;
         };
 
-        CheckBox check = new CheckBox("remunerableCheck", new PropertyModel<Boolean>(model, "remunerable")) {
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            protected boolean wantOnSelectionChangedNotifications() {
-                return true;
-            }
-
-            @Override
-            protected void onSelectionChanged(final Object newSelection) {
-                Boolean value = (Boolean) newSelection;
-                if (value.booleanValue()) {
-                    // do something
-                }
-            }
-        };
+        CheckBox check = new CheckBox("remunerableCheck", new PropertyModel<Boolean>(model, "remunerable"));
 
         mkc.add(new Label("remunerableLabel", "Es remunerable?"));
         mkc.add(check);
         return mkc;
     }
 
+    public LicenciaTipo getModel() {
+        return model;
+    }
+
     public void setModel(final LicenciaTipo model) {
         this.model = model;
     }
 
-    public LicenciaTipo getModel() {
-        return model;
+    public LicenciaService getService() {
+        return service;
     }
+
+    public void setService(final LicenciaService service) {
+        this.service = service;
+    }
+
 }

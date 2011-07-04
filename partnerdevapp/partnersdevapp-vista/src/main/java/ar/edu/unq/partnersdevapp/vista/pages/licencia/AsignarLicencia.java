@@ -22,16 +22,18 @@ import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
 public class AsignarLicencia extends BasePage {
 
     @SpringBean(name = "service.empleadoService")
-    EmpleadoService empleadoService;
+    private EmpleadoService empleadoService;
 
     @SpringBean(name = "service.licenciaService")
-    LicenciaService licenciaService;
+    private LicenciaService licenciaService;
 
-    ModelCombo<Empleado> modelEmpleado;
+    private ModelCombo<Empleado> modelEmpleado;
 
-    ModelCombo<LicenciaTipo> modelLicencia;
+    private ModelCombo<LicenciaTipo> modelLicencia;
 
     public AsignarLicencia() {
+        super();
+
         @SuppressWarnings("rawtypes")
         Form form = new Form("asignarForm");
 
@@ -48,7 +50,7 @@ public class AsignarLicencia extends BasePage {
             @Override
             public void onSubmit() {
                 try {
-                    empleadoService.asignar(modelEmpleado.getSeleccion(), modelLicencia.getSeleccion());
+                    empleadoService.asignar(modelEmpleado.getSeleccion(), modelLicencia.getSeleccion()); // NOPMD
                     this.info("Se asigno Licencia");
                 } catch (NoHayResultadoException e) {
                     this.info(e.getMessage());
@@ -87,4 +89,29 @@ public class AsignarLicencia extends BasePage {
         modelLicencia.setOpciones(licenciaService.findAll());
         return modelLicencia;
     }
+
+    public EmpleadoService getEmpleadoService() {
+        return empleadoService;
+    }
+
+    public void setEmpleadoService(final EmpleadoService empleadoService) {
+        this.empleadoService = empleadoService;
+    }
+
+    public LicenciaService getLicenciaService() {
+        return licenciaService;
+    }
+
+    public void setLicenciaService(final LicenciaService licenciaService) {
+        this.licenciaService = licenciaService;
+    }
+
+    public void setModelEmpleado(final ModelCombo<Empleado> modelEmpleado) {
+        this.modelEmpleado = modelEmpleado;
+    }
+
+    public void setModelLicencia(final ModelCombo<LicenciaTipo> modelLicencia) {
+        this.modelLicencia = modelLicencia;
+    }
+
 }

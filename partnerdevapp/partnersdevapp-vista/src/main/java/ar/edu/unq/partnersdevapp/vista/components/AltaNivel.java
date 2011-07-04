@@ -48,7 +48,7 @@ public class AltaNivel<T extends Dto> extends BasePage {
 
     private DropDownChoice<PlanDto> planCombo;
 
-    RadioChoice<String> radio;
+    private RadioChoice<String> radio;
 
     public AltaNivel() {
         super();
@@ -122,7 +122,7 @@ public class AltaNivel<T extends Dto> extends BasePage {
             @Override
             protected void onUpdate(final AjaxRequestTarget target) {
                 AltaNivel.this.getModelNivelLista().setOpciones(
-                        AltaNivel.this.getNivelService().findByPlan_id(
+                        AltaNivel.this.getNivelService().findByPlanid(
                                 AltaNivel.this.getModelPlanLista().getSeleccion().getId()));
                 target.addComponent(AltaNivel.this.getNiveleCombo());
             }
@@ -204,6 +204,14 @@ public class AltaNivel<T extends Dto> extends BasePage {
 
     public void setPlanCombo(final DropDownChoice<PlanDto> planCombo) {
         this.planCombo = planCombo;
+    }
+
+    public RadioChoice<String> getRadio() {
+        return radio;
+    }
+
+    public void setRadio(final RadioChoice<String> radio) {
+        this.radio = radio;
     }
 
 }

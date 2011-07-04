@@ -22,14 +22,14 @@ public class NivelDao extends HibernateGenericDao<Nivel> {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Nivel> findByIdPlan_Id(final int id) {
+    public List<Nivel> findByIdPlanId(final int ididid) {
         // ??? no puede con criterira por que no reconoce a plan_id por no ser
         // atributo de Nivel
 
         String hql = "from Nivel where plan_id = :id ";
 
         Query query = this.getSession().createQuery(hql);
-        query.setInteger("id", id);
+        query.setInteger("id", ididid);
 
         return query.list();
 
