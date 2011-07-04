@@ -11,7 +11,7 @@
             <span  wicket:id="nombreLabel"  />
             <input wicket:id="nombreField" type="text" />
         </div>
-        
+      
         <div       wicket:id="bandaContainer">
             <span  wicket:id="bandaLabel"  />
             <input wicket:id="bandaField" type="text" />
@@ -26,11 +26,26 @@
             <span  wicket:id="sueldoMinimoLabel"  />
             <input wicket:id="sueldoMinimoField" type="text" />
         </div>
+        
+        <div       wicket:id="planComboContainer">
+            <span  wicket:id="planLabelCombo"  />
+            <select wicket:id="planCombo"></select>
+        </div>
+        
+        <div       wicket:id="lugarRadio">
+            <input type="radio">ant</input>
+            <input type="radio">desp</input>
+        </div>
+        
+        <div       wicket:id="nivelComboContainer">
+            <span  wicket:id="nivelLabelCombo"  />
+            <select wicket:id="nivelCombo"></select>
+        </div>
 
-  		<select wicket:id="nivelCombo"></select>
-  	  		
+  		 	  		
   		<input wicket:id="button" type="submit" value="insertar" />
-
+  	
+  		
  </form>
  
 </wicket:extend>

@@ -2,15 +2,23 @@ package ar.edu.unq.partnersdevapp.dominio.calendario;
 
 import java.util.Calendar;
 
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
+
 /**
  * Representa un lapso de tiempo. Ver metodos estaticos como ejemplo de uso.
  * 
  */
-public class Intervalo {
+public class Intervalo extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private int tipo;
 
     private int cantidad;
+
+    public Intervalo() {
+
+    }
 
     /**
      * Tipo es el entero que corresponde a semana,mes o año

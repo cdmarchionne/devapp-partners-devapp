@@ -18,6 +18,8 @@ import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
  */
 public class Empleado extends Persona {
 
+    private static final long serialVersionUID = 1L;
+
     private String obraSocial;
 
     private String planPrapaga;
@@ -28,8 +30,7 @@ public class Empleado extends Persona {
 
     private String dirArt;
 
-    private Date fechaIngreso;// Esta podria ser la fecha del primer plan de
-                              // carrera
+    private Date fechaIngreso;
 
     private PlanDeCarreraManager planDeCarreraManager = new PlanDeCarreraManager();
 
@@ -55,13 +56,38 @@ public class Empleado extends Persona {
     }
 
     /**
+     * Calculo los dias libres que tiene para realizar un Proyecto Nuevo.
+     * Recorro todas las Licencias y Proyectos que tiene asignados.
+     */
+    public List<Date> diasLibres(final FechasXcomprension fechaProyecto) throws PeriodoIndeterminadoException {
+        List<Date> diasLibres = fechaProyecto.getFechasXextencion();
+        Set<Date> fechasOcupado = new HashSet<Date>();
+
+        for (FechasXcomprension fechasLicencia : this.getLicenciaManager().diasOcupados(fechaProyecto)) {
+            fechasOcupado.addAll(fechasLicencia.getFechasXextencion());
+        }
+
+        for (FechasXcomprension fechasProyecto : this.getProyectoManager().diasOcupados(fechaProyecto)) {
+            fechasOcupado.addAll(fechasProyecto.getFechasXextencion());
+        }
+
+        diasLibres.removeAll(fechasOcupado);
+        return diasLibres;
+    }
+
+    /**
      * Calcula el sueldo teniendo en cuenta la posicion actual
      * 
      * @throws NoHayResultadoException
      */
-
     public float getSueldo() throws NoHayResultadoException {
-        return getPlanDeCarreraManager().getPlanActual().getSueldo(getPlanDeCarreraManager().getPosicionActual());
+        return this.getPlanDeCarreraManager().getPlanActual()
+                .getSueldo(this.getPlanDeCarreraManager().getPosicionActual());
+    }
+
+    @Override
+    public String toString() {
+        return this.getId() + " " + this.getNombre();
     }
 
     // ******************
@@ -107,11 +133,11 @@ public class Empleado extends Persona {
     }
 
     public Date getFechaIngreso() {
-        return (Date) fechaIngreso.clone();
+        return fechaIngreso;
     }
 
     public void setFechaIngreso(final Date fechaIngreso) {
-        this.fechaIngreso = (Date) fechaIngreso.clone();
+        this.fechaIngreso = fechaIngreso;
     }
 
     public Skills getConocimiento() {
@@ -146,23 +172,4 @@ public class Empleado extends Persona {
         return proyectoManager;
     }
 
-    /**
-     * Calculo los dias libres que tiene para realizar un Proyecto Nuevo.
-     * Recorro todas las Licencias y Proyectos que tiene asignados.
-     */
-    public List<Date> diasLibres(final FechasXcomprension fechaProyecto) throws PeriodoIndeterminadoException {
-        List<Date> diasLibres = fechaProyecto.getFechasXextencion();
-        Set<Date> fechasOcupado = new HashSet<Date>();
-
-        for (FechasXcomprension fechasLicencia : getLicenciaManager().diasOcupados(fechaProyecto)) {
-            fechasOcupado.addAll(fechasLicencia.getFechasXextencion());
-        }
-
-        for (FechasXcomprension fechasProyecto : getProyectoManager().diasOcupados(fechaProyecto)) {
-            fechasOcupado.addAll(fechasProyecto.getFechasXextencion());
-        }
-
-        diasLibres.removeAll(fechasOcupado);
-        return diasLibres;
-    }
 }

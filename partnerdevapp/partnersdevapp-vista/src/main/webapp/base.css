@@ -10,15 +10,15 @@ color:#564b47;
 padding:0px;
 margin:0px;
 }
-a {color: #DB7093;}
-a:visited {color:#DB7093;}
+a {color: #DCA371;}
+a:visited {color:#DCA371;}
 a:hover {color: #564b47;}
 a:active { color:#000000;}
 
 h1 {
 font-size: 11px;
 text-transform:uppercase;
-background-color: #E0A3B7;
+background-color: #E1CCA5;
 border-top:1px solid #564b47;
 border-bottom:1px solid #564b47;
 padding:5px 15px;
@@ -32,7 +32,8 @@ margin:0px;}
 img.download {vertical-align:middle;}
 
 /* ----------container to center the layout-------- */
-#container {
+#container { 
+font-size: 20px;
 width: 1100px;
 padding:0px;
 margin: 0px;
@@ -52,8 +53,8 @@ margin: 0px; }
 /* ----------outer and inner----------------- */
 
 #outer{ 
-border-left: solid 200px #EBD3E0; /* color of the left column  */ 
-border-right: solid 200px #EBD3E0; /* color of the right column  */ 
+border-left: solid 200px #EBE0D4; /* color of the left column  */ 
+border-right: solid 200px #EBE0D4; /* color of the right column  */ 
 background-color: #ffffff;  /* color of the content column */
 } 
 

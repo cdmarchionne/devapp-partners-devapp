@@ -3,17 +3,21 @@ package ar.edu.unq.partnersdevapp.dominio.carrera;
 import java.util.ArrayList;
 import java.util.List;
 
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
+
 /**
  * Manejo de Experiencias. Se pueden agregar, borrar, cambiar el nombre de las
  * Niveles de Experiencia existentes. Cuando se crea una Experiencia se le pasa
  * el nombre y el orden de prioridad correspondiente. Se pueden modificar los
  * nivel de experiencia (incrementar o decrementar).
  */
-public class Experiencia {
+public class Experiencia extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private static List<String> listaExperiencia = new ArrayList<String>();
 
-    private transient String experienciaActual;
+    private String experienciaActual;
 
     public Experiencia(final String experienciaActual) {
         super();
@@ -112,7 +116,7 @@ public class Experiencia {
      * Experiencia deseado
      */
     public Integer difenciaNecesidades(final Experiencia requisito) {
-        return difenciaNecesidades(requisito.getExperienciaActual());
+        return this.difenciaNecesidades(requisito.getExperienciaActual());
     }
 
     public Integer difenciaNecesidades(final String requisito) {
@@ -124,11 +128,23 @@ public class Experiencia {
      * Experiencia deseado
      */
     public boolean cumbreNecesidades(final Experiencia requisito) {
-        return cumbreNecesidades(requisito.getExperienciaActual());
+        return this.cumbreNecesidades(requisito.getExperienciaActual());
     }
 
     public boolean cumbreNecesidades(final String requisito) {
-        return difenciaNecesidades(requisito) >= 0;
+        return this.difenciaNecesidades(requisito) >= 0;
+    }
+
+    public static List<String> getListaExperiencia() {
+        return listaExperiencia;
+    }
+
+    public static void setListaExperiencia(final List<String> listaExperiencia) {
+        Experiencia.listaExperiencia = listaExperiencia;
+    }
+
+    public void setExperienciaActual(final String experienciaActual) {
+        this.experienciaActual = experienciaActual;
     }
 
 }

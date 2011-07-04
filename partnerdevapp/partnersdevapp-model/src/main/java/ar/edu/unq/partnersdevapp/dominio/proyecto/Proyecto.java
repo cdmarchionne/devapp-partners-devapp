@@ -6,6 +6,7 @@ import java.util.Set;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.carrera.Skills;
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 import ar.edu.unq.partnersdevapp.dominio.personal.Cliente;
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
 
@@ -13,7 +14,9 @@ import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
  * Administracion de Proyectos
  */
 
-public class Proyecto {
+public class Proyecto extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private String nombre;
 
@@ -118,6 +121,22 @@ public class Proyecto {
     @Override
     public int hashCode() {
         return 10 + this.getNombre() == null ? 0 : this.getNombre().hashCode();
+    }
+
+    public AsignacionStrategy getAsignacion() {
+        return asignacion;
+    }
+
+    public void setAsignacion(final AsignacionStrategy asignacion) {
+        this.asignacion = asignacion;
+    }
+
+    public void setNombre(final String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setPersonalAsignado(final Set<Empleado> personalAsignado) {
+        this.personalAsignado = personalAsignado;
     }
 
 }

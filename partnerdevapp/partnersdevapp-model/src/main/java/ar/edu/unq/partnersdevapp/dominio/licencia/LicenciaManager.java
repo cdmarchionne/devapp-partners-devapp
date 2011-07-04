@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
+import ar.edu.unq.partnersdevapp.exceptions.NoSeAsignoLicencia;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
@@ -13,7 +15,9 @@ import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
  * 
  * @author leo
  */
-public class LicenciaManager {
+public class LicenciaManager extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private List<InfoLicencia> infoLicencias = new ArrayList<InfoLicencia>();
 
@@ -24,15 +28,18 @@ public class LicenciaManager {
      * 
      * @throws NoHayResultadoException
      * @throws PeriodoIndeterminadoException
+     * @throws NoSeAsignoLicencia
      */
     public boolean addLicencia(final LicenciaTipo aLicenciaTipo, final FechasXcomprension fechas)
-            throws NoHayResultadoException, PeriodoIndeterminadoException {
-        boolean condicion = !tieneLicenciaIndeterminada();
-        condicion = condicion && isDiasConsecutivosValido(aLicenciaTipo, fechas);
-        condicion = condicion && isDiasAnualesValido(aLicenciaTipo, fechas);
+            throws NoHayResultadoException, PeriodoIndeterminadoException, NoSeAsignoLicencia {
+        boolean condicion = !this.tieneLicenciaIndeterminada();
+        condicion = condicion && this.isDiasConsecutivosValido(aLicenciaTipo, fechas);
+        condicion = condicion && this.isDiasAnualesValido(aLicenciaTipo, fechas);
 
         if (condicion) {
-            getInfoLicencias().add(new InfoLicencia(aLicenciaTipo, fechas));
+            this.getInfoLicencias().add(new InfoLicencia(aLicenciaTipo, fechas));
+        } else {
+            throw new NoSeAsignoLicencia();
         }
 
         return condicion;
@@ -41,7 +48,7 @@ public class LicenciaManager {
     /** Devuelve True si tiene una licencia indeterminada */
     public boolean tieneLicenciaIndeterminada() {
         boolean res = false;
-        for (InfoLicencia info : getInfoLicencias()) {
+        for (InfoLicencia info : this.getInfoLicencias()) {
             res = res || info.getFechas().isPeriodoIndeterminado();
         }
         return res;
@@ -57,10 +64,10 @@ public class LicenciaManager {
         if (aLicenciaTipo.getDiasCantidadAnuales() == -1) {
             res = true;
         } else {
-            infoLics = getInfoLicencias();
+            infoLics = this.getInfoLicencias();
             diaAcumulados = 0;
             for (InfoLicencia info : infoLics) {
-                if (isMismoAnioYLicenciafinal(aLicenciaTipo, fechas, info)) {
+                if (this.isMismoAnioYLicenciafinal(aLicenciaTipo, fechas, info)) {
                     diaAcumulados += info.getFechas().getDiasTotal();
                 }
             }
@@ -88,12 +95,12 @@ public class LicenciaManager {
      * licencia
      */
     public void addComprobante(final InfoLicencia infoLic, final String pathArchivo) {
-        getInfoLicencias().get(infoLicencias.indexOf(infoLic)).setRutaArchivoComprobante(pathArchivo);
+        this.getInfoLicencias().get(infoLicencias.indexOf(infoLic)).setRutaArchivoComprobante(pathArchivo);
     }
 
     @Override
     public String toString() {
-        return getInfoLicencias().toString();
+        return this.getInfoLicencias().toString();
     }
 
     // ******************

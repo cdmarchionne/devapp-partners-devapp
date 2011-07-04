@@ -12,24 +12,16 @@ public class NivelListaDto implements Dto {
 
     private static final long serialVersionUID = 1L;
 
-    private List<NivelDto> nivelesDto;
+    private List<NivelDto> opciones = new ArrayList<NivelDto>();
 
     private NivelDto seleccion;
 
-    public NivelListaDto() {
-        super();
-        nivelesDto = new ArrayList<NivelDto>();
+    public void setOpciones(final List<NivelDto> opciones) {
+        this.opciones = opciones;
     }
 
-    public void setNivelesDto(final List<NivelDto> nivelesDto) {
-        if (nivelesDto == null) {
-            System.out.println("***null");
-        }
-        this.nivelesDto = nivelesDto;
-    }
-
-    public List<NivelDto> getNivelesDto() {
-        return nivelesDto;
+    public List<NivelDto> getOpciones() {
+        return opciones;
     }
 
     public NivelDto getSeleccion() {

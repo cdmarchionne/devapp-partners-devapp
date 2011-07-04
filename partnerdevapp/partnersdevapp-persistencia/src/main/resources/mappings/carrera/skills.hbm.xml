@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.edu.unq.partnersdevapp.dominio.carrera">
+
+	<class name="Skills" table="skills">
+
+		<id name="id">
+			<generator class="native" />
+		</id>
+		
+		<map name="skill" table="skillTable">
+    			<key column="id"/>
+    			<map-key column="tecnologia"  type="ar.edu.unq.partnersdevapp.dominio.carrera.Tecnologia"/>
+    			<element column="experiencia" type="ar.edu.unq.partnersdevapp.dominio.carrera.Experiencia"/>
+		</map>
+	     
+	</class>
+
+</hibernate-mapping>
+
+
+
+
+
+
+
+
+
+
+
+
+

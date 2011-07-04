@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.edu.unq.partnersdevapp.dominio.proyecto">
+
+	<class name="AsignacionStrategy" table="asignacionStrategy">
+
+		<id name="id">
+			<generator class="native" />
+		</id>
+
+		
+		<many-to-one name="proyecto" class="ar.edu.unq.partnersdevapp.dominio.proyecto.Proyecto" cascade="all"/>
+		
+		
+		<map name="horasHombre" table="horasHombre">
+    			<key column="proyecto_id"/> 			
+    			<map-key column="empleado" type="ar.edu.unq.partnersdevapp.dominio.personal.Empleado"/>
+    			<element column="hora" type="integer" />
+		</map>
+		 
+	</class>
+
+</hibernate-mapping>

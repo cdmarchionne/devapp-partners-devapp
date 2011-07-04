@@ -37,6 +37,14 @@ public class Nivel extends Entidad {
         this.setSueldoMinimo(minimo);
     }
 
+    public Nivel(final String nombre, final int bandas, final int maximo, final int minimo) {
+        super();
+        this.setBanda(new Banda(bandas));
+        this.setNombre(nombre);
+        this.setSueldoMaximo(maximo);
+        this.setSueldoMinimo(minimo);
+    }
+
     @Override
     public boolean equals(final Object obj) { // NOPMD
         return this.getNombre().equals(((Nivel) obj).getNombre());

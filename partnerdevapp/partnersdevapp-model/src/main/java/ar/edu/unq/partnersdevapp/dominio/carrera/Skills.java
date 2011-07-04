@@ -4,13 +4,17 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
+
 /**
  * Los Skills son un conjunto de caracteristicas. Mantienen la relacion de los
  * conocimientos sobre una Tecnologia con un determinado Nivel de experiencia
  */
-public class Skills {
+public class Skills extends Entidad {
 
-    private final Map<Tecnologia, Experiencia> skill;
+    private static final long serialVersionUID = 1L;
+
+    private Map<Tecnologia, Experiencia> skill;
 
     public Skills() {
         super();
@@ -20,12 +24,8 @@ public class Skills {
     /** Metodo para Agregar el conocimiento de una tecnologia nueva */
     public void addSkill(final String tecnologia, final String experiencia) {
         if (this.buscarTecnologia(tecnologia) == null) {
-            setSkill(new Tecnologia(tecnologia), new Experiencia(experiencia));
+            this.setSkill(new Tecnologia(tecnologia), new Experiencia(experiencia));
         }
-    }
-
-    private void setSkill(final Tecnologia tecnologia, final Experiencia experiencia) {
-        skill.put(tecnologia, experiencia);
     }
 
     /**
@@ -56,7 +56,7 @@ public class Skills {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
         if (tecnologiaBuscada != null) {
-            getExperiencia(tecnologiaBuscada).bajarExperiencia();
+            this.getExperiencia(tecnologiaBuscada).bajarExperiencia();
         }
     }
 
@@ -65,7 +65,7 @@ public class Skills {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
 
         if (tecnologiaBuscada != null) {
-            getExperiencia(tecnologiaBuscada).subirExperiencia();
+            this.getExperiencia(tecnologiaBuscada).subirExperiencia();
         }
     }
 
@@ -79,7 +79,7 @@ public class Skills {
 
     public String getExperienciaNombre(final String nombreTecnologiaBuscada) {
         Tecnologia tecnologiaBuscada = this.buscarTecnologia(nombreTecnologiaBuscada);
-        return tecnologiaBuscada == null ? null : getExperiencia(tecnologiaBuscada).getExperienciaActual();
+        return tecnologiaBuscada == null ? null : this.getExperiencia(tecnologiaBuscada).getExperienciaActual();
     }
 
     /** Compruebo si todos mis conocimientos satisfacen las condiciones minimas */
@@ -92,7 +92,7 @@ public class Skills {
         while (iterador.hasNext()) {
             tecnologiaIterador = iterador.next();
             tecnologiaParticular = this.buscarTecnologia(tecnologiaIterador);
-            if (!dominaTecnologia(tecnologiaParticular, condiciones.getExperienciaNombre(tecnologiaIterador))) {
+            if (!this.dominaTecnologia(tecnologiaParticular, condiciones.getExperienciaNombre(tecnologiaIterador))) {
                 sabe = false;
                 break;
             }
@@ -102,7 +102,7 @@ public class Skills {
 
     /** Verifico si mi conocimientos satisfacen una condicion minima */
     private boolean dominaTecnologia(final Tecnologia tecnologia, final String experienciaMinima) {
-        return tecnologia != null && getExperiencia(tecnologia).cumbreNecesidades(experienciaMinima);
+        return tecnologia != null && this.getExperiencia(tecnologia).cumbreNecesidades(experienciaMinima);
     }
 
     /**
@@ -118,7 +118,8 @@ public class Skills {
         while (iterador.hasNext()) {
             tecnologiaIterador = iterador.next();
             tecnologiaParticular = this.buscarTecnologia(tecnologiaIterador);
-            puntaje += puntajeTecnologia(tecnologiaParticular, condiciones.getExperienciaNombre(tecnologiaIterador));
+            puntaje += this.puntajeTecnologia(tecnologiaParticular,
+                    condiciones.getExperienciaNombre(tecnologiaIterador));
         }
         return puntaje;
     }
@@ -128,15 +129,23 @@ public class Skills {
      * cercano a los requisitos esta mas chico es el numero
      */
     private Integer puntajeTecnologia(final Tecnologia tecnologia, final String experienciaMinima) {
-        return getExperiencia(tecnologia).difenciaNecesidades(experienciaMinima);
+        return this.getExperiencia(tecnologia).difenciaNecesidades(experienciaMinima);
     }
 
     private Experiencia getExperiencia(final Tecnologia tecnologia) {
         return skill.get(tecnologia);
     }
 
-    private Map<Tecnologia, Experiencia> getSkill() {
+    public Map<Tecnologia, Experiencia> getSkill() {
         return skill;
+    }
+
+    public void setSkill(final Map<Tecnologia, Experiencia> s) {
+        skill = s;
+    }
+
+    public void setSkill(final Tecnologia tecnologia, final Experiencia experiencia) {
+        skill.put(tecnologia, experiencia);
     }
 
 }

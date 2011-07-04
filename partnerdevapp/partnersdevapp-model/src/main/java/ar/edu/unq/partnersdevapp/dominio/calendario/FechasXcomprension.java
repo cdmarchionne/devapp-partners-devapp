@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.apache.commons.collections.ListUtils;
 
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
@@ -16,7 +17,9 @@ import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
  * menor de los dias de la semana elegidos. XXX mucho de este comportamiento
  * esta implementado en jodatime
  */
-public class FechasXcomprension {
+public class FechasXcomprension extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private Date fechaInicio;
 

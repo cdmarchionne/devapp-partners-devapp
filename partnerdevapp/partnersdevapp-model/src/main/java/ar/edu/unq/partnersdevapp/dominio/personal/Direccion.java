@@ -1,9 +1,13 @@
-package ar.edu.unq.partnersdevapp.dominio.basededatos;
+package ar.edu.unq.partnersdevapp.dominio.personal;
+
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 
 /**
  * Clase utilizada para manejar de forma completa las Direcciones de calles
  */
-public class Direccion {
+public class Direccion extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private String calle;
 
@@ -20,6 +24,10 @@ public class Direccion {
     private String provincia;
 
     private String pais;
+
+    public Direccion() {
+
+    }
 
     public Direccion(final String calle, final Integer altura) {
         super();

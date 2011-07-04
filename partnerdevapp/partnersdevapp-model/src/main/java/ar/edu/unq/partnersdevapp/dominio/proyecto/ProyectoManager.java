@@ -6,12 +6,15 @@ import java.util.List;
 import java.util.Set;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
  * Maneja los Proyectos de los empleados
  */
-public class ProyectoManager {
+public class ProyectoManager extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private Set<InfoProyecto> infoProyectos;// NOPMD
 
@@ -92,6 +95,10 @@ public class ProyectoManager {
             }
         }
         return diasOcupados;
+    }
+
+    public void setInfoProyectos(final Set<InfoProyecto> infoProyectos) {
+        this.infoProyectos = infoProyectos;
     }
 
     // public Set<Gannt> generarGannt();

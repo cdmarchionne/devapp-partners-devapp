@@ -12,6 +12,7 @@ import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaManager;
 import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaTipo;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
+import ar.edu.unq.partnersdevapp.exceptions.NoSeAsignoLicencia;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
@@ -24,7 +25,8 @@ public class LicenciaTest extends TestCase {
 
     private static final String FECHA_09_04_2011 = "09/04/2011";
 
-    public void testLicenciaMaximosConsecutivos() throws NoHayResultadoException, PeriodoIndeterminadoException {
+    public void testLicenciaMaximosConsecutivos() throws NoHayResultadoException, PeriodoIndeterminadoException,
+            NoSeAsignoLicencia {
         LicenciaTipo licTipo = BaseDeDatosHelper.getEstudio();
         LicenciaManager licContenedor = new LicenciaManager();
         List<Integer> list = new ArrayList<Integer>();
@@ -53,11 +55,12 @@ public class LicenciaTest extends TestCase {
         assertFalse("", licContenedor.addLicencia(licTipo, fechas));
     }
 
-    public void testLicenciaMaximosAnueles() throws NoHayResultadoException, PeriodoIndeterminadoException {
+    public void testLicenciaMaximosAnueles() throws NoHayResultadoException, PeriodoIndeterminadoException,
+            NoSeAsignoLicencia {
         LicenciaTipo licTipo = BaseDeDatosHelper.getMudanza();
         LicenciaManager licContenedor = new LicenciaManager();
 
-        List<Integer> list = getListJuevesViernes();
+        List<Integer> list = this.getListJuevesViernes();
 
         FechasXcomprension fechas = new FechasXcomprension();
         fechas.set(FechaUtils.crearFecha(FECHA_07_04_2011), list, Intervalo.getUnaSemana(),
@@ -77,7 +80,8 @@ public class LicenciaTest extends TestCase {
         assertTrue("", licContenedor.addLicencia(licTipo, fechas));
     }
 
-    public void testLicenciaIndefinida() throws NoHayResultadoException, PeriodoIndeterminadoException {
+    public void testLicenciaIndefinida() throws NoHayResultadoException, PeriodoIndeterminadoException,
+            NoSeAsignoLicencia {
         LicenciaTipo licTipo = BaseDeDatosHelper.getEnfermedad();
         LicenciaManager licContenedor = new LicenciaManager();
 

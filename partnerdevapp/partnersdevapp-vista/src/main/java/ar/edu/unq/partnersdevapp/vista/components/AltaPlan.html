@@ -5,13 +5,18 @@
 <wicket:extend>
 <h1>Alta de Plan de carrera</h1>
 
-<form wicket:id="formPlan" class="PlanDeCarrera">
+<form wicket:id="planForm" class="PlanDeCarrera">
   
-  		<input wicket:id="descripcionField" id="especialidadField" type="text" size="40"/>
-  		<input wicket:id="especialidadField" id="especialidadField" type="text" size="40"/>
-  		<select wicket:id="nivelCombo"></select>
-  		
-  		
+  		<div       wicket:id="especialidadContainer">
+            <span  wicket:id="especialidadLabel"  />
+            <input wicket:id="especialidadField" type="text" />
+        </div>
+        
+         <div       wicket:id="descripcionContainer">
+            <span  wicket:id="descripcionLabel"  />
+            <input wicket:id="descripcionField" type="text" />
+        </div>
+  			
   		<input wicket:id="button" type="submit" value="Set text" />
 
  </form>

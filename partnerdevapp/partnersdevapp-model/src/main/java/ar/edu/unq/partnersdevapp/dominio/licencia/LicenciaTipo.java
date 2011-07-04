@@ -1,11 +1,15 @@
 package ar.edu.unq.partnersdevapp.dominio.licencia;
 
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
+
 /**
  * Modela un TIPO de licencia configurable.
  * 
  * @author leo
  */
-public class LicenciaTipo {
+public class LicenciaTipo extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private String tipo;
 
@@ -28,6 +32,15 @@ public class LicenciaTipo {
         this.remunerable = remunerable;
         this.diasConsecutivos = diasConsecutivos;
         diasCantidadAnuales = diasCantidad;
+    }
+
+    public LicenciaTipo() {
+
+    }
+
+    @Override
+    public String toString() {
+        return this.getTipo();
     }
 
     // ******************

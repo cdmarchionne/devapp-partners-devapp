@@ -1,18 +1,25 @@
 package ar.edu.unq.partnersdevapp.dominio.licencia;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 /**
  * Informacion licencia.
  */
-public class InfoLicencia {
+public class InfoLicencia extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private LicenciaTipo licenciaTipo;
 
     private String rutaArchivoComprobante;
 
     private FechasXcomprension fechas;
+
+    public InfoLicencia() {
+
+    }
 
     public InfoLicencia(final LicenciaTipo licTipo, final FechasXcomprension aFechas) {
         licenciaTipo = licTipo;

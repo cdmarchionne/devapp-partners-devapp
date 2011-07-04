@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 
 /**
  * Administra la informacion que asocia al Empleado con un Proyecto dado
  * indicando los dias que el se encuantra asignado a este.
  */
-public class InfoProyecto {
+
+public class InfoProyecto extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private Proyecto proyecto;
 
@@ -49,6 +53,10 @@ public class InfoProyecto {
 
     public void removeDiasAsignados(final FechasXcomprension dias) {
         diasAsignados.remove(dias);
+    }
+
+    public void setProyecto(final Proyecto proyecto) {
+        this.proyecto = proyecto;
     }
 
 }
