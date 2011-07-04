@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.edu.unq.partnersdevapp.dominio.proyecto">
+
+	<class name="Proyecto" table="proyecto">
+
+		<id name="id">
+			<generator class="native" />
+		</id>
+
+		<property name="nombre" column="nombre" />
+		<many-to-one name="cliente" class="ar.edu.unq.partnersdevapp.dominio.personal.Cliente" cascade="all"/>
+		<many-to-one name="requerimientos" class="ar.edu.unq.partnersdevapp.dominio.carrera.Skills" cascade="all"/>
+		<property name="esfuerzoEstimado" column="esfuerzoEstimado" />
+		
+		<set name="personalAsignado" table="personalAsignado">
+    		 <key column="empleado_id"/>
+   			 <element column="empleado" type="ar.edu.unq.partnersdevapp.dominio.personal.Empleado"/>
+		</set>
+		
+		<many-to-one name="fecha" class="ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension" cascade="all"/>
+		<many-to-one name="asignacion" class="ar.edu.unq.partnersdevapp.dominio.proyecto.AsignacionStrategy" cascade="all"/>
+		
+	</class>
+
+</hibernate-mapping>

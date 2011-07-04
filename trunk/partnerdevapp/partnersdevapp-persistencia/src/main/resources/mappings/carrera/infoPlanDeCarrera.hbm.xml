@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.edu.unq.partnersdevapp.dominio.carrera">
+
+	<class name="InfoPlanDeCarrera" table="infoPlanDeCarrera">
+
+		<id name="id">
+			<generator class="native" />
+		</id>
+
+		<property name="fechaInicio" column="fechaInicio" />
+		
+		<many-to-one name="planDeCarrera" class="ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera" cascade="all"/>
+	
+		<many-to-one name="nivelPlanDeCarrera" class="ar.edu.unq.partnersdevapp.dominio.carrera.Posicion" cascade="all"/>
+	
+	</class>
+
+</hibernate-mapping>

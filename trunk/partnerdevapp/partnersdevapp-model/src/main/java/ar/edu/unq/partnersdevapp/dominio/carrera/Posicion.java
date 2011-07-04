@@ -1,12 +1,16 @@
 package ar.edu.unq.partnersdevapp.dominio.carrera;
 
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
+
 /**
  * Posicion en un nivel. Cuando se asocia a una "info plan" da la posicion
  * completa.
  * 
  * @author leo
  */
-public class Posicion {
+public class Posicion extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private Nivel nivel;
 

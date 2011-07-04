@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Set;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
 import ar.edu.unq.partnersdevapp.dominio.personal.EmpleadoPrioridad;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
@@ -18,7 +19,9 @@ import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 /**
  * Asignacion De empleados a Proyectos de forma Manual y Automatica
  */
-public class AsignacionStrategy {
+public class AsignacionStrategy extends Entidad {
+
+    private static final long serialVersionUID = 1L;
 
     private Proyecto proyecto;
 
@@ -156,6 +159,14 @@ public class AsignacionStrategy {
             }
         }
         return empleadosCandidatos;
+    }
+
+    public Map<Empleado, Integer> getHorasHombre() {
+        return horasHombre;
+    }
+
+    public void setHorasHombre(final Map<Empleado, Integer> horasHombre) {
+        this.horasHombre = horasHombre;
     }
 
 }

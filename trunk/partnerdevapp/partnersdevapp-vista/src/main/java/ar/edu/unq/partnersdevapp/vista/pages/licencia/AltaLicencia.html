@@ -1,0 +1,44 @@
+<html>
+<head>   Personal </head>
+<body>
+
+<wicket:extend>
+<h1>Crear tipo de licencia</h1>
+
+<form wicket:id="licenciaForm" class="LicenciaTipo">
+  
+  		<div       wicket:id="tipoContainer">
+            <span  wicket:id="tipoLabel"  />
+            <input wicket:id="tipoField" type="text" />
+        </div>
+        
+         <div       wicket:id="descripcionContainer">
+            <span  wicket:id="descripcionLabel"  />
+            <input wicket:id="descripcionField" type="text" />
+        </div>
+        
+        <div       wicket:id="diasConsecutivosContainer">
+            <span  wicket:id="diasConsecutivosLabel"  />
+            <input wicket:id="diasConsecutivosField" type="text" />
+        </div>
+        
+        <div       wicket:id="diasCantidadAnualesContainer">
+            <span  wicket:id="diasCantidadAnualesLabel"  />
+            <input wicket:id="diasCantidadAnualesField" type="text" />
+        </div>
+
+
+        <div       wicket:id="remunerableContainer">
+            <span  wicket:id="remunerableLabel"  />
+          	<input wicket:id="remunerableCheck" type="checkbox" />
+        </div>
+		
+		  			
+  		<input wicket:id="button" type="submit" value="Aceptar" />
+
+ </form>
+ 
+</wicket:extend>
+
+</body>
+</html>

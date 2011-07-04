@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.edu.unq.partnersdevapp.dominio.personal">
+	<class name="Persona" table="persona" abstract="true" >
+		<id name="id">
+			<generator class="native" />
+		</id>
+
+		<property name="nombre" />
+		<property name="apellido" />
+		<property name="fechaNacimiento" />
+		<property name="dni" />
+		<many-to-one name="direccion" column="direccion_id" class="ar.edu.unq.partnersdevapp.dominio.personal.Direccion" cascade="all"/>		
+		<property name="telefono" />
+		<property name="email" />
+		<property name="universidad" />
+				 		
+		<joined-subclass table="empleado" name="Empleado">
+			<key column="id" />
+			<property name="obraSocial" />
+			<property name="planPrapaga" />
+			<property name="nombreArt" />
+			<property name="telArt" />
+			<property name="dirArt" />
+			<property name="fechaIngreso" />
+			
+			<many-to-one name="planDeCarreraManager" class="ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarreraManager" cascade="all"/>
+			<many-to-one name="licenciaManager" class="ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaManager" cascade="all" lazy="false"/>
+			<many-to-one name="proyectoManager" class="ar.edu.unq.partnersdevapp.dominio.proyecto.ProyectoManager" cascade="all"/>
+			<many-to-one name="conocimiento" class="ar.edu.unq.partnersdevapp.dominio.carrera.Skills" cascade="all"/>
+						
+		</joined-subclass>
+
+	    <joined-subclass table="cliente" name="Cliente">
+			<key column="id" />
+			<property name="razonSocial" />		
+		</joined-subclass>
+		
+	</class>
+</hibernate-mapping>

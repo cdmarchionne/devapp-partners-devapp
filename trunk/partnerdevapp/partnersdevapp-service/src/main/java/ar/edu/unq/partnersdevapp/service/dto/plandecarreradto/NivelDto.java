@@ -20,6 +20,12 @@ public class NivelDto implements Dto {
 
     private int sueldoMinimo;
 
+    private String lugar;
+
+    public NivelDto() {
+
+    }
+
     public NivelDto(final String nombre2, final int aBanda, final int sueldoMaximo2, final int sueldoMinimo2) {
         nombre = nombre2;
         banda = aBanda;
@@ -29,7 +35,7 @@ public class NivelDto implements Dto {
 
     @Override
     public String toString() {
-        return id + "-" + nombre;
+        return nombre;
     }
 
     // *** G y S
@@ -77,4 +83,11 @@ public class NivelDto implements Dto {
         return serialVersionUID;
     }
 
+    public void setLugar(final String lugar) {
+        this.lugar = lugar;
+    }
+
+    public String getLugar() {
+        return lugar;
+    }
 }

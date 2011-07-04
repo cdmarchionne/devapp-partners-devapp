@@ -9,7 +9,22 @@
 </bean>
 
 <bean id="service.planService"	class="ar.edu.unq.partnersdevapp.service.carrera.PlanService">
-	
+    <property name="planDao" ref="persistence.planDao"/>
+</bean>
+
+<bean id="service.empleadoService"	class="ar.edu.unq.partnersdevapp.service.empleado.EmpleadoService">
+    <property name="empleadoDao" ref="persistence.empleadoDao"/>
+</bean>
+
+<bean id="service.licenciaService"	class="ar.edu.unq.partnersdevapp.service.empleado.LicenciaService">
+    <property name="licenciaDao" ref="persistence.licenciaDao"/>
+</bean>
+
+<bean id="service.defaultValueService"	class="ar.edu.unq.partnersdevapp.service.defaultValue.DefaultValue">
+    <property name="planDao" ref="persistence.planDao"/>
+    <property name="nivelDao" ref="persistence.nivelDao"/>
+    <property name="empleadoDao" ref="persistence.empleadoDao"/>
+    <property name="clienteDao" ref="persistence.clienteDao"/>
 </bean>
 
 </beans>

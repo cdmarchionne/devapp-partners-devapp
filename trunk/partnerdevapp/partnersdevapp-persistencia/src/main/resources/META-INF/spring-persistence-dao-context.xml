@@ -3,22 +3,26 @@
 		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
-	<bean id="persistence.nivelDao" class="ar.edu.unq.partnersdevapp.persistencia.dao.carrera.NivelDao">
+
+<bean id="persistence.nivelDao" class="ar.edu.unq.partnersdevapp.persistencia.dao.carrera.NivelDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory"/>
 </bean>
-	
 
-<!--	
-	<bean id="persistence.projectDAO" class="ar.edu.unq.wannaplay.persistence.daos.ProjectDAO">
+
+<bean id="persistence.planDao" class="ar.edu.unq.partnersdevapp.persistencia.dao.carrera.PlanDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory"/>
-	</bean>
-	
-	<bean id="persistence.careerPlanManagerDAO" class="ar.edu.unq.wannaplay.persistence.daos.CareerPlanManagerDAO">
+</bean>
+
+<bean id="persistence.empleadoDao" class="ar.edu.unq.partnersdevapp.persistencia.dao.personal.EmpleadoDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory"/>
-	</bean>
-	
-	<bean id="persistence.skillDAO" class="ar.edu.unq.wannaplay.persistence.daos.SkillDAO">
+</bean>
+
+<bean id="persistence.clienteDao" class="ar.edu.unq.partnersdevapp.persistencia.dao.personal.ClienteDao">
 		<property name="sessionFactory" ref="persistence.sessionFactory"/>
-	</bean>
--->
+</bean>
+
+<bean id="persistence.licenciaDao" class="ar.edu.unq.partnersdevapp.persistencia.dao.personal.LicenciaDao">
+		<property name="sessionFactory" ref="persistence.sessionFactory"/>
+</bean>
+
 </beans>

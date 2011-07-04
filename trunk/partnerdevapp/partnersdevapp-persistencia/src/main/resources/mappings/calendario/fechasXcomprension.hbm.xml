@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="ar.edu.unq.partnersdevapp.dominio.calendario">
+
+	<class name="FechasXcomprension" table="fechasXcomprension">
+
+		<id name="id">
+			<generator class="native" />
+		</id>
+
+		
+		
+		<!-- <list name="dias" cascade="all" lazy="false">
+            <key column="plan_id"/>
+            <index column="orden"/>
+        	<one-to-many/>
+        </list>
+         -->
+         <component name="intervalo" class="Intervalo">
+	          <property name="tipo"/>
+	          <property name="cantidad"/>	          
+	     </component>
+	     		
+		<property name="fechaInicio" column="fechaInicio" />
+		<property name="fechaFin" column="fechaFin" />
+		<property name="repeticiones" column="repeticiones" />
+		
+	</class>
+
+</hibernate-mapping>

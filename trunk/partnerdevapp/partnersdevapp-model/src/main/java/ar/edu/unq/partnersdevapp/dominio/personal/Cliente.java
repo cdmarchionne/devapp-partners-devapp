@@ -2,6 +2,8 @@ package ar.edu.unq.partnersdevapp.dominio.personal;
 
 public class Cliente extends Persona {
 
+    private static final long serialVersionUID = 1L;
+
     private String razonSocial;
 
     public Cliente(final String nombre, final String apellido, final String dni, final String razonSocial) {

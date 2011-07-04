@@ -13,10 +13,10 @@
 		<property name="descripcion" column="descripcion" />
 
 
-		<list name="niveles" cascade="all">
+		<list name="niveles" cascade="all" lazy="false">
             <key column="plan_id"/>
             <index column="orden"/>
-         <one-to-many class="Nivel"/>
+         <one-to-many class="Nivel" />
         </list>
     
 	</class>

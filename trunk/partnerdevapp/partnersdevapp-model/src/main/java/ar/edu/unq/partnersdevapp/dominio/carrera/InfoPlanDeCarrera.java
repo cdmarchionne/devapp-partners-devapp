@@ -1,16 +1,17 @@
-package ar.edu.unq.partnersdevapp.dominio.personal;
+package ar.edu.unq.partnersdevapp.dominio.carrera;
 
 import java.util.Date;
 
-import ar.edu.unq.partnersdevapp.dominio.carrera.PlanDeCarrera;
-import ar.edu.unq.partnersdevapp.dominio.carrera.Posicion;
+import ar.edu.unq.partnersdevapp.dominio.entidad.Entidad;
 
 /**
  * Utilizada para modelar los históricos.
  * 
  * @author leo
  */
-public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
+public class InfoPlanDeCarrera extends Entidad implements Comparable<InfoPlanDeCarrera> {
+
+    private static final long serialVersionUID = 1L;
 
     private Date fechaInicio;
 
@@ -23,14 +24,14 @@ public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
     }
 
     public InfoPlanDeCarrera(final Date date, final PlanDeCarrera planDeCarrera, final Posicion posicion) {
-        setFechaInicio(date);
-        setNivelPlanDeCarrera(posicion);
-        setPlanDeCarrera(planDeCarrera);
+        this.setFechaInicio(date);
+        this.setNivelPlanDeCarrera(posicion);
+        this.setPlanDeCarrera(planDeCarrera);
     }
 
     @Override
     public int compareTo(final InfoPlanDeCarrera plan) {
-        return getFechaInicio().compareTo(plan.getFechaInicio());
+        return this.getFechaInicio().compareTo(plan.getFechaInicio());
     }
 
     @Override
@@ -38,11 +39,11 @@ public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
         // return obj == null ? false : compareTo((InfoPlanDeCarrera) obj) == 0;
         boolean rta = false;
 
-        if (!(obj == null || getClass() != obj.getClass())) {
+        if (!(obj == null || this.getClass() != obj.getClass())) {
             if (this == obj) {
                 rta = true;
             } else {
-                rta = isSame((InfoPlanDeCarrera) obj);
+                rta = this.isSame((InfoPlanDeCarrera) obj);
             }
         }
         return rta;
@@ -51,8 +52,8 @@ public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
     private boolean isSame(final InfoPlanDeCarrera infoPlanDeCarrera) {
         boolean rta;
 
-        if (equalsFechaInicio(infoPlanDeCarrera) && equalsPlanDeCarrera(infoPlanDeCarrera)
-                && equalsNivelPlanDeCarrera(infoPlanDeCarrera)) {
+        if (this.equalsFechaInicio(infoPlanDeCarrera) && this.equalsPlanDeCarrera(infoPlanDeCarrera)
+                && this.equalsNivelPlanDeCarrera(infoPlanDeCarrera)) {
             rta = true;
         } else {
             rta = false;
@@ -62,26 +63,26 @@ public class InfoPlanDeCarrera implements Comparable<InfoPlanDeCarrera> {
     }
 
     private boolean equalsFechaInicio(final InfoPlanDeCarrera infoPlanDeCarrera) {
-        return getFechaInicio() == null ? infoPlanDeCarrera.getFechaInicio() == null : getFechaInicio().equals(
-                infoPlanDeCarrera.getFechaInicio());
+        return this.getFechaInicio() == null ? infoPlanDeCarrera.getFechaInicio() == null : this.getFechaInicio()
+                .equals(infoPlanDeCarrera.getFechaInicio());
     }
 
     private boolean equalsPlanDeCarrera(final InfoPlanDeCarrera infoPlanDeCarrera) {
-        return getPlanDeCarrera() == null ? infoPlanDeCarrera.getPlanDeCarrera() == null : getPlanDeCarrera().equals(
-                infoPlanDeCarrera.getPlanDeCarrera());
+        return this.getPlanDeCarrera() == null ? infoPlanDeCarrera.getPlanDeCarrera() == null : this.getPlanDeCarrera()
+                .equals(infoPlanDeCarrera.getPlanDeCarrera());
     }
 
     private boolean equalsNivelPlanDeCarrera(final InfoPlanDeCarrera infoPlanDeCarrera) {
-        return getNivelPlanDeCarrera() == null ? infoPlanDeCarrera.getNivelPlanDeCarrera() == null
-                : getNivelPlanDeCarrera().equals(infoPlanDeCarrera.getNivelPlanDeCarrera());
+        return this.getNivelPlanDeCarrera() == null ? infoPlanDeCarrera.getNivelPlanDeCarrera() == null : this
+                .getNivelPlanDeCarrera().equals(infoPlanDeCarrera.getNivelPlanDeCarrera());
     }
 
     @Override
     public int hashCode() {
         int result = 10;
-        result += getFechaInicio() == null ? 0 : getFechaInicio().hashCode();
-        result += getPlanDeCarrera() == null ? 0 : getPlanDeCarrera().hashCode();
-        result += getNivelPlanDeCarrera() == null ? 0 : getNivelPlanDeCarrera().hashCode();
+        result += this.getFechaInicio() == null ? 0 : this.getFechaInicio().hashCode();
+        result += this.getPlanDeCarrera() == null ? 0 : this.getPlanDeCarrera().hashCode();
+        result += this.getNivelPlanDeCarrera() == null ? 0 : this.getNivelPlanDeCarrera().hashCode();
         return result;
     }
 
