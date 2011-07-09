@@ -49,7 +49,7 @@ public class AltaPlan extends BasePage {
 
             @Override
             public void onSubmit() {
-                service.save(model);
+                AltaPlan.this.getService().save(AltaPlan.this.getModel());
             }
         });
         this.add(form);

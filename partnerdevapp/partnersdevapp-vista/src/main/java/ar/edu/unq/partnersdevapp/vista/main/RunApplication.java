@@ -58,8 +58,8 @@ public class RunApplication extends AuthenticatedWebApplication {
         return this.getServletContext().getContextPath();
     }
 
-    public void setaMounterURL(final MounterURL aMounterURL) {
-        this.aMounterURL = aMounterURL;
+    public void setaMounterURL(final MounterURL aUrl) {
+        aMounterURL = aUrl;
     }
 
     public MounterURL getaMounterURL() {

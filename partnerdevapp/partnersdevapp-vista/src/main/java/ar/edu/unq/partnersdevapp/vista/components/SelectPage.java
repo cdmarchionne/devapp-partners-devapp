@@ -50,8 +50,8 @@ public abstract class SelectPage<T, S> extends BasePage {
         // filtro
         List<Component> componentList = new ArrayList<Component>();
         componentList.add(panelTable);
-        PanelFilter<T, S> FilterPanel = this.getPanelFilter(componentList);
-        form.add(FilterPanel);
+        PanelFilter<T, S> filterPanel = this.getPanelFilter(componentList);
+        form.add(filterPanel);
         this.add(form);
     }
 

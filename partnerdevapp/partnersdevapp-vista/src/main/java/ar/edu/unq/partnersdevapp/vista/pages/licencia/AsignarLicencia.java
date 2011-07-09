@@ -69,10 +69,13 @@ public class AsignarLicencia extends BasePage {
         Button button1 = new Button("asignarButton") {
             private static final long serialVersionUID = 1L;
 
+            @SuppressWarnings("synthetic-access")
             @Override
             public void onSubmit() {
                 try {
-                    empleadoService.asignar(modelEmpleado.getSeleccion(), modelLicencia.getSeleccion()); // NOPMD
+                    AsignarLicencia.this.getEmpleadoService().asignar(
+                            AsignarLicencia.this.getModelEmpleado().getSeleccion(),
+                            AsignarLicencia.this.getModelLicencia().getSeleccion()); // NOPMD
                     this.info("Se asigno Licencia");
                 } catch (NoHayResultadoException e) {
                     this.info(e.getMessage());
@@ -107,7 +110,7 @@ public class AsignarLicencia extends BasePage {
         return modelEmpleado;
     }
 
-    private ModelCombo<LicenciaTipo> getModelLicencia() {
+    ModelCombo<LicenciaTipo> getModelLicencia() {
         return modelLicencia;
     }
 

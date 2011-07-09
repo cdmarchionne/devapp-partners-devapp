@@ -94,7 +94,7 @@ public class AltaNivel<T extends Dto> extends BasePage {
             @Override
             public void onSubmit() {
                 AltaNivel.this.getPlanService().agregarNivel(AltaNivel.this.getModelPlanLista().getSeleccion(),
-                        AltaNivel.this.getModelNivel(), radio.getInput(),
+                        AltaNivel.this.getModelNivel(), AltaNivel.this.getRadio().getInput(),
                         AltaNivel.this.getModelNivelLista().getSeleccion());
 
                 this.getForm().clearInput();
