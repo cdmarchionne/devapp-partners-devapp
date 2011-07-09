@@ -6,7 +6,7 @@ import org.apache.wicket.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
-import ar.edu.unq.partnersdevapp.vista.pages.Page1;
+import ar.edu.unq.partnersdevapp.vista.pages.LogInApp;
 
 /**
  * 
@@ -28,13 +28,16 @@ public class RunApplication extends AuthenticatedWebApplication {
 
     @Override
     public void init() {
+
         aMounterURL = new MounterURL(this);
         this.addComponentInstantiationListener(new SpringComponentInjector(this));
+
     }
 
-    private void mountUrl(final String mountPath, final Class<? extends WebPage> pageClass, final String... parameters) {
-        aMounterURL.mount(mountPath, pageClass, parameters);
-    }
+    // private void mountUrl(final String mountPath, final Class<? extends
+    // WebPage> pageClass, final String... parameters) {
+    // aMounterURL.mount(mountPath, pageClass, parameters);
+    // }
 
     @Override
     protected Class<? extends AuthenticatedWebSession> getWebSessionClass() {
@@ -43,16 +46,23 @@ public class RunApplication extends AuthenticatedWebApplication {
 
     @Override
     protected Class<? extends WebPage> getSignInPageClass() {
-        return Page1.class;
+        return LogInApp.class;
     }
 
     @Override
     public Class<? extends Page> getHomePage() {
-        return Page1.class;
+        return LogInApp.class;
     }
 
     public String getContextPath() {
         return this.getServletContext().getContextPath();
     }
 
+    public void setaMounterURL(final MounterURL aMounterURL) {
+        this.aMounterURL = aMounterURL;
+    }
+
+    public MounterURL getaMounterURL() {
+        return aMounterURL;
+    }
 }
