@@ -12,7 +12,7 @@ import ar.edu.unq.partnersdevapp.exceptions.NoSeAsignoLicencia;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 import ar.edu.unq.partnersdevapp.service.empleado.EmpleadoService;
 import ar.edu.unq.partnersdevapp.service.empleado.LicenciaService;
-import ar.edu.unq.partnersdevapp.vista.components.MyCombo;
+import ar.edu.unq.partnersdevapp.vista.components.Combo;
 import ar.edu.unq.partnersdevapp.vista.models.ModelCombo;
 import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
 
@@ -27,20 +27,42 @@ public class AsignarLicencia extends BasePage {
     @SpringBean(name = "service.licenciaService")
     private LicenciaService licenciaService;
 
-    private ModelCombo<Empleado> modelEmpleado;
+    private ModelCombo<Empleado> modelEmpleado = new ModelCombo<Empleado>();
 
-    private ModelCombo<LicenciaTipo> modelLicencia;
+    private ModelCombo<LicenciaTipo> modelLicencia = new ModelCombo<LicenciaTipo>();
 
     public AsignarLicencia() {
         super();
+        this.iniciar();
+    }
 
+    @Override
+    public void iniciar() {
+        this.addMenuRight();
+        this.addContent();
+        this.setModels();
+    }
+
+    @Override
+    public void addMenuRight() {
+        // throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void addContent() {
         @SuppressWarnings("rawtypes")
         Form form = new Form("asignarForm");
-
         form.add(this.getEmpleadoCombo());
         form.add(this.getLicenciaCombo());
         form.add(this.getAsignarButton());
         this.add(form);
+    }
+
+    @Override
+    public void setModels() {
+        modelEmpleado.setOpciones(empleadoService.findAll());
+
+        modelLicencia.setOpciones(licenciaService.findAll());
     }
 
     public Button getAsignarButton() {
@@ -67,26 +89,25 @@ public class AsignarLicencia extends BasePage {
     }
 
     private DropDownChoice<Empleado> getEmpleadoCombo() {
-        DropDownChoice<Empleado> ddc = new MyCombo<Empleado>("empleado", this.getModelEmpleado());
+        DropDownChoice<Empleado> ddc = new Combo<Empleado>("empleado", this.getModelEmpleado());
         ddc.setRequired(true);
         return ddc;
     }
 
     private DropDownChoice<LicenciaTipo> getLicenciaCombo() {
-        DropDownChoice<LicenciaTipo> ddc = new MyCombo<LicenciaTipo>("licencia", this.getModelLicencia());
+        DropDownChoice<LicenciaTipo> ddc = new Combo<LicenciaTipo>("licencia", this.getModelLicencia());
         ddc.setRequired(true);
         return ddc;
     }
 
+    // -----------------------
+    // -----Gets & Sets ------
+
     private ModelCombo<Empleado> getModelEmpleado() {
-        modelEmpleado = new ModelCombo<Empleado>();
-        modelEmpleado.setOpciones(empleadoService.findAll());
         return modelEmpleado;
     }
 
     private ModelCombo<LicenciaTipo> getModelLicencia() {
-        modelLicencia = new ModelCombo<LicenciaTipo>();
-        modelLicencia.setOpciones(licenciaService.findAll());
         return modelLicencia;
     }
 

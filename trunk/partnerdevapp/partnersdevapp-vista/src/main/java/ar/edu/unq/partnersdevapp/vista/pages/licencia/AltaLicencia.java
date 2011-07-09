@@ -17,18 +17,30 @@ import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
  */
 public class AltaLicencia extends BasePage {
 
-    private LicenciaTipo model = new LicenciaTipo();
-
     @SpringBean(name = "service.licenciaService")
     private LicenciaService service;
+
+    private LicenciaTipo model = new LicenciaTipo();
 
     public AltaLicencia() {
         super();
         this.iniciar();
     }
 
+    @Override
     public void iniciar() {
+        this.addMenuRight();
+        this.addContent();
+        this.setModels();
+    }
 
+    @Override
+    public void addMenuRight() {
+        // throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void addContent() {
         final Form<LicenciaTipo> form = new Form<LicenciaTipo>("licenciaForm");
 
         form.add(new TextFieldWithLabel(this.getModel(), "tipo", true));
@@ -42,13 +54,18 @@ public class AltaLicencia extends BasePage {
 
             @Override
             public void onSubmit() {
-                service.save(model);
+                AltaLicencia.this.getService().save(AltaLicencia.this.getModel());
                 this.info("se agrego nuevo tipo de licencia");
                 form.clearInput();
             }
         });
 
         this.add(form);
+    }
+
+    @Override
+    public void setModels() {
+        // throw new UnsupportedOperationException();
     }
 
     private MarkupContainer getRadioComponent() {
@@ -63,13 +80,8 @@ public class AltaLicencia extends BasePage {
         return mkc;
     }
 
-    public LicenciaTipo getModel() {
-        return model;
-    }
-
-    public void setModel(final LicenciaTipo model) {
-        this.model = model;
-    }
+    // -----------------------
+    // -----Gets & Sets ------
 
     public LicenciaService getService() {
         return service;
@@ -77,6 +89,14 @@ public class AltaLicencia extends BasePage {
 
     public void setService(final LicenciaService service) {
         this.service = service;
+    }
+
+    public LicenciaTipo getModel() {
+        return model;
+    }
+
+    public void setModel(final LicenciaTipo model) {
+        this.model = model;
     }
 
 }

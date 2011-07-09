@@ -1,0 +1,53 @@
+<wicket:extend>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" ><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
+		  
+<head><meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="base.css" type="text/css" /> </head>
+	
+<body >
+					
+<div id="right" wicket:id="menuRight"  >
+	<h2>Menu de Plan de carrera</h2>
+		<ul> 
+			<li><a href="#" wicket:id="altaLink">Alta</a></li> 
+			<li><a href="#" wicket:id="selectLink">Seleccionar</a></li> 		
+		</ul>
+</div>
+ 
+<div id="content">
+	<h2> poner wicket label "entidad"</h2>
+		<pre>
+			<div id="body">
+				<h1>Plan de carrera</h1>
+				   <form  wicket:id="form">
+					  <div  wicket:id="filterPanel">	
+						<div       wicket:id="idContainer">
+				            <span  wicket:id="idLabel"  />
+				            <input wicket:id="idField" type="text" />
+				        </div>
+						<button wicket:id="filterButton" type="submit" value="Filtrar" >botton</button>
+					</div>
+					
+				     <div  wicket:id="containerTable" >
+						<table class="table" align="center" border="1" >
+							<tr background="red">
+								<th>id</th>
+								<th>especialidad</th>
+								<th>descripcion</th>															
+							</tr>
+							
+							<tr wicket:id="table">
+								<td><span wicket:id="id">id</span></td>
+								<td><span wicket:id="especialidad">especialidad</span></td>
+								<td><span wicket:id="descripcion">descripcion</span></td>								
+							</tr>
+						</table>
+					</div>			
+				</form>	
+			</div>
+		</pre>	
+</div>
+
+</body>
+</html>
+</wicket:extend>
