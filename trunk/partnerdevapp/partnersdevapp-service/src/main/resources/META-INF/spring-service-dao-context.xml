@@ -20,7 +20,7 @@
     <property name="licenciaDao" ref="persistence.licenciaDao"/>
 </bean>
 
-<bean id="service.defaultValueService"	class="ar.edu.unq.partnersdevapp.service.defaultValue.DefaultValue">
+<bean id="service.defaultValueService"	class="ar.edu.unq.partnersdevapp.service.defaultvalue.DefaultValue">
     <property name="planDao" ref="persistence.planDao"/>
     <property name="nivelDao" ref="persistence.nivelDao"/>
     <property name="empleadoDao" ref="persistence.empleadoDao"/>

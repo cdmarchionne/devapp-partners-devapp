@@ -27,12 +27,9 @@ public class PlanService implements Serializable {
         return serialVersionUID;
     }
 
-    public PlanDeCarrera findById(final Serializable id) {
-        return planDao.findById(id);
-    }
-
-    public void setPlanDao(final PlanDao planDao) {
-        this.planDao = planDao;
+    /** Manejar exepcion si no hay datos */
+    public PlanDto findById(final Serializable id) {
+        return PlanUtilsDto.objectToDto(planDao.findById(id));
     }
 
     public void save(final PlanDto model) {
@@ -78,6 +75,14 @@ public class PlanService implements Serializable {
         }
 
         planDao.update(plan);
+    }
+
+    public PlanDao getPlanDao() {
+        return planDao;
+    }
+
+    public void setPlanDao(final PlanDao planDao) {
+        this.planDao = planDao;
     }
 
 }

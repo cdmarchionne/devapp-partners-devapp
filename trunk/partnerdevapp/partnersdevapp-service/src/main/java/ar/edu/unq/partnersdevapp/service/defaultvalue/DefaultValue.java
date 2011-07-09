@@ -1,4 +1,6 @@
-package ar.edu.unq.partnersdevapp.service.defaultValue;
+package ar.edu.unq.partnersdevapp.service.defaultvalue;
+
+import org.springframework.beans.factory.InitializingBean;
 
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 import ar.edu.unq.partnersdevapp.persistencia.dao.carrera.NivelDao;
@@ -9,15 +11,21 @@ import ar.edu.unq.partnersdevapp.persistencia.dao.personal.EmpleadoDao;
 /**
  * 
  */
-public class DefaultValue {
+public class DefaultValue implements InitializingBean {
 
-    PlanDao planDao;
+    private PlanDao planDao;
 
-    NivelDao nivelDao;
+    private NivelDao nivelDao;
 
-    EmpleadoDao empleadoDao;
+    private EmpleadoDao empleadoDao;
 
-    ClienteDao clienteDao;
+    private ClienteDao clienteDao;
+
+    /** se ejecuta cuando el spring factory crea el objeto */
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        this.add();
+    }
 
     public void add() {
         this.addPlan();
@@ -35,9 +43,11 @@ public class DefaultValue {
 
     /** empleados y clietes */
     public void addPersonas() {
-        empleadoDao.save(Factory.getEmpleado1());
-        empleadoDao.save(Factory.getEmpleado2());
-        clienteDao.save(Factory.getCliente());
+        for (int i = 0; i < 50; i++) {
+            empleadoDao.save(Factory.getEmpleado(i));
+            clienteDao.save(Factory.getCliente(i));
+        }
+
     }
 
     public PlanDao getPlanDao() {
@@ -71,4 +81,5 @@ public class DefaultValue {
     public void setClienteDao(final ClienteDao clienteDao) {
         this.clienteDao = clienteDao;
     }
+
 }

@@ -9,15 +9,11 @@ public class PlanDto implements Dto {
 
     private static final long serialVersionUID = 1L;
 
-    private int id;
+    private int id;// NOPMD
 
     private String especialidad;
 
     private String descripcion;
-
-    public PlanDto() {
-        super();
-    }
 
     @Override
     public String toString() {
@@ -44,8 +40,8 @@ public class PlanDto implements Dto {
         return id;
     }
 
-    public void setId(final int id) {
-        this.id = id;
+    public void setId(final int id) {// NOPMD
+        this.id = id;// NOPMD
     }
 
 }

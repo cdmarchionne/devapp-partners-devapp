@@ -10,7 +10,7 @@ import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
 import ar.edu.unq.partnersdevapp.exceptions.NoSeAsignoLicencia;
 import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 import ar.edu.unq.partnersdevapp.persistencia.dao.personal.EmpleadoDao;
-import ar.edu.unq.partnersdevapp.service.defaultValue.Factory;
+import ar.edu.unq.partnersdevapp.service.defaultvalue.Factory;
 
 /**
  * TODO: description
