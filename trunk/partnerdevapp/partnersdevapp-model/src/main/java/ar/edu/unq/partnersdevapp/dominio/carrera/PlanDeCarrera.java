@@ -22,10 +22,6 @@ public class PlanDeCarrera extends Entidad {
 
     private List<Nivel> niveles = new ArrayList<Nivel>();
 
-    public PlanDeCarrera() {
-        super();
-    }
-
     public PlanDeCarrera(final String especialidad, final String descripcion) {
         super();
         this.setEspecialidad(especialidad);

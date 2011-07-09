@@ -21,6 +21,10 @@ public class LicenciaTipo extends Entidad {
 
     private int diasCantidadAnuales;
 
+    public LicenciaTipo() {
+        super();
+    }
+
     /**
      * tipo : motivo<br/>
      * remunerable: se se le paga en esos dias de ausencia.<br/>
@@ -33,10 +37,6 @@ public class LicenciaTipo extends Entidad {
         this.remunerable = remunerable;
         this.diasConsecutivos = diasConsecutivos;
         diasCantidadAnuales = diasCantidad;
-    }
-
-    public LicenciaTipo() {
-        super();
     }
 
     @Override

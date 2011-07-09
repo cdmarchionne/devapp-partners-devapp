@@ -25,10 +25,6 @@ public class Direccion extends Entidad {
 
     private String pais;
 
-    public Direccion() {
-        super();
-    }
-
     public Direccion(final String calle, final Integer altura) {
         super();
         this.calle = calle;
