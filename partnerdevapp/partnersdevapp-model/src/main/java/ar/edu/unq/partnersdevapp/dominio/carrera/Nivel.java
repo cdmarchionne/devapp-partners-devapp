@@ -52,6 +52,11 @@ public class Nivel extends Entidad {
     }
 
     @Override
+    public int hashCode() {
+        return 10;
+    }
+
+    @Override
     public String toString() {
         return "(" + this.getNombre() + ")";
     }
