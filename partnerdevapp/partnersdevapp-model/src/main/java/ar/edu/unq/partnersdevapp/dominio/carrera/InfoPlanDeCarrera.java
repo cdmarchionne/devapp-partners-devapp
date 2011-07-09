@@ -19,10 +19,6 @@ public class InfoPlanDeCarrera extends Entidad implements Comparable<InfoPlanDeC
 
     private Posicion nivelPlanDeCarrera;// reprecentando (nivel,subNivel)
 
-    public InfoPlanDeCarrera() {
-        super();
-    }
-
     public InfoPlanDeCarrera(final Date date, final PlanDeCarrera planDeCarrera, final Posicion posicion) {
         super();
         this.setFechaInicio(date);

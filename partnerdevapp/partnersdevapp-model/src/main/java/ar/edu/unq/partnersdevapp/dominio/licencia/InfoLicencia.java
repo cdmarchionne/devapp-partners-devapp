@@ -17,11 +17,8 @@ public class InfoLicencia extends Entidad {
 
     private FechasXcomprension fechas;
 
-    public InfoLicencia() {
-
-    }
-
     public InfoLicencia(final LicenciaTipo licTipo, final FechasXcomprension aFechas) {
+        super();
         licenciaTipo = licTipo;
         fechas = aFechas;
     }
