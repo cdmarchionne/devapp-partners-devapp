@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.vista.components;
+package ar.edu.unq.partnersdevapp.vista.pages.empleado;
 
 import java.util.List;
 
@@ -24,8 +24,29 @@ public class EmpleadoSelect extends BasePage {
 
     public EmpleadoSelect() {
         super();
-        this.setModel(EmpleadoUtilsDto.realToDto(empleadoService.findAll()));
+        this.iniciar();
+    }
+
+    @Override
+    public void iniciar() {
+        this.setModels();
+        this.addMenuRight();
+        this.addContent();
+    }
+
+    @Override
+    public void addMenuRight() {
+        // throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void addContent() {
         this.add(this.getListView());
+    }
+
+    @Override
+    public void setModels() {
+        this.setModel(EmpleadoUtilsDto.realToDto(empleadoService.findAll()));
     }
 
     public WebMarkupContainer getListView() {
@@ -47,6 +68,9 @@ public class EmpleadoSelect extends BasePage {
         wmc.setOutputMarkupId(true);
         return wmc;
     }
+
+    // -----------------------
+    // -----Gets & Sets ------
 
     public void setModel(final List<EmpleadoDto> model) {
         this.model = model;

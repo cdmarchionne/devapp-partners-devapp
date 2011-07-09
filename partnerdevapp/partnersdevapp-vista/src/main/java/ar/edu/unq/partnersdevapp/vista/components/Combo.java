@@ -13,11 +13,11 @@ import ar.edu.unq.partnersdevapp.vista.models.ModelCombo;
  * 
  * @param <T>
  */
-public class MyCombo<T> extends DropDownChoice<T> {
+public class Combo<T> extends DropDownChoice<T> {
 
     private static final long serialVersionUID = 1L;
 
-    public MyCombo(final String name, final ModelCombo<T> model) {
+    public Combo(final String name, final ModelCombo<T> model) {
         super(name + "Combo", new PropertyModel<T>(model, "seleccion"), new PropertyModel<List<T>>(model, "opciones"));
     }
 

@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.vista.components;
+package ar.edu.unq.partnersdevapp.vista.pages.nivel;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +21,7 @@ import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelDto;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelListaDto;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.PlanDto;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.PlanListaDto;
+import ar.edu.unq.partnersdevapp.vista.components.TextFieldWithLabel;
 import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
 
 /**
@@ -30,19 +31,19 @@ import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
  */
 public class AltaNivel<T extends Dto> extends BasePage {
 
-    private Form<NivelDto> form;
-
     @SpringBean(name = "service.nivelService")
     private NivelService nivelService;
 
     @SpringBean(name = "service.planService")
     private PlanService planService;
 
-    private NivelDto modelNivel = new NivelDto("", 0, 0, 0);
+    private Form<NivelDto> form;
 
-    private NivelListaDto modelNivelLista = new NivelListaDto();
+    private NivelDto modelNivel;
 
-    private PlanListaDto modelPlanLista = new PlanListaDto();
+    private NivelListaDto modelNivelLista;
+
+    private PlanListaDto modelPlanLista;
 
     private DropDownChoice<NivelDto> niveleCombo;
 
@@ -52,11 +53,31 @@ public class AltaNivel<T extends Dto> extends BasePage {
 
     public AltaNivel() {
         super();
-        modelPlanLista.setOpciones(planService.findAll());
         this.iniciar();
     }
 
+    @Override
     public void iniciar() {
+        this.setModels();
+        this.addMenuRight();
+        this.addContent();
+    }
+
+    @Override
+    public void setModels() {
+        modelNivel = new NivelDto("", 0, 0, 0);
+        modelNivelLista = new NivelListaDto();
+        modelPlanLista = new PlanListaDto();
+        modelPlanLista.setOpciones(planService.findAll());
+    }
+
+    @Override
+    public void addMenuRight() {
+        // throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void addContent() {
         form = new Form<NivelDto>("nivelForm");
 
         form.add(new TextFieldWithLabel(this.getModelNivel(), "nombre", true));
@@ -82,7 +103,6 @@ public class AltaNivel<T extends Dto> extends BasePage {
         });
 
         this.add(form);
-
     }
 
     private MarkupContainer getLugarRadioComponent() {
@@ -141,6 +161,9 @@ public class AltaNivel<T extends Dto> extends BasePage {
 
         return this.getNiveleCombo();
     }
+
+    // -----------------------
+    // -----Gets & Sets ------
 
     public Form<NivelDto> getForm() {
         return form;

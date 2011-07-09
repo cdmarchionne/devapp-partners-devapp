@@ -23,35 +23,23 @@
  		<div id="inner">
  			
  			<div id="left" >
- 				<h2>Menu left</h2>
- 					<ul> 
-						<li>Uno</li> 
-						<li><a href="#" wicket:id="page1">Page1</a></li> 
-						<li><a href="#" wicket:id="AltaNivel">Alta nivel</a></li>
-						<li><a href="#" wicket:id="AltaPlan">Alta Plan</a></li>
+ 				<h2>Secciones</h2>
+ 					<ul> 				
+						<li><a href="#" wicket:id="LogInApp">LogIn</a></li> 
+						<li><a href="#" wicket:id="AltaNivel">Alta nivel</a></li>				
+						<li><a href="#" wicket:id="Plan">Plan de carrera</a></li>
 						<li><a href="#" wicket:id="Empleado">Empleado</a></li>
 						<li><a href="#" wicket:id="Licencia">Licencia</a></li>
 						<li><a href="#" wicket:id="AsignarLicencia">Asignar Licencia</a></li>
 					</ul>
  			</div>
-		
-		  <div id="right" >
-		  		<h2>Menue right</h2>
-					<ul> 
-						<li>Uno</li> 
-						 <li>Uno</li>
-						 <li>Uno</li>
-					</ul>
-  		  </div>
-
-		<div id="content"><h2> poner wicket label "entidad"</h2>
-			<pre>
-				<div id="body">
-					<wicket:child />
-				</div>
-			</pre>
-	
-		</div><!-- end content -->
+			
+			<div>
+			
+			<wicket:child />
+			<!-- child tiene el  content y menuRigth-->		
+			</div>
+			
 </div><!-- end inner -->
 </div><!-- end outer -->
  

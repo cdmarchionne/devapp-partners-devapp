@@ -1,0 +1,47 @@
+<wicket:extend>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" ><html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" >
+		  
+<head><meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="base.css" type="text/css" /> </head>
+	
+<body >
+
+<div id="right"  >
+	<h2>Menue right</h2>
+		<ul> 
+			<li>Uno</li> 
+			<li>Uno</li>
+			<li>Uno</li>
+		</ul>
+ </div>
+ 
+<div id="content">
+	<h2> poner wicket label "entidad"</h2>
+		<pre>
+			<div id="body">
+				<h1>Seleccion de empleado</h1>
+				   <div  wicket:id="containerTable">
+						<table class="resultado" align="center" border="1" >
+							<tr background="red">
+								<th>legajo</th>
+								<th>nombre</th>
+								<th>apellido</th>
+								<th>fecha Nacimiento</th>
+								<th>dni</th>								
+							</tr>
+							
+							<tr wicket:id="tablaResultado">
+								<td><span wicket:id="id">nombre</span></td>
+								<td><span wicket:id="nombre">nombre</span></td>
+								<td><span wicket:id="apellido">apellido</span></td>
+								<td><span wicket:id="fechaNacimiento">nacimiento</span></td>
+								<td><span wicket:id="dni">dni</span></td>		
+							</tr>
+						</table>
+					</div>			
+			</div>
+		</pre>	
+</div>
+</body>
+</html>
+</wicket:extend>

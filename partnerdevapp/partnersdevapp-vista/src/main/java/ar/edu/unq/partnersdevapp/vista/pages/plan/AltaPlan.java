@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.vista.components;
+package ar.edu.unq.partnersdevapp.vista.pages.plan;
 
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -6,17 +6,18 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.partnersdevapp.service.carrera.PlanService;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.PlanDto;
+import ar.edu.unq.partnersdevapp.vista.components.TextFieldWithLabel;
+import ar.edu.unq.partnersdevapp.vista.components.plan.PlanMenuRight;
 import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
 
 /**
  * 
  */
 public class AltaPlan extends BasePage {
-
-    private Form<PlanDto> form;
-
     @SpringBean(name = "service.planService")
     private PlanService service;
+
+    private Form<PlanDto> form;
 
     private PlanDto model = new PlanDto();
 
@@ -25,9 +26,21 @@ public class AltaPlan extends BasePage {
         this.iniciar();
     }
 
+    @Override
     public void iniciar() {
-        form = new Form<PlanDto>("planForm");
+        this.setModels();
+        this.addMenuRight();
+        this.addContent();
+    }
 
+    @Override
+    public void addMenuRight() {
+        this.add(new PlanMenuRight());
+    }
+
+    @Override
+    public void addContent() {
+        form = new Form<PlanDto>("planForm");
         form.add(new TextFieldWithLabel(this.getModel(), "especialidad", true));
         form.add(new TextFieldWithLabel(this.getModel(), "descripcion", true));
 
@@ -39,10 +52,16 @@ public class AltaPlan extends BasePage {
                 service.save(model);
             }
         });
-
         this.add(form);
-
     }
+
+    @Override
+    public void setModels() {
+        // throw new UnsupportedOperationException();
+    }
+
+    // -----------------------
+    // -----Gets & Sets ------
 
     public void setModel(final PlanDto model) {
         this.model = model;
