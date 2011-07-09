@@ -13,9 +13,9 @@ public interface GenericDao<T> extends Serializable {
 
     void update(T entity);
 
-    T findById(Serializable id);
+    T findById(Serializable id);// NOPMD
 
     List<T> findAll();
 
-    void deleteById(Serializable id);
+    void deleteById(Serializable id);// NOPMD
 }
