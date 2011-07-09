@@ -39,12 +39,12 @@ public abstract class HibernateGenericDao<T> extends HibernateDaoSupport impleme
 
     @SuppressWarnings("unchecked")
     @Override
-    public T findById(final Serializable id) {
+    public T findById(final Serializable id) {// NOPMD
         return (T) this.getHibernateTemplate().execute(new HibernateCallback() {
             @Override
             public T doInHibernate(final Session session) throws HibernateException, SQLException {
                 Criteria idCriteria = session.createCriteria(HibernateGenericDao.this.getDomainClass());
-                idCriteria.add(Restrictions.idEq(id));
+                idCriteria.add(Restrictions.idEq(id));// NOPMD
                 return (T) idCriteria.uniqueResult();
             }
         });
