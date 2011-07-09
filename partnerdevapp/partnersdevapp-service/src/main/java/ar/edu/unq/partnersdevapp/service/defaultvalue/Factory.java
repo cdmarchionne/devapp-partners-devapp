@@ -1,4 +1,4 @@
-package ar.edu.unq.partnersdevapp.service.defaultValue;
+package ar.edu.unq.partnersdevapp.service.defaultvalue;
 
 import ar.edu.unq.partnersdevapp.dominio.calendario.FechasXcomprension;
 import ar.edu.unq.partnersdevapp.dominio.calendario.Intervalo;
@@ -10,40 +10,24 @@ import ar.edu.unq.partnersdevapp.dominio.personal.Direccion;
 import ar.edu.unq.partnersdevapp.dominio.personal.Empleado;
 import ar.edu.unq.partnersdevapp.dominio.utils.FechaUtils;
 import ar.edu.unq.partnersdevapp.exceptions.NoHayResultadoException;
-import ar.edu.unq.partnersdevapp.exceptions.NoSeAsignoLicencia;
-import ar.edu.unq.partnersdevapp.exceptions.PeriodoIndeterminadoException;
 
 public class Factory {
 
-    public static Empleado getEmpleado1() {
-        Empleado empleado = new Empleado("NombreEmpleado1", "ApellidoEmpleado1", "dni1");
-        empleado.setDireccion(getDireccion1());
+    private Factory() {
+    }
+
+    public static Empleado getEmpleado(final int numero) {
+        Empleado empleado = new Empleado("NombreEmpleado" + numero, "ApellidoEmpleado" + numero, "dni" + numero);
+        empleado.setDireccion(getDireccion(numero));
         empleado.setFechaNacimiento(FechaUtils.crearFecha("01/01/80"));
         empleado.setFechaIngreso(FechaUtils.crearFecha("01/01/01"));
-        try {
-            try {
-                empleado.getLicenciaManager().addLicencia(Factory.getLicencia1(), Factory.getFxc());
-            } catch (NoSeAsignoLicencia e) {
-                throw new UnsupportedOperationException();
-            }
-        } catch (NoHayResultadoException e) {
-            throw new UnsupportedOperationException();
-        } catch (PeriodoIndeterminadoException e) {
-            throw new UnsupportedOperationException();
-        }
+
         return empleado;
     }
 
-    public static Empleado getEmpleado2() {
-        Empleado empleado = new Empleado("NombreEmpleado2", "ApellidoEmpleado2", "dni2");
-        empleado.setDireccion(getDireccion2());
-        empleado.setFechaNacimiento(FechaUtils.crearFecha("02/02/82"));
-        empleado.setFechaIngreso(FechaUtils.crearFecha("02/02/02"));
-        return empleado;
-    }
-
-    public static Cliente getCliente() {
-        return new Cliente("clientenombre1", "clienteApellido1", "clientedni", "clienteRazonSocial1");
+    public static Cliente getCliente(final int numero) {
+        return new Cliente("clientenombre" + numero, "clienteApellido" + numero, "clientedni" + numero,
+                "clienteRazonSocial" + numero);
     }
 
     /** plan con dos niveles */
@@ -85,12 +69,9 @@ public class Factory {
         return new LicenciaTipo("licTipo2", true, 2, 1);
     }
 
-    public static Direccion getDireccion1() {
-        return new Direccion("calle1", 1, "piso1", "depto1", "localidad1", "codigoPostal1", "provincia1", "pais1");
-    }
-
-    public static Direccion getDireccion2() {
-        return new Direccion("calle2", 2, "piso2", "depto2", "localidad2", "codigoPostal2", "provincia2", "pais2");
+    public static Direccion getDireccion(final int numero) {
+        return new Direccion("calle" + numero, numero, "piso" + numero, "depto" + numero, "localidad" + numero,
+                "codigoPostal" + numero, "provincia" + numero, "pais" + numero);
     }
 
 }

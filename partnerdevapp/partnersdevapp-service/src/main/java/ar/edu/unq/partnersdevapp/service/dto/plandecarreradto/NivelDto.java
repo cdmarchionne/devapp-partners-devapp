@@ -22,10 +22,6 @@ public class NivelDto implements Dto {
 
     private String lugar;
 
-    public NivelDto() {
-        super();
-    }
-
     public NivelDto(final String nombre2, final int aBanda, final int sueldoMaximo2, final int sueldoMinimo2) {
         nombre = nombre2;
         banda = aBanda;

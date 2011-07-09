@@ -15,21 +15,21 @@ public class NivelUtilsDto {
         throw new UnsupportedOperationException();
     }
 
-    static public Nivel dtoToReal(final NivelDto dto) {
+    public static Nivel dtoToReal(final NivelDto dto) {
         Nivel nivel = new Nivel(dto.getNombre(), new Banda(dto.getBanda()), dto.getSueldoMaximo(),
                 dto.getSueldoMinimo());
         nivel.setId(dto.getId());
         return nivel;
     }
 
-    static public NivelDto realToDto(final Nivel realObject) {
+    public static NivelDto realToDto(final Nivel realObject) {
         NivelDto niveldto = new NivelDto(realObject.getNombre(), realObject.getBanda().getCantidadDeSubBandas(),
                 realObject.getSueldoMaximo(), realObject.getSueldoMinimo());
         niveldto.setId(realObject.getId());
         return niveldto;
     }
 
-    static public List<NivelDto> realToDto(final List<Nivel> list) {
+    public static List<NivelDto> realToDto(final List<Nivel> list) {
         List<NivelDto> newList = new ArrayList<NivelDto>();
         if (list != null) {
             for (Nivel nivel : list) {

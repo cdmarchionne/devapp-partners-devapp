@@ -11,7 +11,7 @@ public class EmpleadoDto implements Dto {
 
     private static final long serialVersionUID = 1L;
 
-    protected int id;
+    protected int id; // NOPMD
 
     protected String nombre;
 
@@ -57,7 +57,7 @@ public class EmpleadoDto implements Dto {
         return id;
     }
 
-    public void setId(final int id) {
-        this.id = id;
+    public void setId(final int id) { // NOPMD
+        this.id = id;// NOPMD
     }
 }
