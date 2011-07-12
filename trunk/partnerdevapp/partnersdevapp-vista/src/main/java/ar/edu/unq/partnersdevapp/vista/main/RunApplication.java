@@ -34,10 +34,9 @@ public class RunApplication extends AuthenticatedWebApplication {
 
     }
 
-    // private void mountUrl(final String mountPath, final Class<? extends
-    // WebPage> pageClass, final String... parameters) {
-    // aMounterURL.mount(mountPath, pageClass, parameters);
-    // }
+    private void mountUrl(final String mountPath, final Class<? extends WebPage> pageClass, final String... parameters) {
+        aMounterURL.mount(mountPath, pageClass, parameters);
+    }
 
     @Override
     protected Class<? extends AuthenticatedWebSession> getWebSessionClass() {
