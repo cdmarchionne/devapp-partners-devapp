@@ -33,13 +33,6 @@ public class AsignarLicencia extends BasePage {
 
     public AsignarLicencia() {
         super();
-        this.iniciar();
-    }
-
-    @Override
-    public void iniciar() {
-        this.addMenuRight();
-        this.addContent();
         this.setModels();
     }
 
@@ -58,7 +51,6 @@ public class AsignarLicencia extends BasePage {
         this.add(form);
     }
 
-    @Override
     public void setModels() {
         modelEmpleado.setOpciones(empleadoService.findAll());
 
@@ -136,6 +128,11 @@ public class AsignarLicencia extends BasePage {
 
     public void setModelLicencia(final ModelCombo<LicenciaTipo> modelLicencia) {
         this.modelLicencia = modelLicencia;
+    }
+
+    @Override
+    public void addHeader() {
+        throw new UnsupportedOperationException();
     }
 
 }

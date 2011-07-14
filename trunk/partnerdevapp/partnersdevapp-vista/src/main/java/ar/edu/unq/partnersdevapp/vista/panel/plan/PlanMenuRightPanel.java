@@ -1,20 +1,24 @@
-package ar.edu.unq.partnersdevapp.vista.components.plan;
+package ar.edu.unq.partnersdevapp.vista.panel.plan;
 
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.link.Link;
 
 import ar.edu.unq.partnersdevapp.vista.pages.plan.AltaPlan;
 import ar.edu.unq.partnersdevapp.vista.pages.plan.PlanSelectPage;
+import ar.edu.unq.partnersdevapp.vista.panel.MenuRightPanel;
 
 /**
- * Especifica como sera el menu para la entidad Plan de carrera. Codigo Html
- * comentado.
+ * Menu derecha para plan de carrera
  */
-public class PlanMenuRight extends WebMarkupContainer {
+public class PlanMenuRightPanel extends MenuRightPanel {
+
     private static final long serialVersionUID = 1L;
 
-    public PlanMenuRight() {
-        super("menuRight");
+    public PlanMenuRightPanel() {
+        super("plan");
+    }
+
+    @Override
+    public void addLinks() {
         this.add(this.getLinkAlta());
         this.add(this.getLinkSelect());
     }
@@ -26,6 +30,7 @@ public class PlanMenuRight extends WebMarkupContainer {
             @Override
             public void onClick() {
                 this.setResponsePage(AltaPlan.class);
+
             }
         };
     }
@@ -40,4 +45,5 @@ public class PlanMenuRight extends WebMarkupContainer {
             }
         };
     }
+
 }

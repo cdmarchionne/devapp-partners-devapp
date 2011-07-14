@@ -16,37 +16,14 @@ import ar.edu.unq.partnersdevapp.vista.pages.plan.PlanSelectPage;
  */
 
 public abstract class BasePage extends WebPage {
-    // -----------------------
-    // ----- BEANS ----------
-    // -- los servicios para comunicarse a la base estan agrupados en el bien de
-    // dicha entidad
-    // @SpringBean(name = "service.entidadService")
-    // private EmpleadoService entidadService;
-
-    // -----------------------
-    // ----- DTO -------------
-    // -- Cada entidad y modelo utilizada en la pagina tendra su dto
-    // -- private List<EntidadDto> modelDeCombo;
-    // -- private EntidadDto emplDto;
-
-    // ----------------------
-    // ---- Modelos ---------
-    // - Por componente ( combo , text , form , etc )
-    // - en algunos casos puede ser el dto.
-
-    // ----------------------
-    // ---- Atributos ---------
-    // --
 
     public BasePage() {
         super();
+        this.addHeader();
         this.addMenuLeft();
+        this.addMenuRight();
+        this.addContent();
     }
-
-    public abstract void iniciar();
-
-    // --------------------------------------------
-    // ---- Definicion de los cuerpos de la pagina
 
     private void addMenuLeft() {
         this.add(new BookmarkablePageLink<String>("LogInApp", LogInApp.class));
@@ -55,6 +32,7 @@ public abstract class BasePage extends WebPage {
         this.add(new BookmarkablePageLink<String>("Empleado", EmpleadoSelect.class));
         this.add(new BookmarkablePageLink<String>("Licencia", AltaLicencia.class));
         this.add(new BookmarkablePageLink<String>("AsignarLicencia", AsignarLicencia.class));
+
         this.add(new Label("footer", "This is in the footer"));
         this.add(new FeedbackPanel("feedback"));
     }
@@ -63,14 +41,6 @@ public abstract class BasePage extends WebPage {
 
     public abstract void addContent();
 
-    // --------------------------------------------------------------------
-    // -- Los modelos de algunos componentes nesecitaran datos de la base
-    public abstract void setModels();
-
-    // ------------------------------------
-    // ---- Metodos para crear componentes
-
-    // -----------------------
-    // -----Gets & Sets ------
+    public abstract void addHeader();
 
 }

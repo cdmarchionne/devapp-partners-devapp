@@ -10,8 +10,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import ar.edu.unq.partnersdevapp.dominio.licencia.LicenciaTipo;
 import ar.edu.unq.partnersdevapp.service.empleado.LicenciaService;
-import ar.edu.unq.partnersdevapp.vista.components.TextFieldWithLabel;
 import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
+import ar.edu.unq.partnersdevapp.vista.panel.InputPanel;
 
 /**
  */
@@ -24,14 +24,12 @@ public class AltaLicencia extends BasePage {
 
     public AltaLicencia() {
         super();
-        this.iniciar();
+        this.setModels();
     }
 
     @Override
-    public void iniciar() {
-        this.addMenuRight();
-        this.addContent();
-        this.setModels();
+    public void addHeader() {
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -43,10 +41,10 @@ public class AltaLicencia extends BasePage {
     public void addContent() {
         final Form<LicenciaTipo> form = new Form<LicenciaTipo>("licenciaForm");
 
-        form.add(new TextFieldWithLabel(this.getModel(), "tipo", true));
-        form.add(new TextFieldWithLabel(this.getModel(), "descripcion", true));
-        form.add(new TextFieldWithLabel(this.getModel(), "diasConsecutivos", true));
-        form.add(new TextFieldWithLabel(this.getModel(), "diasCantidadAnuales", true));
+        form.add(new InputPanel(this.getModel(), "tipo", true));
+        form.add(new InputPanel(this.getModel(), "descripcion", true));
+        form.add(new InputPanel(this.getModel(), "diasConsecutivos", true));
+        form.add(new InputPanel(this.getModel(), "diasCantidadAnuales", true));
         form.add(this.getRadioComponent());
 
         form.add(new Button("button") {
@@ -63,7 +61,6 @@ public class AltaLicencia extends BasePage {
         this.add(form);
     }
 
-    @Override
     public void setModels() {
         // throw new UnsupportedOperationException();
     }
