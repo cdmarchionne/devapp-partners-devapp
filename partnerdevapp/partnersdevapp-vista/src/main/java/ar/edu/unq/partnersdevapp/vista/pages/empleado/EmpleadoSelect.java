@@ -24,14 +24,7 @@ public class EmpleadoSelect extends BasePage {
 
     public EmpleadoSelect() {
         super();
-        this.iniciar();
-    }
-
-    @Override
-    public void iniciar() {
         this.setModels();
-        this.addMenuRight();
-        this.addContent();
     }
 
     @Override
@@ -44,7 +37,6 @@ public class EmpleadoSelect extends BasePage {
         this.add(this.getListView());
     }
 
-    @Override
     public void setModels() {
         this.setModel(EmpleadoUtilsDto.realToDto(empleadoService.findAll()));
     }
@@ -86,6 +78,11 @@ public class EmpleadoSelect extends BasePage {
 
     public void setEmpleadoService(final EmpleadoService empleadoService) {
         this.empleadoService = empleadoService;
+    }
+
+    @Override
+    public void addHeader() {
+        throw new UnsupportedOperationException();
     }
 
 }

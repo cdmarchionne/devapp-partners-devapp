@@ -21,8 +21,8 @@ import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelDto;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.NivelListaDto;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.PlanDto;
 import ar.edu.unq.partnersdevapp.service.dto.plandecarreradto.PlanListaDto;
-import ar.edu.unq.partnersdevapp.vista.components.TextFieldWithLabel;
 import ar.edu.unq.partnersdevapp.vista.pages.BasePage;
+import ar.edu.unq.partnersdevapp.vista.panel.InputPanel;
 
 /**
  * 
@@ -53,17 +53,9 @@ public class AltaNivel<T extends Dto> extends BasePage {
 
     public AltaNivel() {
         super();
-        this.iniciar();
-    }
-
-    @Override
-    public void iniciar() {
         this.setModels();
-        this.addMenuRight();
-        this.addContent();
     }
 
-    @Override
     public void setModels() {
         modelNivel = new NivelDto("", 0, 0, 0);
         modelNivelLista = new NivelListaDto();
@@ -77,13 +69,18 @@ public class AltaNivel<T extends Dto> extends BasePage {
     }
 
     @Override
+    public void addHeader() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public void addContent() {
         form = new Form<NivelDto>("nivelForm");
 
-        form.add(new TextFieldWithLabel(this.getModelNivel(), "nombre", true));
-        form.add(new TextFieldWithLabel(this.getModelNivel(), "banda", true));
-        form.add(new TextFieldWithLabel(this.getModelNivel(), "sueldoMaximo", true));
-        form.add(new TextFieldWithLabel(this.getModelNivel(), "sueldoMinimo", true));
+        form.add(new InputPanel(this.getModelNivel(), "nombre", true));
+        form.add(new InputPanel(this.getModelNivel(), "banda", true));
+        form.add(new InputPanel(this.getModelNivel(), "sueldoMaximo", true));
+        form.add(new InputPanel(this.getModelNivel(), "sueldoMinimo", true));
         form.add(this.getNivelComboWithLabel());
         form.add(this.getPlanComboWithLabel());
         form.add(this.getLugarRadioComponent());

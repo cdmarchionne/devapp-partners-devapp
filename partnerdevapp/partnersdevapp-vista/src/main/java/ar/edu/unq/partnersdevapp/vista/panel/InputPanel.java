@@ -1,27 +1,23 @@
-package ar.edu.unq.partnersdevapp.vista.components;
+package ar.edu.unq.partnersdevapp.vista.panel;
 
-import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
 
 /**
+ * Es un componente<br>
  * Un contenedor con un label e inputText <br>
- * Template agregado como comentario.
+ * Ver ImputPanelTamplate.
  */
 
-// ** reemplazar id por el pasado por parametro
-// <div wicket:id="idContainer">
-// <span wicket:id="idLabel" />
-// <input wicket:id="idField" type="text" />
-// </div>
-public class TextFieldWithLabel extends MarkupContainer {
+public class InputPanel extends WebMarkupContainer {
     private static final long serialVersionUID = 1L;
 
     private TextField<String> textField;
 
-    public TextFieldWithLabel(final Object model, final String campo, final boolean esRequerido) {
-        super(campo + "Container");
+    public InputPanel(final Object model, final String campo, final boolean esRequerido) {
+        super(campo + "InputContainer");
         this.add(new Label(campo + "Label", campo));
         this.add(this.crearTextField(model, campo, esRequerido));
     }
